@@ -1,0 +1,36 @@
+$sub-color: white;
+$main-color: #015b98;
+.question {
+    height: auto;
+    width: 100%;
+    min-height: 150px;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    .yes-no-btn {
+        height: 60px;
+        width: 80px;
+        border-radius: 0.3rem;
+        border: 2px solid $main-color;
+        font-size: 32px;
+        &:visited,
+        &:focus,
+        &:hover {
+            cursor: pointer;
+            background-color: $main-color;
+            color: $sub-color;
+        }
+        &.active {
+            background-color: $main-color;
+            color: $sub-color;
+        }
+    }
+    .btn-group {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        & button {
+            margin: 20px 15px 10px 15px;
+        }
+    }
+}
