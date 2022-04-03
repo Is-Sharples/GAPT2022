@@ -1,0 +1,227 @@
+
+/*Large Screen*/
+@media (min-width: 720px) {
+.mui-icons {
+    transform: scale(1.2);
+  }
+
+.appbar{
+    height: 90px;
+}
+
+.screen {
+    background-color: #e5e5e5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2.3em;
+    color: Black;
+    font-family: 'Calibri';
+ }
+
+.card {
+    max-width: 600px;
+    padding: 13px;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    opacity: 90%;
+    height: fit-content;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+}
+
+.name {
+    font-size: 28px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.id {
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.grid-title{
+    margin-bottom: 10px;
+
+
+}
+ 
+.newVisit{
+    background-color: transparent;
+    border: #c8c8c8 1px solid;
+    cursor: pointer;
+    width: 50px;
+    height: 56px;
+    border-radius: 10%;
+    margin-left: 5px;
+}
+
+.newVisit:hover {
+    background-color: transparent;
+    border: black 1px solid;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+.lastModifiedBy{
+    font-size: 14px;
+    color: rgb(56, 56, 56);
+}
+
+.grid-page{
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    display: grid;
+    border-radius: 5px;
+    padding-top: 10px;
+    font-size: 18px;
+
+}
+
+.grid-data{
+    background-color: #f0f2f4;
+    font-size: 22px;
+}
+
+.section{
+    font-size: 22px;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    margin-right: 0px;
+}
+
+.total-diff{
+    width:80px;
+}
+
+.grid-row{
+    width:160px;
+}
+
+.buttonSummary{
+    color: black;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+}
+
+/*Small Screen*/
+@media (max-width: 720px) {
+.mui-icons {
+    transform: scale(0.65);
+}
+
+.appbar{
+    height: 60px;
+}
+
+.screen {
+    background-color: #e5e5e5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.75em;
+    color: Black;
+    font-family: 'Calibri';
+ }
+
+ .card {
+    padding: 13px;
+    width: 80%;
+    height: auto;
+    background-color: white;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    opacity: 90%;
+    height: fit-content;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.name {
+    font-size: 28px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.id {
+    margin-top: 5px;
+    font-size: 24px;
+ }
+
+.newVisit{
+    background-color: transparent;
+    border: #c8c8c8 1px solid;
+    cursor: pointer;
+    width: 50px;
+    height: 56px;
+    border-radius: 10%;
+    margin-left: 5px;
+}
+
+.newVisit:hover {
+    background-color: transparent;
+    border: black 1px solid;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+.lastModifiedBy{
+    font-size: 14px;
+    color: rgb(56, 56, 56);
+}
+
+.grid-page{
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+    display: grid;
+    border-radius: 5px;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.grid-data{
+    background-color: #f0f2f4;
+    font-size: 18px;
+}
+
+.section{
+    font-size: 18px;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.total-diff{
+    width: 50px;
+}
+
+.buttonSummary{
+    color: black;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+}
