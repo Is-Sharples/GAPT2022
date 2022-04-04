@@ -2,7 +2,7 @@ import React from "react";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from '@mui/material/FormControl';
-import './HeightCard.scss';
+import './HeightCard.css';
 
 const HeightCard = ({ handleChange, demispan, height }) => (
     <div className="my-card mdc-card mdc-card--outlined">
