@@ -1,0 +1,40 @@
+@media (min-width: 720px) {
+    .mui-icons {
+        transform: scale(1.2);
+      }
+    
+    .appbar{
+        height: 90px;
+    }
+    
+    .title {        
+        
+        font-size: 1.75em;
+        color: rgb(255, 255, 255);
+        font-family: 'Calibri';
+     }
+
+
+
+    }
+
+
+    @media (max-width: 720px) {
+        .mui-icons {
+            transform: scale(0.65);
+        }
+        
+        .appbar{
+            height: 60px;
+        }
+        
+        .title {
+            
+            
+            font-size: 1.75em;
+            color: rgb(255, 255, 255);
+            font-family: 'Calibri';
+         }
+        
+         
+        }

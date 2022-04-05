@@ -7,10 +7,10 @@ import { AppBar, FormControl, MenuItem } from "@mui/material";
 import { ArrowBack } from '@mui/icons-material';
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
-// import { useNavigate } from "react-router-dom";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
+import Header from './header';
 import "./styles/Summary.css";
 
 export default function Summary() {
@@ -35,59 +35,20 @@ export default function Summary() {
         setAnchorEl(null);
     };
     
-    // const goBack = () => {
-    //     navigate("/");
-    // };
+    
 
     const saveValue = (event) => {
         setValue(event.value);
     }
 
-    //   const navigate = useNavigate();
+    
       const open = Boolean(anchorEl);
       const id = open ? "simple-popover" : undefined;
 
   return (
     <div className="screen">
-        <AppBar className="appbar" position="static" style={{ background: '#01497A'}}>
-        <Grid container spacing={1}>
-            <Grid item xs={2} sm={1.1}>
-            <Box display="flex" justifyContent="center">
-            <Fab variant="contained" className="mui-icons" onClick={console.log("Clicked.")} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
-                <ArrowBack fontSize="large" marginLeft={0}></ArrowBack>
-            </Fab>
-            </Box>
-            </Grid>
-            <Grid item xs={8} sm={9.8}>
-            <Box display="flex" justifyContent="center">
-                <Typography variant="h7" color="inherit" component="div" align="center" style={{marginTop: 20, marginBottom: 3.2}}>
-                <label className="title">Summary</label> 
-                </Typography>
-            </Box>
-            </Grid>
-            <Grid item xs={2} sm={1.1}>
-            <Box display="flex" justifyContent="center">
-            <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
-            <HelpIcon fontSize="large"></HelpIcon>
-            </Fab>
-            </Box>
-            </Grid>
-        </Grid>
-        </AppBar>
-            <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-            }}>
-            <Typography sx={{ p: 5, fontSize: "1.3em" }}>
-                This page provides you with a summary of the current patient. This page compares the state of the patient on admission versus
-                how the patient is now after having gone through the required sessions.
-            </Typography>
-            </Popover>
+            <Header />
+
 
         <div className="card">
             <p className="name">Patient's Name</p>

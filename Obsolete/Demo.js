@@ -1,9 +1,9 @@
 import logo from '../logo.svg';
 import '../App.css';
-import Header from './/header';
-import Patient from './PatientID';
-import Barthel from './/BarthelIndex'
-import Summary from './Summary';
+import Header from '../src/components/header';
+import Patient from '../src/components/PatientID';
+import Barthel from '../src/components/BarthelIndex'
+import Summary from '../src/components/Summary';
 import {Router, Route } from 'react-router-dom';
 
 export default function Display() {

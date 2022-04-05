@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import Summary from './Summary';
 import {useState} from 'react';
 import Barthel from './BarthelIndex';
-
+import patients from './assets/patients.json';
 
 export default function PatientID(){
 
@@ -18,10 +18,10 @@ export default function PatientID(){
     if(exist === "true"){
         return(<Summary />);
     }
-    
-    
-    
-    
+    const json = JSON.stringify(patients);
+    const obj = JSON.parse(json);
+
+    console.log(obj);
 
 
     return (

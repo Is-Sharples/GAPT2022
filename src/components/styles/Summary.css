@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 2.3em;
+    /* font-size: 2.3em; */
     color: Black;
     font-family: 'Calibri';
  }
@@ -136,7 +136,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.75em;
+    /* font-size: 1.75em; */
     color: Black;
     font-family: 'Calibri';
  }
@@ -225,3 +225,4 @@
     height: 100%;
 }
 }
+

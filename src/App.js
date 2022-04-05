@@ -5,12 +5,13 @@ import Patient from './components/PatientID';
 import Barthel from './components/BarthelIndex'
 import Summary from './components/Summary';
 import {Router, Route } from 'react-router-dom';
-import Demo from './components/Demo';
+// import Demo from './components/Demo';
 function App() {
   
   return (
-     <Demo />
+    //  <Demo />
     //<Barthel />
+    <Patient />
   );
 }
 
