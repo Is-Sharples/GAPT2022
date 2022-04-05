@@ -39,7 +39,7 @@ export default function PatientID(){
                 
                         <List >                 
                             <Divider />
-                            <Button type="button" onClick={() => setExist("false")}>Click Me!</Button>
+                            <Button type="button" onClick={() => setExist("true")}>Click Me!</Button>
                         </List>
 
 
