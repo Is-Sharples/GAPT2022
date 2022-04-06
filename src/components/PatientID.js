@@ -9,19 +9,42 @@ import Summary from './Summary';
 import {useState} from 'react';
 import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
+import './styles/header.css';
+import PatientCard from "./assets/PatientCard";
+import PatientList from "./assets/PatientList";
+import { render } from "@testing-library/react";
 
-export default function PatientID(){
 
-   
-    const [exist,setExist] = useState("false");
+class PatientID extends React.Component{
+
+constructor(){
+    super();
+    this.state = {exist: "false"};
+
     
-    if(exist === "true"){
-        return(<Summary />);
-    }
+}   
+
+
+
+
+
+
+render(){
     const json = JSON.stringify(patients);
     const obj = JSON.parse(json);
+    const [john, shaun] = obj.patient;
+   
+    const [exist,setExist] = this.state.exist;
+    if(this.state.exist === "true"){
+        return(<Summary patient = {john}/>);
+    }
+    console.log(this.state.exist);
+    
+    // console.log(obj);
+    //console.log(obj.type)
+    // console.log(obj.patient[0].type);
 
-    console.log(obj);
+    
 
 
     return (
@@ -39,7 +62,12 @@ export default function PatientID(){
                 
                         <List >                 
                             <Divider />
-                            <Button type="button" onClick={() => setExist("true")}>Click Me!</Button>
+                            <Button variant = "outlined" type="button" onClick={() => {this.setState({exist: "true"});}}>Click Me!</Button>
+                            {/* {this.ListItems(shaun,john)} */}
+                            <PatientList patients = {obj.patient} /> 
+                            {/* <PatientCard patient = {shaun} ></PatientCard> */}
+                            <PatientCard patient = {shaun} ></PatientCard>
+                            <PatientCard patient = {john}></PatientCard>
                         </List>
 
 
@@ -65,6 +93,7 @@ export default function PatientID(){
 
 
     
+}
 
-
+export default PatientID;
 

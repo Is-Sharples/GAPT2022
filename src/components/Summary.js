@@ -15,8 +15,10 @@ import moment from 'moment';
 import "./styles/Summary.css";
 import Header from "./header";
 
-export default function Summary() {
+export default function Summary(props) {
 
+
+    const data = props.patient;
     const ilbierah = "Ilbierah";
     const illum = "Illum";
     const [anchorEl, setAnchorEl] = React.useState(null);
