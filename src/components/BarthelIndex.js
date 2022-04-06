@@ -11,6 +11,14 @@ export default function BarthelIndex() {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
 	const [BarthelIndex, setBarthelIndex] = useState(0);
+	const [indexList, setList] = useState([]);
+
+	function addToList(val) {
+		//const newList = indexList.concat(val);
+		console.log(val);
+		//setList(newList);
+		indexList.push(val);
+	}
 
 	const questions = [
 		{
@@ -57,7 +65,7 @@ export default function BarthelIndex() {
 			answerOptions: [
 				{ answerText: '0: dependent (needs help)', index: 0 },
 				{ answerText: '1: Incontinent (or needs to be given suppositories', index: 1 },
-        { answerText: 'continent (If needs enema/supp. Must sit manage himself)', index: 2 }
+        { answerText: '2: continent (If needs enema/supp. Must sit manage himself)', index: 2 }
 			],
 		},
     {
@@ -98,6 +106,7 @@ export default function BarthelIndex() {
 
 
 	const handleAnswerOptionClick = (index) => {
+			addToList(index);
 			setBarthelIndex(BarthelIndex + index);
 
 		const nextQuestion = currentQuestion + 1;
@@ -109,7 +118,7 @@ export default function BarthelIndex() {
 	};
 
 	if (summary === "true"){
-        return <Summary/>
+        return <Summary indexList = {indexList}/>
     }
 
 	return (

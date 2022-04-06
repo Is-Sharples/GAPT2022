@@ -12,10 +12,11 @@ import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
 import moment from 'moment';
+import ListItem from "@mui/material/ListItem";
 import "./styles/Summary.css";
 import Header from "./header";
 
-export default function Summary() {
+export default function Summary(props) {
 
     const ilbierah = "Ilbierah";
     const illum = "Illum";
@@ -24,6 +25,8 @@ export default function Summary() {
         {ilbierah}, {illum}
     ]);
     const [barthel, showBarthel] = useState("false");
+    const [Ablist, setAblist] = useState([]);
+    var AblistCount = 0;
     
     const handleChange =  (event) => {
         setOption(event.target.value);
@@ -37,12 +40,18 @@ export default function Summary() {
         setAnchorEl(null);
     };
 
+    function addUp(num1, num2){
+        var ans = num1 + num2;
+        return ans;
+    }
+
     if (barthel === "true"){
         return <Barthel/>
     }
 
-      const open = Boolean(anchorEl);
-      const id = open ? "simple-popover" : undefined;
+    props.indexList.forEach(element => Ablist.push(element))
+    props.indexList.forEach(element => AblistCount = addUp(AblistCount,element));
+
 
   return (
     <div className="screen">
@@ -90,67 +99,67 @@ export default function Summary() {
                     <tbody>
                         <tr className="grid-data">
                             <td className="section">Mobility</td>
-                            <td>1</td>
-                            <td>3</td>
+                            <td>{Ablist[0]}</td>
+                            <td>{props.indexList}</td>
                             <td className="total-diff">2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Grooming</td>
-                            <td>1</td>
+                            <td>{Ablist[1]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Dressing</td>
-                            <td>1</td>
+                            <td>{Ablist[2]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bathing</td>
-                            <td>1</td>
+                            <td>{Ablist[3]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Stairs</td>
-                            <td>1</td>
+                            <td>{Ablist[4]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bowels</td>
-                            <td>1</td>
+                            <td>{Ablist[5]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Transfers</td>
-                            <td>1</td>
+                            <td>{Ablist[6]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bladder</td>
-                            <td>1</td>
+                            <td>{Ablist[7]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Feeding</td>
-                            <td>1</td>
+                            <td>{Ablist[8]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Toilet Use</td>
-                            <td>1</td>
+                            <td>{Ablist[9]}</td>
                             <td>3</td>
                             <td>2</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Total</td>
-                            <td className="total">10</td>
+                            <td className="total">{AblistCount}</td>
                             <td className="total">30</td>
                             <td className="total">20</td>
                         </tr>
