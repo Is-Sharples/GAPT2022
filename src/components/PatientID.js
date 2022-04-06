@@ -11,7 +11,6 @@ import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
 import './styles/header.css';
 import PatientCard from "./assets/PatientCard";
-import PatientList from "./assets/PatientList";
 import { render } from "@testing-library/react";
 
 
@@ -19,11 +18,39 @@ class PatientID extends React.Component{
 
 constructor(){
     super();
-    this.state = {exist: "false"};
+    this.state = {
+        exist: "false",
+        patients : [],
+        fragments:[],
+        count: 0
+};
 
     
 }   
 
+test(){    
+    var testing = [];
+    this.setState({count: this.state.count+1});
+    this.state.patients.map((patient) => {
+        testing.push(
+        <React.Fragment  key = {this.state.count}>
+            
+            <ListItem button >
+                <ListItemText primary={patient.name} secondary={patient.id} />
+                    
+            </ListItem>
+        
+
+        </React.Fragment>
+       
+
+    )
+
+    })
+    
+    this.setState({fragments:testing});
+
+}
 
 
 
@@ -31,22 +58,12 @@ constructor(){
 
 render(){
     const json = JSON.stringify(patients);
-    const obj = JSON.parse(json);
-    const [john, shaun] = obj.patient;
-   
-    const [exist,setExist] = this.state.exist;
-    if(this.state.exist === "true"){
-        return(<Summary patient = {john}/>);
-    }
-    console.log(this.state.exist);
+    const obj = JSON.parse(json);    
+    this.state.patients = obj.patient;
     
-    // console.log(obj);
-    //console.log(obj.type)
-    // console.log(obj.patient[0].type);
-
     
 
-
+    
     return (
             
             
@@ -62,12 +79,18 @@ render(){
                 
                         <List >                 
                             <Divider />
-                            <Button variant = "outlined" type="button" onClick={() => {this.setState({exist: "true"});}}>Click Me!</Button>
-                            {/* {this.ListItems(shaun,john)} */}
-                            <PatientList patients = {obj.patient} /> 
-                            {/* <PatientCard patient = {shaun} ></PatientCard> */}
-                            <PatientCard patient = {shaun} ></PatientCard>
-                            <PatientCard patient = {john}></PatientCard>
+                            {/* <Button variant = "outlined" type="button" onClick={() => {this.setState({exist: "true"});}}>Click Me!</Button> */}
+                            <Button variant = "outlined" type="button" onClick={() => {this.test()}}>Click Me!</Button>                                                        
+                            
+                            
+                            {this.state.fragments}
+                                
+                            
+                            
+                            
+                            
+                                
+                            
                         </List>
 
 
