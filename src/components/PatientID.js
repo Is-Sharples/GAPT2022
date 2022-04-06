@@ -27,9 +27,9 @@ export default function PatientID(){
     return (
             
             
-        <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }}>
             
-            <Header item />
+            <Header item  name = {"Patient Page"}/>
             
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >

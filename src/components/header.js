@@ -13,7 +13,7 @@ import { Grid } from '@material-ui/core';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import { Popover } from '@mui/material';
 import './styles/header.css';
-export default function Header() {
+export default function Header(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
       
@@ -34,19 +34,19 @@ export default function Header() {
     <>
     
     
-    <AppBar className="appbar" position="static" style={{ background: '#01497A'}}>
-        <Grid container spacing={1}>
+    <AppBar className="appbar" position="static" style={{  background: '#01497A'}}>
+        <Grid container spacing={0}>
             <Grid item xs={2} sm={1.1}>
             <Box display="flex" justifyContent="center">
             <Fab variant="contained" className="mui-icons" onClick={console.log("Clicked.")} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
-                <ArrowBack fontSize="large" marginLeft={0}></ArrowBack>
+                <ArrowBack fontSize="large" ></ArrowBack>
             </Fab>
             </Box>
             </Grid>
             <Grid item xs={8} sm={9.8}>
             <Box display="flex" justifyContent="center">
                 <Typography variant="h7" color="inherit" component="div" align="center" style={{marginTop: 20, marginBottom: 3.2}}>
-                <label className="title" >Summary</label> 
+                <label className="title" >{props.name}</label> 
                 </Typography>
             </Box>
             </Grid>

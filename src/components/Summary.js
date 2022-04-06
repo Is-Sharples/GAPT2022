@@ -46,7 +46,7 @@ export default function Summary() {
 
   return (
     <div className="screen">
-        <Header /> 
+        <Header name={"Summary"} /> 
 
         <div className="card">
             <p className="name">Patient's Name</p>
