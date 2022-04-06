@@ -48,10 +48,11 @@ export default function Summary(props) {
     if (barthel === "true"){
         return <Barthel/>
     }
+    if(props.indexList != undefined){
+        props.indexList.forEach(element => Ablist.push(element));
+        props.indexList.forEach(element => AblistCount = addUp(AblistCount,element));
 
-    props.indexList.forEach(element => Ablist.push(element))
-    props.indexList.forEach(element => AblistCount = addUp(AblistCount,element));
-
+    }
 
   return (
     <div className="screen">
