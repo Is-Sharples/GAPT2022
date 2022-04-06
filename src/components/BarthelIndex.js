@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './styles/Barthel.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { Grid } from '@mui/material';
 
 export default function BarthelIndex() {
 	const questions = [
@@ -103,25 +104,29 @@ export default function BarthelIndex() {
 		}
 	};
 	return (
-      <Card className='body' sx={{ minWidth: 500, maxWidth: 500}}>
-		  <CardContent>
-			{showBarthelIndex ? (
-				<div className='score-section'>
-					 Barthel Index: {BarthelIndex}
-				</div>
-			) : (
-				<>
-					<div className='question-section'>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div> <br />
-					</div>
-					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption ) => (
-							<button  className='button' onClick={() => handleAnswerOptionClick(answerOption.index)}>{answerOption.answerText}</button> 
-              			))} 
-          			</div> 
-        		</>
-      		)}
-		</CardContent>
-    </Card>
+	<Grid justifyContent={"center"} container>
+		<Grid>
+			<Card className='body' sx={{ minWidth: 500, maxWidth: 500}}>
+				<CardContent>
+					{showBarthelIndex ? (
+						<div className='score-section'>
+							Barthel Index: {BarthelIndex}
+						</div>
+					) : (
+						<>
+							<div className='question-section'>
+								<div className='question-text'>{questions[currentQuestion].questionText}</div> <br />
+							</div>
+							<div className='answer-section'>
+								{questions[currentQuestion].answerOptions.map((answerOption ) => (
+									<button  className='button' onClick={() => handleAnswerOptionClick(answerOption.index)}>{answerOption.answerText}</button> 
+								))} 
+							</div> 
+						</>
+					)}
+				</CardContent>
+			</Card>
+		</Grid>
+	</Grid>
   );
 }
