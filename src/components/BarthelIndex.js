@@ -3,8 +3,15 @@ import './styles/Barthel.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
+import Summary from './Summary';
 
 export default function BarthelIndex() {
+
+	const [summary, showSummary] = useState("false");
+	const [currentQuestion, setCurrentQuestion] = useState(0);
+	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
+	const [BarthelIndex, setBarthelIndex] = useState(0);
+
 	const questions = [
 		{
 			questionText: 'Mobility (on level surfaces)',
@@ -89,9 +96,6 @@ export default function BarthelIndex() {
 		},
 	];
 
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
-	const [BarthelIndex, setBarthelIndex] = useState(0);
 
 	const handleAnswerOptionClick = (index) => {
 			setBarthelIndex(BarthelIndex + index);
@@ -100,9 +104,14 @@ export default function BarthelIndex() {
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			setShowBarthelIndex(true);
+			showSummary("true");
 		}
 	};
+
+	if (summary === "true"){
+        return <Summary/>
+    }
+
 	return (
 	<Grid justifyContent={"center"} container>
 		<Grid>
