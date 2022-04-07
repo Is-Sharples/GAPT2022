@@ -14,9 +14,7 @@ export default function BarthelIndex() {
 	const [indexList, setList] = useState([]);
 
 	function addToList(val) {
-		//const newList = indexList.concat(val);
 		console.log(val);
-		//setList(newList);
 		indexList.push(val);
 	}
 
