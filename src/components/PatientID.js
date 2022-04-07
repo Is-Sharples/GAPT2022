@@ -3,26 +3,36 @@ import Header from './header'
 import { Grid, TextField } from "@mui/material";
 import { Box, fontSize } from "@mui/system";
 import './styles/HomeContent.css'
-import { List, Divider, ListItem,ListItemText } from "@mui/material";
+import { List, Divider, ListItem,ListItemText, ListItemButton } from "@mui/material";
 import { Button } from "@mui/material";
 import Summary from './Summary';
 import {useState} from 'react';
 import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
 import './styles/header.css';
-import PatientCard from "./assets/PatientCard";
+// import PatientCard from "../../Obsolete/PatientCard";
 import { render } from "@testing-library/react";
+
+class currentPatient{
+    constructor(id,name,surname,gender){
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.surname = surname;
+    }
+    
+}
 
 
 class PatientID extends React.Component{
 
-constructor(){
-    super();
+constructor(props){
+    super(props);
     this.state = {
         exist: "false",
         patients : [],
         fragments:[],
-        count: 0,
+        currentPatient: new currentPatient(0,"","",""),
         text: ""
 };
 
@@ -36,10 +46,15 @@ componentWillUnmount() {
     });
   }
 
+componentDidMount(){
+    this.setState({currentPatient: new currentPatient(0,"","",""),});
+}
+
+
 DisplayPatients = (event) =>{  
     var value = event.target.value.toUpperCase();
     var testing = [];
-    // this.setState({count: this.state.count+1});
+   
 
     if(value !== ""){
         
@@ -47,22 +62,22 @@ DisplayPatients = (event) =>{
         this.state.patients.map((patient, index) => {
             var tempID = patient.id.toUpperCase().substr(0,value.length);
             let regex = new RegExp(tempID,'g');
-            console.log(tempID);
+            
             if(regex.test(value)){
                 testing.push(
                     <React.Fragment  key = {index}>
                         
-                        <ListItem button >
+                        <ListItemButton  onClick={() => this.setState({currentPatient:patient,})} >
                             <ListItemText primary={patient.name + " " + patient.surname} secondary={patient.id} />
                                 
-                        </ListItem>
+                        </ListItemButton>
                         <Divider />
             
                     </React.Fragment>
-                   
+               
             
                 )
-
+                     console.log(this.state.currentPatient);
             }
             
     
@@ -84,11 +99,16 @@ DisplayPatients = (event) =>{
 
 
 
+
+
 render(){
     const json = JSON.stringify(patients);
     const obj = JSON.parse(json);    
     this.state.patients = obj.patient;
     
+    if(this.state.currentPatient.id !== 0){
+        return <Summary patient = {this.state.currentPatient}/>
+    }
     
 
     
@@ -108,7 +128,7 @@ render(){
                         <List >                 
                             <Divider />
                             {/* <Button variant = "outlined" type="button" onClick={() => {this.setState({exist: "true"});}}>Click Me!</Button> */}
-                            {/* <Button variant = "outlined" type="button" onClick={() => {this.DisplayPatients()}}>Click Me!</Button>                                                         */}
+                            {/* <Button variant = "outlined" type="button" onClick={() => {this.DisplayPatients()}}>Click Me!</Button>*/}
                             
                             
                             {this.state.fragments}
