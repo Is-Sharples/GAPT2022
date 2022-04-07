@@ -22,35 +22,63 @@ constructor(){
         exist: "false",
         patients : [],
         fragments:[],
-        count: 0
+        count: 0,
+        text: ""
 };
 
     
 }   
 
-test(){    
+componentWillUnmount() {
+    this.setState({
+      text: "",
+      fragments:<></>,
+    });
+  }
+
+DisplayPatients = (event) =>{  
+    var value = event.target.value.toUpperCase();
     var testing = [];
-    this.setState({count: this.state.count+1});
-    this.state.patients.map((patient) => {
-        testing.push(
-        <React.Fragment  key = {this.state.count}>
-            
-            <ListItem button >
-                <ListItemText primary={patient.name} secondary={patient.id} />
-                    
-            </ListItem>
+    // this.setState({count: this.state.count+1});
+
+    if(value !== ""){
         
+            
+        this.state.patients.map((patient, index) => {
+            var tempID = patient.id.toUpperCase().substr(0,value.length);
+            let regex = new RegExp(tempID,'g');
+            console.log(tempID);
+            if(regex.test(value)){
+                testing.push(
+                    <React.Fragment  key = {index}>
+                        
+                        <ListItem button >
+                            <ListItemText primary={patient.name + " " + patient.surname} secondary={patient.id} />
+                                
+                        </ListItem>
+                        <Divider />
+            
+                    </React.Fragment>
+                   
+            
+                )
 
-        </React.Fragment>
-       
-
-    )
-
-    })
+            }
+            
     
-    this.setState({fragments:testing});
+        })
 
+        this.setState({fragments:testing});
+
+    }else{
+        this.setState({fragments:<></>});
+    }
+
+    
+    
+    
 }
+
 
 
 
@@ -74,13 +102,13 @@ render(){
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >
                         <TextField  label={"Patient ID"} 
-                                
+                                    onChange ={this.DisplayPatients}
                         ></TextField>
                 
                         <List >                 
                             <Divider />
                             {/* <Button variant = "outlined" type="button" onClick={() => {this.setState({exist: "true"});}}>Click Me!</Button> */}
-                            <Button variant = "outlined" type="button" onClick={() => {this.test()}}>Click Me!</Button>                                                        
+                            {/* <Button variant = "outlined" type="button" onClick={() => {this.DisplayPatients()}}>Click Me!</Button>                                                         */}
                             
                             
                             {this.state.fragments}
