@@ -13,11 +13,16 @@ import { Grid } from '@material-ui/core';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import { Popover } from '@mui/material';
 import './styles/header.css';
+import { useNavigate } from 'react-router-dom';
+import PatientID from './PatientID';
+
 export default function Header(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
       
-    
+    const goBack = () => {
+        navigate("/");
+    }
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -26,7 +31,7 @@ export default function Header(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    
+    const navigate = useNavigate();
     
       const open = Boolean(anchorEl);
       const id = open ? "simple-popover" : undefined;
@@ -38,7 +43,7 @@ export default function Header(props) {
         <Grid container spacing={0}>
             <Grid item xs={2} sm={1.1}>
             <Box display="flex" justifyContent="center">
-            <Fab variant="contained" className="mui-icons" onClick={() => console.log("Clicked.")} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
+            <Fab variant="contained" className="mui-icons" onClick={() => navigate("/")} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
                 <ArrowBack fontSize="large" ></ArrowBack>
             </Fab>
             </Box>

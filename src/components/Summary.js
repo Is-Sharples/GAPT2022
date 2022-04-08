@@ -42,7 +42,7 @@ export default function Summary(props) {
     if (barthel === "true"){
         return <Barthel/>
     }
-
+    
       const open = Boolean(anchorEl);
       const id = open ? "simple-popover" : undefined;
 

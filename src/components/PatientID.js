@@ -10,9 +10,7 @@ import {useState} from 'react';
 import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
 import './styles/header.css';
-// import PatientCard from "../../Obsolete/PatientCard";
-import { render } from "@testing-library/react";
-
+import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 class currentPatient{
     constructor(id,name,surname,gender){
         this.id = id;
@@ -33,28 +31,45 @@ constructor(props){
         patients : [],
         fragments:[],
         currentPatient: new currentPatient(0,"","",""),
-        text: ""
+        entered: "true"
 };
 
     
 }   
 
+
 componentWillUnmount() {
     this.setState({
       text: "",
       fragments:<></>,
+      currentPatient: new currentPatient(0,"","",""),
+      
     });
+    console.log("");
+    this.state.currentPatient.id = 0;
   }
 
 componentDidMount(){
-    this.setState({currentPatient: new currentPatient(0,"","",""),});
+    this.state.currentPatient.id = 0;
 }
+
+// componentWillMount(){
+
+//     this.state.currentPatient.id = 0;
+// }
+
+SetCurrentPatient(patient){
+    console.log("hello");
+    this.setState({currentPatient:patient,});
+    this.setState({entered: "false"});
+}
+
+
 
 
 DisplayPatients = (event) =>{  
     var value = event.target.value.toUpperCase();
-    var testing = [];
-   
+    var testing = [];  
 
     if(value !== ""){
         
@@ -67,7 +82,7 @@ DisplayPatients = (event) =>{
                 testing.push(
                     <React.Fragment  key = {index}>
                         
-                        <ListItemButton  onClick={() => this.setState({currentPatient:patient,})} >
+                        <ListItemButton  onClick={() => this.SetCurrentPatient(patient)} >
                             <ListItemText primary={patient.name + " " + patient.surname} secondary={patient.id} />
                                 
                         </ListItemButton>
@@ -96,18 +111,17 @@ DisplayPatients = (event) =>{
 
 
 
-
-
-
-
-
 render(){
     const json = JSON.stringify(patients);
     const obj = JSON.parse(json);    
     this.state.patients = obj.patient;
-    
+    // this.state.currentPatient.id = 0;
+
     if(this.state.currentPatient.id !== 0){
-        return <Summary patient = {this.state.currentPatient}/>
+        //this.setState({currentPatient: new currentPatient(0,"","","")});
+        // this.state.currentPatient.id = 0;
+        console.log(this.state.currentPatient.id);
+        return <Summary patient = {this.state.currentPatient}/>       
     }
     
 
@@ -127,8 +141,7 @@ render(){
                 
                         <List >                 
                             <Divider />
-                            {/* <Button variant = "outlined" type="button" onClick={() => {this.setState({exist: "true"});}}>Click Me!</Button> */}
-                            {/* <Button variant = "outlined" type="button" onClick={() => {this.DisplayPatients()}}>Click Me!</Button>*/}
+                            
                             
                             
                             {this.state.fragments}
