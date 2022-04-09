@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <PatientProvider>
         <HeightWeightProvider>
-          <Weight/>
+          <Height/>
         </HeightWeightProvider>
       </PatientProvider>
     )
