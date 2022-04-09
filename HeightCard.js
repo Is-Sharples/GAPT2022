@@ -1,7 +1,5 @@
 import React from "react";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from '@mui/material/FormControl';
+import Input from "./Input";
 import './HeightCard.css';
 
 const HeightCard = ({ handleChange, demispan, height }) => (
@@ -17,18 +15,12 @@ const HeightCard = ({ handleChange, demispan, height }) => (
         <div className="bottom">
             <div className="sub-group">
                 <div className="mdc-card__primary-action" tabIndex="0">
-                    <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
-                        <InputLabel id="blabel" sx={{fontSize: 17}}>Demispan Measurement</InputLabel>
-                        <OutlinedInput id="demispan" label="Demispan Measurement" handleChange={handleChange} value={demispan} required/>
-                    </FormControl> 
+                    <Input name="demispan" label="Enter Demispan" handleChange={handleChange} value={demispan} units="CM" required />
                 </div>
             </div>
             <div className="sub-group">
                 <div className="mdc-card__primary-action" tabIndex="0">
-                    <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
-                        <InputLabel id="blabel" sx={{fontSize: 17}}>Calculated Height</InputLabel>
-                        <OutlinedInput name="height" label="Calculated Height" value={height} required disabled readOnly />
-                    </FormControl> 
+                    <Input name="height" label="Calculated Height" value={height} units="CM" disabled readOnly />
                 </div>
             </div>
         </div>
