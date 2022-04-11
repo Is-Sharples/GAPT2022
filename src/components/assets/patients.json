@@ -1,0 +1,24 @@
+{
+    "patient": [
+     
+       {
+          "id":"123456L",
+          "name": "Andrew",
+          "surname": "Micallef",
+          "gender": "male"
+       },
+     
+       {
+        "id":"345678L",
+        "name": "Shaun",
+        "surname": "Catania",
+        "gender": "male"
+       },
+       {
+          "id":"1758497L",
+          "name": "John",
+          "surname": "Attard",
+          "gender": "male"
+       }
+    ]
+ }
