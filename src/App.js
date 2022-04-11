@@ -19,6 +19,7 @@ import GripStrength2 from './components/Team-2/GripStrength2';
 import GripStrength3 from './components/Team-2/GripStrength3';
 import GripStrength4 from './components/Team-2/GripStrength4';
 import SummaryTeam2 from './components/Team-2/SummaryTeam2';
+import GetPatientData from './components/Team-2/GetPatientData';
 
 export default function App() {
   
@@ -32,8 +33,8 @@ export default function App() {
         <Route path = "/" element={ <Home /> }/>
         <Route path = "/Summary" element={ <Summary patient={obj.patient[1]} /> }/>
         <Route path = "/Patient" element = {<Patient currentPatient = {new currentPatient(0,"","","")}/>} />
-
-
+        {/* Without Get Patient Data Team-2 Will not work completely */}
+        <Route path = "/GetPatientData" element = {<GetPatientData />}> </Route>
         <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
         <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>
         <Route path="/Instructions" element={<Instructions/>}></Route>

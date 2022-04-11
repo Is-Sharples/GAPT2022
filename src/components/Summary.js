@@ -114,7 +114,7 @@ export default function Summary(props) {
         if(barthel === "true"){
             bar = Barthelex+1;
             localStorage.setItem("Brun",JSON.stringify(bar));
-            return <Barthel/>
+            return <Barthel />
         }
     }
 
@@ -156,7 +156,7 @@ export default function Summary(props) {
 
   return (
     <div className="screen">
-        <Header name={"Summary"} /> 
+        <Header history = {"/"} name={"Summary"} /> 
 
         <div className="card">
             <p className="name">{data.name} {data.surname}</p>

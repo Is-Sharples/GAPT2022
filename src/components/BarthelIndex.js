@@ -116,7 +116,7 @@ export default function BarthelIndex() {
 	};
 
 	if (summary === "true"){
-        return <Summary indexList = {indexList}/>
+        return <Summary history = {"/"} indexList = {indexList}/>
     }
 
 	return (

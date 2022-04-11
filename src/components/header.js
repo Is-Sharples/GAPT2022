@@ -22,7 +22,9 @@ export default function Header(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
       
     const goBack = () => {
-        navigate("/");
+        var path = props.history;
+        console.log(path);
+        navigate(path);
     }
 
     const handleClick = (event) => {
@@ -44,7 +46,7 @@ export default function Header(props) {
         <Grid container spacing={0}>
             <Grid item xs={2} sm={1.1}>
             <Box display="flex" justifyContent="center">
-            <Fab variant="contained" className="mui-icons" onClick={() => navigate("/")} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
+            <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
                 <ArrowBack fontSize="large" ></ArrowBack>
             </Fab>
             </Box>
