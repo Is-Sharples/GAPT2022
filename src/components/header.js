@@ -14,6 +14,7 @@ import ArrowBack from '@mui/icons-material/ArrowBack';
 import { Popover } from '@mui/material';
 import './styles/header.css';
 import { useNavigate } from 'react-router-dom';
+import './styles/Summary.css'
 import PatientID from './PatientID';
 
 export default function Header(props) {

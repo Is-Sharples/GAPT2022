@@ -10,6 +10,7 @@ import {useState} from 'react';
 import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
 import './styles/header.css';
+
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 class currentPatient{
     constructor(id,name,surname,gender){
@@ -120,7 +121,7 @@ render(){
     if(this.state.currentPatient.id !== 0){
         //this.setState({currentPatient: new currentPatient(0,"","","")});
         // this.state.currentPatient.id = 0;
-        console.log(this.state.currentPatient.id);
+        //console.log(this.state.currentPatient.id);
         return <Summary patient = {this.state.currentPatient}/>       
     }
     

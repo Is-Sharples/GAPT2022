@@ -17,7 +17,7 @@ import "./styles/Summary.css";
 import Header from "./header";
 
 export default function Summary(props) {
-
+    var data = props.patient;
     const ilbierah = "Ilbierah";
     const illum = "Illum";
     const dt = new Date().toDateString();
@@ -98,8 +98,8 @@ export default function Summary(props) {
         localStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
 
-    console.log("local ablist:", localStorage.getItem("ablist"));
-    console.log("local dblist:", localStorage.getItem("dblist"));
+    //console.log("local ablist:", localStorage.getItem("ablist"));
+    //console.log("local dblist:", localStorage.getItem("dblist"));
 
     const handleChange =  (event) => {
         setOption(event.target.value);
@@ -159,8 +159,8 @@ export default function Summary(props) {
         <Header name={"Summary"} /> 
 
         <div className="card">
-            <p className="name">Patient's Name</p>
-            <p className="id">123456L</p>
+            <p className="name">{data.name} {data.surname}</p>
+            <p className="id">{data.id}</p>
             <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
             <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
             <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
