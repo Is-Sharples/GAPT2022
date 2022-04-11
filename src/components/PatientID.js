@@ -93,7 +93,7 @@ DisplayPatients = (event) =>{
                
             
                 )
-                     console.log(this.state.currentPatient);
+                     //console.log(this.state.currentPatient);
             }
             
     
@@ -132,7 +132,7 @@ render(){
             
         <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }}>
             
-            <Header item  name = {"Patient Page"}/>
+            <Header history = {"/"} item  name = {"Patient Page"}/>
             
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >
