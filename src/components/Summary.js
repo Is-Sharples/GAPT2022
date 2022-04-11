@@ -11,6 +11,8 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
+import Height from "./Height";
+import Weight from "./Weight";
 import moment from 'moment';
 import ListItem from "@mui/material/ListItem";
 import "./styles/Summary.css";
@@ -36,6 +38,8 @@ export default function Summary(props) {
         {ilbierah}, {illum}
     ]);
     const [barthel, showBarthel] = useState("false");
+    const [height, showHeight] = useState("false");
+    const [weight, showWeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
     const [Barthelex, setBarthelex] = useState(0);
@@ -116,6 +120,13 @@ export default function Summary(props) {
             localStorage.setItem("Brun",JSON.stringify(bar));
             return <Barthel/>
         }
+    }
+
+    if(height === "true"){
+        return <Height/>
+    }
+    else{
+        console.log("Ma thaltx");
     }
 
     if (Ablist.length<10){
@@ -279,7 +290,7 @@ export default function Summary(props) {
         <div className="card">
             <div className="grid-title">
                 <p className="name">Height & Weight</p>
-                <button className="input-details">Input Height & Weight</button>
+                <button className="input-details" onClick={() => {showHeight("true")}}>Input Height & Weight</button>
             </div>
             <div className="grid-page">
                 <table>
