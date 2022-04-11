@@ -8,8 +8,19 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import patients from './components/assets/patients.json';
 import currentPatient from './components/PatientID';
 import Home from './components/Home';
-// import Demo from './components/Demo';
-function App() {
+import LevelsOfMobility from './components/Team-2/LevelsOfMobility';
+import ListOfEquipment from './components/Team-2/ListOfEquipment';
+import Instructions from './components/Team-2/Instructions';
+import Timer from './components/Team-2/Timer';
+import RiskOfFallStatus from './components/Team-2/RiskOfFallStatus';
+import ReviewQuestion from './components/Team-2/ReviewQuestion';
+import GripStrength from './components/Team-2/GripStrength';
+import GripStrength2 from './components/Team-2/GripStrength2';
+import GripStrength3 from './components/Team-2/GripStrength3';
+import GripStrength4 from './components/Team-2/GripStrength4';
+import SummaryTeam2 from './components/Team-2/SummaryTeam2';
+
+export default function App() {
   
   var json = JSON.stringify(patients);
   var obj = JSON.parse(json);
