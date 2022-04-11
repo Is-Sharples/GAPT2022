@@ -2,8 +2,22 @@ import React, {useState} from 'react';
 import './styles/Barthel.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { Grid } from '@mui/material';
+import Summary from './Summary';
 
 export default function BarthelIndex() {
+
+	const [summary, showSummary] = useState("false");
+	const [currentQuestion, setCurrentQuestion] = useState(0);
+	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
+	const [BarthelIndex, setBarthelIndex] = useState(0);
+	const [indexList, setList] = useState([]);
+
+	function addToList(val) {
+		console.log(val);
+		indexList.push(val);
+	}
+
 	const questions = [
 		{
 			questionText: 'Mobility (on level surfaces)',
@@ -49,7 +63,7 @@ export default function BarthelIndex() {
 			answerOptions: [
 				{ answerText: '0: dependent (needs help)', index: 0 },
 				{ answerText: '1: Incontinent (or needs to be given suppositories', index: 1 },
-        { answerText: 'continent (If needs enema/supp. Must sit manage himself)', index: 2 }
+        { answerText: '2: continent (If needs enema/supp. Must sit manage himself)', index: 2 }
 			],
 		},
     {
@@ -88,41 +102,47 @@ export default function BarthelIndex() {
 		},
 	];
 
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
-	const [BarthelIndex, setBarthelIndex] = useState(0);
 
 	const handleAnswerOptionClick = (index) => {
+			addToList(index);
 			setBarthelIndex(BarthelIndex + index);
 
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			setShowBarthelIndex(true);
+			showSummary("true");
 		}
 	};
+
+	if (summary === "true"){
+        return <Summary indexList = {indexList}/>
+    }
+
 	return (
-		
-      <Card className='body' sx={{ minWidth: 500, maxWidth: 500}}>
-		  <CardContent>
-			{showBarthelIndex ? (
-				<div className='score-section'>
-					 Barthel Index: {BarthelIndex}
-				</div>
-			) : (
-				<>
-					<div className='question-section'>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div> <br />
-					</div>
-					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption ) => (
-							<button  className='button' onClick={() => handleAnswerOptionClick(answerOption.index)}>{answerOption.answerText}</button> 
-              			))} 
-          			</div> 
-        		</>
-      		)}
-		</CardContent>
-    </Card>
+	<Grid justifyContent={"center"} container>
+		<Grid>
+			<Card className='body' sx={{ minWidth: 500, maxWidth: 500}}>
+				<CardContent>
+					{showBarthelIndex ? (
+						<div className='score-section'>
+							Barthel Index: {BarthelIndex}
+						</div>
+					) : (
+						<>
+							<div className='question-section'>
+								<div className='question-text'>{questions[currentQuestion].questionText}</div> <br />
+							</div>
+							<div className='answer-section'>
+								{questions[currentQuestion].answerOptions.map((answerOption ) => (
+									<button  className='button' onClick={() => handleAnswerOptionClick(answerOption.index)}>{answerOption.answerText}</button> 
+								))} 
+							</div> 
+						</>
+					)}
+				</CardContent>
+			</Card>
+		</Grid>
+	</Grid>
   );
 }

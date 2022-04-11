@@ -141,6 +141,30 @@
 .input-details:hover{
     background-color: #e5e5e5;
 }
+
+.dependency {
+    border-radius: 12px;
+    padding: 5px;
+    color: rgb(230, 230, 230);
+}
+.Severe {
+    background: rgb(204, 0, 0);
+}
+.Moderate {
+    background: rgb(160, 104, 0);
+}
+.Minimal {
+    background: rgb(226, 223, 16);
+    color: black;
+}
+.Independent {
+    background: green;
+}
+.dependency-row{
+    border: none;
+    padding-bottom: 0px;
+    opacity: 90%;
+}
 }
 
 /*Small Screen*/
@@ -273,6 +297,30 @@
 
 .input-details:hover{
     background-color: #e5e5e5;
+}
+
+.dependency {
+    border-radius: 10px;
+    padding: 5px;
+    color: rgb(230, 230, 230);
+}
+.Severe {
+    background: rgb(204, 0, 0);
+}
+.Moderate {
+    background: rgb(160, 104, 0);
+}
+.Minimal {
+    background: rgb(200, 233, 55);
+    color: black;
+}
+.Independent {
+    background: green;
+}
+.dependency-row{
+    border: none;
+    padding-bottom: 0px;
+    opacity: 95%;
 }
 
 }

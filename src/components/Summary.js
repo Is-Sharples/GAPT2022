@@ -12,47 +12,155 @@ import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
 import moment from 'moment';
+import ListItem from "@mui/material/ListItem";
 import "./styles/Summary.css";
 import Header from "./header";
 
 export default function Summary(props) {
 
-
-    const data = props.patient;
     const ilbierah = "Ilbierah";
     const illum = "Illum";
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const dt = new Date().toDateString();
+    const increm = 0;
+    const [abtime, setabTime] = useState(dt);
+    const [dbtime, setdbTime] = useState(dt);
+    const setAbtime = () => {
+        let dt = new Date().toDateString();
+        setabTime(dt);
+    }
+    const setDbtime = () => {
+        let dt = new Date().toDateString();
+        setdbTime(dt);
+    }
     const [option, setOption] = React.useState([
         {ilbierah}, {illum}
     ]);
     const [barthel, showBarthel] = useState("false");
-    
+    const [Ablist, setAblist] = useState([]);
+    const [Dblist, setDblist] = useState([]);
+    const [Barthelex, setBarthelex] = useState(0);
+    function calcAbtotal(){
+        let atotal = 0;
+        Ablist.forEach(element => atotal = addUp(atotal, element));
+        return atotal;
+    }
+    function calcDbtotal(){
+        let dtotal = 0;
+        Dblist.forEach(element => dtotal = addUp(dtotal, element));
+        return dtotal;
+    }
+    var bar = localStorage.getItem("Brun");
+    console.log("Ablist",Ablist);
+    console.log("Dblist",Dblist);
+
+    useEffect(() => {
+        if (localStorage.getItem("Brun")>2){
+            localStorage.setItem("Brun",JSON.stringify(0));
+            const Barthelex = JSON.parse(localStorage.getItem("Brun"));
+            if (Barthelex) {
+                setBarthelex(Barthelex);
+            }
+        }
+        else{
+            const Barthelex = JSON.parse(localStorage.getItem("Brun"));
+            if (Barthelex) {
+                setBarthelex(Barthelex);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+
+        //localStorage.setItem("ablist",JSON.stringify(0));
+        const Ablist = JSON.parse(localStorage.getItem("ablist"));
+        if (Ablist) {
+            setAblist(Ablist);
+        }
+        
+
+        //localStorage.setItem("dblist",JSON.stringify(0));
+        const Dblist = JSON.parse(localStorage.getItem("dblist"));
+        if (Dblist) {
+            setDblist(Dblist);
+        }
+    }, []);
+
+    console.log("barthel after", Barthelex+1);
+    useEffect(() => {
+        localStorage.setItem("Brun",JSON.stringify(Barthelex));
+    }, [Barthelex]);
+
+    useEffect(() => {
+        localStorage.setItem("ablist",JSON.stringify(Ablist));
+    }, [Ablist]);
+
+    useEffect(() => {
+        localStorage.setItem("dblist",JSON.stringify(Dblist));
+    }, [Dblist]);
+
+    console.log("local ablist:", localStorage.getItem("ablist"));
+    console.log("local dblist:", localStorage.getItem("dblist"));
+
     const handleChange =  (event) => {
         setOption(event.target.value);
     };
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    function addUp(num1, num2){
+        var ans = num1 + num2;
+        return ans;
+    }
 
-    if (barthel === "true"){
-        return <Barthel/>
+    if (Barthelex < 3){
+        if(barthel === "true"){
+            bar = Barthelex+1;
+            localStorage.setItem("Brun",JSON.stringify(bar));
+            return <Barthel/>
+        }
+    }
+
+    if (Ablist.length<10){
+        if(props.indexList !== undefined && Barthelex === 1){
+            props.indexList.forEach(element => Ablist.push(element));
+            console.log("ab set");
+        }
+        else{
+            
+        } 
+    }
+    else{
+        console.log("abDefined");
+    }
+    if (Dblist.length<10){
+        if(props.indexList !== undefined && Barthelex === 2){
+            props.indexList.forEach(element => Dblist.push(element));
+        }
+        else{
+            
+        } 
+    }
+    else{
+        console.log("dbDefined");
     }
     
-      const open = Boolean(anchorEl);
-      const id = open ? "simple-popover" : undefined;
+    function showSeverity(total) {
+        if (total >= 0 && total <= 9) {
+            return "Severe";
+        } else if (total >= 10 && total <= 14) {
+            return "Moderate";
+        } else if (total >= 15 && total <= 19) {
+            return "Minimal";
+        } else if (total >= 20) {
+            return "Independent";
+        }
+    }
 
   return (
     <div className="screen">
         <Header name={"Summary"} /> 
 
         <div className="card">
-            <p className="name">{data.name} {data.surname} </p>
-            <p className="id">{data.id}</p>
+            <p className="name">Patient's Name</p>
+            <p className="id">123456L</p>
             <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
             <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
             <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
@@ -71,7 +179,8 @@ export default function Summary(props) {
         <div className="card">
             <div className="grid-title">
                 <p className="name">Barthel Score</p>
-                <button className="input-details" onClick={() => showBarthel("true")}>Input Barthel Index</button>
+                <button className="input-details" onClick={() => {(Barthelex) === 1 ? setAbtime(): setDbtime();
+                                                                showBarthel("true");}}>Input Barthel Index</button>
             </div>
             <div className="grid-page">
                 <table>
@@ -84,77 +193,82 @@ export default function Summary(props) {
                         </tr>
                         <tr>
                             <th></th>
-                            <th>{moment(new Date()).format("DD/MM/YYYY")}</th>
-                            <th>{moment(new Date()).format("DD/MM/YYYY")}</th>
+                            <th>{abtime}</th>
+                            <th>{dbtime}</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="grid-data">
                             <td className="section">Mobility</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td className="total-diff">2</td>
+                            <td>{Ablist[0]}</td>
+                            <td>{Dblist[0]}</td>
+                            <td className="total-diff">{(Ablist[0])!= undefined && (Dblist[0])!=undefined? Dblist[0] - Ablist[0] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Grooming</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[1]}</td>
+                            <td>{Dblist[1]}</td>
+                            <td>{(Ablist[1])!= undefined && (Dblist[1])!=undefined? Dblist[1] - Ablist[1] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Dressing</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[2]}</td>
+                            <td>{Dblist[2]}</td>
+                            <td>{(Ablist[2])!= undefined && (Dblist[2])!=undefined? Dblist[2] - Ablist[2] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bathing</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[3]}</td>
+                            <td>{Dblist[3]}</td>
+                            <td>{(Ablist[3])!= undefined && (Dblist[3])!=undefined? Dblist[3] - Ablist[3] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Stairs</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[4]}</td>
+                            <td>{Dblist[4]}</td>
+                            <td>{(Ablist[4])!= undefined && (Dblist[4])!=undefined? Dblist[4] - Ablist[4] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bowels</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[5]}</td>
+                            <td>{Dblist[5]}</td>
+                            <td>{(Ablist[5])!= undefined && (Dblist[5])!=undefined? Dblist[5] - Ablist[5] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Transfers</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[6]}</td>
+                            <td>{Dblist[6]}</td>
+                            <td>{(Ablist[6])!= undefined && (Dblist[6])!=undefined? Dblist[6] - Ablist[6] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bladder</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[7]}</td>
+                            <td>{Dblist[7]}</td>
+                            <td>{(Ablist[7])!= undefined && (Dblist[7])!=undefined? Dblist[7] - Ablist[7] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Feeding</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[8]}</td>
+                            <td>{Dblist[8]}</td>
+                            <td>{(Ablist[8])!= undefined && (Dblist[8])!=undefined? Dblist[8] - Ablist[8] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Toilet Use</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>2</td>
+                            <td>{Ablist[9]}</td>
+                            <td>{Dblist[9]}</td>
+                            <td>{(Ablist[9])!= undefined && (Dblist[9])!=undefined? Dblist[9] - Ablist[9] : ""}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Total</td>
-                            <td className="total">10</td>
-                            <td className="total">30</td>
-                            <td className="total">20</td>
+                            <td className="total">{calcAbtotal() < 0 ? "" : calcAbtotal()}</td>
+                            <td className="total">{calcDbtotal() < 0 ? "" : calcDbtotal()}</td>
+                            <td className="total">{calcAbtotal()!= undefined && calcDbtotal()!=undefined ? calcDbtotal() - calcAbtotal() : ""}</td>
+                        </tr>
+                        <tr >
+                            <td></td>
+                            <td className={`dependency ${showSeverity(calcAbtotal())}`}>{showSeverity(calcAbtotal())}</td>
+                            <td className={`dependency ${showSeverity(calcDbtotal())}`}>{showSeverity(calcDbtotal())}</td>
                         </tr>
                         <br></br>
                     </tbody>
