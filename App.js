@@ -6,6 +6,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Height from './Components/Height';
 import Weight from './Components/Weight';
 import WeightCard from './Components/WeightCard';
+import Question1 from './Components/Question1';
+import Question2 from './Components/Question2';
 import QuestionCard from './Components/QuestionCard';
 import Question2Card from './Components/Question2Card';
 
@@ -19,7 +21,7 @@ class App extends React.Component {
     return (
       <PatientProvider>
         <HeightWeightProvider>
-          <Height/>
+          <Question2/>
         </HeightWeightProvider>
       </PatientProvider>
     )
