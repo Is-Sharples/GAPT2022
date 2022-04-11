@@ -4,8 +4,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
 import Summary from './Summary';
-
+import currentPatient from './PatientID';
+import patients from './assets/patients.json';
 export default function BarthelIndex() {
+	
+	var json = JSON.stringify(patients);
+  	var obj = JSON.parse(json);
+
 
 	const [summary, showSummary] = useState("false");
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -116,7 +121,7 @@ export default function BarthelIndex() {
 	};
 
 	if (summary === "true"){
-        return <Summary indexList = {indexList}/>
+        return <Summary patient = {obj.patient[0]} indexList = {indexList}/>
     }
 
 	return (
