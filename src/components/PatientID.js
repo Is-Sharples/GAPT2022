@@ -93,7 +93,7 @@ DisplayPatients = (event) =>{
                
             
                 )
-                     console.log(this.state.currentPatient);
+                     //console.log(this.state.currentPatient);
             }
             
     
