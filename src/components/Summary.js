@@ -114,7 +114,7 @@ export default function Summary(props) {
         if(barthel === "true"){
             bar = Barthelex+1;
             localStorage.setItem("Brun",JSON.stringify(bar));
-            return <Barthel />
+            return <Barthel patient = {data}/>
         }
     }
 

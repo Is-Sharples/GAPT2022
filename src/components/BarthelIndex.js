@@ -5,8 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
 import Summary from './Summary';
 
-export default function BarthelIndex() {
-
+export default function BarthelIndex(props) {
+	var data = props.patient;
 	const [summary, showSummary] = useState("false");
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
@@ -116,7 +116,7 @@ export default function BarthelIndex() {
 	};
 
 	if (summary === "true"){
-        return <Summary history = {"/"} indexList = {indexList}/>
+        return <Summary patient ={data} history = {"/"} indexList = {indexList}/>
     }
 
 	return (

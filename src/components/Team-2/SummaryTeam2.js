@@ -111,7 +111,7 @@ const Summary = () => {
     if (ActualPreviousResult == null) {
       pageRender = `
   <div>
-    <label class="subtitle"><center>First Session </center></label> </br>
+    <label class="subtitle"><center>Physiotherapy </center></label> </br>
     <label class="subtitle">Levels of Mobility</label> </br> </br> 
 
     <ul>
@@ -119,12 +119,15 @@ const Summary = () => {
       <li>Current Level: <b>${sessionStorage.getItem("TUGQuestion2")}</b></li>
     </ul> </br>
 
-    <label class="subtitle">Timed Up and Go Test</label> </br> </br> 
+    <label class="subtitle">TUG Test</label> </br> </br> 
 
     <ul>
       <li>Time Taken: <b>${sessionStorage.getItem("TUGTimer")} seconds</b></li>
-      <li>Status: <b>${sessionStorage.getItem("TUGStatus")}</b></li>
-      <li>Carried Out?: <b>${sessionStorage.getItem("TUGTestCarriedOut")}</b></li>
+        
+
+        <li>Status: <b>${sessionStorage.getItem("TUGStatus")}</b></li>
+        <li>Carried Out?: <b>${sessionStorage.getItem("TUGTestCarriedOut")}</b></li>
+        
     </ul> </br>
 
     <label class="subtitle">Grip Strength test</label> </br> </br> 
@@ -132,10 +135,6 @@ const Summary = () => {
     <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
     </ul> </br>
 
-    <ul>
-    <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
-    </ul> </br>
-    <ul>
       <li>Left Hand: <b>${ActualObjectLeftResult.TestResult}</b></li>
       <div id="finalLeft"></div>
 
