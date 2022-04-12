@@ -23,26 +23,33 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
-var globalPatients = [];
+// let patients = [];
 
-const colRef = collection(db, 'patients');
-  getDocs(colRef)
-    .then((snapshot)=> {
-        let patients = []
-        snapshot.docs.forEach((doc) => {
-            patients.push({
+
+export function getPatients(){
+    let test = [];
+    const colRef = collection(db, 'patients');
+    getDocs(colRef)
+        .then((snapshot)=> {
+            let patients = []
+            snapshot.docs.forEach((doc) => {
+                patients.push({
                     ...doc.data(), 
                     id: doc.id
                 })
 
             }       
         )
+        
         console.log(patients);
-        globalPatients = patients;
+        for(var i = 0; i < patients.length;i++){
+            test[i] = patients[i];
+
+        }
     })
-export function getPatients(){
-    return globalPatients;
+    
+    return test;
 }
 
 
-export default {app, db, globalPatients};
+// export default {app, db, globalPatients};

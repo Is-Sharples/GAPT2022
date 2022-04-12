@@ -11,6 +11,7 @@ import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
 import './styles/header.css';
 import { getPatients } from "./firebase";
+import './firebase';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 class currentPatient{
     constructor(id,name,surname,gender){
@@ -46,7 +47,7 @@ componentWillUnmount() {
       currentPatient: new currentPatient(0,"","",""),
       
     });
-    console.log("");
+    // console.log("");
     this.state.currentPatient.id = 0;
   }
 
@@ -74,7 +75,7 @@ DisplayPatients = (event) =>{
 
     if(value !== ""){
         
-            
+        //console.log(getPatients());    
         this.state.patients.map((patient, index) => {
             var tempID = patient.id.toUpperCase().substr(0,value.length);
             let regex = new RegExp(tempID,'g');
@@ -118,7 +119,7 @@ render(){
     const obj = JSON.parse(json);    
     // this.state.patients = obj.patient;
     // this.state.currentPatient.id = 0;
-
+    console.log(getPatients());
     if(this.state.currentPatient.id !== 0){
         //this.setState({currentPatient: new currentPatient(0,"","","")});
         // this.state.currentPatient.id = 0;
