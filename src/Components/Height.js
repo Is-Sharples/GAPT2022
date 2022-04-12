@@ -1,70 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HeightCard from './HeightCard';
-import { useNavigate } from 'react-router-dom';
-import { HeightWeightContext } from '../contexts/HeightWeightContext';
-import { PatientContext } from '../contexts/PatientContext';
+import Weight from "./Weight";
+import { Grid } from '@mui/material';
 
 function Height(props) {
-
-    const [patientData, setPatientData] = useContext(PatientContext);
-    const [HWData, setHWData] = useContext(HeightWeightContext);
-    const [title, setTitle] = React.useState(null);
-
-    const navigate = useNavigate();
-    const save_Value = props.saveValue;
-    const inSummary = props.isInSummary;
 
     const [state, setState] = useState({
         demispan: '',
         height: '',
-        age: patientData.age,
-        gender: patientData.gender
+        age: props.age,
+        gender: props.gender
     })
-
-    useEffect(() => {
-        if (props.proceedFunc) {
-            props.proceedFunc.current = save;
-        }
-    })
-
-    useEffect(() => {
-        setHWData(prevState => ({
-            height: {
-                // Height Variables
-                demispan: '',
-                height: '',
-            },
-            weight: {
-                // Weight Variables
-                weight: '',
-                weightloss: '',
-                exercise: '',
-            },
-            general: {
-                // General Variables
-                age: '',
-                sex: '',
-                title: prevState.general.title
-            }
-        }))
-    }, [])
-
-    useEffect(() => {
-        setHWData(prevState => ({
-            height: {
-                demispan: state.demispan,
-                height: state.height,
-            },
-            weight: {
-                ...prevState.weight
-            },
-            general: {
-                ...prevState.general,
-                title: prevState.general.title
-            }
-        })
-        )
-    }, [state])
+    const [weight, showWeight] = useState("false");
+    if (weight === "true"){
+        return <Weight height={state.height}/>
+    }
 
     const handleHeightChange = (event) => {
         let result;
@@ -84,29 +34,19 @@ function Height(props) {
             setState({ demispan: "", height: "", age: state.age })
         }
     }
-   
-    const save = () => {
-        navigate('/weight');
-    }
-
-    if (inSummary === true) {
 
         return (
-            <>
+            <>  
+            <Grid justifyContent={"center"} container>
                 <HeightCard handleChange={handleHeightChange} demispan={state.demispan} height={state.height} />
                 <div className="Footer">
-                    <button onClick={() =>  props.scloseModal()} > Save </button>
+                    <button className = "input-details" onClick={() => showWeight("true")}> Go to next Page </button>
                 </div>
+            </Grid>
             </>
-        )
-
-    } else {
-        return (
-            <>
-                <HeightCard handleChange={handleHeightChange} demispan={state.demispan} height={state.height} />
-            </>
-        )
-    }
+        );
 }
+
+
 
 export default Height;

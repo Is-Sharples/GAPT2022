@@ -8,6 +8,7 @@ import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import patients from './components/assets/patients.json';
 import currentPatient from './components/PatientID';
 import Home from './components/Home';
+import Height from './components/Height';
 // import Demo from './components/Demo';
 function App() {
   

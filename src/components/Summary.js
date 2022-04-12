@@ -4,7 +4,7 @@ import { Box, height } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import HelpIcon from "@mui/icons-material/Help";
 import { AppBar, FormControl, MenuItem } from "@mui/material";
-import { ArrowBack } from '@mui/icons-material';
+import { ArrowBack, DeviceHubTwoTone } from '@mui/icons-material';
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Select from "@mui/material/Select";
@@ -38,11 +38,24 @@ export default function Summary(props) {
         {ilbierah}, {illum}
     ]);
     const [barthel, showBarthel] = useState("false");
+    const [Barthelex, setBarthelex] = useState(0);
+    const [hwex, setHwex] = useState(0);
     const [height, showHeight] = useState("false");
-    const [weight, showWeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
-    const [Barthelex, setBarthelex] = useState(0);
+    const [AHW, setAHW] = useState({
+        height: '',
+        weight: '',
+        weightloss: '',
+        exercise: ''
+    });
+    const [DHW, setDHW] = useState({
+        height: '',
+        weight: '',
+        weightloss: '',
+        exercise: ''
+    });
+    var hwindex = localStorage.getItem("hwrun");
     function calcAbtotal(){
         let atotal = 0;
         Ablist.forEach(element => atotal = addUp(atotal, element));
@@ -72,27 +85,69 @@ export default function Summary(props) {
             }
         }
     }, []);
+    
+    useEffect(() => {
+        if (localStorage.getItem("hwrun")>2){
+            localStorage.setItem("hwrun",JSON.stringify(0));
+            const hwex = JSON.parse(localStorage.getItem("hwrun"));
+            if(hwex){
+                setHwex(hwex);
+            }
+        }
+        else {
+            const hwex = JSON.parse(localStorage.getItem("hwrun"));
+            if(hwex){
+                setHwex(hwex);
+            }
+        }
+    })
+
+     
 
     useEffect(() => {
-
         //localStorage.setItem("ablist",JSON.stringify(0));
         const Ablist = JSON.parse(localStorage.getItem("ablist"));
         if (Ablist) {
             setAblist(Ablist);
         }
         
-
         //localStorage.setItem("dblist",JSON.stringify(0));
         const Dblist = JSON.parse(localStorage.getItem("dblist"));
         if (Dblist) {
             setDblist(Dblist);
         }
+
+        //localStorage.setItem("ahw",JSON.stringify(0));
+        const AHW = JSON.parse(localStorage.getItem("ahw"));
+        if (AHW) {
+            setAHW({height: AHW.height, weight: AHW.weight, weightloss: AHW.weightloss, exercise: AHW.exercise});
+        }
+
+        //localStorage.setItem("dhw",JSON.stringify(0));
+        //localStorage.setItem("hwrun",JSON.stringify(0));
+        const DHW = JSON.parse(localStorage.getItem("dhw"));
+        if (DHW) {
+            setDHW({height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise});
+        }
+
     }, []);
+
+
+
+console.log("ahw height: ", AHW.height);
+console.log("ahw weight: ", AHW.weight);
+console.log("ahw wl: ", AHW.weightloss);
+console.log("hwrun:", hwex);
+
 
     console.log("barthel after", Barthelex+1);
     useEffect(() => {
         localStorage.setItem("Brun",JSON.stringify(Barthelex));
     }, [Barthelex]);
+
+    useEffect(() => {
+        localStorage.setItem("hwrun",JSON.stringify(hwex));
+    }, [hwex]);
 
     useEffect(() => {
         localStorage.setItem("ablist",JSON.stringify(Ablist));
@@ -101,6 +156,14 @@ export default function Summary(props) {
     useEffect(() => {
         localStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
+
+    useEffect(() => {
+        localStorage.setItem("ahw", JSON.stringify(AHW));
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("dhw", JSON.stringify(DHW));
+    }, []);
 
     //console.log("local ablist:", localStorage.getItem("ablist"));
     //console.log("local dblist:", localStorage.getItem("dblist"));
@@ -122,11 +185,12 @@ export default function Summary(props) {
         }
     }
 
-    if(height === "true"){
-        return <Height/>
-    }
-    else{
-        console.log("Ma thaltx");
+    if(hwex < 3){
+        if(height === "true"){
+            hwindex = hwex+1;
+            localStorage.setItem("hwrun",JSON.stringify(hwindex));
+            return <Height age = {60} gender = {'Male'}/>
+        }
     }
 
     if (Ablist.length<10){
@@ -151,6 +215,17 @@ export default function Summary(props) {
     }
     else{
         console.log("dbDefined");
+    }
+
+    if (AHW.height === ''){
+        if (props.height !== undefined && hwex === 0){
+            setAHW({height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise});
+        }
+    }
+    if (DHW.height === ''){
+        if (props.height !== undefined && hwex === 2){
+            setDHW({height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise});
+        }
     }
     
     function showSeverity(total) {
@@ -278,8 +353,8 @@ export default function Summary(props) {
                         </tr>
                         <tr >
                             <td></td>
-                            <td className={`dependency ${showSeverity(calcAbtotal())}`}>{showSeverity(calcAbtotal())}</td>
-                            <td className={`dependency ${showSeverity(calcDbtotal())}`}>{showSeverity(calcDbtotal())}</td>
+                            <td className={`dependency ${showSeverity(calcAbtotal())}`}>{(calcAbtotal()) ? showSeverity(calcAbtotal()) : ""}</td>
+                            <td className={`dependency ${showSeverity(calcDbtotal())}`}>{(calcDbtotal()) ? showSeverity(calcDbtotal()) : ""}</td>
                         </tr>
                         <br></br>
                     </tbody>
@@ -304,28 +379,28 @@ export default function Summary(props) {
                     </thead>
                     <tbody>
                         <tr className="grid-data">
-                            <td className="section">Height</td>
-                            <td className="grid-row">1</td>
-                            <td className="grid-row">3</td>
-                            <td className="total-diff">2</td>
+                            <td className="section">Height (cm)</td>
+                            <td className="grid-row">{AHW.height}</td>
+                            <td className="grid-row">{DHW.height}</td>
+                            <td className="total-diff">/</td>
                         </tr>
                         <tr className="grid-data">
-                            <td className="section">Weight</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td className="total-diff">2</td>
+                            <td className="section">Weight (kg)</td>
+                            <td>{AHW.weight}</td>
+                            <td>{DHW.weight}</td>
+                            <td className="total-diff">{DHW.weight - AHW.weight}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Has patient<br></br>lost weight?</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td className="total-diff">2</td>
+                            <td>{(AHW.weightloss) ? (AHW.weightloss === 0 ? "No" : "Yes" ) : "not def"}</td>
+                            <td>{(DHW.weightloss) ? (DHW.weightloss === 0 ? "No" : "Yes" ) : "not def"}</td>
+                            <td className="total-diff">/</td>
                         </tr>
-                        <tr data-index={3} className="grid-data">
+                        <tr className="grid-data">
                             <td className="section">Was weight lost<br></br>due to exercise?</td>
-                            <td data-value={1}>1</td>
-                            <td value={3}>3</td>
-                            <td className="total-diff">2</td>
+                            <td>{(AHW.exercise) ? AHW.exercise === 1 ? "Yes" : "/" : "not def"}</td>
+                            <td>{(DHW.exercise) ? DHW.exercise === 1 ? "Yes" : "/" : "not def"}</td>
+                            <td className="total-diff">/</td>
                         </tr>
                     </tbody>
                 </table>
