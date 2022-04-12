@@ -10,8 +10,13 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import { AppBar } from "@mui/material";
+import Header from '../header';
 
 function ListOfEquipment() {
+
+
+    var typography = "This page consists of all the equipment you need and how they should be setup";
+
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const question1 = sessionStorage.getItem("TUGQuestion1");
@@ -33,66 +38,11 @@ function ListOfEquipment() {
     function navToNextPage() {
         sessionStorage.setItem("Instructions", true);
         navigate("/Instructions")
-    }
-
-    const goBack = () => {
-        navigate("/LevelsOfMobility");
-    };
-
-    //help poppup function
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    }  
 
     return (
         <div className="screen">
-           <AppBar position="static" style = {{background: '#015b98'}}>
-        <Box display="flex" justifyContent="center">
-
-        </Box>
-        <Grid container spacing={1} >
-          <Grid item xs={2} sm={1.1} >
-          <Box display="flex" justifyContent="center">
-          <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
-            <ArrowBack fontSize="large" marginLeft={0}></ArrowBack>
-          </Fab>
-          </Box>
-          </Grid>
-          <Grid item xs={8} sm={9.8}>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h7" color="inherit" component="div" align="center" marginTop={1.3} marginBottom={2}>
-            <label className="title">List of Equipment</label> 
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={2} sm={1.1}>
-        <Box display="flex" justifyContent="center">
-        <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add">
-          <HelpIcon fontSize="large"></HelpIcon>
-        </Fab>
-        </Box>
-        </Grid>
-        </Grid>
-        </AppBar>
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}>
-                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of all the equipment you need and how they should be setup</Typography>
-                </Popover>
-            
+            <Header typography = {typography} history = {"/LevelsOfMobility"} name = "List of Equipment" />
 
             <div className="main-section">
                 <label className="subtitle">List of Equipment</label>

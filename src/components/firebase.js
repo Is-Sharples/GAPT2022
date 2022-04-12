@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore'
+import { collection, getDocs } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,5 +23,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
+var globalPatients = [];
 
-export default {app, db};
+const colRef = collection(db, 'patients');
+  getDocs(colRef)
+    .then((snapshot)=> {
+        let patients = []
+        snapshot.docs.forEach((doc) => {
+            patients.push({
+                    ...doc.data(), 
+                    id: doc.id
+                })
+
+            }       
+        )
+        console.log(patients);
+        globalPatients = patients;
+    })
+export function getPatients(){
+    return globalPatients;
+}
+
+
+export default {app, db, globalPatients};

@@ -11,8 +11,10 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-
+import Header from "../header";
 function GetPatientData() {
+
+  var typography = "This page requires to insert the patient's ID card number so that the data will be inserted into the database accordingly. For testing copy and paste this Patient Id: 754569D";
 
   useEffect(() => {
     sessionStorage.setItem("PatientData" , 0);
@@ -22,20 +24,6 @@ function GetPatientData() {
   let [patientId, setPatientId] = useState("");
   const [error, setError] = useState("");
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const goBack = () => {
-    navigate("/");
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   const navigate = useNavigate();
 
@@ -64,46 +52,8 @@ function GetPatientData() {
 
   return (
     <div className="screen">
-      <AppBar position="static" style = {{background: '#015b98'}}>
-        <br></br>
-      <Grid container spacing={1} >
-          <Grid item xs={2} sm={1.1}>
-          <Box display="flex" justifyContent="center">
-          <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
-            <ArrowBack fontSize="large"></ArrowBack>
-          </Fab>
-          </Box>
-          </Grid>
-          <Grid item xs={8} sm={9.8}>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h7" color="inherit" component="div" align="center" marginTop={1.3} marginBottom={2}>
-            <label className="title">Patient Data</label> 
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={2} sm={1.1}>
-        <Box display="flex" justifyContent="center">
-        <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add">
-          <HelpIcon fontSize="large"></HelpIcon>
-        </Fab>
-        </Box>
-        </Grid>
-        </Grid>
-        </AppBar>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}>
-          <Typography sx={{ p: 5, fontSize: "1.3em" }}>
-            This page requires to insert the patient's ID card number so that the data will be inserted into
-            the database accordingly. For testing copy and paste this Patient Id: 754569D
-          </Typography>
-        </Popover>
+        <Header typography = {typography} history = {"/"} item  name = {"Get Patient Page"} />
+       
       <br></br>
       <div className="id-section">
         <TextField

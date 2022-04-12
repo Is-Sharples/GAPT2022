@@ -10,7 +10,7 @@ import {useState} from 'react';
 import Barthel from './BarthelIndex';
 import patients from './assets/patients.json';
 import './styles/header.css';
-
+import { getPatients } from "./firebase";
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 class currentPatient{
     constructor(id,name,surname,gender){
@@ -29,7 +29,7 @@ constructor(props){
     super(props);
     this.state = {
         exist: "false",
-        patients : [],
+        patients : getPatients(),
         fragments:[],
         currentPatient: new currentPatient(0,"","",""),
         entered: "true"
@@ -84,8 +84,8 @@ DisplayPatients = (event) =>{
                     <React.Fragment  key = {index}>
                         
                         <ListItemButton  onClick={() => this.SetCurrentPatient(patient)} >
-                            <ListItemText primary={patient.name + " " + patient.surname} secondary={patient.id} />
-                                
+                            {/* <ListItemText primary={patient.name + " " + patient.surname} secondary={patient.id} /> */}
+                            <ListItemText primary={patient.name} secondary={patient.id} />    
                         </ListItemButton>
                         <Divider />
             
@@ -113,9 +113,10 @@ DisplayPatients = (event) =>{
 
 
 render(){
+    var typography = "Input a Patient ID to be directed to his Barthel & Measurements Summary Page";
     const json = JSON.stringify(patients);
     const obj = JSON.parse(json);    
-    this.state.patients = obj.patient;
+    // this.state.patients = obj.patient;
     // this.state.currentPatient.id = 0;
 
     if(this.state.currentPatient.id !== 0){
@@ -132,7 +133,7 @@ render(){
             
         <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }}>
             
-            <Header history = {"/"} item  name = {"Patient Page"}/>
+            <Header typography = {typography} history = {"/"} item  name = {"Patient Page"}/>
             
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >

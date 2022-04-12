@@ -77,8 +77,7 @@ export default function Header(props) {
                 horizontal: "right",
             }}>
             <Typography sx={{ p: 5, fontSize: "1.3em" }}>
-                This page provides you with a summary of the current patient. This page compares the state of the patient on admission versus
-                how the patient is now after having gone through the required sessions.
+                {props.typography}
             </Typography>
             </Popover>
 

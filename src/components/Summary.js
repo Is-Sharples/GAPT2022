@@ -17,6 +17,8 @@ import "./styles/Summary.css";
 import Header from "./header";
 
 export default function Summary(props) {
+
+    var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
     const ilbierah = "Ilbierah";
     const illum = "Illum";
@@ -156,7 +158,7 @@ export default function Summary(props) {
 
   return (
     <div className="screen">
-        <Header history = {"/"} name={"Summary"} /> 
+        <Header typography = {typography} history = {"/"} name={"Summary"} /> 
 
         <div className="card">
             <p className="name">{data.name} {data.surname}</p>

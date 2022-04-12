@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import { AppBar } from "@mui/material";
+import Header from '../header';
 
 const GripStrength2 = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const GripStrength2 = () => {
     // sessionStorage.setItem("question1", question1);
     // sessionStorage.setItem("question2", question2);
     // sessionStorage.setItem("question3", question3);
-
+    var typography = "This page consists of questions that you should ask to the patient. Please answer all questions and sub questions before progressing to the next page.";
     console.log("Question 1: ", question1);
     console.log("Question 2: ", question2);
     console.log("Question 3: ", question3);
@@ -78,44 +79,7 @@ const GripStrength2 = () => {
     
     return (
         <div className="screen">
-            <AppBar position="static" style = {{background: '#015b98'}}>
-        <Box display="flex" justifyContent="center">
-        </Box>
-        <Grid container spacing={1} >
-          <Grid item xs={2} sm={1.1} >
-          <Box display="flex" justifyContent="center">
-          <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
-            <ArrowBack fontSize="large" marginLeft={0}></ArrowBack>
-          </Fab>
-          </Box>
-          </Grid>
-          <Grid item xs={8} sm={9.8}>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h7" color="inherit" component="div" align="center" marginTop={1.3} marginBottom={2}>
-            <label className="title">Grip Strength Test</label> 
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={2} sm={1.1}>
-        <Box display="flex" justifyContent="center">
-        <Fab className="mui-icons" variant="contained" onClick={handleClick} aria-label="add">
-          <HelpIcon fontSize="large"></HelpIcon>
-        </Fab>
-        </Box>
-        </Grid>
-        </Grid>
-        </AppBar>
-                <Popover
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}>
-
-                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page consists of questions that you should ask to the patient. Please answer all questions and sub questions before progressing to the next page.</Typography>
-                </Popover>
+            <Header typography = {typography} history = {"/GripStrength"} name = {"Grip Strength Test"} />
             
             <div className="main-section">
                 <label className="subtitle">Test Questions</label>

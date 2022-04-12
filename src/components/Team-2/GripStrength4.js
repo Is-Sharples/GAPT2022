@@ -9,27 +9,12 @@ import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import { AppBar } from "@mui/material";
-
+import Header from '../header';
 const GripStrength4 = () => {
+    var typography = "This page is where you must answer questions regarding to how the test was carried out and how the patient performed";
     // console.log(sessionStorage.getItem("MaxLeftHandResult"));
     // console.log(sessionStorage.getItem("MaxRightHandResult"));
-    const navigate = useNavigate();
-    //help poppup function
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
-    const goBack = () => {
-        navigate("/GripStrength3");
-    };
+    const navigate = useNavigate();    
     const [question4, setAnswerQuestion1] = useState("");
     const [question5, setAnswerQuestion2] = useState("");
     const ObjectMaxLeftHandResult = sessionStorage.getItem("MaxLeftHandResult");
@@ -99,7 +84,7 @@ const GripStrength4 = () => {
 
                     console.log(question4);
                     console.log(question5, "\n");
-                    navigate("/Summary");
+                    navigate("/SummaryTeam2");
                 }
             }
         }
@@ -113,45 +98,7 @@ const GripStrength4 = () => {
 
     return (
         <div className="screen">
-           <AppBar position="static" style = {{background: '#015b98'}}>
-        <Box display="flex" justifyContent="center">
-        </Box>
-        <Grid container spacing={1} >
-          <Grid item xs={2} sm={1.1} >
-          <Box display="flex" justifyContent="center">
-          <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
-            <ArrowBack fontSize="large" marginLeft={0}></ArrowBack>
-          </Fab>
-          </Box>
-          </Grid>
-          <Grid item xs={8} sm={9.8}>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h7" color="inherit" component="div" align="center" marginTop={1.3} marginBottom={2}>
-            <label className="title">Grip Strength Test</label> 
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={2} sm={1.1}>
-        <Box display="flex" justifyContent="center">
-        <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add">
-          <HelpIcon fontSize="large"></HelpIcon>
-        </Fab>
-        </Box>
-        </Grid>
-        </Grid>
-        </AppBar>
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}>
-
-                    <Typography sx={{ p: 5, fontSize: '1.5em' }}>This page is where you must answer questions regarding to how the test was carried out and how the patient performed</Typography>
-                </Popover>
+           <Header typography = {typography} history = {"/GripStrength3"} name = {"Grip Strength Test"} />
 
             <div className="main-section">
                 <label className="subtitle">Left Hand</label>

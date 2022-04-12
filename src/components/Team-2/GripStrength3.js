@@ -11,10 +11,11 @@ import Typography from '@mui/material/Typography';
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import { AppBar } from "@mui/material";
+import Header from "../header";
 
 
 const GripStrength3 = () => {
-
+  var typography = "This is where you can input the Grip Strength test results using the dynamometer. Some fields might be disabled depending on the answers to the previous questions.";
   const [leftInput1, setLeftInput1] = useState(0);
   const [leftInput2, setLeftInput2] = useState(0);
   const [rightInput1, setRightInput1] = useState(0);
@@ -29,22 +30,6 @@ const GripStrength3 = () => {
   const question2 = sessionStorage.getItem("question2");
   const question3 = sessionStorage.getItem("question3");
 
-  //help poppup function
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const goBack = () => {
-    navigate("/GripStrength2");
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
   const LeftResult = { TestResult: "No Left Result", Risk: "Unidentified Risk" };
   const RightResult = { TestResult: "No Right Result", Risk: "Unidentified Risk" };
@@ -208,46 +193,7 @@ const GripStrength3 = () => {
 
   return (
     <div className="screen">
-      <AppBar position="static" style = {{background: '#015b98'}}>
-        <Box display="flex" justifyContent="center">
-
-        </Box>
-        <Grid container spacing={1} >
-          <Grid item xs={2} sm={1.1} >
-          <Box display="flex" justifyContent="center">
-          <Fab variant="contained" className="mui-icons" onClick={goBack} aria-label="add" >
-            <ArrowBack fontSize="large" marginLeft={0}></ArrowBack>
-          </Fab>
-          </Box>
-          </Grid>
-          <Grid item xs={8} sm={9.8}>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h7" color="inherit" component="div" align="center" marginTop={1.3} marginBottom={2}>
-            <label className="title">Grip Strength Test</label> 
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={2} sm={1.1}>
-        <Box display="flex" justifyContent="center">
-        <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add">
-          <HelpIcon fontSize="large"></HelpIcon>
-        </Fab>
-        </Box>
-        </Grid>
-        </Grid>
-        </AppBar>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}>
-
-          <Typography sx={{ p: 5, fontSize: '1.5em' }}>This is where you can input the Grip Strength test results using the dynamometer. Some fields might be disabled depending on the answers to the previous questions.</Typography>
-        </Popover>
+      <Header typography = {typography} history = {"/GripStrength2"} name = {"Grip Strength Test"} />
 
       <div className="main-section">
         <h3>
