@@ -1,29 +1,22 @@
 import React, { useEffect, useState } from "react";
-import Fab from "@mui/material/Fab";
-import { Box, height } from "@mui/system";
 import Grid from "@mui/material/Grid";
-import HelpIcon from "@mui/icons-material/Help";
 import { AppBar, FormControl, MenuItem } from "@mui/material";
-import { ArrowBack, DeviceHubTwoTone } from '@mui/icons-material';
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
 import Height from "./Height";
-import Weight from "./Weight";
-import moment from 'moment';
-import ListItem from "@mui/material/ListItem";
 import "./styles/Summary.css";
 import Header from "./header";
 
+
 export default function Summary(props) {
     var data = props.patient;
+    var run = (props.run)=== undefined ? 0 : props.run;
+    console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
     const dt = new Date().toDateString();
-    const increm = 0;
     const [abtime, setabTime] = useState(dt);
     const [dbtime, setdbTime] = useState(dt);
     const setAbtime = () => {
@@ -34,28 +27,45 @@ export default function Summary(props) {
         let dt = new Date().toDateString();
         setdbTime(dt);
     }
-    const [option, setOption] = React.useState([
-        {ilbierah}, {illum}
-    ]);
+    const [option, setOption] = React.useState("");
     const [barthel, showBarthel] = useState("false");
     const [Barthelex, setBarthelex] = useState(0);
-    const [hwex, setHwex] = useState(0);
     const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
-    const [AHW, setAHW] = useState({
-        height: '',
-        weight: '',
-        weightloss: '',
-        exercise: ''
-    });
-    const [DHW, setDHW] = useState({
-        height: '',
-        weight: '',
-        weightloss: '',
-        exercise: ''
-    });
-    var hwindex = localStorage.getItem("hwrun");
+    var ahw = (run === 1) ? {
+        height: "",
+        weight: "",
+        weightloss: "",
+        exercise: "",
+    } : {
+        height: (localStorage.getItem("admissionhw").height),
+        weight: (localStorage.getItem("admissionhw").weight),
+        weightloss: (localStorage.getItem("admissionhw").weightloss),
+        exercise: (localStorage.getItem("admissionhw").exercise),
+    }
+
+    var dhw = {
+        height: "",
+        weight: "",
+        weightloss: "",
+        exercise: "",
+    }
+
+    function updateAhw(h, w, wl, e){
+        ahw.height = h;
+        ahw.weight = w;
+        ahw.weightloss = wl;
+        ahw.exercise = e;
+    }
+
+    function updateDhw(h, w, wl, e){
+        dhw.height = h;
+        dhw.weight = w;
+        dhw.weightloss = wl;
+        dhw.exercise = e;
+    }
+
     function calcAbtotal(){
         let atotal = 0;
         Ablist.forEach(element => atotal = addUp(atotal, element));
@@ -67,12 +77,6 @@ export default function Summary(props) {
         return dtotal;
     }
     var bar = localStorage.getItem("Brun");
-    console.log("Ablist",Ablist);
-    console.log("Dblist",Dblist);
-    
-    useEffect(() => {
-        localStorage.setItem("hwrun",JSON.stringify(hwex));
-    }, [hwex]);
 
     useEffect(() => {
         if (localStorage.getItem("Brun")>2){
@@ -89,25 +93,9 @@ export default function Summary(props) {
             }
         }
     }, []);
-    
-    useEffect(() => {
-        if (localStorage.getItem("hwrun")>2){
-            localStorage.setItem("hwrun",JSON.stringify(0));
-            const hwex = JSON.parse(localStorage.getItem("hwrun"));
-            if(hwex){
-                setHwex(hwex);
-            }
-        }
-        else {
-            const hwex = JSON.parse(localStorage.getItem("hwrun"));
-            if(hwex){
-                setHwex(hwex);
-            }
-        }
-    })
 
+   
      
-
     useEffect(() => {
         //localStorage.setItem("ablist",JSON.stringify(0));
         const Ablist = JSON.parse(localStorage.getItem("ablist"));
@@ -121,36 +109,33 @@ export default function Summary(props) {
             setDblist(Dblist);
         }
 
-        //localStorage.setItem("ahw",JSON.stringify(0));
-        const AHW = JSON.parse(localStorage.getItem("ahw"));
-        if (AHW) {
-            setAHW({height: AHW.height, weight: AHW.weight, weightloss: AHW.weightloss, exercise: AHW.exercise});
+        if(ahw.height === ""){
+            const setahw = JSON.parse(localStorage.getItem("admissionhw"));
+            if (setahw){
+                updateAhw(setahw.height, setahw.weight, setahw.weightloss, setahw.exercise);
+                console.log("setahw height: ", setahw.height);
+            }
         }
 
-        //localStorage.setItem("dhw",JSON.stringify(0));
-        //localStorage.setItem("hwrun",JSON.stringify(0));
-        //setHwex(0);
-        const DHW = JSON.parse(localStorage.getItem("dhw"));
-        if (DHW) {
-            setDHW({height: DHW.height, weight: DHW.weight, weightloss: DHW.weightloss, exercise: DHW.exercise});
+        const setdhw = JSON.parse(localStorage.getItem("dischargehw"));
+        if (setdhw){
+            updateDhw(setdhw.height, setdhw.weight, setdhw.weightloss, setdhw.exercise);
+            console.log("set dhw:", setdhw.height, dhw.height);
         }
 
     }, []);
 
 
 
-console.log("ahw height: ", AHW.height);
-console.log("ahw weight: ", AHW.weight);
-console.log("ahw wl: ", AHW.weightloss);
-console.log("hwrun:", hwex);
+console.log("ahw height: ", ahw.height);
+console.log("ahw weight: ", ahw.weight);
+console.log("ahw wl: ", ahw.weightloss);
+console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
 
 
-    console.log("barthel after", Barthelex+1);
     useEffect(() => {
         localStorage.setItem("Brun",JSON.stringify(Barthelex));
     }, [Barthelex]);
-
-    
 
     useEffect(() => {
         localStorage.setItem("ablist",JSON.stringify(Ablist));
@@ -160,16 +145,13 @@ console.log("hwrun:", hwex);
         localStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
 
-    useEffect(() => {
-        localStorage.setItem("ahw", JSON.stringify(AHW));
-    }, [AHW]);
+     useEffect(() => {
+        localStorage.setItem("admissionhw",JSON.stringify(ahw));
+    }, [ahw]);
 
     useEffect(() => {
-        localStorage.setItem("dhw", JSON.stringify(DHW));
-    }, [DHW]);
-
-    //console.log("local ablist:", localStorage.getItem("ablist"));
-    //console.log("local dblist:", localStorage.getItem("dblist"));
+        localStorage.setItem("dischargehw",JSON.stringify(dhw));
+    }, [dhw]);
 
     const handleChange =  (event) => {
         setOption(event.target.value);
@@ -188,16 +170,11 @@ console.log("hwrun:", hwex);
         }
     }
 
-    if(hwex < 3){
         if(height === "true"){
-            //height = "false";
-            hwindex = hwex+1;
-            console.log("in");
-            console.log("hwex:", hwex);
-            localStorage.setItem("hwrun",JSON.stringify(hwindex));
-            return <Height age = {60} gender = {'Male'}/>
+            //localStorage.setItem("hwex",JSON.stringify(JSON.parse(localStorage.getItem("hwex"))+1));
+            return <Height age = {60} gender = {'Male'} run={run}/>
         }
-    }
+    
 
     if (Ablist.length<10){
         if(props.indexList !== undefined && Barthelex === 1){
@@ -223,16 +200,20 @@ console.log("hwrun:", hwex);
         console.log("dbDefined");
     }
 
-    if (AHW.height === ""){
-        if (props.height !== undefined && hwex === 0){
-            setAHW({height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise});
+    //if (AHW.height === ""){
+        if (props.height !== undefined && props.run === 1){
+            updateAhw(props.height, props.weight, props.weightloss, props.exercise);
+            console.log("thalt");
         }
-    }
-    if (DHW.height === ""){
-        if (props.height !== undefined && hwex === 2){
-            setDHW({height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise});
+        else{
+            console.log("ma thatlx");
         }
-    }
+    //}
+    //if (DHW.height === ""){
+        if (props.height !== undefined && props.run === 2){
+            updateDhw(props.height, props.weight, props.weightloss, props.exercise);
+        }
+    //}
     
     function showSeverity(total) {
         if (total >= 0 && total <= 9) {
@@ -386,27 +367,27 @@ console.log("hwrun:", hwex);
                     <tbody>
                         <tr className="grid-data">
                             <td className="section">Height (cm)</td>
-                            <td className="grid-row">{AHW.height}</td>
-                            <td className="grid-row">{DHW.height}</td>
-                            <td className="total-diff">{(AHW.height)=== "" && (DHW.height)=== "" ? "" : "/"}</td>
+                            <td className="grid-row">{ahw.height}</td>
+                            <td className="grid-row">{dhw.height}</td>
+                            <td className="total-diff">{(ahw.height)=== "" && (dhw.height)=== "" ? "" : "/"}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Weight (kg)</td>
-                            <td>{AHW.weight}</td>
-                            <td>{DHW.weight}</td>
-                            <td className="total-diff">{(AHW.weight)==="" && (DHW.weight)==="" ? "" : DHW.weight - AHW.weight}</td>
+                            <td>{ahw.weight}</td>
+                            <td>{dhw.weight}</td>
+                            <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "" : dhw.weight - ahw.weight}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Has patient<br></br>lost weight?</td>
-                            <td>{(AHW.weight) ? (AHW.weightloss === 0 ? "No" : "Yes" ) : ""}</td>
-                            <td>{(DHW.weight) ? (DHW.weightloss === 0 ? "No" : "Yes" ) : ""}</td>
-                            <td className="total-diff">{(AHW.weight)==="" && (DHW.weight)==="" ? "" : "/"}</td>
+                            <td>{(ahw.weight) ? (ahw.weightloss === 0 ? "No" : "Yes" ) : ""}</td>
+                            <td>{(dhw.weight) ? (dhw.weightloss === 0 ? "No" : "Yes" ) : ""}</td>
+                            <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "" : "/"}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Was weight lost<br></br>due to exercise?</td>
-                            <td>{(AHW.weight) ? (AHW.exercise === 1 ? "Yes" : "/") : ""}</td>
-                            <td>{(DHW.weight) ? (DHW.exercise === 1 ? "Yes" : "/") : ""}</td>
-                            <td className="total-diff">{(AHW.weight)==="" && (DHW.weight)==="" ? "": "/"}</td>
+                            <td>{(ahw.weight) ? (ahw.exercise === 1 ? "Yes" : "/") : ""}</td>
+                            <td>{(dhw.weight) ? (dhw.exercise === 1 ? "Yes" : "/") : ""}</td>
+                            <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "": "/"}</td>
                         </tr>
                     </tbody>
                 </table>

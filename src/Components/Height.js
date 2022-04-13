@@ -13,7 +13,7 @@ function Height(props) {
     })
     const [weight, showWeight] = useState("false");
     if (weight === "true"){
-        return <Weight height={state.height}/>
+        return <Weight height={state.height} run={props.run}/>
     }
 
     const handleHeightChange = (event) => {

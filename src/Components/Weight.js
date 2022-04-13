@@ -10,7 +10,7 @@ function Weight(props) {
 
     var json = JSON.stringify(patients);
   	var obj = JSON.parse(json);
-
+    var run = props.run;
     const [height, setHeight] = useState(props.height);
     const [weight, setWeight] = useState();
     const [weightLoss, setWeightLoss] = useState();
@@ -18,7 +18,7 @@ function Weight(props) {
     const [summary, showSummary] = useState("false");
 
     if (summary === "true"){
-        return <Summary patient = {obj.patient[0]} height={height} weight={weight} weightloss={weightLoss} exercise={exercise}/>
+        return <Summary patient = {obj.patient[0]} height={height} weight={weight} weightloss={weightLoss} exercise={exercise} run={run+1}/>
     }
 
     const handleWeightChange = event => {
