@@ -27,7 +27,7 @@ const db = getFirestore();
 
 
 export function getPatients(){
-    let test = [];
+    let globalPatients = [];
     const colRef = collection(db, 'patients');
     getDocs(colRef)
         .then((snapshot)=> {
@@ -41,15 +41,34 @@ export function getPatients(){
             }       
         )
         
-        console.log(patients);
+        // console.log(patients);
         for(var i = 0; i < patients.length;i++){
-            test[i] = patients[i];
+            globalPatients[i] = patients[i];
 
         }
     })
     
-    return test;
+    return globalPatients;
 }
 
 
-// export default {app, db, globalPatients};
+export function getUsers(){
+    let globalUsers = [];
+    const colRefUsers = collection(db, 'users');
+    getDocs(colRefUsers)
+        .then((snapshot)=>{
+            let users = [];
+            snapshot.docs.forEach((doc)=>{
+                users.push({
+                    ...doc.data(),
+                    id: doc.id
+                })
+            })
+            // console.log(users);
+            for(var i = 0; i < users.length;i++){
+                globalUsers[i] = users[i];
+            }
+            
+        })
+    return globalUsers
+}

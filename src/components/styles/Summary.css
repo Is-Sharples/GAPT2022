@@ -324,3 +324,12 @@
 }
 
 }
+
+.search-container{
+    padding: 12px;
+    border:solid 1px;
+    border-color: rgb(199, 196, 196);
+    border-radius: 16px;
+    background-color: whitesmoke;
+}
+

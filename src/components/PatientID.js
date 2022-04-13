@@ -55,10 +55,6 @@ componentDidMount(){
     this.state.currentPatient.id = 0;
 }
 
-// componentWillMount(){
-
-//     this.state.currentPatient.id = 0;
-// }
 
 SetCurrentPatient(patient){
     console.log("hello");
@@ -141,20 +137,9 @@ render(){
                         <TextField  label={"Patient ID"} 
                                     onChange ={this.DisplayPatients}
                         ></TextField>
-                
                         <List >                 
-                            <Divider />
-                            
-                            
-                            
-                            {this.state.fragments}
-                                
-                            
-                            
-                            
-                            
-                                
-                            
+                            <Divider />                           
+                            {this.state.fragments}                          
                         </List>
 
 
