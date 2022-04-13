@@ -35,18 +35,21 @@ export default function Summary(props) {
     const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
-    var ahw = (run === 1) ? {
+    
+    
+    var ahw ={
         height: "",
         weight: "",
         weightloss: "",
         exercise: "",
-    } : {
-        height: (localStorage.getItem("admissionhw").height),
-        weight: (localStorage.getItem("admissionhw").weight),
-        weightloss: (localStorage.getItem("admissionhw").weightloss),
-        exercise: (localStorage.getItem("admissionhw").exercise),
     }
-
+    // console.log(props.ahwStore);
+    if(props.ahwStore !== ""){
+        console.log(props.ahwStore);
+        ahw = props.ahwStore;
+        // let test = JSON.stringify(ahw);
+        // console.log(test);
+    }   
     var dhw = {
         height: "",
         weight: "",
@@ -148,6 +151,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
     }, [Dblist]);
 
      useEffect(() => {
+        
         localStorage.setItem("admissionhw",JSON.stringify(ahw));
     }, [ahw]);
 
@@ -174,7 +178,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
 
         if(height === "true"){
             //localStorage.setItem("hwex",JSON.stringify(JSON.parse(localStorage.getItem("hwex"))+1));
-            return <Height age = {60} gender = {'Male'} run={run}/>
+            return <Height ahw = {ahw} age = {60} gender = {'Male'} run={run}/>
         }
     
 

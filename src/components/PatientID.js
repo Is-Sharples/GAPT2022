@@ -116,11 +116,17 @@ render(){
     // this.state.patients = obj.patient;
     // this.state.currentPatient.id = 0;
     console.log(getPatients());
+    var ahw ={
+        height: "",
+        weight: "",
+        weightloss: "",
+        exercise: "",
+    }
     if(this.state.currentPatient.id !== 0){
         //this.setState({currentPatient: new currentPatient(0,"","","")});
         // this.state.currentPatient.id = 0;
         //console.log(this.state.currentPatient.id);
-        return <Summary history = {"/"} patient = {this.state.currentPatient}/>       
+        return <Summary ahwStore = {ahw} history = {"/"} patient = {this.state.currentPatient}/>       
     }
     
 
