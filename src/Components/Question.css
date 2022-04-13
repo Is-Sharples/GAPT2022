@@ -1,0 +1,57 @@
+.question {
+    height: auto;
+    width: 100%;
+    min-height: 150px;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.yes-no-btn {
+    height: 60px;
+    width: 80px;
+    align-items: center;
+    border-radius: 0.3rem;
+    border: 2px solid #015b98;
+    font-size: 32px;
+    color: black;
+    background-color: #E5E5E5;
+}
+
+.yes-no-btn:visited{
+    cursor: pointer;
+    background-color: #015b98;
+    color: white;
+}
+
+.yes-no-btn:focus{
+    cursor: pointer;
+    background-color: #015b98;
+    color: white;
+}
+
+.yes-no-btn:hover{
+    cursor: pointer;
+    background-color: #015b98;
+    color: white;
+}
+
+.yes-no-btn:active{
+    background-color: #015b98;
+    color: white;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonhw{
+    height: 60px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    margin: 20px 15px 10px 15px;
+}
+

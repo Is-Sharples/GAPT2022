@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
+import Grid from "@mui/material/Grid";
 import { AppBar, FormControl, MenuItem } from "@mui/material";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
+import Height from "./Height";
 import "./styles/Summary.css";
 import Header from "./header";
+
 
 export default function Summary(props) {
 
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
+    var run = (props.run)=== undefined ? 0 : props.run;
+    console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
     const dt = new Date().toDateString();
-    const increm = 0;
     const [abtime, setabTime] = useState(dt);
     const [dbtime, setdbTime] = useState(dt);
     const setAbtime = () => {
@@ -25,13 +29,45 @@ export default function Summary(props) {
         let dt = new Date().toDateString();
         setdbTime(dt);
     }
-    const [option, setOption] = React.useState([
-        {ilbierah}, {illum}
-    ]);
+    const [option, setOption] = React.useState("");
     const [barthel, showBarthel] = useState("false");
+    const [Barthelex, setBarthelex] = useState(0);
+    const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
-    const [Barthelex, setBarthelex] = useState(0);
+    var ahw = (run === 1) ? {
+        height: "",
+        weight: "",
+        weightloss: "",
+        exercise: "",
+    } : {
+        height: (localStorage.getItem("admissionhw").height),
+        weight: (localStorage.getItem("admissionhw").weight),
+        weightloss: (localStorage.getItem("admissionhw").weightloss),
+        exercise: (localStorage.getItem("admissionhw").exercise),
+    }
+
+    var dhw = {
+        height: "",
+        weight: "",
+        weightloss: "",
+        exercise: "",
+    }
+
+    function updateAhw(h, w, wl, e){
+        ahw.height = h;
+        ahw.weight = w;
+        ahw.weightloss = wl;
+        ahw.exercise = e;
+    }
+
+    function updateDhw(h, w, wl, e){
+        dhw.height = h;
+        dhw.weight = w;
+        dhw.weightloss = wl;
+        dhw.exercise = e;
+    }
+
     function calcAbtotal(){
         let atotal = 0;
         Ablist.forEach(element => atotal = addUp(atotal, element));
@@ -43,8 +79,6 @@ export default function Summary(props) {
         return dtotal;
     }
     var bar = localStorage.getItem("Brun");
-    console.log("Ablist",Ablist);
-    console.log("Dblist",Dblist);
 
     useEffect(() => {
         if (localStorage.getItem("Brun")>2){
@@ -62,23 +96,45 @@ export default function Summary(props) {
         }
     }, []);
 
+   
+     
     useEffect(() => {
-
         //localStorage.setItem("ablist",JSON.stringify(0));
         const Ablist = JSON.parse(localStorage.getItem("ablist"));
         if (Ablist) {
             setAblist(Ablist);
         }
         
-
         //localStorage.setItem("dblist",JSON.stringify(0));
         const Dblist = JSON.parse(localStorage.getItem("dblist"));
         if (Dblist) {
             setDblist(Dblist);
         }
+
+        if(ahw.height === ""){
+            const setahw = JSON.parse(localStorage.getItem("admissionhw"));
+            if (setahw){
+                updateAhw(setahw.height, setahw.weight, setahw.weightloss, setahw.exercise);
+                console.log("setahw height: ", setahw.height);
+            }
+        }
+
+        const setdhw = JSON.parse(localStorage.getItem("dischargehw"));
+        if (setdhw){
+            updateDhw(setdhw.height, setdhw.weight, setdhw.weightloss, setdhw.exercise);
+            console.log("set dhw:", setdhw.height, dhw.height);
+        }
+
     }, []);
 
-    console.log("barthel after", Barthelex+1);
+
+
+console.log("ahw height: ", ahw.height);
+console.log("ahw weight: ", ahw.weight);
+console.log("ahw wl: ", ahw.weightloss);
+console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
+
+
     useEffect(() => {
         localStorage.setItem("Brun",JSON.stringify(Barthelex));
     }, [Barthelex]);
@@ -91,8 +147,13 @@ export default function Summary(props) {
         localStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
 
-    //console.log("local ablist:", localStorage.getItem("ablist"));
-    //console.log("local dblist:", localStorage.getItem("dblist"));
+     useEffect(() => {
+        localStorage.setItem("admissionhw",JSON.stringify(ahw));
+    }, [ahw]);
+
+    useEffect(() => {
+        localStorage.setItem("dischargehw",JSON.stringify(dhw));
+    }, [dhw]);
 
     const handleChange =  (event) => {
         setOption(event.target.value);
@@ -110,6 +171,12 @@ export default function Summary(props) {
             return <Barthel patient = {data}/>
         }
     }
+
+        if(height === "true"){
+            //localStorage.setItem("hwex",JSON.stringify(JSON.parse(localStorage.getItem("hwex"))+1));
+            return <Height age = {60} gender = {'Male'} run={run}/>
+        }
+    
 
     if (Ablist.length<10){
         if(props.indexList !== undefined && Barthelex === 1){
@@ -134,6 +201,21 @@ export default function Summary(props) {
     else{
         console.log("dbDefined");
     }
+
+    //if (AHW.height === ""){
+        if (props.height !== undefined && props.run === 1){
+            updateAhw(props.height, props.weight, props.weightloss, props.exercise);
+            console.log("thalt");
+        }
+        else{
+            console.log("ma thatlx");
+        }
+    //}
+    //if (DHW.height === ""){
+        if (props.height !== undefined && props.run === 2){
+            updateDhw(props.height, props.weight, props.weightloss, props.exercise);
+        }
+    //}
     
     function showSeverity(total) {
         if (total >= 0 && total <= 9) {
@@ -254,14 +336,14 @@ export default function Summary(props) {
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Total</td>
-                            <td className="total">{calcAbtotal() < 0 ? "" : calcAbtotal()}</td>
-                            <td className="total">{calcDbtotal() < 0 ? "" : calcDbtotal()}</td>
-                            <td className="total">{calcAbtotal()!= undefined && calcDbtotal()!=undefined ? calcDbtotal() - calcAbtotal() : ""}</td>
+                            <td className="total">{Ablist[0]===undefined ? "" : calcAbtotal()}</td>
+                            <td className="total">{Dblist[0]===undefined ? "" : calcDbtotal()}</td>
+                            <td className="total">{Ablist[0]!== undefined && Dblist[0]!== undefined ? calcDbtotal() - calcAbtotal() : ""}</td>
                         </tr>
                         <tr >
                             <td></td>
-                            <td className={`dependency ${showSeverity(calcAbtotal())}`}>{showSeverity(calcAbtotal())}</td>
-                            <td className={`dependency ${showSeverity(calcDbtotal())}`}>{showSeverity(calcDbtotal())}</td>
+                            <td className={`dependency ${showSeverity(calcAbtotal())}`}>{(calcAbtotal()) ? showSeverity(calcAbtotal()) : ""}</td>
+                            <td className={`dependency ${showSeverity(calcDbtotal())}`}>{(calcDbtotal()) ? showSeverity(calcDbtotal()) : ""}</td>
                         </tr>
                         <br></br>
                     </tbody>
@@ -272,7 +354,7 @@ export default function Summary(props) {
         <div className="card">
             <div className="grid-title">
                 <p className="name">Height & Weight</p>
-                <button className="input-details">Input Height & Weight</button>
+                <button className="input-details" onClick={() => {showHeight("true")}}>Input Height & Weight</button>
             </div>
             <div className="grid-page">
                 <table>
@@ -286,28 +368,28 @@ export default function Summary(props) {
                     </thead>
                     <tbody>
                         <tr className="grid-data">
-                            <td className="section">Height</td>
-                            <td className="grid-row">1</td>
-                            <td className="grid-row">3</td>
-                            <td className="total-diff">2</td>
+                            <td className="section">Height (cm)</td>
+                            <td className="grid-row">{ahw.height}</td>
+                            <td className="grid-row">{dhw.height}</td>
+                            <td className="total-diff">{(ahw.height)=== "" && (dhw.height)=== "" ? "" : "/"}</td>
                         </tr>
                         <tr className="grid-data">
-                            <td className="section">Weight</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td className="total-diff">2</td>
+                            <td className="section">Weight (kg)</td>
+                            <td>{ahw.weight}</td>
+                            <td>{dhw.weight}</td>
+                            <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "" : dhw.weight - ahw.weight}</td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Has patient<br></br>lost weight?</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td className="total-diff">2</td>
+                            <td>{(ahw.weight) ? (ahw.weightloss === 0 ? "No" : "Yes" ) : ""}</td>
+                            <td>{(dhw.weight) ? (dhw.weightloss === 0 ? "No" : "Yes" ) : ""}</td>
+                            <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "" : "/"}</td>
                         </tr>
-                        <tr data-index={3} className="grid-data">
+                        <tr className="grid-data">
                             <td className="section">Was weight lost<br></br>due to exercise?</td>
-                            <td data-value={1}>1</td>
-                            <td value={3}>3</td>
-                            <td className="total-diff">2</td>
+                            <td>{(ahw.weight) ? (ahw.exercise === 1 ? "Yes" : "/") : ""}</td>
+                            <td>{(dhw.weight) ? (dhw.exercise === 1 ? "Yes" : "/") : ""}</td>
+                            <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "": "/"}</td>
                         </tr>
                     </tbody>
                 </table>
