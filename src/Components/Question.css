@@ -1,6 +1,6 @@
 .question {
     height: auto;
-    width: 100%;
+    /*width: 100%;*/
     min-height: 150px;
     align-items: center;
     text-align: center;
