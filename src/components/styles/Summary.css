@@ -138,8 +138,29 @@
     cursor: pointer;
 }
 
+.input-details-save{
+    background-color: white;
+    border: 3px #01497A solid;
+    border-radius: 16px;
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .input-details:hover{
     background-color: #e5e5e5;
+}
+
+.input-details-save:hover{
+    background-color: #e5e5e5;
+}
+
+.input-details-save:focus{
+    background-color: #369ce0;
 }
 
 .dependency {
@@ -295,8 +316,25 @@
     cursor: pointer;
 }
 
+.input-details-save{
+    background-color: white;
+    border: 3px #01497A solid;
+    border-radius: 16px;
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .input-details:hover{
     background-color: #e5e5e5;
+}
+
+.input-details-save:focus{
+    background-color: #369ce0;
 }
 
 .dependency {

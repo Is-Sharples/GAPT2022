@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, setDoc, addDoc, doc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -71,4 +71,38 @@ export function getUsers(){
             
         })
     return globalUsers
+}
+
+
+export function ShowSectionE(){
+    let allData = "";
+    const colRefE = collection(db, 'patients/1234/SectionE');
+    getDocs(colRefE)
+        .then((snapshot) => {
+            let Joe = "";
+            Joe = snapshot.docs.find((doc) => doc.id === 'i9u0dmhAUnXroxWxg9H2').data();
+            console.log(Joe);
+            allData = Joe;
+        })
+        
+    return allData
+}
+
+export function AddData(){
+    addDoc(collection(db,'patients/1234/SectionE'),{
+        ahw: "some",
+        dhw: "random",
+        ab: "generic",
+        db: "data"
+    })
+}
+
+export function SetData(){
+    const dbref = doc(db,'patients/1234/SectionE','NNS66Bptd9kFWijqoFeW');
+    setDoc(dbref,{
+        ab: "1",
+        ahw: "2",
+        db: "3",
+        dhw: "4"
+    })
 }

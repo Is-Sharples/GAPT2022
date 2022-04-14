@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { AppBar, FormControl, MenuItem } from "@mui/material";
+import { AppBar, FormControl, MenuItem, Popover } from "@mui/material";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
@@ -8,10 +8,12 @@ import Barthel from "./BarthelIndex";
 import Height from "./Height";
 import "./styles/Summary.css";
 import Header from "./header";
+import { ShowSectionE, AddData, SetData } from "./firebase";
+import  './firebase';
 
 
 export default function Summary(props) {
-
+    console.log(ShowSectionE());
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
     var run = (props.run)=== undefined ? 0 : props.run;
@@ -233,10 +235,15 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
         }
     }
 
+    function showSaved(){
+        console.log("qed hawn");
+    }
+
   return (
     <div className="screen">
         <Header typography = {typography} history = {"/"} name={"Summary"} /> 
 
+    
         <div className="card">
             <p className="name">{data.name} {data.surname}</p>
             <p className="id">{data.id}</p>
@@ -400,7 +407,8 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
             </div>
 
         </div>
+        <button className="input-details-save" onClick={() => {SetData(); showSaved();}}>Save Data</button>
     </div>
-
+    
   );
 }
