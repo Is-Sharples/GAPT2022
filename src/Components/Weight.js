@@ -34,7 +34,7 @@ function Weight(props) {
         const { name, value } = event.target;
         if (name === "wtloss") {
             setWeightLoss(parseInt(value));
-            setExercise(undefined);
+            setExercise(0);
         }
         if (name === "exercise") {
             setExercise(parseInt(value));

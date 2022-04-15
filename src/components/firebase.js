@@ -97,12 +97,12 @@ export function AddData(){
     })
 }
 
-export function SetData(){
+export function SetData(data1, data2, data3, data4){
     const dbref = doc(db,'patients/1234/SectionE','NNS66Bptd9kFWijqoFeW');
     setDoc(dbref,{
-        ab: "1",
-        ahw: "2",
-        db: "3",
-        dhw: "4"
+        ab: data1,
+        ahw: data3,
+        db: data2,
+        dhw: data4
     })
 }

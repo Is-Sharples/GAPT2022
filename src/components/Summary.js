@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { AppBar, FormControl, MenuItem, Popover } from "@mui/material";
+import { AppBar, FormControl, MenuItem} from "@mui/material";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
@@ -13,6 +13,7 @@ import  './firebase';
 
 
 export default function Summary(props) {
+    console.log("props:", props.ahwStore);
     console.log(ShowSectionE());
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
@@ -20,7 +21,7 @@ export default function Summary(props) {
     console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
-    const dt = new Date().toDateString();
+    const dt = new Date().toString();
     const [abtime, setabTime] = useState(dt);
     const [dbtime, setdbTime] = useState(dt);
     const setAbtime = () => {
@@ -46,12 +47,16 @@ export default function Summary(props) {
         exercise: "",
     }
     // console.log(props.ahwStore);
-    if(props.ahwStore !== ""){
+    if(props.ahwStore !== "" && (run===1 || run === 2)){
         console.log(props.ahwStore);
+        //updateAhw(props.ahwStore.height, props.ahwStore.weight, props.ahwStore.weightloss, (props.ahwStore.exercise)===undefined ? 0 : 1);
         ahw = props.ahwStore;
-        // let test = JSON.stringify(ahw);
-        // console.log(test);
-    }   
+        
+    }
+    else{
+        console.log("no prop");
+    }
+
     var dhw = {
         height: "",
         weight: "",
@@ -119,6 +124,7 @@ export default function Summary(props) {
         if(ahw.height === ""){
             const setahw = JSON.parse(localStorage.getItem("admissionhw"));
             if (setahw){
+                ahw = setahw;
                 updateAhw(setahw.height, setahw.weight, setahw.weightloss, setahw.exercise);
                 console.log("setahw height: ", setahw.height);
             }
@@ -126,18 +132,31 @@ export default function Summary(props) {
 
         const setdhw = JSON.parse(localStorage.getItem("dischargehw"));
         if (setdhw){
+            dhw = setdhw; 
             updateDhw(setdhw.height, setdhw.weight, setdhw.weightloss, setdhw.exercise);
             console.log("set dhw:", setdhw.height, dhw.height);
         }
 
     }, []);
 
+    useEffect(()=> {
+        const abTime = JSON.parse(localStorage.getItem("abtime"));
+        if (abTime){
+            //abtime = abTime;
+        }
+
+        const bdTime = JSON.parse(localStorage.getItem("dbtime"));
+        if (bdTime){
+            //abtime = abTime;
+        }
+    })
 
 
-console.log("ahw height: ", ahw.height);
+
+/*console.log("ahw height: ", ahw.height);
 console.log("ahw weight: ", ahw.weight);
 console.log("ahw wl: ", ahw.weightloss);
-console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
+console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
 
 
     useEffect(() => {
@@ -153,7 +172,6 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
     }, [Dblist]);
 
      useEffect(() => {
-        
         localStorage.setItem("admissionhw",JSON.stringify(ahw));
     }, [ahw]);
 
@@ -161,6 +179,15 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
         localStorage.setItem("dischargehw",JSON.stringify(dhw));
     }, [dhw]);
 
+    useEffect(() => {
+        localStorage.setItem("abtime",JSON.stringify(abtime));
+    }, [abtime]);
+
+    useEffect(() => {
+        localStorage.setItem("dbtime",JSON.stringify(dbtime));
+    }, [dbtime]);
+
+    console.log("abtime:", localStorage.getItem("abtime"));
     const handleChange =  (event) => {
         setOption(event.target.value);
     };
@@ -169,6 +196,8 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
         var ans = num1 + num2;
         return ans;
     }
+
+    console.log("barthel after", Barthelex+1);
 
     if (Barthelex < 3){
         if(barthel === "true"){
@@ -233,10 +262,6 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
         } else if (total >= 20) {
             return "Independent";
         }
-    }
-
-    function showSaved(){
-        console.log("qed hawn");
     }
 
   return (
@@ -407,7 +432,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
             </div>
 
         </div>
-        <button className="input-details-save" onClick={() => {SetData(); showSaved();}}>Save Data</button>
+        <button className="input-details-save" onClick={() => {SetData(Ablist,Dblist,ahw,dhw);}}>Save Data</button>
     </div>
     
   );
