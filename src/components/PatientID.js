@@ -87,7 +87,6 @@ DisplayPatients = (event) =>{
                         <Divider />
             
                     </React.Fragment>
-               
             
                 )
                      //console.log(this.state.currentPatient);

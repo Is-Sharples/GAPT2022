@@ -178,7 +178,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));
 
         if(height === "true"){
             //localStorage.setItem("hwex",JSON.stringify(JSON.parse(localStorage.getItem("hwex"))+1));
-            return <Height ahw = {ahw} age = {60} gender = {'Male'} run={run}/>
+            return <Height patient={data} ahw = {ahw} age = {60} gender = {'Male'} run={run}/>
         }
     
 

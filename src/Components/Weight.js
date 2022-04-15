@@ -7,7 +7,7 @@ import patients from './assets/patients.json';
 import { Grid } from '@mui/material';
 
 function Weight(props) {
-
+    
     var json = JSON.stringify(patients);
   	var obj = JSON.parse(json);
     var data = props.ahw;
@@ -19,7 +19,7 @@ function Weight(props) {
     const [summary, showSummary] = useState("false");
 
     if (summary === "true"){
-        return <Summary ahwStore = {data} patient = {obj.patient[0]} height={height} weight={weight} weightloss={weightLoss} exercise={exercise} run={run+1}/>
+        return <Summary ahwStore = {data} patient = {props.patient} height={height} weight={weight} weightloss={weightLoss} exercise={exercise} run={run+1}/>
     }
 
     const handleWeightChange = event => {

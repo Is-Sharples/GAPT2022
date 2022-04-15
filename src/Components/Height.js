@@ -5,6 +5,7 @@ import { Grid } from '@mui/material';
 
 function Height(props) {
     var data = props.ahw;
+    var patient = props.patient;
     const [state, setState] = useState({
         demispan: '',
         height: '',
@@ -13,7 +14,7 @@ function Height(props) {
     })
     const [weight, showWeight] = useState("false");
     if (weight === "true"){
-        return <Weight ahw = {data} height={state.height} run={props.run}/>
+        return <Weight patient = {patient} ahw = {data} height={state.height} run={props.run}/>
     }
 
     const handleHeightChange = (event) => {

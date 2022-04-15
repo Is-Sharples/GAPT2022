@@ -23,10 +23,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
-// let patients = [];
+class Users {
+    constructor(name,pass,role,user){
+        this.name = name;
+        this.pass = pass;
+        this.role = role;
+        this.user = user;
+    }
+}
 
 
 export function getPatients(){
+    
     let globalPatients = [];
     const colRef = collection(db, 'patients');
     getDocs(colRef)
@@ -51,9 +59,10 @@ export function getPatients(){
     return globalPatients;
 }
 
-
+let globalUsers = [];
 export function getUsers(){
-    let globalUsers = [];
+    let test = new Users("","","","");
+    
     const colRefUsers = collection(db, 'users');
     getDocs(colRefUsers)
         .then((snapshot)=>{
@@ -67,8 +76,15 @@ export function getUsers(){
             // console.log(users);
             for(var i = 0; i < users.length;i++){
                 globalUsers[i] = users[i];
+                // globalUsers.push(users[i]);
+                // console.log(globalUsers[0]);        
             }
-            
+
+            console.log(globalUsers[0]);
+            return globalUsers;
         })
+        
+
+
     return globalUsers
 }
