@@ -57,7 +57,7 @@ componentDidMount(){
 
 
 SetCurrentPatient(patient){
-    console.log("hello");
+    //console.log("hello");
     this.setState({currentPatient:patient,});
     this.setState({entered: "false"});
 }
@@ -81,7 +81,6 @@ DisplayPatients = (event) =>{
                     <React.Fragment  key = {index}>
                         
                         <ListItemButton  onClick={() => this.SetCurrentPatient(patient)} >
-                            {/* <ListItemText primary={patient.name + " " + patient.surname} secondary={patient.id} /> */}
                             <ListItemText primary={patient.name} secondary={patient.id} />    
                         </ListItemButton>
                         <Divider />
@@ -89,7 +88,6 @@ DisplayPatients = (event) =>{
                     </React.Fragment>
             
                 )
-                     //console.log(this.state.currentPatient);
             }
             
     

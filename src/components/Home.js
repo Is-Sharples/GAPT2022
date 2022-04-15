@@ -2,7 +2,7 @@ import React from "react";
 import PatientID from "./PatientID";
 import { useState } from "react";
 import { InputAdornment } from "@material-ui/core";
-import { Button, ListItem, TextField } from "@mui/material";
+import { Button, InputLabel, ListItem, TextField } from "@mui/material";
 import { Grid } from "@mui/material";
 import { useNavigate, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getUsers } from "./firebase";
@@ -37,29 +37,37 @@ class Login extends React.Component{
     };
     
     StoreUsername = (event) => {
-        var value = event.target.value.toUpperCase();
-        // console.log(value);
+        let value = event.target.value;
         this.state.creds.name = value;
-        console.log(this.state.creds.name);
-        console.log(this.state.users[0].name);
+        
+        
+    }
+
+    StorePassword = (event) => {
+        let value = event.target.value;
+        this.state.creds.pass = value;
+        
     }
 
 
+    CompareCreds(){
+        let users = this.state.users;
+        const { navigation } = this.props;
+        users.forEach(User => {
+            if(User.name === this.state.creds.name){
+                if(User.pass === this.state.creds.pass){
+                    navigation("/GetPatientData");
+                }
+            }
+        });
+    }
+
+    
 
 
-   
     render(){
         
-        // this.state.users = getUsers();
-        // console.log(this.state.users[0].name);
-        // console.log(this.state.users)
-        // this.state.users.map((user,index) => {
-        //     console.log("Hello");
-        // });
-        
-        // console.log(TestUsers[0].name);
-
-        // console.log(this.state.creds);
+        //console.log(this.state.users[1]);
         var typography = "Please insert your email and password to be able to login to the app";
         return(
             <div className="screen">
@@ -70,14 +78,28 @@ class Login extends React.Component{
                         
                     <List justifyContent={"center"} item >
                         <ListItem>
-                            <TextField onChange={this.StoreUsername} item label = {"E-Mail"}>  </TextField>
+                            <TextField  fullWidth={"true"} onChange={this.StoreUsername} item label = {"E-Mail"}>  </TextField>
     
                         </ListItem>    
                         <ListItem>
-                            <TextField  item label = {"Password"}>  </TextField>
+                           
+                                <TextField 
+                                fullWidth={"true"}
+                                onChange={this.StorePassword} 
+                                item 
+                                label = {"Password"}
+                                // ref='password'
+                                type={"password"}
+                                >   
+                                </TextField>
+                            
+                                
+
+
                         </ListItem>
                         <ListItem justifyContent={"center"} >
-                            <Button fullWidth={"true"} variant = {"contained"}>Submit</Button>
+                            <Button onClick={() => this.CompareCreds()} fullWidth={"true"} variant = {"contained"}>Submit</Button>
+                            {/* <Button onClick={() => navigation("/Patient")} fullWidth={"true"} variant = {"contained"}>Submit</Button> */}
                         </ListItem>    
                         </List>
                     </div>
@@ -91,4 +113,9 @@ class Login extends React.Component{
 
 
 
-export default Login;
+export default function(props){
+    const navigate= useNavigate();
+
+
+    return <Login {...props} navigation={navigate} ></Login>
+};

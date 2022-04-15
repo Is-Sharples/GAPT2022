@@ -61,7 +61,6 @@ export function getPatients(){
 
 let globalUsers = [];
 export function getUsers(){
-    let test = new Users("","","","");
     
     const colRefUsers = collection(db, 'users');
     getDocs(colRefUsers)
@@ -80,7 +79,7 @@ export function getUsers(){
                 // console.log(globalUsers[0]);        
             }
 
-            console.log(globalUsers[0]);
+            // console.log(globalUsers[0]);
             return globalUsers;
         })
         
