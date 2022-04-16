@@ -21,7 +21,7 @@ export default function Summary(props) {
     console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
-    const dt = new Date().toString();
+    const dt = new Date().toDateString();
     const [abtime, setabTime] = useState(dt);
     const [dbtime, setdbTime] = useState(dt);
     const setAbtime = () => {
