@@ -111,12 +111,15 @@ export function AddData(){
     })
 }
 
-export function SetData(data1, data2, data3, data4){
+//data1: ablist, data2: dblist, data3: ahw, data4: dhw
+export function SetData(Adate, Ddate, data1, data2, data3, data4){
     const dbref = doc(db,'patients/1234/SectionE','NNS66Bptd9kFWijqoFeW');
     setDoc(dbref,{
         ab: data1,
+        AdmissionDate: Adate,
         ahw: data3,
         db: data2,
+        DischargeDate: Ddate,
         dhw: data4
     })
 }

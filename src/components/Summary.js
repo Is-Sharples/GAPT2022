@@ -10,6 +10,7 @@ import "./styles/Summary.css";
 import Header from "./header";
 import { ShowSectionE, AddData, SetData } from "./firebase";
 import  './firebase';
+import { LocalCafeOutlined } from "@material-ui/icons";
 
 
 export default function Summary(props) {
@@ -21,25 +22,25 @@ export default function Summary(props) {
     console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
-    const dt = new Date().toDateString();
-    const [abtime, setabTime] = useState(dt);
-    const [dbtime, setdbTime] = useState(dt);
+    const dt = new Date().toString();
     const setAbtime = () => {
-        let dt = new Date().toDateString();
-        setabTime(dt);
-        localStorage.setItem("abtime",JSON.stringify(abtime));
+        let dt = new Date().toString();
+        localStorage.setItem("abtime",JSON.stringify(dt));
     }
+    const abTime = (localStorage.getItem("abtime"))===undefined ? "" : localStorage.getItem("abtime");
     const setDbtime = () => {
-        let dt = new Date().toDateString();
-        setdbTime(dt);
-
+        let dt = new Date().toString();
+        localStorage.setItem("dbtime",JSON.stringify(dt));
     }
+    const dbTime = (localStorage.getItem("dbtime"))===undefined ? "" : localStorage.getItem("dbtime");
+
     const [option, setOption] = React.useState("");
     const [barthel, showBarthel] = useState("false");
     const [Barthelex, setBarthelex] = useState(0);
     const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
+
 
     var ahw ={
         height: "",
@@ -139,24 +140,6 @@ export default function Summary(props) {
 
     }, []);
 
-    useEffect(()=> {
-        const abTime = JSON.parse(localStorage.getItem("abtime"));
-        if (abTime){
-            //abtime = abTime;
-        }
-
-        const bdTime = JSON.parse(localStorage.getItem("dbtime"));
-        if (bdTime){
-            //abtime = abTime;
-        }
-    })
-
-/*console.log("ahw height: ", ahw.height);
-console.log("ahw weight: ", ahw.weight);
-console.log("ahw wl: ", ahw.weightloss);
-console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
-
-
     useEffect(() => {
         localStorage.setItem("Brun",JSON.stringify(Barthelex));
     }, [Barthelex]);
@@ -177,15 +160,6 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
         localStorage.setItem("dischargehw",JSON.stringify(dhw));
     }, [dhw]);
 
-    useEffect(() => {
-        localStorage.setItem("abtime",JSON.stringify(abtime));
-    }, [abtime]);
-
-    useEffect(() => {
-        localStorage.setItem("dbtime",JSON.stringify(dbtime));
-    }, [dbtime]);
-
-    console.log("abtime:", localStorage.getItem("abtime"));
     const handleChange =  (event) => {
         setOption(event.target.value);
     };
@@ -262,6 +236,10 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
         }
     }
 
+    function full(){
+        var full = null;
+    }
+
   return (
     <div className="screen">
         <Header typography = {typography} history = {"/"} name={"Summary"} /> 
@@ -277,7 +255,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
             <MenuItem value={illum}>Illum</MenuItem> 
             </Select>
             </FormControl>
-            <button className='newVisit'>
+            <button onClick={() => AddData()} className='newVisit'>
                 <span><AddIcon/></span>
             </button>
             <div className="lastModifiedBy">
@@ -288,7 +266,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
         <div className="card">
             <div className="grid-title">
                 <p className="name">Barthel Score</p>
-                <button className="input-details" onClick={() => {(Barthelex) === 1 ? setAbtime(): setDbtime();
+                <button className="input-details" onClick={() => {(Barthelex) === 0 ? setAbtime() : setDbtime();
                                                                 showBarthel("true");}}>Input Barthel Index</button>
             </div>
             <div className="grid-page">
@@ -302,8 +280,8 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
                         </tr>
                         <tr>
                             <th></th>
-                            <th>{abtime}</th>
-                            <th>{dbtime}</th>
+                            <th>{abTime}</th>
+                            <th>{dbTime}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -430,7 +408,7 @@ console.log("admissionhw", JSON.parse(localStorage.getItem("admissionhw")));*/
             </div>
 
         </div>
-        <button className="input-details-save" onClick={() => {SetData(Ablist,Dblist,ahw,dhw);}}>Save Data</button>
+        <button className="input-details-save" onClick={() => {SetData(abTime, dbTime, Ablist,Dblist,ahw,dhw);}}>Save Data</button>
     </div>
     
   );
