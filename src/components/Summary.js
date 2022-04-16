@@ -8,7 +8,7 @@ import Barthel from "./BarthelIndex";
 import Height from "./Height";
 import "./styles/Summary.css";
 import Header from "./header";
-import { ShowSectionE, AddData, SetData } from "./firebase";
+import { ShowSectionE, AddData, SetData, AddDataB } from "./firebase";
 import  './firebase';
 import { LocalCafeOutlined, LocalCafeSharp, LocalSeeOutlined } from "@material-ui/icons";
 import moment from "moment";
@@ -240,7 +240,7 @@ export default function Summary(props) {
             <MenuItem value={illum}>Illum</MenuItem> 
             </Select>
             </FormControl>
-            <button onClick={() => AddData()} className='newVisit'>
+            <button onClick={() => AddDataB()} className='newVisit'>
                 <span><AddIcon/></span>
             </button>
             <div className="lastModifiedBy">

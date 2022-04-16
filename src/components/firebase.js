@@ -111,6 +111,22 @@ export function AddData(){
     })
 }
 
+export function AddDataB(){
+    addDoc(collection(db,'patients/1234/SectionB'),{
+        DataofSession: "",
+        GripStrengthResults:{MaxLeftHandResult: {Risk: "", TestResult: ""}, MaxRightHandResult: {Risk: "", TestResult: ""}, 
+        Question1: "", 
+        Question2: "", 
+        Question3: "",
+        Question4: "",
+        Question5: "",},
+        TUGTestResults:{LevelsOfMobility: {CurrentLevelofMobility: "", PreviousLevelofMobility: ""}, 
+        RiskOfFallStatus:{Status: "",TimeTakenInSeconds: ""},
+        TUGTestCarriedOut: ""}
+        
+    })
+}
+
 //data1: ablist, data2: dblist, data3: ahw, data4: dhw
 export function SetData(Adate, Ddate, data1, data2, data3, data4){
     const dbref = doc(db,'patients/1234/SectionE','NNS66Bptd9kFWijqoFeW');
