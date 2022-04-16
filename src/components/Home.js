@@ -19,12 +19,7 @@ class Credentials{
     }
 }
 
-class User{
-    constructor(name,pass){
-        this.name = name;
-        this.pass = pass;
-    }
-}
+
 
 
 class Login extends React.Component{
@@ -62,7 +57,7 @@ class Login extends React.Component{
 
                         navigation("/Patient");
                     }else{
-                        navigation("/PatientDataTeam2");
+                        navigation("/PatientID-Team-2");
                     }
                     
                 }
@@ -75,13 +70,12 @@ class Login extends React.Component{
 
     render(){
         
-        //console.log(this.state.users[1]);
         var typography = "Please insert your email and password to be able to login to the app";
         return(
             <div className="screen">
                 
                 <Grid justifyContent={"center"} container rowGap={4} columns={{ xs: 2, sm: 2, md: 6 }} >
-                    <Header typography = {typography} name = {"Login Page"} />           
+                    <Header disabled={true} typography = {typography} name = {"Login Page"} />           
                     <div item className="search-container" >
                         
                     <List justifyContent={"center"} item >
@@ -96,7 +90,6 @@ class Login extends React.Component{
                                 onChange={this.StorePassword} 
                                 item 
                                 label = {"Password"}
-                                // ref='password'
                                 type={"password"}
                                 >   
                                 </TextField>

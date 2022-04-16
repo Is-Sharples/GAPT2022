@@ -79,7 +79,7 @@ function LevelsOfMobility() {
     
     return (
         <div className="screen">   
-            <Header typography = {typography} history = {"/GetPatientData"} item  name = {"Levels of Mobility"}/>
+            <Header typography = {typography} history = {"/PatientID-team-2"} item  name = {"Levels of Mobility"}/>
                
             
 

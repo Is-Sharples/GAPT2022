@@ -52,10 +52,9 @@ export function getPatients(){
         // console.log(patients);
         for(var i = 0; i < patients.length;i++){
             globalPatients[i] = patients[i];
-
+            
         }
     })
-    
     return globalPatients;
 }
 
