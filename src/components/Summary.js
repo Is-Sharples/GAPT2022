@@ -10,7 +10,7 @@ import "./styles/Summary.css";
 import Header from "./header";
 import { ShowSectionE, AddData, SetData } from "./firebase";
 import  './firebase';
-import { LocalCafeOutlined } from "@material-ui/icons";
+import { LocalCafeOutlined, LocalCafeSharp, LocalSeeOutlined } from "@material-ui/icons";
 import moment from "moment";
 
 
@@ -42,30 +42,34 @@ export default function Summary(props) {
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
 
-
-    var ahw ={
+    console.log(localStorage.getItem("ahw"));
+    var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
         height: "",
         weight: "",
         weightloss: "",
         exercise: "",
-    }
+    } ;
+
     // console.log(props.ahwStore);
-    if(props.ahwStore !== "" && (run===1 || run === 2)){
+    /*if(props.ahwStore !== "" && (run===1 || run === 2)){
         console.log(props.ahwStore);
         ahw = props.ahwStore;
         
     }
     else{
         console.log("no prop");
-    }
+    }*/
 
-    var dhw = {
+    var dhw = ((run===0 && localStorage.getItem("dhw")!==null) || (run === 1 && localStorage.getItem("dhw")!==null) || (run===2 && localStorage.getItem("dhw")!==null)) ? JSON.parse(localStorage.getItem("dhw")) :{
         height: "",
         weight: "",
         weightloss: "",
         exercise: "",
-    }
+    };
 
+    if(ahw.height===null){
+        console.log("vojt");
+    }
     function updateAhw(h, w, wl, e){
        ahw.height = h;
        ahw.weight = w;
@@ -123,22 +127,6 @@ export default function Summary(props) {
             setDblist(Dblist);
         }
 
-        if(ahw.height === ""){
-            const setahw = JSON.parse(localStorage.getItem("admissionhw"));
-            if (setahw){
-                ahw = setahw;
-                updateAhw(setahw.height, setahw.weight, setahw.weightloss, setahw.exercise);
-                console.log("setahw height: ", setahw.height);
-            }
-        }
-
-        const setdhw = JSON.parse(localStorage.getItem("dischargehw"));
-        if (setdhw){
-            dhw = setdhw; 
-            updateDhw(setdhw.height, setdhw.weight, setdhw.weightloss, setdhw.exercise);
-            console.log("set dhw:", setdhw.height, dhw.height);
-        }
-
     }, []);
 
     useEffect(() => {
@@ -152,14 +140,6 @@ export default function Summary(props) {
     useEffect(() => {
         localStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
-
-     useEffect(() => {
-        localStorage.setItem("admissionhw",JSON.stringify(ahw));
-    }, [ahw]);
-
-    useEffect(() => {
-        localStorage.setItem("dischargehw",JSON.stringify(dhw));
-    }, [dhw]);
 
     const handleChange =  (event) => {
         setOption(event.target.value);
@@ -213,6 +193,8 @@ export default function Summary(props) {
     //if (AHW.height === ""){
         if (props.height !== undefined && props.run === 1){
             updateAhw(props.height, props.weight, props.weightloss, props.exercise);
+            const setahw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
+            localStorage.setItem("ahw",JSON.stringify(setahw));
             console.log("thalt");
         }
         else{
@@ -222,6 +204,8 @@ export default function Summary(props) {
     //if (DHW.height === ""){
         if (props.height !== undefined && props.run === 2){
             updateDhw(props.height, props.weight, props.weightloss, props.exercise);
+            const setdhw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
+            localStorage.setItem("dhw",JSON.stringify(setdhw));
         }
     //}
     
