@@ -27,7 +27,7 @@ export default function Summary(props) {
     const setAbtime = () => {
         let dt = new Date().toDateString();
         setabTime(dt);
-        localStorage.setItme("abtime",JSON.stringify(abtime));
+        localStorage.setItem("abtime",JSON.stringify(abtime));
     }
     const setDbtime = () => {
         let dt = new Date().toDateString();
