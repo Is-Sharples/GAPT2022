@@ -27,10 +27,12 @@ export default function Summary(props) {
     const setAbtime = () => {
         let dt = new Date().toDateString();
         setabTime(dt);
+        localStorage.setItme("abtime",JSON.stringify(abtime));
     }
     const setDbtime = () => {
         let dt = new Date().toDateString();
         setdbTime(dt);
+
     }
     const [option, setOption] = React.useState("");
     const [barthel, showBarthel] = useState("false");
@@ -38,8 +40,7 @@ export default function Summary(props) {
     const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
-    
-    
+
     var ahw ={
         height: "",
         weight: "",
@@ -49,7 +50,6 @@ export default function Summary(props) {
     // console.log(props.ahwStore);
     if(props.ahwStore !== "" && (run===1 || run === 2)){
         console.log(props.ahwStore);
-        //updateAhw(props.ahwStore.height, props.ahwStore.weight, props.ahwStore.weightloss, (props.ahwStore.exercise)===undefined ? 0 : 1);
         ahw = props.ahwStore;
         
     }
@@ -65,10 +65,10 @@ export default function Summary(props) {
     }
 
     function updateAhw(h, w, wl, e){
-        ahw.height = h;
-        ahw.weight = w;
-        ahw.weightloss = wl;
-        ahw.exercise = e;
+       ahw.height = h;
+       ahw.weight = w;
+       ahw.weightloss = wl;
+       ahw.exercise = e;
     }
 
     function updateDhw(h, w, wl, e){
@@ -150,8 +150,6 @@ export default function Summary(props) {
             //abtime = abTime;
         }
     })
-
-
 
 /*console.log("ahw height: ", ahw.height);
 console.log("ahw weight: ", ahw.weight);
