@@ -53,10 +53,18 @@ class Login extends React.Component{
     CompareCreds(){
         let users = this.state.users;
         const { navigation } = this.props;
+        
         users.forEach(User => {
-            if(User.name === this.state.creds.name){
+            if(User.user === this.state.creds.name){
                 if(User.pass === this.state.creds.pass){
-                    navigation("/GetPatientData");
+                    console.log(User.roles);
+                    if(User.roles === "admin"){
+
+                        navigation("/Patient");
+                    }else{
+                        navigation("/PatientDataTeam2");
+                    }
+                    
                 }
             }
         });

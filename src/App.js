@@ -34,7 +34,7 @@ export default function App() {
         <Route path = "/Summary" element={ <Summary patient={obj.patient[1]} /> }/>
         <Route path = "/Patient" element = {<Patient currentPatient = {new currentPatient(0,"","","")}/>} />
         {/* Without Get Patient Data Team-2 Will not work completely */}
-        <Route path = "/GetPatientData" element = {<GetPatientData />}> </Route>
+        <Route path = "/PatientDataTeam2" element = {<GetPatientData />}> </Route>
         <Route path="/LevelsOfMobility" element={<LevelsOfMobility/>}></Route>
         <Route path="/ListOfEquipment" element={<ListOfEquipment/>}></Route>
         <Route path="/Instructions" element={<Instructions/>}></Route>
