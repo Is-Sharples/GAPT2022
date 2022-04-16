@@ -6,6 +6,7 @@ import Summary from "./Summary";
 import patients from './assets/patients.json';
 import { Grid } from '@mui/material';
 
+
 function Weight(props) {
     
     var json = JSON.stringify(patients);
@@ -33,7 +34,7 @@ function Weight(props) {
         const { name, value } = event.target;
         if (name === "wtloss") {
             setWeightLoss(parseInt(value));
-            setExercise(undefined);
+            setExercise(0);
         }
         if (name === "exercise") {
             setExercise(parseInt(value));
@@ -43,10 +44,16 @@ function Weight(props) {
 
     return (
         <>
-        <Grid justifyContent={"center"} container>
-            <WeightCard handleChange={handleWeightChange} weight={weight} />
+        <Grid container direction="column" justifyContent="center" alignItems="center" rowSpacing={{lg: 3, sm: 3}}>
+            <Grid item >
+            <WeightCard handleChange={handleWeightChange} weight={weight} />         
+            </Grid>
+            <Grid item>
             <QuestionCard handleButtonSubmit={handleButtonSubmit} weightloss={weightLoss} exercise={exercise}/>
+            </Grid>
+            <Grid item>
             <button className='input-details' onClick={() => showSummary("true")}>Go back to Summary</button>
+            </Grid>
         </Grid>
         </>
     )

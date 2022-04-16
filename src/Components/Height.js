@@ -38,11 +38,13 @@ function Height(props) {
 
         return (
             <>  
-            <Grid justifyContent={"center"} container>
+            <Grid container direction="column" justifyContent="center" alignItems="center" rowSpacing={{lg: 2, sm: 2}}>
+                <Grid item>
                 <HeightCard handleChange={handleHeightChange} demispan={state.demispan} height={state.height} />
-                <div className="Footer">
-                    <button className = "input-details" onClick={() => showWeight("true")}> Go to next Page </button>
-                </div>
+                </Grid>
+                <Grid item>
+                <button className = "input-details" onClick={() => showWeight("true")}> Go to next Page </button>
+                </Grid>
             </Grid>
             </>
         );
