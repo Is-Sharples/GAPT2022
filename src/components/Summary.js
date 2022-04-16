@@ -11,6 +11,7 @@ import Header from "./header";
 import { ShowSectionE, AddData, SetData } from "./firebase";
 import  './firebase';
 import { LocalCafeOutlined } from "@material-ui/icons";
+import moment from "moment";
 
 
 export default function Summary(props) {
@@ -280,8 +281,8 @@ export default function Summary(props) {
                         </tr>
                         <tr>
                             <th></th>
-                            <th>{abTime}</th>
-                            <th>{dbTime}</th>
+                            <th>{moment(abTime).format('MMMM Do YYYY, H:mm:ss a')}</th>
+                            <th>{moment(dbTime).format('MMMM Do YYYY, H:mm:ss a')}</th>
                             <th></th>
                         </tr>
                     </thead>
