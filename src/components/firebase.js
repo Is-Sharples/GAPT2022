@@ -123,3 +123,17 @@ export function SetData(Adate, Ddate, data1, data2, data3, data4){
         dhw: data4
     })
 }
+
+export function setPatient(patient){
+
+    const dbref = doc(db, 'patients',patient.id);
+    setDoc(dbref,{
+        name:patient.name,
+        id:patient.id,
+        gender:patient.gender,
+        age:patient.age,
+    });
+
+
+    // console.log("Big Success!");
+}

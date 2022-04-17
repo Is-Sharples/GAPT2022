@@ -54,8 +54,10 @@ class Login extends React.Component{
                     if(User.roles === "admin"){
 
                         navigation("/Patient");
-                    }else{
+                    }else if(User.roles === "Physio"){
                         navigation("/PatientID-Team-2");
+                    }else {
+                        navigation("/CreatePatient");
                     }
                     
                 }
