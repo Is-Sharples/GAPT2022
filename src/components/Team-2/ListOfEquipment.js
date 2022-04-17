@@ -5,7 +5,7 @@ import { ArrowBack } from '@mui/icons-material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import TUGPhoto from './TUG_Test_Setup.png'
+import TUGPhoto from '../assets/TUG_Test_Setup.png'
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
@@ -29,9 +29,9 @@ function ListOfEquipment() {
     sessionStorage.setItem("question3", "");
     sessionStorage.setItem("question4", "");
     sessionStorage.setItem("question5", "");
-    console.log(question1);
-    console.log(question2);
-    console.log("AAA ", sessionStorage.getItem("Instructions"));
+    // console.log(question1);
+    // console.log(question2);
+    // console.log("AAA ", sessionStorage.getItem("Instructions"));
 
     
 

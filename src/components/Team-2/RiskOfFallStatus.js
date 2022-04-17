@@ -17,28 +17,15 @@ function RiskOfFallStatus() {
     var typography = "The following are the patient's results according to the timer in the previous page";
 
     const navigate = useNavigate();
-    //help poppup function
-    const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const goBack = () => {
-        navigate("/Timer");
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    
 
     function navNext(){
         sessionStorage.setItem("RiskOfFallStatus", true);
         navigate("/ReviewQuestion");
     }
+
+    
 
     return (
         <div className="screen">

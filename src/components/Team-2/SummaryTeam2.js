@@ -33,6 +33,8 @@ const Summary = () => {
 
   function validateForm() {
     console.log("Results are to be submitted after the SUBMIT is pressed");
+    console.log(sessionStorage.getItem("TUGStatus"));
+    console.log(sessionStorage.getItem("question1"));
     navigate("/");
   }
 

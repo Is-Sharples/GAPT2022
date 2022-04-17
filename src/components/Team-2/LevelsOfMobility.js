@@ -22,19 +22,19 @@ function LevelsOfMobility() {
     
     const navigate = useNavigate();
 
-    console.log("Previous Level of Mobility ", sessionStorage.getItem("TUGQuestion1"));
-    console.log("Current Level of Mobility ", sessionStorage.getItem("TUGQuestion2"));
-    console.log("TUG Timer ", sessionStorage.getItem("TUGTimer"));
-    console.log("TUG Status ", sessionStorage.getItem("TUGStatus"));
-    console.log("TUG Carried out ", sessionStorage.getItem("TUGTestCarriedOut"));
-    console.log("GST Question 1 ", sessionStorage.getItem("question1"));
-    console.log("GST Question 2 ", sessionStorage.getItem("question2"));
-    console.log("GST Question 3 ", sessionStorage.getItem("question3"));
-    console.log("GST Question 4 ", sessionStorage.getItem("question4"));
-    console.log("GST Question 5 ", sessionStorage.getItem("question5"));
-    console.log("Instructions ", sessionStorage.getItem("Instructions"));
-    console.log("Timer ", sessionStorage.getItem("Timer"));
-    console.log("\n");
+    // console.log("Previous Level of Mobility ", sessionStorage.getItem("TUGQuestion1"));
+    // console.log("Current Level of Mobility ", sessionStorage.getItem("TUGQuestion2"));
+    // console.log("TUG Timer ", sessionStorage.getItem("TUGTimer"));
+    // console.log("TUG Status ", sessionStorage.getItem("TUGStatus"));
+    // console.log("TUG Carried out ", sessionStorage.getItem("TUGTestCarriedOut"));
+    // console.log("GST Question 1 ", sessionStorage.getItem("question1"));
+    // console.log("GST Question 2 ", sessionStorage.getItem("question2"));
+    // console.log("GST Question 3 ", sessionStorage.getItem("question3"));
+    // console.log("GST Question 4 ", sessionStorage.getItem("question4"));
+    // console.log("GST Question 5 ", sessionStorage.getItem("question5"));
+    // console.log("Instructions ", sessionStorage.getItem("Instructions"));
+    // console.log("Timer ", sessionStorage.getItem("Timer"));
+    // console.log("\n");
 
     function validateForm() {
 
@@ -75,7 +75,7 @@ function LevelsOfMobility() {
     }
     
 
-    console.log("Patient Data: " + sessionStorage.getItem("PatientData"))
+    // console.log("Patient Data: " + sessionStorage.getItem("PatientData"))
     
     return (
         <div className="screen">   

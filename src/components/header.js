@@ -24,7 +24,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
     const goBack = () => {
 
         var path = props.history;
-        console.log(path);
+        // console.log(path);
         navigate(path);
     }
 

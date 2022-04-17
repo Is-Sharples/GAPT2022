@@ -29,11 +29,11 @@ function ReviewQuestion() {
             console.log("Status: ", status);
             if (status !== 'false') {
                 if (status === "Not Recorded") {
-                    console.log("TIMER IS NULLL");
+                    // console.log("TIMER IS NULLL");
                     document.getElementById("radio-button-yes").disabled = true;
                 }
                 else {
-                    console.log("TIMER IS NOT NULLL");
+                    // console.log("TIMER IS NOT NULLL");
                     document.getElementById("radio-button-no").disabled = true;
                 }
             }

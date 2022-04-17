@@ -121,7 +121,7 @@ const Timer = () => {
             sessionStorage.setItem("TUGTimer", seconds);
             sessionStorage.setItem("TUGStatus", status);
             }
-            console.log(seconds + " " + status);
+            // console.log(seconds + " " + status);
             setStatus(status)
             return () => clearInterval(interval);
         }

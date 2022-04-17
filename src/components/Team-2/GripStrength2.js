@@ -21,15 +21,15 @@ const GripStrength2 = () => {
     // sessionStorage.setItem("question2", question2);
     // sessionStorage.setItem("question3", question3);
     var typography = "This page consists of questions that you should ask to the patient. Please answer all questions and sub questions before progressing to the next page.";
-    console.log("Question 1: ", question1);
-    console.log("Question 2: ", question2);
-    console.log("Question 3: ", question3);
-    console.log("\n");
+    // console.log("Question 1: ", question1);
+    // console.log("Question 2: ", question2);
+    // console.log("Question 3: ", question3);
+    // console.log("\n");
 
 
     function validateForm() {
 
-        console.log("Entered into the validate form");
+        // console.log("Entered into the validate form");
         if (question3 == "") {
             document.getElementById("question3-alert").innerHTML = "Please select an option!";
             document.getElementById("question3Form").scrollIntoView(false);
@@ -52,7 +52,7 @@ const GripStrength2 = () => {
             document.getElementById("question1-alert").innerHTML = "";
         }
         if (question1 != "" && question2 != "" && question3 != "") {
-            console.log("Passing results to GripStrength");
+            // console.log("Passing results to GripStrength");
             sessionStorage.setItem("question1", question1);
             sessionStorage.setItem("question2", question2);
             sessionStorage.setItem("question3", question3);
@@ -60,22 +60,9 @@ const GripStrength2 = () => {
             navigate("/GripStrength3")
         }
     }
-    //help poppup function
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const goBack = () => {
-        navigate("/GripStrength");
-    };
-
-    const open = Boolean(anchorEl);
+    
     
     return (
         <div className="screen">

@@ -1,5 +1,5 @@
 npm run build
 
-firebase init
+@REM firebase init
 
 firebase deploy --only hosting

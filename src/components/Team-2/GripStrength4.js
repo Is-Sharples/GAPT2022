@@ -47,7 +47,7 @@ const GripStrength4 = () => {
     });
 
     function validateForm() {
-        console.log("\nEntered into the validate form");
+        // console.log("\nEntered into the validate form");
         if (question5 == "") {
             document.getElementById("question2-alert").innerHTML = "Please select an option!";
             document.getElementById("question2Form").scrollIntoView();
@@ -78,23 +78,23 @@ const GripStrength4 = () => {
             if (question4 != "no, other" && question5 != "no, other") {
                 if (question4 != "Other: " && question5 != "Other: ") {
 
-                    console.log("Passing results to GripStrength");
+                    // console.log("Passing results to GripStrength");
                     sessionStorage.setItem("question4", question4);
                     sessionStorage.setItem("question5", question5);
 
-                    console.log(question4);
-                    console.log(question5, "\n");
+                    // console.log(question4);
+                    // console.log(question5, "\n");
                     navigate("/SummaryTeam2");
                 }
             }
         }
     }
 
-    console.log(sessionStorage.getItem("question1"));
-    console.log(sessionStorage.getItem("question2"));
-    console.log(sessionStorage.getItem("question3"));
-    console.log(sessionStorage.getItem("question4"));
-    console.log(sessionStorage.getItem("question5"));
+    // console.log(sessionStorage.getItem("question1"));
+    // console.log(sessionStorage.getItem("question2"));
+    // console.log(sessionStorage.getItem("question3"));
+    // console.log(sessionStorage.getItem("question4"));
+    // console.log(sessionStorage.getItem("question5"));
 
     return (
         <div className="screen">

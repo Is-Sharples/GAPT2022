@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import Header from "../header";
+import Header from "../src/components/header";
 function GetPatientData() {
 
   var typography = "This page requires to insert the patient's ID card number so that the data will be inserted into the database accordingly. For testing copy and paste this Patient Id: 754569D";

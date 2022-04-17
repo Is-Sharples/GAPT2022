@@ -179,9 +179,9 @@ const GripStrength3 = () => {
     let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
     let SessionRightResult = sessionStorage.getItem("MaxRightHandResult");
 
-    console.log("Left Hand Result: ", JSON.parse(SessionLeftResult));
-    console.log("Right Hand Result: ", JSON.parse(SessionRightResult));
-    console.log("\n");
+    // console.log("Left Hand Result: ", JSON.parse(SessionLeftResult));
+    // console.log("Right Hand Result: ", JSON.parse(SessionRightResult));
+    // console.log("\n");
 
     let ActualObjectLeftResult = JSON.parse(SessionLeftResult);
     let ActualObjectRightResult = JSON.parse(SessionRightResult);
