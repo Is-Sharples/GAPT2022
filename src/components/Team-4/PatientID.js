@@ -1,17 +1,17 @@
 import React from "react";
-import Header from './header'
+import Header from '../header'
 import { Grid, TextField } from "@mui/material";
 import { Box, fontSize } from "@mui/system";
-import './styles/HomeContent.css'
+import '../styles/HomeContent.css'
 import { List, Divider, ListItem,ListItemText, ListItemButton } from "@mui/material";
 import { Button } from "@mui/material";
 import Summary from './Summary';
 import {useState} from 'react';
 import Barthel from './BarthelIndex';
-import patients from './assets/patients.json';
-import './styles/header.css';
-import { getPatients } from "./firebase";
-import './firebase';
+// import patients from '../assets/patients.json';
+import '../styles/header.css';
+import { getPatients } from "../firebase";
+import '../firebase';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 class currentPatient{
     constructor(id,name,surname,gender){
@@ -108,8 +108,8 @@ DisplayPatients = (event) =>{
 
 render(){
     var typography = "Input a Patient ID to be directed to his Barthel & Measurements Summary Page";
-    const json = JSON.stringify(patients);
-    const obj = JSON.parse(json);    
+    // const json = JSON.stringify(patients);
+    // const obj = JSON.parse(json);    
     // this.state.patients = obj.patient;
     // this.state.currentPatient.id = 0;
     console.log(getPatients());

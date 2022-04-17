@@ -3,14 +3,14 @@ import WeightCard from './WeightCard';
 import QuestionCard from './QuestionCard';
 import Question2Card from './Question2Card';
 import Summary from "./Summary";
-import patients from './assets/patients.json';
+// import patients from '../assets/patients.json';
 import { Grid } from '@mui/material';
 
 
 function Weight(props) {
     
-    var json = JSON.stringify(patients);
-  	var obj = JSON.parse(json);
+    // var json = JSON.stringify(patients);
+  	// var obj = JSON.parse(json);
     var data = props.ahw;
     var run = props.run;
     const [height, setHeight] = useState(props.height);

@@ -5,11 +5,12 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
+// import Height from "./Height";
 import Height from "./Height";
-import "./styles/Summary.css";
-import Header from "./header";
-import { ShowSectionE, AddData, SetData } from "./firebase";
-import  './firebase';
+import "../styles/Summary.css";
+import Header from "../header";
+import { ShowSectionE, AddData, SetData } from "../firebase";
+import  '../firebase';
 import { LocalCafeOutlined } from "@material-ui/icons";
 import moment from "moment";
 

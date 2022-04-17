@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "./Input";
-import './HeightCard.css';
+// import '../HeightCard.css';
+import '../styles/HeightCard.css';
 
 const HeightCard = ({ handleChange, demispan, height }) => (
     <div className="my-card mdc-card mdc-card--outlined">

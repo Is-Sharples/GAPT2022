@@ -4,7 +4,7 @@ import { Grid, TextField } from "@mui/material";
 import { Box, fontSize } from "@mui/system";
 import '../styles/HomeContent.css'
 import { List, Divider, ListItem,ListItemText, ListItemButton } from "@mui/material";
-import Summary from '../Summary';
+// import Summary from '../Summary';
 import patients from '../assets/patients.json';
 import '../styles/header.css';
 import { getPatients } from "../firebase";

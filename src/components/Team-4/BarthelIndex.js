@@ -1,5 +1,5 @@
 import React, {useState} from 'react'; 
-import './styles/Barthel.css';
+import '../styles/Barthel.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';

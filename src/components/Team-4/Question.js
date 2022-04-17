@@ -1,5 +1,6 @@
 import React from "react";
-import './Question.css';
+// import './Question.css';
+import '../styles/Question.css';
 
 const Question = ({handleButtonSubmit, title, value, name}) => (
     <div className="question">

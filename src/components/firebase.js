@@ -78,7 +78,7 @@ export function getUsers(){
                 // console.log(globalUsers[0]);        
             }
 
-            console.log(globalUsers);
+            // console.log(globalUsers);
             return globalUsers;
         })
         

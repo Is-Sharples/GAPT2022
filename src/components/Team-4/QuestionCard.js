@@ -1,6 +1,7 @@
 import React from 'react';
 import Question from './Question';
-import './QuestionCard.css';
+// import './QuestionCard.css';
+import '../styles/QuestionCard.css';
 
 const firstQuestion = "Has the patient lost any weight in the past year?";
 const secondQuestion = "Was the weight lost due to exercise?";

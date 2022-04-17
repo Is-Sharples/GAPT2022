@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField } from "@mui/material";
-import './Input.css';
+// import './Input.css';
+import '../styles/Input.css';
 
 const Input = ({label, handleChange, units, ...otherProps}) => (
     <div className="group">

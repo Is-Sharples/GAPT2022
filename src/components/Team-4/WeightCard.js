@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "./Input";
-import './WeightCard.css';
+// import './WeightCard.css';
+import '../styles/WeightCard.css';
 
 const WeightCard = ({handleChange, weight}) => (
     <div className="my-weight-card mdc-card mdc-card--outlined">
