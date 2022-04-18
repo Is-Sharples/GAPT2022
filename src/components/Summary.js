@@ -5,12 +5,19 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
+import BarthelEdit from "./BarthelEdit";
 import Height from "./Height";
 import "./styles/Summary.css";
 import Header from "./header";
 import { ShowSectionE, AddData, SetData, AddDataB } from "./firebase";
 import  './firebase';
 import { LocalCafeOutlined, LocalCafeSharp, LocalSeeOutlined } from "@material-ui/icons";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 import moment from "moment";
 
 
@@ -41,6 +48,9 @@ export default function Summary(props) {
     const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
+    const [edit, setEdit] = useState(false);
+    const [editnum, setedit] = useState(0);
+    const [open, setOpen] = useState(false);
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -50,22 +60,20 @@ export default function Summary(props) {
         exercise: "",
     } ;
 
-    // console.log(props.ahwStore);
-    /*if(props.ahwStore !== "" && (run===1 || run === 2)){
-        console.log(props.ahwStore);
-        ahw = props.ahwStore;
-        
-    }
-    else{
-        console.log("no prop");
-    }*/
-
     var dhw = ((run===0 && localStorage.getItem("dhw")!==null) || (run === 1 && localStorage.getItem("dhw")!==null) || (run===2 && localStorage.getItem("dhw")!==null)) ? JSON.parse(localStorage.getItem("dhw")) :{
         height: "",
         weight: "",
         weightloss: "",
         exercise: "",
     };
+
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
 
     if(ahw.height===null){
         console.log("vojt");
@@ -169,14 +177,12 @@ export default function Summary(props) {
     if (Ablist.length<10){
         if(props.indexList !== undefined && Barthelex === 1){
             props.indexList.forEach(element => Ablist.push(element));
-            console.log("ab set");
         }
         else{
             
         } 
     }
     else{
-        console.log("abDefined");
     }
     if (Dblist.length<10){
         if(props.indexList !== undefined && Barthelex === 2){
@@ -187,7 +193,6 @@ export default function Summary(props) {
         } 
     }
     else{
-        console.log("dbDefined");
     }
 
     //if (AHW.height === ""){
@@ -198,7 +203,6 @@ export default function Summary(props) {
             console.log("thalt");
         }
         else{
-            console.log("ma thatlx");
         }
     //}
     //if (DHW.height === ""){
@@ -221,8 +225,14 @@ export default function Summary(props) {
         }
     }
 
-    function full(){
-        var full = null;
+    if(edit===true /*&& localStorage.getItem("brun")>0*/){
+        return <BarthelEdit patient = {data} question={editnum}/>
+    }
+
+    function showInvalid(){
+        return (<div>
+            You can only edit this section on the day of data entering
+            </div>)
     }
 
   return (
@@ -254,6 +264,17 @@ export default function Summary(props) {
                 <button className="input-details" onClick={() => {(Barthelex) === 0 ? setAbtime() : setDbtime();
                                                                 showBarthel("true");}}>Input Barthel Index</button>
             </div>
+
+        <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+            {"Which Session would you like to edit?"}
+            </DialogTitle>
+            <DialogContent>
+            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEdit(true); handleClose(); }}>Admission</Button>
+            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEdit(true); handleClose(); }}>Discharge</Button>
+            </DialogContent>
+        </Dialog>
+
             <div className="grid-page">
                 <table>
                     <thead>
@@ -265,8 +286,8 @@ export default function Summary(props) {
                         </tr>
                         <tr>
                             <th></th>
-                            <th>{moment(abTime).format('MMMM Do YYYY, H:mm:ss a')}</th>
-                            <th>{moment(dbTime).format('MMMM Do YYYY, H:mm:ss a')}</th>
+                            <th>{(abTime)===null ? "" : moment(abTime).format('MMMM Do YYYY, H:mm:ss a')}</th>
+                            <th>{(dbTime)===null ? "" : moment(dbTime).format('MMMM Do YYYY, H:mm:ss a')}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -276,60 +297,70 @@ export default function Summary(props) {
                             <td>{Ablist[0]}</td>
                             <td>{Dblist[0]}</td>
                             <td className="total-diff">{(Ablist[0])!= undefined && (Dblist[0])!=undefined? Dblist[0] - Ablist[0] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(0); setOpen(true)}}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Grooming</td>
                             <td>{Ablist[1]}</td>
                             <td>{Dblist[1]}</td>
                             <td>{(Ablist[1])!= undefined && (Dblist[1])!=undefined? Dblist[1] - Ablist[1] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(1); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Dressing</td>
                             <td>{Ablist[2]}</td>
                             <td>{Dblist[2]}</td>
                             <td>{(Ablist[2])!= undefined && (Dblist[2])!=undefined? Dblist[2] - Ablist[2] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(2); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bathing</td>
                             <td>{Ablist[3]}</td>
                             <td>{Dblist[3]}</td>
                             <td>{(Ablist[3])!= undefined && (Dblist[3])!=undefined? Dblist[3] - Ablist[3] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(3); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Stairs</td>
                             <td>{Ablist[4]}</td>
                             <td>{Dblist[4]}</td>
                             <td>{(Ablist[4])!= undefined && (Dblist[4])!=undefined? Dblist[4] - Ablist[4] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(4); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bowels</td>
                             <td>{Ablist[5]}</td>
                             <td>{Dblist[5]}</td>
                             <td>{(Ablist[5])!= undefined && (Dblist[5])!=undefined? Dblist[5] - Ablist[5] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(5); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Transfers</td>
                             <td>{Ablist[6]}</td>
                             <td>{Dblist[6]}</td>
                             <td>{(Ablist[6])!= undefined && (Dblist[6])!=undefined? Dblist[6] - Ablist[6] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(6); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bladder</td>
                             <td>{Ablist[7]}</td>
                             <td>{Dblist[7]}</td>
                             <td>{(Ablist[7])!= undefined && (Dblist[7])!=undefined? Dblist[7] - Ablist[7] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(7); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Feeding</td>
                             <td>{Ablist[8]}</td>
                             <td>{Dblist[8]}</td>
                             <td>{(Ablist[8])!= undefined && (Dblist[8])!=undefined? Dblist[8] - Ablist[8] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(8); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Toilet Use</td>
                             <td>{Ablist[9]}</td>
                             <td>{Dblist[9]}</td>
                             <td>{(Ablist[9])!= undefined && (Dblist[9])!=undefined? Dblist[9] - Ablist[9] : ""}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(9); setOpen(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Total</td>
