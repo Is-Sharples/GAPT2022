@@ -13,7 +13,7 @@ function Height(props) {
     const [summary, showSummary] = useState("false");
 
     if (summary === "true"){
-        return <Summary patient = {props.patient} height={state.height}/>
+        return <Summary patient = {props.patient} newheight={state.height}/>
     }
     
 

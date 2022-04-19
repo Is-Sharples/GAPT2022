@@ -9,7 +9,7 @@ export default function BarthelIndex(props) {
 	var data = props.patient;
 	const [summary, showSummary] = useState("false");
 	const [currentQuestion, setCurrentQuestion] = useState(props.question);
-    const [edit,setEdit] = useState(0);
+    const [editB,setEdit] = useState(0);
     
 	
 
@@ -103,7 +103,7 @@ export default function BarthelIndex(props) {
 	};
 
 	if (summary === "true"){
-        return <Summary patient ={data} history = {"/"} edit={edit}/>
+        return <Summary patient ={data} history = {"/"} editB={editB} arrnum={props.question}/>
     }
 
 	return (

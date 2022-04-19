@@ -14,7 +14,7 @@ function Weight(props) {
     const [summary, showSummary] = useState("false");
 
     if (summary === "true"){
-        return <Summary ahwStore = {data} patient = {props.patient} weight={weight} weightloss={weightLoss} exercise={exercise}/>
+        return <Summary ahwStore = {data} patient = {props.patient} newweight={weight} newweightloss={weightLoss} newexercise={exercise}/>
     }
 
     const handleWeightChange = event => {

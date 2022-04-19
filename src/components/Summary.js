@@ -33,6 +33,7 @@ export default function Summary(props) {
             localStorage.setItem("run",JSON.stringify(props.run));
         }
     }
+
     console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
@@ -61,6 +62,7 @@ export default function Summary(props) {
     const [edithw, setedithw] = useState("");
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
+    var edited = [];
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -77,10 +79,25 @@ export default function Summary(props) {
         exercise: "",
     };
     
-      const handleClose = () => {
+    if(props.arrnum!==undefined){
+        if(localStorage.getItem("Brun")===1){
+            edited = Ablist;
+            edited[props.arrnum]=props.editB;
+            console.log(edited);
+        }
+        //else if(JSON.parse(localStorage.getItem("Brun"))===2){
+        else{
+            edited = Dblist;
+            edited[props.arrnum]=props.editB;
+            console.log(edited);
+        }
+    }
+    
+
+    const handleClose = () => {
         setOpenB(false);
         setOpenHW(false);
-      };
+    };
 
     function updateAhw(h, w, wl, e){
        ahw.height = h;
