@@ -7,26 +7,32 @@ import AddIcon from '@mui/icons-material/Add';
 import Barthel from "./BarthelIndex";
 import BarthelEdit from "./BarthelEdit";
 import Height from "./Height";
+import HeightEdit from "./HeightEdit";
+import WeightEdit from "./WeightEdit";
 import "./styles/Summary.css";
 import Header from "./header";
 import { ShowSectionE, AddData, SetData, AddDataB } from "./firebase";
 import  './firebase';
-import { LocalCafeOutlined, LocalCafeSharp, LocalSeeOutlined } from "@material-ui/icons";
+import { LocalCafeOutlined, LocalCafeSharp, LocalDining, LocalSeeOutlined } from "@material-ui/icons";
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import moment from "moment";
 
 
 export default function Summary(props) {
-    console.log("props:", props.ahwStore);
     console.log(ShowSectionE());
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
-    var run = (props.run)=== undefined ? 0 : props.run;
+    var run = (localStorage.getItem("run")===null) ? (props.run)=== undefined ? 0 : props.run : JSON.parse(localStorage.getItem("run"));
+    if (props.run!==undefined){
+        if(localStorage.getItem("run")>1){
+        }
+        else {
+            localStorage.setItem("run",JSON.stringify(props.run));
+        }
+    }
     console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
@@ -48,9 +54,13 @@ export default function Summary(props) {
     const [height, showHeight] = useState("false");
     const [Ablist, setAblist] = useState([]);
     const [Dblist, setDblist] = useState([]);
-    const [edit, setEdit] = useState(false);
+    const [editB, setEditB] = useState(false);
     const [editnum, setedit] = useState(0);
-    const [open, setOpen] = useState(false);
+    const [editH, setEditH] = useState(false);
+    const [editW, setEditW] = useState(false);
+    const [edithw, setedithw] = useState("");
+    const [openB, setOpenB] = useState(false);
+    const [openHW, setOpenHW] = useState(false);
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -66,18 +76,12 @@ export default function Summary(props) {
         weightloss: "",
         exercise: "",
     };
-
-    const handleClickOpen = () => {
-        setOpen(true);
-      };
     
       const handleClose = () => {
-        setOpen(false);
+        setOpenB(false);
+        setOpenHW(false);
       };
 
-    if(ahw.height===null){
-        console.log("vojt");
-    }
     function updateAhw(h, w, wl, e){
        ahw.height = h;
        ahw.weight = w;
@@ -168,10 +172,9 @@ export default function Summary(props) {
         }
     }
 
-        if(height === "true"){
-            //localStorage.setItem("hwex",JSON.stringify(JSON.parse(localStorage.getItem("hwex"))+1));
-            return <Height patient={data} ahw = {ahw} age = {60} gender = {'Male'} run={run}/>
-        }
+    if(height === "true"){
+        return <Height patient={data} ahw = {ahw} age = {60} gender = {'Male'} run={run}/>
+    }
     
 
     if (Ablist.length<10){
@@ -225,15 +228,18 @@ export default function Summary(props) {
         }
     }
 
-    if(edit===true /*&& localStorage.getItem("brun")>0*/){
+    if(editB===true){
         return <BarthelEdit patient = {data} question={editnum}/>
     }
 
-    function showInvalid(){
-        return (<div>
-            You can only edit this section on the day of data entering
-            </div>)
+    if(editH===true){
+        return <HeightEdit patient = {data} age={60} gender={"Male"}/>
     }
+
+    if(editW===true){
+        return <WeightEdit patient = {data}/>
+    }
+
 
   return (
     <div className="screen">
@@ -250,7 +256,7 @@ export default function Summary(props) {
             <MenuItem value={illum}>Illum</MenuItem> 
             </Select>
             </FormControl>
-            <button onClick={() => AddDataB()} className='newVisit'>
+            <button /*onClick={() => AddDataB()}*/ className='newVisit'>
                 <span><AddIcon/></span>
             </button>
             <div className="lastModifiedBy">
@@ -265,13 +271,13 @@ export default function Summary(props) {
                                                                 showBarthel("true");}}>Input Barthel Index</button>
             </div>
 
-        <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+        <Dialog open={openB} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
             <DialogTitle id="alert-dialog-title">
             {"Which Session would you like to edit?"}
             </DialogTitle>
             <DialogContent>
-            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEdit(true); handleClose(); }}>Admission</Button>
-            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEdit(true); handleClose(); }}>Discharge</Button>
+            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Admission</Button>
+            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Discharge</Button>
             </DialogContent>
         </Dialog>
 
@@ -297,70 +303,70 @@ export default function Summary(props) {
                             <td>{Ablist[0]}</td>
                             <td>{Dblist[0]}</td>
                             <td className="total-diff">{(Ablist[0])!= undefined && (Dblist[0])!=undefined? Dblist[0] - Ablist[0] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(0); setOpen(true)}}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(0); setOpenB(true)}}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Grooming</td>
                             <td>{Ablist[1]}</td>
                             <td>{Dblist[1]}</td>
                             <td>{(Ablist[1])!= undefined && (Dblist[1])!=undefined? Dblist[1] - Ablist[1] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(1); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(1); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Dressing</td>
                             <td>{Ablist[2]}</td>
                             <td>{Dblist[2]}</td>
                             <td>{(Ablist[2])!= undefined && (Dblist[2])!=undefined? Dblist[2] - Ablist[2] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(2); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(2); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bathing</td>
                             <td>{Ablist[3]}</td>
                             <td>{Dblist[3]}</td>
                             <td>{(Ablist[3])!= undefined && (Dblist[3])!=undefined? Dblist[3] - Ablist[3] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(3); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(3); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Stairs</td>
                             <td>{Ablist[4]}</td>
                             <td>{Dblist[4]}</td>
                             <td>{(Ablist[4])!= undefined && (Dblist[4])!=undefined? Dblist[4] - Ablist[4] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(4); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(4); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bowels</td>
                             <td>{Ablist[5]}</td>
                             <td>{Dblist[5]}</td>
                             <td>{(Ablist[5])!= undefined && (Dblist[5])!=undefined? Dblist[5] - Ablist[5] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(5); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(5); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Transfers</td>
                             <td>{Ablist[6]}</td>
                             <td>{Dblist[6]}</td>
                             <td>{(Ablist[6])!= undefined && (Dblist[6])!=undefined? Dblist[6] - Ablist[6] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(6); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(6); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Bladder</td>
                             <td>{Ablist[7]}</td>
                             <td>{Dblist[7]}</td>
                             <td>{(Ablist[7])!= undefined && (Dblist[7])!=undefined? Dblist[7] - Ablist[7] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(7); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(7); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Feeding</td>
                             <td>{Ablist[8]}</td>
                             <td>{Dblist[8]}</td>
                             <td>{(Ablist[8])!= undefined && (Dblist[8])!=undefined? Dblist[8] - Ablist[8] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(8); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(8); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Toilet Use</td>
                             <td>{Ablist[9]}</td>
                             <td>{Dblist[9]}</td>
                             <td>{(Ablist[9])!= undefined && (Dblist[9])!=undefined? Dblist[9] - Ablist[9] : ""}</td>
-                            <td className="section"><button className="edit-button" onClick={() => {setedit(9); setOpen(true); }}>Edit</button></td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedit(9); setOpenB(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Total</td>
@@ -384,6 +390,17 @@ export default function Summary(props) {
                 <p className="name">Height & Weight</p>
                 <button className="input-details" onClick={() => {showHeight("true")}}>Input Height & Weight</button>
             </div>
+
+            <Dialog open={openHW} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+            {"Which Session would you like to edit?"}
+            </DialogTitle>
+            <DialogContent>
+            <Button disabled = {run!==1 ? true : ""} onClick={() => {(edithw==="H" ? setEditH(true) : setEditW(true)); handleClose(); }}>Admission</Button>
+            <Button disabled = {run!==2 ? true : ""} onClick={() => {(edithw==="H" ? setEditH(true) : setEditW(true)); handleClose(); }}>Discharge</Button>
+            </DialogContent>
+            </Dialog>
+
             <div className="grid-page">
                 <table>
                     <thead>
@@ -400,12 +417,14 @@ export default function Summary(props) {
                             <td className="grid-row">{ahw.height}</td>
                             <td className="grid-row">{dhw.height}</td>
                             <td className="total-diff">{(ahw.height)=== "" && (dhw.height)=== "" ? "" : "/"}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedithw("H"); setOpenHW(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Weight (kg)</td>
                             <td>{ahw.weight}</td>
                             <td>{dhw.weight}</td>
                             <td className="total-diff">{(ahw.weight)==="" && (dhw.weight)==="" ? "" : dhw.weight - ahw.weight}</td>
+                            <td className="section"><button className="edit-button" onClick={() => {setedithw("W"); setOpenHW(true); }}>Edit</button></td>
                         </tr>
                         <tr className="grid-data">
                             <td className="section">Has patient<br></br>lost weight?</td>
