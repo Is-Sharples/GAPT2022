@@ -63,6 +63,7 @@ export default function Summary(props) {
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
     var edited = [];
+    var changeh = "";
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -93,6 +94,31 @@ export default function Summary(props) {
         }
     }
     
+    if(props.newheight!==undefined){
+        if(localStorage.getItem("run")===1){
+            ahw.height = props.newheight;
+            localStorage.setItem("ahw",JSON.stringify(ahw));
+        }
+        else{
+            dhw.height = props.newheight;
+            localStorage.setItem("dhw",JSON.stringify(dhw));
+        }
+    }
+
+    if(props.newweight!==undefined){
+        if(localStorage.getItem("run")===1){
+            ahw.weight = props.newweight;
+            ahw.weightloss = props.newweightloss;
+            ahw.exercise = props.newexercise;
+            localStorage.setItem("ahw",JSON.stringify(ahw));
+        }
+        else{
+            dhw.weight = props.newweight;
+            dhw.weightloss = props.newweightloss;
+            dhw.exercise = props.newexercise;
+            localStorage.setItem("dhw",JSON.stringify(dhw));
+        }
+    }
 
     const handleClose = () => {
         setOpenB(false);
