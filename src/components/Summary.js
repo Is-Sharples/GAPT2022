@@ -62,8 +62,8 @@ export default function Summary(props) {
     const [edithw, setedithw] = useState("");
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
-    var edited = [];
-    var changeh = "";
+    var editeda = [];
+    var editedd = [];
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -81,21 +81,20 @@ export default function Summary(props) {
     };
     
     if(props.arrnum!==undefined){
-        if(localStorage.getItem("Brun")===1){
-            edited = Ablist;
-            edited[props.arrnum]=props.editB;
-            console.log(edited);
+        if(Barthelex===1){
+            editeda = Ablist;
+            editeda[props.arrnum]=props.editB;
+            console.log(editeda);
         }
-        //else if(JSON.parse(localStorage.getItem("Brun"))===2){
         else{
-            edited = Dblist;
-            edited[props.arrnum]=props.editB;
-            console.log(edited);
+            editedd = Dblist;
+            editedd[props.arrnum]=props.editB;
+            console.log(editedd);
         }
     }
     
     if(props.newheight!==undefined){
-        if(localStorage.getItem("run")===1){
+        if(JSON.parse(localStorage.getItem("run"))===1){
             ahw.height = props.newheight;
             localStorage.setItem("ahw",JSON.stringify(ahw));
         }
@@ -106,7 +105,7 @@ export default function Summary(props) {
     }
 
     if(props.newweight!==undefined){
-        if(localStorage.getItem("run")===1){
+        if(JSON.parse(localStorage.getItem("run"))===1){
             ahw.weight = props.newweight;
             ahw.weightloss = props.newweightloss;
             ahw.exercise = props.newexercise;
