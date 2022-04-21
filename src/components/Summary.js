@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { AppBar, FormControl, MenuItem} from "@mui/material";
+import { AppBar, DialogActions, FormControl, MenuItem} from "@mui/material";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
@@ -19,6 +19,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import moment from "moment";
+import Box from '@mui/material/Box';
 
 
 export default function Summary(props) {
@@ -62,6 +63,7 @@ export default function Summary(props) {
     const [edithw, setedithw] = useState("");
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
+    const [openSave, setOpenSave] = useState(false);
     var editeda = [];
     var editedd = [];
 
@@ -122,6 +124,7 @@ export default function Summary(props) {
     const handleClose = () => {
         setOpenB(false);
         setOpenHW(false);
+        setOpenSave(false);
     };
 
     function updateAhw(h, w, wl, e){
@@ -484,8 +487,17 @@ export default function Summary(props) {
                 </table>
             </div>
 
+            <Dialog open={openSave} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+            {"Are you sure you want to save the patient details?"}
+            </DialogTitle>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetData(abTime, dbTime, Ablist, Dblist, ahw, dhw); handleClose(); }}>Yes</Button>
+            <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
+            </Dialog>
+
         </div>
-        <button className="input-details-save" onClick={() => {SetData(abTime, dbTime, Ablist,Dblist,ahw,dhw);}}>Save Data</button>
+        <button className="input-details-save" onClick={() => {setOpenSave(true);}}>Save Data</button>
     </div>
     
   );

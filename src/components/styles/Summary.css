@@ -159,10 +159,6 @@
     background-color: #e5e5e5;
 }
 
-.input-details-save:focus{
-    background-color: #369ce0;
-}
-
 .dependency {
     border-radius: 12px;
     padding: 5px;
