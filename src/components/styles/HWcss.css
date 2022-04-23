@@ -1,0 +1,15 @@
+.phase-section{
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 94%;
+    border-radius: 0.5rem;
+    padding-top: 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    color: black;
+    font-family: 'Calibri';
+  }

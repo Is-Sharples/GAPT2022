@@ -5,6 +5,7 @@ import Question2Card from './Question2Card';
 import Summary from "./Summary";
 import patients from './assets/patients.json';
 import { Grid } from '@mui/material';
+import './styles/HWcss.css';
 
 
 function Weight(props) {
@@ -45,6 +46,9 @@ function Weight(props) {
     return (
         <>
         <Grid container direction="column" justifyContent="center" alignItems="center" rowSpacing={{lg: 3, sm: 3}}>
+            <div className='phase-section'>
+				<h2>{(run)===1 ? "Admission" : "Discharge"}</h2>
+			</div>
             <Grid item >
             <WeightCard handleChange={handleWeightChange} weight={weight} />         
             </Grid>

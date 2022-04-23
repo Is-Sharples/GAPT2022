@@ -4,9 +4,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
 import Summary from './Summary';
+import Box from '@mui/material/Box';
 
 export default function BarthelIndex(props) {
 	var data = props.patient;
+	var run = props.run;
 	const [summary, showSummary] = useState("false");
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
@@ -129,7 +131,11 @@ export default function BarthelIndex(props) {
 							Barthel Index: {BarthelIndex}
 						</div>
 					) : (
-						<>
+						<>	
+							<div className='phase-section'>
+								<h2>{(run)===1 ? "Admission" : "Discharge"}</h2>
+							</div>
+							
 							<div className='question-section'>
 								<div className='question-text'>{questions[currentQuestion].questionText}</div> <br />
 							</div>

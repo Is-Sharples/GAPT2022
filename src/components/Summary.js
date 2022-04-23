@@ -213,7 +213,7 @@ export default function Summary(props) {
         if(barthel === "true"){
             bar = Barthelex+1;
             localStorage.setItem("Brun",JSON.stringify(bar));
-            return <Barthel patient = {data}/>
+            return <Barthel patient = {data} run={Barthelex}/>
         }
     }
 
@@ -321,8 +321,8 @@ export default function Summary(props) {
             {"Which Session would you like to edit?"}
             </DialogTitle>
             <DialogContent>
-            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Admission</Button>
-            <Button disabled = {JSON.parse(localStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Discharge</Button>
+            <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(localStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Admission</Button>
+            <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(localStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Discharge</Button>
             </DialogContent>
         </Dialog>
 
@@ -441,8 +441,8 @@ export default function Summary(props) {
             {"Which Session would you like to edit?"}
             </DialogTitle>
             <DialogContent>
-            <Button disabled = {run!==1 ? true : ""} onClick={() => {(edithw==="H" ? setEditH(true) : setEditW(true)); handleClose(); }}>Admission</Button>
-            <Button disabled = {run!==2 ? true : ""} onClick={() => {(edithw==="H" ? setEditH(true) : setEditW(true)); handleClose(); }}>Discharge</Button>
+            <Button style={{m: 10, fontSize: "18px"}} disabled = {run!==1 ? true : ""} onClick={() => {(edithw==="H" ? setEditH(true) : setEditW(true)); handleClose(); }}>Admission</Button>
+            <Button style={{m: 10, fontSize: "18px"}} disabled = {run!==2 ? true : ""} onClick={() => {(edithw==="H" ? setEditH(true) : setEditW(true)); handleClose(); }}>Discharge</Button>
             </DialogContent>
             </Dialog>
 
