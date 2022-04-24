@@ -11,7 +11,7 @@ import HeightEdit from "./HeightEdit";
 import WeightEdit from "./WeightEdit";
 import "./styles/Summary.css";
 import Header from "./header";
-import { ShowSectionE, AddData, SetData, AddDataB } from "./firebase";
+import { ShowSectionE, AddData, SetDataB, AddNewVisit, GetDocsE } from "./firebase";
 import  './firebase';
 import { LocalCafeOutlined, LocalCafeSharp, LocalDining, LocalSeeOutlined } from "@material-ui/icons";
 import Dialog from '@mui/material/Dialog';
@@ -23,7 +23,6 @@ import Box from '@mui/material/Box';
 
 
 export default function Summary(props) {
-    console.log(ShowSectionE());
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
     var run = (localStorage.getItem("run")===null) ? (props.run)=== undefined ? 0 : props.run : JSON.parse(localStorage.getItem("run"));
@@ -34,11 +33,11 @@ export default function Summary(props) {
             localStorage.setItem("run",JSON.stringify(props.run));
         }
     }
-
+    console.log(GetDocsE(data.id));
     console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
-    const dt = new Date().toString();
+    const dt = new Date().toDateString();
     const setAbtime = () => {
         let dt = new Date().toString();
         localStorage.setItem("abtime",JSON.stringify(dt));
@@ -50,7 +49,7 @@ export default function Summary(props) {
     }
     const dbTime = (localStorage.getItem("dbtime"))===undefined ? "" : localStorage.getItem("dbtime");
 
-    const [option, setOption] = React.useState("");
+    const [option, setOption] = useState("");
     const [barthel, showBarthel] = useState("false");
     const [Barthelex, setBarthelex] = useState(0);
     const [height, showHeight] = useState("false");
@@ -66,6 +65,11 @@ export default function Summary(props) {
     const [openSave, setOpenSave] = useState(false);
     var editeda = [];
     var editedd = [];
+    const Docs = GetDocsE(data.id);
+    
+    const test = ["hello","please","ahdem","ghax","ha naqbez"];
+
+    console.log("Docss:",Docs, test);
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -82,7 +86,7 @@ export default function Summary(props) {
         exercise: "",
     };
     
-    if(props.arrnum!==undefined){
+    /*if(props.arrnum!==undefined){
         if(Barthelex===1){
             editeda = Ablist;
             editeda[props.arrnum]=props.editB;
@@ -119,7 +123,7 @@ export default function Summary(props) {
             dhw.exercise = props.newexercise;
             localStorage.setItem("dhw",JSON.stringify(dhw));
         }
-    }
+    }*/
 
     const handleClose = () => {
         setOpenB(false);
@@ -243,7 +247,6 @@ export default function Summary(props) {
     else{
     }
 
-    //if (AHW.height === ""){
         if (props.height !== undefined && props.run === 1){
             updateAhw(props.height, props.weight, props.weightloss, props.exercise);
             const setahw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
@@ -252,14 +255,13 @@ export default function Summary(props) {
         }
         else{
         }
-    //}
-    //if (DHW.height === ""){
+   
         if (props.height !== undefined && props.run === 2){
             updateDhw(props.height, props.weight, props.weightloss, props.exercise);
             const setdhw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
             localStorage.setItem("dhw",JSON.stringify(setdhw));
         }
-    //}
+    
     
     function showSeverity(total) {
         if (total >= 0 && total <= 9) {
@@ -297,11 +299,12 @@ export default function Summary(props) {
             <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
             <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
             <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
-            <MenuItem value={ilbierah}>Ilbierah</MenuItem>  
-            <MenuItem value={illum}>Illum</MenuItem> 
+                {Docs.map((doc) => (
+                    <MenuItem key={doc.id} value={doc.id}>{doc.id}</MenuItem>
+                ))}
             </Select>
             </FormControl>
-            <button /*onClick={() => AddDataB()}*/ className='newVisit'>
+            <button onClick={() => AddNewVisit(data.id,dt)} className='newVisit'>
                 <span><AddIcon/></span>
             </button>
             <div className="lastModifiedBy">
@@ -491,7 +494,7 @@ export default function Summary(props) {
             <DialogTitle id="alert-dialog-title">
             {"Are you sure you want to save the patient details?"}
             </DialogTitle>
-            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetData(abTime, dbTime, Ablist, Dblist, ahw, dhw); handleClose(); }}>Yes</Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetDataB(abTime, dbTime, Ablist, Dblist, ahw, dhw); handleClose(); }}>Yes</Button>
             <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
             <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
             </Dialog>

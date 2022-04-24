@@ -111,6 +111,19 @@ export function AddData(){
     })
 }
 
+export function AddNewVisit(id, time){
+    const fullpath = 'patients/'+id+'/SectionE';
+    const dbref = doc(db,fullpath,time);
+    setDoc(dbref,{
+        AdmissionBarthel: "",
+        AdmissionDate: "",
+        AdmissionHeightWeight: "",
+        DischargeBarthel: "",
+        DischargeDate: "",
+        DischargeHeightWeight: "",
+    })
+}
+
 export function AddDataB(){
     addDoc(collection(db,'patients/1234/SectionB'),{
         DataofSession: "",
@@ -128,7 +141,7 @@ export function AddDataB(){
 }
 
 //data1: ablist, data2: dblist, data3: ahw, data4: dhw
-export function SetData(Adate, Ddate, data1, data2, data3, data4){
+export function SetDataB(Adate, Ddate, data1, data2, data3, data4){
     const dbref = doc(db,'patients/1234/SectionE','NNS66Bptd9kFWijqoFeW');
     setDoc(dbref,{
         ab: data1,
@@ -139,3 +152,19 @@ export function SetData(Adate, Ddate, data1, data2, data3, data4){
         dhw: data4
     })
 }
+
+export function GetDocsE(patientId){
+    const fullpath = 'patients/'+patientId+'/SectionE';
+    const dbref = collection(db, fullpath);
+    var arr = [];
+    getDocs(dbref)
+        .then((snapshot) => {
+            snapshot.docs.forEach((doc)=>{
+                arr.push(
+                    doc.id
+                )
+            })
+        })
+    return arr;
+}
+
