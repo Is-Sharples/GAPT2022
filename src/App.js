@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-// import Patient from './components/Team-4/PatientID';
+import PatientIDSW from './components/Team-1/Social-Worker/PatientID-Social-Worker';
 import Patient from './components/Team-4/PatientID';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import currentPatient from './components/Team-4/PatientID';
@@ -18,8 +18,16 @@ import GripStrength4 from './components/Team-2/GripStrength4';
 import SummaryTeam2 from './components/Team-2/SummaryTeam2';
 import PatientIDTeam2 from './components/Team-2/PatientID-Team2';
 import CreatePatient from './components/CreatePatient';
+import SWHomeSupport from './components/Team-1/Social-Worker/Social-History-Home-Support';
+import HomeEnvironment from './components/Team-1/Social-Worker/Home-Environment';
+import PatientPlans from './components/Team-1/Social-Worker/PatientPlans';
+import SocialServices from './components/Team-1/Social-Worker/Social-Services';
+import CommunityApps from './components/Team-1/Social-Worker/CommunityApps';
+
+
 
 export default function App() {
+
   
 
   return (
@@ -44,8 +52,14 @@ export default function App() {
         <Route path="/GripStrength4" element={<GripStrength4/>}></Route>
         <Route path="/SummaryTeam2" element={<SummaryTeam2/>}></Route>
         {/*Team-2 Ends here   */}
-
-
+        {/* Team-1 Starts here */}
+        <Route path = "/Patient-ID-Social-Worker" element={<PatientIDSW />}></Route>
+        <Route path = "/SH-Home-Support" element={<SWHomeSupport />}></Route>
+        <Route path = "/SH-Home-Env" element={<HomeEnvironment />} ></Route>
+        <Route path = "/SH-Patient-Plans" element={<PatientPlans />} ></Route>
+        <Route path = "/Social-Services" element={<SocialServices />} ></Route>
+        <Route path = '/Community-Apps' element={<CommunityApps />} ></Route>
+        {/* Team-1 Ends here */}
 
 
       </Routes>

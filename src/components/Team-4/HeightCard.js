@@ -1,6 +1,5 @@
 import React from "react";
 import Input from "./Input";
-// import '../HeightCard.css';
 import '../styles/HeightCard.css';
 
 const HeightCard = ({ handleChange, demispan, height }) => (

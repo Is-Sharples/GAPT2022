@@ -46,18 +46,21 @@ class Login extends React.Component{
     CompareCreds(){
         let users = this.state.users;
         const { navigation } = this.props;
-        
+        console.log(this.state.users);
         users.forEach(User => {
             if(User.user === this.state.creds.name){
                 if(User.pass === this.state.creds.pass){
                     console.log(User.roles);
-                    if(User.roles === "admin"){
-
+                    if(User.roles === "nurse"){
                         navigation("/Patient");
                     }else if(User.roles === "Physio"){
                         navigation("/PatientID-Team-2");
-                    }else {
+                    }else if (User.roles === "admin") {
                         navigation("/CreatePatient");
+                    }else if (User.roles === "social worker"){
+                        navigation("/Patient-ID-Social-Worker");
+                    }else{
+                        console.log("I'm tired man");
                     }
                     
                 }
@@ -70,7 +73,7 @@ class Login extends React.Component{
 
     render(){
         
-        var typography = "Please insert your email and password to be able to login to the app";
+        var typography = "Please insert your Username and password to be able to login to the app";
         return(
             <div className="screen">
                 
@@ -80,11 +83,10 @@ class Login extends React.Component{
                         
                     <List justifyContent={"center"} item >
                         <ListItem>
-                            <TextField  fullWidth={"true"} onChange={this.StoreUsername} item label = {"E-Mail"}>  </TextField>
+                            <TextField  fullWidth={"true"} onChange={this.StoreUsername} item label = {"UserName"}>  </TextField>
     
                         </ListItem>    
                         <ListItem>
-                           
                                 <TextField 
                                 fullWidth={"true"}
                                 onChange={this.StorePassword} 

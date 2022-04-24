@@ -121,12 +121,12 @@ const GripStrength3 = () => {
 
   async function onSubmit() {
 
-    let patientData = sessionStorage.getItem("PatientData");
-    let actualPatientData = JSON.parse(patientData);
+    // let patientData = sessionStorage.getItem("PatientData");
+    // let actualPatientData = JSON.parse(patientData);
 
-    console.log("The Patients object: " , actualPatientData);
-    let DatabaseGender = actualPatientData.gender;
-    console.log("The patient gender: ", DatabaseGender);
+    // console.log("The Patients object: " , actualPatientData);
+    // let DatabaseGender = actualPatientData.gender;
+    // console.log("The patient gender: ", DatabaseGender);
 
     if (errorConfirm == true) {
       navigate("/GripStrength4");
@@ -157,7 +157,7 @@ const GripStrength3 = () => {
 
       let maxValue = maxVal(leftInput1, leftInput2);
       //Remember to Replace "X" with gender from Database!
-      LeftResult.Risk = calculateRisk(maxValue, DatabaseGender);
+      // LeftResult.Risk = calculateRisk(maxValue, DatabaseGender);
       LeftResult.TestResult = `Left Max Result: ${maxValue}kg`
       sessionStorage.setItem(
         "MaxLeftHandResult",
@@ -167,7 +167,7 @@ const GripStrength3 = () => {
     if (rightInput1 > 0 || rightInput2 > 0) {
       let maxValue = maxVal(rightInput1, rightInput2);
       //Remember to Replace "X" with gender from Database!
-      RightResult.Risk = calculateRisk(maxValue, DatabaseGender);
+      // RightResult.Risk = calculateRisk(maxValue, DatabaseGender);
       RightResult.TestResult = `Right Max Result: ${maxValue}kg`
 
       sessionStorage.setItem(
