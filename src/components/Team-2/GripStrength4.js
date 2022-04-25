@@ -90,15 +90,11 @@ const GripStrength4 = () => {
         }
     }
 
-    // console.log(sessionStorage.getItem("question1"));
-    // console.log(sessionStorage.getItem("question2"));
-    // console.log(sessionStorage.getItem("question3"));
-    // console.log(sessionStorage.getItem("question4"));
-    // console.log(sessionStorage.getItem("question5"));
+    
 
     return (
         <div className="screen">
-           <Header typography = {typography} history = {"/GripStrength3"} name = {"Grip Strength Test"} />
+        <Header typography = {typography} history = {"/GripStrength3"} name = {"Grip Strength Test"} />
 
             <div className="main-section">
                 <label className="subtitle">Left Hand</label>

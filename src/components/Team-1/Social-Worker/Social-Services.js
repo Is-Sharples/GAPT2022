@@ -21,12 +21,22 @@ class SocialServices extends React.Component{
         this.state = {
             next:false,
             fragments:[],
+            exp:[],
         }
+        sessionStorage.setItem("CommCare","");
+        sessionStorage.setItem("HomeHelp","");
+        sessionStorage.setItem("Telecare","");
+        sessionStorage.setItem("Meals On Wheels","");
+        sessionStorage.setItem("Other","");
+        
+
     }
 
     handleText = (event) => {
         var value = event.target.value;
         sessionStorage.setItem("Other Profession:",value);
+        // this.state.exp.push(value);
+            // sessionStorage.setItem("Array", this.state.exp);
     }
 
 
@@ -34,17 +44,27 @@ class SocialServices extends React.Component{
         var value = event.target.value;
         // console.log(value);
         var testing = [];
+        
+
         if(value === "CommCare"){
-            sessionStorage.setItem(value,"Yes");
+            sessionStorage.setItem(value,"CommCare");
+            this.state.exp.push(value);
+            sessionStorage.setItem("Array", this.state.exp);
         }
         if(value === "HomeHelp"){
-            sessionStorage.setItem(value,"Yes");
+            sessionStorage.setItem(value,"HomeHelp");
+            this.state.exp.push(value);
+            sessionStorage.setItem("Array", this.state.exp);
         }
         if(value === "Telecare"){
-            sessionStorage.setItem(value,"Yes");
+            sessionStorage.setItem(value,"Telecare");
+            this.state.exp.push(value);
+            sessionStorage.setItem("Array", this.state.exp);
         }
         if(value === "Meals On Wheels"){
-            sessionStorage.setItem(value,"Yes");
+            sessionStorage.setItem(value,"Meals On Wheels");
+            this.state.exp.push(value);
+            sessionStorage.setItem("Array", this.state.exp);
         }
         if(value === "Other"){
             sessionStorage.setItem(value,"Yes");
@@ -57,12 +77,26 @@ class SocialServices extends React.Component{
         this.setState({
             fragments:testing
         })
+
+        
+    }
+
+    handleClick = () => {
+        const { navigation } = this.props;
+        // this.state.exp.push(sessionStorage.getItem("Other Profession:"));
+        var value = sessionStorage.getItem("Other Profession:");
+        this.state.exp.push(value);
+        console.log(this.state.exp);
+        
+        sessionStorage.setItem("Array", this.state.exp);
+        navigation("/Community-Apps")
+
     }
 
 
     render(){
-
-        const { navigation } = this.props;
+        
+        
         var typography = "I dont even know about this page bro";
 
         return (
@@ -88,7 +122,7 @@ class SocialServices extends React.Component{
                             </FormControl>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={() => navigation("/Community-Apps")} disabled={this.state.next} variant="contained" fullWidth={true} >Next</Button>
+                            <Button onClick={this.handleClick} disabled={this.state.next} variant="contained" fullWidth={true} >Next</Button>
                         </ListItem>
                     </List>
 

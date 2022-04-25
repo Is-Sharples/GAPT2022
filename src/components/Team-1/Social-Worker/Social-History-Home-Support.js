@@ -82,11 +82,7 @@ class SWHomeSupport extends React.Component{
 
     render(){
         //*in Mickey Voice: This is a surprise tool that will help us out later
-        sessionStorage.setItem("CommCare","No");
-        sessionStorage.setItem("HomeHelp","No");
-        sessionStorage.setItem("Telecare","No");
-        sessionStorage.setItem("Meals On Wheels","No");
-        sessionStorage.setItem("Other","No");
+        
         //
 
         const { navigation } = this.props;

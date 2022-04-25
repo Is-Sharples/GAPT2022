@@ -26,7 +26,7 @@ class PatientPlans extends React.Component{
     handleChange = (event) =>{
         var value = event.target.value;
         // console.log(value);
-        sessionStorage.setItem("PatientPlans",value);
+        sessionStorage.setItem("RelativePlans",value);
         this.setState({
             next:false,
         })
@@ -40,7 +40,7 @@ class PatientPlans extends React.Component{
         return (
             <div  >
                 <Grid justifyContent={"center"} container rowGap={4} columns={{xs:2, sm:2, md:6}} >
-                    <Header typography={typography} name = {"Patient Expectations and Plans"} history = {"/SH-Home-Env"} ></Header>
+                    <Header typography={typography} name = {"Relative Expectations and Plans"} history = {"/SH-Patient-Plans"} ></Header>
                     <List>
                         <ListItem>
                             <FormControl>
@@ -58,7 +58,7 @@ class PatientPlans extends React.Component{
                             </FormControl>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={() => navigation("/SH-Relative-Plans")} disabled={this.state.next} variant="contained" fullWidth={true} >Next</Button>
+                            <Button onClick={() => navigation("/Social-Services")} disabled={this.state.next} variant="contained" fullWidth={true} >Next</Button>
                         </ListItem>
                     </List>
 

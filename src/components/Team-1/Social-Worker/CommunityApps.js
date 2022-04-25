@@ -24,7 +24,7 @@ class CommunityApps extends React.Component{
         var value = event.target.value;
         
 
-        sessionStorage.setItem("Community Apps:",value);
+        sessionStorage.setItem("CommunityApps:",value);
         var testing = [];
 
         if(value === "Yes"){
@@ -75,7 +75,6 @@ class CommunityApps extends React.Component{
 
     render(){
         
-
         const { navigation } = this.props;
         var typography = "Ask the patient if he lives alone or with someone";
         return(
@@ -99,7 +98,7 @@ class CommunityApps extends React.Component{
                             </FormControl>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={() => navigation("/SH-Home-Env")} disabled={this.state.next} variant="contained" fullWidth={true} >Next</Button>
+                            <Button onClick={() => navigation("/Summary-Social-Worker")} disabled={this.state.next} variant="contained" fullWidth={true} >Next</Button>
                         </ListItem>
                     </List>
                     

@@ -23,8 +23,8 @@ import HomeEnvironment from './components/Team-1/Social-Worker/Home-Environment'
 import PatientPlans from './components/Team-1/Social-Worker/PatientPlans';
 import SocialServices from './components/Team-1/Social-Worker/Social-Services';
 import CommunityApps from './components/Team-1/Social-Worker/CommunityApps';
-
-
+import SocialSummary from './components/Team-1/Social-Worker/Summary-Page';
+import RelativePlans from './components/Team-1/Social-Worker/RelativePlans';
 
 export default function App() {
 
@@ -57,8 +57,10 @@ export default function App() {
         <Route path = "/SH-Home-Support" element={<SWHomeSupport />}></Route>
         <Route path = "/SH-Home-Env" element={<HomeEnvironment />} ></Route>
         <Route path = "/SH-Patient-Plans" element={<PatientPlans />} ></Route>
+        <Route path = "/SH-Relative-Plans" element={<RelativePlans />} ></Route>
         <Route path = "/Social-Services" element={<SocialServices />} ></Route>
         <Route path = '/Community-Apps' element={<CommunityApps />} ></Route>
+        <Route path = "/Summary-Social-Worker" element={<SocialSummary />} />
         {/* Team-1 Ends here */}
 
 

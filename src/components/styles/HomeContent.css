@@ -6,3 +6,18 @@
     background-color: whitesmoke;
 }
 
+.Table-Title{
+    /* font-size: large; */
+    padding-top: 12px;
+}
+
+.Table-Names{
+    text-align: right;
+}
+
+.Table-Content{
+    /* display: block; */
+    /* width: 30%; */
+    padding-left: 28px;
+    padding-right: 24px;
+}
