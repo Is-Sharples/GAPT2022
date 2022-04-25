@@ -98,7 +98,6 @@ export function ShowSectionE(){
             console.log(Joe);
             allData = Joe;
         })
-        
     return allData
 }
 
@@ -166,8 +165,20 @@ export function GetDocsE(patientId){
                 );
             })
         })
-        
     return arr
+}
+
+export function GetDataE(patientId, docId){
+    const fullpath = 'patients/'+patientId+'/SectionE';
+    const dbref = collection(db,fullpath);
+    var doc = "";
+    getDocs(dbref)
+    .then((snapshot) => {
+        doc = snapshot.docs.find((doc) => doc.id === docId).data();
+        console.log("inside data:",doc);
+        
+    })
+    return doc
 }
 
 

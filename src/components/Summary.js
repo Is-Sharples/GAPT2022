@@ -11,7 +11,7 @@ import HeightEdit from "./HeightEdit";
 import WeightEdit from "./WeightEdit";
 import "./styles/Summary.css";
 import Header from "./header";
-import { ShowSectionE, AddData, SetDataB, AddNewVisit, GetDocsE } from "./firebase";
+import { ShowSectionE, AddData, SetDataB, AddNewVisit, GetDocsE, GetDataE } from "./firebase";
 import  './firebase';
 import { LocalCafeOutlined, LocalCafeSharp, LocalDining, LocalSeeOutlined } from "@material-ui/icons";
 import Dialog from '@mui/material/Dialog';
@@ -25,6 +25,8 @@ import Box from '@mui/material/Box';
 export default function Summary(props) {
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
+    var docdata = "";
+    
     var run = (localStorage.getItem("run")===null) ? (props.run)=== undefined ? 0 : props.run : JSON.parse(localStorage.getItem("run"));
     if (props.run!==undefined){
         if(localStorage.getItem("run")>1){
@@ -47,7 +49,6 @@ export default function Summary(props) {
         localStorage.setItem("dbtime",JSON.stringify(dt));
     }
     const dbTime = (localStorage.getItem("dbtime"))===undefined ? "" : localStorage.getItem("dbtime");
-    const start = "Choose Older visit or create new Visit";
     const [Documents, setDocs] = useState(GetDocsE(data.id));
     const [option, setOption] = useState();
     const [barthel, showBarthel] = useState("false");
@@ -63,13 +64,26 @@ export default function Summary(props) {
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
     const [openSave, setOpenSave] = useState(false);
+    console.log("option:",option);
     
     var editeda = [];
     var editedd = [];
 
     console.log("Docss:",Documents.length);
 
-    console.log(localStorage.getItem("ahw"));
+    if(option!==undefined){
+        if(option==='Choose a visit or create a new one'){
+            console.log("no inny");
+        }
+        else{
+            console.log("Getdata:",GetDataE(data.id,option));
+            docdata = GetDataE(data.id,option);
+            console.log("doccy:",docdata);
+        }
+    }else{
+        console.log("lee");
+    }
+
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
         height: "",
         weight: "",
