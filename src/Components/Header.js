@@ -12,7 +12,7 @@ import sizing from '@mui/system';
 import { Grid } from '@material-ui/core';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import { Popover } from '@mui/material';
-import '../Style/Header.css';
+import '../styles/header.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function Header(props) {
