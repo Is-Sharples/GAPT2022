@@ -153,18 +153,21 @@ export function SetDataB(Adate, Ddate, data1, data2, data3, data4){
     })
 }
 
+
 export function GetDocsE(patientId){
     const fullpath = 'patients/'+patientId+'/SectionE';
     const dbref = collection(db, fullpath);
-    var arr = [];
+    const arr= [];
     getDocs(dbref)
         .then((snapshot) => {
             snapshot.docs.forEach((doc)=>{
                 arr.push(
                     doc.id
-                )
+                );
             })
         })
-    return arr;
+        
+    return arr
 }
+
 

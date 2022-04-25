@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { AppBar, DialogActions, FormControl, MenuItem} from "@mui/material";
+import { AppBar, DialogActions, FormControl, Menu, MenuItem} from "@mui/material";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
@@ -34,7 +34,6 @@ export default function Summary(props) {
         }
     }
     console.log(GetDocsE(data.id));
-    console.log("run: ", run);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
     const dt = new Date().toDateString();
@@ -48,8 +47,9 @@ export default function Summary(props) {
         localStorage.setItem("dbtime",JSON.stringify(dt));
     }
     const dbTime = (localStorage.getItem("dbtime"))===undefined ? "" : localStorage.getItem("dbtime");
-
-    const [option, setOption] = useState("");
+    const start = "Choose Older visit or create new Visit";
+    const [Documents, setDocs] = useState(GetDocsE(data.id));
+    const [option, setOption] = useState();
     const [barthel, showBarthel] = useState("false");
     const [Barthelex, setBarthelex] = useState(0);
     const [height, showHeight] = useState("false");
@@ -63,13 +63,11 @@ export default function Summary(props) {
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
     const [openSave, setOpenSave] = useState(false);
+    
     var editeda = [];
     var editedd = [];
-    const Docs = GetDocsE(data.id);
-    
-    const test = ["hello","please","ahdem","ghax","ha naqbez"];
 
-    console.log("Docss:",Docs, test);
+    console.log("Docss:",Documents.length);
 
     console.log(localStorage.getItem("ahw"));
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
@@ -288,6 +286,7 @@ export default function Summary(props) {
     }
 
 
+
   return (
     <div className="screen">
         <Header typography = {typography} history = {"/"} name={"Summary"} /> 
@@ -299,8 +298,9 @@ export default function Summary(props) {
             <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
             <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
             <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
-                {Docs.map((doc) => (
-                    <MenuItem key={doc.id} value={doc.id}>{doc.id}</MenuItem>
+            <MenuItem value={"Choose a visit or create a new one"}>{"Choose an old visit"}</MenuItem>
+            {Documents.map((doc) => (
+                    <MenuItem key={doc} value={doc}>{doc}</MenuItem>
                 ))}
             </Select>
             </FormControl>
