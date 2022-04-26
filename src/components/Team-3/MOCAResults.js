@@ -32,6 +32,34 @@ function MOCAResults(){
 
         sessionStorage.setItem("max", "30");
 
+        if(isNaN(sessionStorage.getItem("visuo"))){
+            sessionStorage.setItem("visuo", 0);
+        }
+
+        if(isNaN(sessionStorage.getItem("naming"))){
+            sessionStorage.setItem("naming", 0);
+        }
+
+        if(isNaN(sessionStorage.getItem("attention"))){
+            sessionStorage.setItem("attention", 0);
+        }
+
+        if(isNaN(sessionStorage.getItem("abstraction"))){
+            sessionStorage.setItem("abstraction", 0);
+        }
+
+        if(isNaN(sessionStorage.getItem("language"))){
+            sessionStorage.setItem("language", 0);
+        }
+
+        if(isNaN(sessionStorage.getItem("delayedrecall"))){
+            sessionStorage.setItem("delayedrecall", 0);
+        }
+
+        if(isNaN(sessionStorage.getItem("orientation"))){
+            sessionStorage.setItem("orientation", 0);
+        }
+
         setviso(parseInt(sessionStorage.getItem("visuo")));
         setname(parseInt(sessionStorage.getItem("naming")));
         setattn(parseInt(sessionStorage.getItem("attention")));
@@ -41,6 +69,7 @@ function MOCAResults(){
         setorien(parseInt(sessionStorage.getItem("orientation")));
 
         var total;
+
         total = parseInt(sessionStorage.getItem("visuo")) + parseInt(sessionStorage.getItem("naming")) + parseInt(sessionStorage.getItem("attention")) + parseInt(sessionStorage.getItem("language"))
         + parseInt(sessionStorage.getItem("abstraction")) + parseInt(sessionStorage.getItem("delayedrecall")) + parseInt(sessionStorage.getItem("orientation"));
 

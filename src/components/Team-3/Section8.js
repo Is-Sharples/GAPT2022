@@ -15,7 +15,7 @@ function Section8(){
     var num2 = parseInt(sessionStorage.getItem("back")) 
 
     var num3 = num1 + num2;
-    var temp;
+    var temp = 0;
 
     if(num3 === 1){
       temp = 1;

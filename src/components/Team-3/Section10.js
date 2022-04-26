@@ -11,7 +11,7 @@ function Section10(){
 
   function getScore() {
 
-    var score;
+    var score = 0;
 
     var one = parseInt(sessionStorage.getItem("one"));
     var two = parseInt(sessionStorage.getItem("two"));

@@ -11,11 +11,11 @@ function Section11(){
 
   function getScore() {
 
-    var temp;
-
     var r1 = parseInt(sessionStorage.getItem("rep1"))
     var r2 = parseInt(sessionStorage.getItem("rep2"))
   
+    var temp = 0;
+
     var rep = r1 + r2;
     if (rep===2){
       temp = 2

@@ -2,26 +2,28 @@ import {React, useState} from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 //Components
-import PatientID from './components/PatientID';
-import Section1 from './components/Section1'
-import Section2 from './components/Section2'
-import Section3 from './components/Section3'
-import Section4 from './components/Section4'
-import Section5 from './components/Section5'
-import Section6 from './components/Section6'
-import Section7 from './components/Section7'
-import Section8 from './components/Section8'
-import Section9 from './components/Section9'
-import Section10 from './components/Section10'
-import Section11 from './components/Section11'
-import Section12 from './components/Section12'
-import Section13 from './components/Section13'
-import Section14 from './components/Section14'
-import Section15 from './components/Section15'
-import MOCAResults from './components/MOCAResults';
-import WriteCheck from './components/WriteCheck';
-import Review from './components/Review';
+import PatientID from './components/Team-3/PatientID';
+import Section1 from './components/Team-3/Section1'
+import Section2 from './components/Team-3/Section2'
+import Section3 from './components/Team-3/Section3'
+import Section4 from './components/Team-3/Section4'
+import Section5 from './components/Team-3/Section5'
+import Section6 from './components/Team-3/Section6'
+import Section7 from './components/Team-3/Section7'
+import Section8 from './components/Team-3/Section8'
+import Section9 from './components/Team-3/Section9'
+import Section10 from './components/Team-3/Section10'
+import Section11 from './components/Team-3/Section11'
+import Section12 from './components/Team-3/Section12'
+import Section13 from './components/Team-3/Section13'
+import Section14 from './components/Team-3/Section14'
+import Section15 from './components/Team-3/Section15'
+import MOCAResults from './components/Team-3/MOCAResults';
+import WriteCheck from './components/Team-3/WriteCheck';
+import Review from './components/Team-3/Review';
 
+import './styles/style.css';
+import './styles/header.css';
 //Styling
 
 import './styles/style.css';

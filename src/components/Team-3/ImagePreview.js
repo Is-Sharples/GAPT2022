@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../styles/style.css';
-
 export const ImagePreview = ({ dataUri, isFullscreen }) => {
   let classNameFullscreen = isFullscreen ? 'demo-image-preview-fullscreen' : '';
 
