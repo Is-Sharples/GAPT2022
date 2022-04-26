@@ -8,11 +8,81 @@ import { Table, TableBody, TableHead, TableCell, TableContainer,TableRow } from 
 import { Paper } from "@mui/material";
 import { Button } from "@mui/material";
 import { Divider } from "@mui/material";
+import '../../firebase';
+import { setSocialWorker } from "../../firebase";
 
-//component={Paper}
+class HomeSupport{
+    constructor(LivesAlone,AnySupport){
+        this.LivesAlone = LivesAlone;
+        this.AnySupport = AnySupport;
+    }
+}
+class HomeEnv {
+    constructor(Stairs,Amenities,AmenityLoc,OtherAmenLoc){
+        this.Stairs = Stairs;
+        this.Amenities = Amenities;
+        this.AmenityLoc = AmenityLoc;
+        this.OtherAmenLoc = OtherAmenLoc;
+    }
+}
+
+class Expectations {
+    constructor(Patient,Relative){
+        this.Patient = Patient;
+        this.Relative = Relative;
+    }
+}
+
+class SocialServices {
+    constructor(CommCare,Telecare,HomeHelp,MealsWheels,Other){
+        this.CommCare = CommCare;
+        this.Telecare = Telecare;
+        this.HomeHelp = HomeHelp;
+        this.MealsWheels = MealsWheels;
+        this.Other = Other;
+    }
+}
+
+class CommunityApps{
+    constructor(Apps,TimeSpan){
+        this.Apps = Apps;
+        this.TimeSpan = TimeSpan;
+    }
+}
+
 class SocialSummary extends React.Component{
-    render(){
+    constructor(props){
+        super(props);
+        this.state ={
+            HomeSupp:new HomeSupport(sessionStorage.getItem("Lives Alone?"),sessionStorage.getItem("Any Support?")),
+            HomeEnv: new HomeEnv(sessionStorage.getItem("Stairs In Home:"),sessionStorage.getItem("Amenities"),sessionStorage.getItem("Location Of Amenities"),sessionStorage.getItem("Other Amenity Location")),
+            Expect: new Expectations(sessionStorage.getItem("PatientPlans"),sessionStorage.getItem("RelativePlans")),
+            SServices: new SocialServices(sessionStorage.getItem("CommCare"),sessionStorage.getItem("Telecare"),sessionStorage.getItem("HomeHelp"),sessionStorage.getItem("Meals On Wheels"),sessionStorage.getItem("Other Profession:")),
+            CommApps: new CommunityApps(sessionStorage.getItem("CommunityApps:"),sessionStorage.getItem("TimeSpan")),
+        }
+    }
 
+    handleClick = () => {
+        var Arr = [];
+        Arr.push(this.state.HomeSupp);
+        Arr.push(this.state.HomeEnv);
+        Arr.push(this.state.Expect);
+        Arr.push(this.state.SServices);
+        Arr.push(this.state.CommApps);
+        // console.log(Arr);
+        setSocialWorker(Arr);
+    }
+
+    render(){
+        // console.log(this.state.HomeSupp);
+        // console.log(this.state.HomeEnv);
+        // console.log(this.state.Expect);
+        // console.log(this.state.SServices);
+        // console.log(this.state.CommApps);
+        
+
+        
+        // console.log(Arr[0]);
         var CommCare = sessionStorage.getItem("CommCare");
         var HomeHelp = sessionStorage.getItem("HomeHelp");
         var MealsWheels = sessionStorage.getItem("Meals On Wheels");
@@ -110,7 +180,7 @@ class SocialSummary extends React.Component{
             count += 1;
         }
         
-        console.log(count);
+        // console.log(count);
         var typography = "It hurts to be alive";
         return(
             <div >
@@ -171,7 +241,7 @@ class SocialSummary extends React.Component{
                         </table>
                     
                 </List>
-                <Button>Submit</Button>
+                <Button onClick={this.handleClick} >Submit</Button>
             </Grid>
             </div>
         )

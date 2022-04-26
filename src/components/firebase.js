@@ -134,6 +134,8 @@ export function setPatient(patient){
         age:patient.age,
     });
 
-
     // console.log("Big Success!");
+}
+export function setSocialWorker(DataArray){
+        console.log(DataArray);
 }
