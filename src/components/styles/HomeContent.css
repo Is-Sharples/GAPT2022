@@ -13,11 +13,14 @@
 
 .Table-Names{
     text-align: right;
+    padding-right: 1/2vw;
 }
 
 .Table-Content{
-    /* display: block; */
-    /* width: 30%; */
-    padding-left: 28px;
-    padding-right: 24px;
+    text-align: center;
+    word-wrap: break-word;
+    /* width: 5vw; */
+    max-width: 120px;
+    padding-left: 10px;
+    /* padding-right: 4px; */
 }

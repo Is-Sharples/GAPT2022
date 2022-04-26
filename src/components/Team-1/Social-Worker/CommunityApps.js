@@ -64,7 +64,6 @@ class CommunityApps extends React.Component{
 
     readNewForm = (event) => {
         var value = event.target.value;
-        // console.log(value);
         this.state.result = value;
         sessionStorage.setItem('TimeSpan',this.state.result);
         this.setState({
@@ -74,7 +73,7 @@ class CommunityApps extends React.Component{
 
 
     render(){
-        
+        sessionStorage.setItem("TimeSpan","");
         const { navigation } = this.props;
         var typography = "Ask the patient if he lives alone or with someone";
         return(

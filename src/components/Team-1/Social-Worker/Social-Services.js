@@ -28,6 +28,7 @@ class SocialServices extends React.Component{
         sessionStorage.setItem("Telecare","");
         sessionStorage.setItem("Meals On Wheels","");
         sessionStorage.setItem("Other","");
+        sessionStorage.setItem("Other Profession:","");
         
 
     }
@@ -85,7 +86,10 @@ class SocialServices extends React.Component{
         const { navigation } = this.props;
         // this.state.exp.push(sessionStorage.getItem("Other Profession:"));
         var value = sessionStorage.getItem("Other Profession:");
-        this.state.exp.push(value);
+        if(value !== ""){
+            this.state.exp.push(value);
+        }
+        
         console.log(this.state.exp);
         
         sessionStorage.setItem("Array", this.state.exp);
