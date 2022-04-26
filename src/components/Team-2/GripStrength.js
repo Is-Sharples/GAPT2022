@@ -1,6 +1,6 @@
 import "./CommonStyle.css";
 import React from "react";
-import GripPhoto from "../assets/Grip Strength Test Equipment.png";
+import GripPhoto from "../assets/Grip-Strength-Test-Equipment.png";
 import Fab from "@mui/material/Fab";
 import HelpIcon from "@mui/icons-material/Help";
 import { ArrowBack } from '@mui/icons-material';
