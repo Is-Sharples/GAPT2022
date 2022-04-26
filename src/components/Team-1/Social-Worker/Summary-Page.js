@@ -16,7 +16,7 @@ class SocialSummary extends React.Component{
         var CommCare = sessionStorage.getItem("CommCare");
         var HomeHelp = sessionStorage.getItem("HomeHelp");
         var MealsWheels = sessionStorage.getItem("Meals On Wheels");
-        var OtherString = sessionStorage.getItem("Other");
+        var OtherString = sessionStorage.getItem("Other Profession:");
         var Telecare = sessionStorage.getItem("Telecare");
         var TimeSpan = [];
         if(sessionStorage.getItem("TimeSpan") !== ""){
@@ -32,7 +32,7 @@ class SocialSummary extends React.Component{
             );    
         }
         var Location = [];
-        if(sessionStorage.getItem("Location of Amenities") !== ""){
+        if(sessionStorage.getItem("Location Of Amenities") !== ""){
             Location.push(
                 <React.Fragment>
                     <tr>
@@ -61,30 +61,7 @@ class SocialSummary extends React.Component{
         if(CommCare !== ""){
             count += 1;
         }
-        if(HomeHelp !== ""){
-            if(count > 0){
-                if(Telecare !== "")
-                    Telecare += ", ";
-            }
-            count += 1;
-        }
-        if(MealsWheels !== ""){
-            if(count > 0){
-                    if(HomeHelp !== ""){
-                        HomeHelp += ", ";    
-                    }
-                    
-            }
-            count += 1;
-        }
-        if(OtherString !== ""){
-            if(count > 0){
-                if(MealsWheels !== ""){
-                    MealsWheels += ",";
-                }
-            }
-            count += 1;
-        }
+
         if(Telecare !== ""){
             if(count > 0){
                 
@@ -92,10 +69,51 @@ class SocialSummary extends React.Component{
             }
             count += 1;
         }
+
+        if(HomeHelp !== ""){
+            if(count > 0){
+                if(Telecare !== ""){
+                    Telecare += ", ";
+                }else if(CommCare !== ""){
+                    CommCare += ", ";
+                }
+                    
+            }
+            count += 1;
+        }
+        if(MealsWheels !== ""){
+            if(count > 0){
+                    if(HomeHelp !== ""){
+                        HomeHelp += ", ";    
+                    }else if((CommCare !== "")&& (Telecare === "")){
+                        CommCare += ", ";
+                    }else if (Telecare !== ""){
+                        Telecare += ", ";
+                    }
+
+                    
+            }
+            count += 1;
+        }
+        if(OtherString !== ""){
+            if(count > 0){
+                if(MealsWheels !== ""){
+                    MealsWheels += ", ";
+                }else if (HomeHelp !== ""){
+                    HomeHelp += ", ";
+                }else if (Telecare !== ""){
+                    Telecare += ", ";
+                }else if (CommCare !== ""){
+                    CommCare += ", ";
+                }
+            }
+            count += 1;
+        }
+        
         console.log(count);
         var typography = "It hurts to be alive";
         return(
-            <div className="screen" >
+            <div >
             <Grid justifyContent={"center"} container rowGap={0} columns={{ xs: 2, sm: 2, md: 6}} >
                 <Header typography={typography} name="Summary" history={"/Community-Apps"} ></Header>
                 <p className="Table-Title">Review Information</p>

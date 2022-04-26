@@ -7,8 +7,10 @@
 }
 
 .Table-Title{
-    /* font-size: large; */
+    /* font-size: large */
+    font-size: xx-large;
     padding-top: 12px;
+    
 }
 
 .Table-Names{

@@ -38,6 +38,10 @@ class HomeEnv extends React.Component{
             this.setState({
                 next:false
             });
+            sessionStorage.setItem("Location Of Amenities","");
+            //Other Amenity Location
+            sessionStorage.setItem("Other Amenity Location","");
+
         }
         if(value === "No"){
             testing.push(

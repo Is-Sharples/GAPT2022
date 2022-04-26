@@ -126,10 +126,10 @@ fieldset {
     font-size: 0.5em;
     color: black;
   }
-
+/* 
   p {
     font-size: 2.2em;
-  }
+  } */
 
   li {
     font-size: 2em;
@@ -371,9 +371,9 @@ fieldset {
     color: black;
   }
 
-  p {
+  /* p {
     font-size: 1.8em;
-  }
+  } */
 
   .timer-text {
     font-size: 1.2em;

@@ -18,6 +18,7 @@ class CommunityApps extends React.Component{
             result:"",
             next:true,
         }
+        sessionStorage.setItem("TimeSpan","");
     }
 
     handleChange = (event) =>{
@@ -73,7 +74,7 @@ class CommunityApps extends React.Component{
 
 
     render(){
-        sessionStorage.setItem("TimeSpan","");
+        
         const { navigation } = this.props;
         var typography = "Ask the patient if he lives alone or with someone";
         return(
