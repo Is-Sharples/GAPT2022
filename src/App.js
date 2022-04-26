@@ -90,7 +90,7 @@ export default function App() {
         <Route path = "/Summary-Social-Worker" element={<SocialSummary />} />
         {/* Team-1 Ends here */}
         {/* Team -3 Starts Here */}
-
+        <Route path='/Team-3-PatientID' element={<PatientID />} ></Route>
         <Route path="/questions" element={<Section1 />} ></Route>   
         <Route path="/mobility" element={<Section2 />} ></Route>   
         <Route path="/moca" element={<WriteCheck/>} ></Route>   
