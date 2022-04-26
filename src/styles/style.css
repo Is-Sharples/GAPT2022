@@ -1,0 +1,160 @@
+@media(min-width: 720px){
+*{
+  margin: 0%;
+}
+
+.id-section {
+  margin: 2em 2em;
+}
+
+.buttons-section {
+  width: 80%;
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.next-button {
+  background-color: #015b98;
+  margin-top: 1em;
+  width: 10em;
+  height: 2em;
+  border-radius: 20px;
+  border: 0em;
+  text-align: center;
+  font-size: 1.25em;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+  .screen {
+    background-color: #E5E5E5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.75em;
+    color: Black;
+    font-family: 'Open Sans';
+    padding-top: 20px;
+  }
+
+  .details {
+    font-size: 0.85em;
+  }
+
+.textfield{
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 5% 25%;
+  width: 50%;
+  display: flex;
+}
+
+  .subtitle {
+    font-size: 1.75em;
+  }
+
+  .check {
+    height: 1.5em;
+    width: 1.5em;
+    margin: 1em 1em;
+  }
+
+  .search-container{
+    padding: 16px;
+    border:solid 1px;
+    border-color: rgb(199, 196, 196);
+    border-radius: 16px;
+    background-color: white;
+}
+
+  .check-label{
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 720px) {
+
+  *{
+    margin: 0%;
+  }
+  
+  .id-section {
+    margin: 2em 2em;
+  }
+  
+  .buttons-section {
+    width: 80%;
+    display: flex;
+  }
+  
+  .space-between {
+    justify-content: space-between;
+  }
+  
+  .next-button {
+    background-color: #015b98;
+    margin-top: 1em;
+    width: 8em;
+    height: 1.75em;
+    border-radius: 20px;
+    border: 0em;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 1em;
+    cursor: pointer;
+  }
+  
+    .screen {
+      background-color: #E5E5E5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.75em;
+      color: Black;
+      font-family: 'Open Sans';
+      padding-top: 20px;
+    }
+  
+    .details {
+      font-size: 0.85em;
+    }
+  
+  .textfield{
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 5% 25%;
+    width: 50%;
+    display: flex;
+  }
+  
+    .subtitle {
+      font-size: 1em;
+    }
+  
+    .check {
+      height: 1em;
+      width: 1em;
+      margin: 1em 0.7em;
+    }
+  
+    .search-container{
+      padding: 16px;
+      border:solid 1px;
+      border-color: rgb(199, 196, 196);
+      border-radius: 16px;
+      background-color: white;
+  }
+
+  .check-label{
+    font-size: 0.8em;
+  }
+}  
