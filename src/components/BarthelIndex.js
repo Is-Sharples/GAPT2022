@@ -19,6 +19,7 @@ export default function BarthelIndex(props) {
 		console.log(val);
 		indexList.push(val);
 	}
+	console.log("prop run:",run);
 
 	const questions = [
 		{
@@ -133,7 +134,7 @@ export default function BarthelIndex(props) {
 					) : (
 						<>	
 							<div className='phase-section'>
-								<h2>{(run)===1 ? "Admission" : "Discharge"}</h2>
+								<h2>{(run)===0 ? "Admission" : "Discharge"}</h2>
 							</div>
 							
 							<div className='question-section'>

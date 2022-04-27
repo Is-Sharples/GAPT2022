@@ -168,17 +168,17 @@ export function GetDocsE(patientId){
     return arr
 }
 
+let data = "";
 export function GetDataE(patientId, docId){
+   
     const fullpath = 'patients/'+patientId+'/SectionE';
     const dbref = collection(db,fullpath);
-    var doc = "";
     getDocs(dbref)
     .then((snapshot) => {
-        doc = snapshot.docs.find((doc) => doc.id === docId).data();
-        console.log("inside data:",doc);
-        
+        data = snapshot.docs.find((doc) => doc.id === docId).data();
+        console.log("inside data:",data);
     })
-    return doc
+    return data
 }
 
 

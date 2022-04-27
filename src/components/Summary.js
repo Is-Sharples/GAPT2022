@@ -71,18 +71,21 @@ export default function Summary(props) {
 
     console.log("Docss:",Documents.length);
 
-    if(option!==undefined){
-        if(option==='Choose a visit or create a new one'){
-            console.log("no inny");
+    useEffect(()=> {
+        if(option!==undefined){
+            if(option==='Choose a visit or create a new one'){
+                console.log("no inny");
+            }
+            else{
+                console.log("Getdata:",GetDataE(data.id,option));
+                docdata = GetDataE(data.id,option);
+                console.log("doccy:",docdata);
+            }
+        }else{
+            console.log("lee");
         }
-        else{
-            console.log("Getdata:",GetDataE(data.id,option));
-            docdata = GetDataE(data.id,option);
-            console.log("doccy:",docdata);
-        }
-    }else{
-        console.log("lee");
-    }
+    });
+    console.log("date:",docdata.AdmissionDate);
 
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
         height: "",
@@ -216,6 +219,17 @@ export default function Summary(props) {
 
     const handleChange =  (event) => {
         setOption(event.target.value);
+        if(option!==undefined){
+            if(option==='Choose a visit or create a new one'){
+                console.log("no inny");
+            }
+            else{
+                console.log("Getdata:",GetDataE(data.id,option));
+                docdata = GetDataE(data.id,option);
+            }
+        }else{
+            console.log("lee");
+        }
     };
 
     function addUp(num1, num2){
