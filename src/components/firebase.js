@@ -137,8 +137,21 @@ export function setPatient(patient){
     // console.log("Big Success!");
 }
 
-export function saveTeam1(patientId){
+export function saveTeam2(patientId,date,data){
     const fullpath= 'patients/'+patientId+'/SectionB';
+    const dbref = doc(db,fullpath,date);
+    setDoc(dbref,{
+        DataofSession: "",
+        GripStrengthResults:{MaxLeftHandResult: {Risk: "", TestResult: ""}, MaxRightHandResult: {Risk: "", TestResult: ""}, 
+        Question1: "", 
+        Question2: "", 
+        Question3: "",
+        Question4: "",
+        Question5: "",},
+        TUGTestResults:{LevelsOfMobility: {CurrentLevelofMobility: "", PreviousLevelofMobility: ""}, 
+        RiskOfFallStatus:{Status: "",TimeTakenInSeconds: ""},
+        TUGTestCarriedOut: ""}
+    })
 }
 
 export function setSocialWorker(DataArray){
