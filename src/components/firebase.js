@@ -141,16 +141,16 @@ export function saveTeam2(patientId,date,data){
     const fullpath= 'patients/'+patientId+'/SectionB';
     const dbref = doc(db,fullpath,date);
     setDoc(dbref,{
-        DataofSession: "",
-        GripStrengthResults:{MaxLeftHandResult: {Risk: "", TestResult: ""}, MaxRightHandResult: {Risk: "", TestResult: ""}, 
-        Question1: "", 
-        Question2: "", 
-        Question3: "",
-        Question4: "",
-        Question5: "",},
-        TUGTestResults:{LevelsOfMobility: {CurrentLevelofMobility: "", PreviousLevelofMobility: ""}, 
-        RiskOfFallStatus:{Status: "",TimeTakenInSeconds: ""},
-        TUGTestCarriedOut: ""}
+        DateofSession: date,
+        GripStrengthResults:{MaxLeftHandResult: {Risk: data.lefthandrisk, TestResult: data.lefthandresult}, MaxRightHandResult: {Risk: data.righthandrisk, TestResult: data.righthandresult}, 
+        Question1: data.question1, 
+        Question2: data.question2, 
+        Question3: data.question3,
+        Question4: data.question4,
+        Question5: data.question5,},
+        TUGTestResults:{LevelsOfMobility: {CurrentLevelofMobility: data.currentmobility, PreviousLevelofMobility: data.previousmobility}, 
+        RiskOfFallStatus:{Status: data.riskoffallstatus,TimeTakenInSeconds: data.tugtimetaken},
+        TUGTestCarriedOut: data.tugcarriedout}
     })
 }
 

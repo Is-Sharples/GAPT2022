@@ -10,6 +10,8 @@ import { Box } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import { AppBar } from "@mui/material";
 import Header from '../header';
+import { saveTeam2 } from '../firebase';
+
 const Summary = () => {
   var typography = "This is a summary of the patient's level of mobility and the test results for the Timed Up and Go and Grip Strength tests.";
   let SessionLeftResult = sessionStorage.getItem("MaxLeftHandResult");
@@ -35,7 +37,10 @@ const Summary = () => {
     console.log("Results are to be submitted after the SUBMIT is pressed");
     console.log(sessionStorage.getItem("TUGStatus"));
     console.log(sessionStorage.getItem("question1"));
-    navigate("/");
+    //navigate("/");
+    var patientId = sessionStorage.getItem("PatientData");
+    console.log("Array:",dataArray);
+    saveTeam2(patientId,dateString,dataArray);
   }
 
   let finalLeft = null;
@@ -267,6 +272,26 @@ const Summary = () => {
   const goBack = () => {
     navigate("/GripStrength4");
   };
+
+const dataArray = {
+  date: dateString,
+  lefthandrisk: ActualObjectLeftResult.Risk,
+  lefthandresult: ActualObjectLeftResult.TestResult,
+  righthandrisk: ActualObjectRightResult.Risk,
+  righthandresult: ActualObjectRightResult.TestResult,
+  question1: sessionStorage.getItem("question1"),
+  question2: sessionStorage.getItem("question2"),
+  question3: sessionStorage.getItem("question3"),
+  question4: sessionStorage.getItem("question4"),
+  question5: sessionStorage.getItem("question5"),
+  currentmobility: sessionStorage.getItem("TUGQuestion2"),
+  previousmobility: sessionStorage.getItem("TUGQuestion1"),
+  riskoffallstatus: sessionStorage.getItem("TUGStatus"),
+  tugtimetaken: sessionStorage.getItem("TUGTimer"),
+  tugcarriedout: sessionStorage.getItem("TUGTestCarriedOut")
+}
+  
+
 
   return (
     <div className="screen">
