@@ -136,6 +136,11 @@ export function setPatient(patient){
 
     // console.log("Big Success!");
 }
+
+export function saveTeam1(patientId){
+    const fullpath= 'patients/'+patientId+'/SectionB';
+}
+
 export function setSocialWorker(DataArray){
         console.log(DataArray);
 }
