@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
 import {saveTeam3} from '../firebase';
 
+
 function Review(){
 
     const [cmi, setCmi] = useState(0);
@@ -18,6 +19,7 @@ function Review(){
     const [smoking, setSmoking] = useState();
     const [alcohol, setAlcohol] = useState();
     const [education, setEducation] = useState("");
+    const [openSave, setOpenSave] = useState(false);
     const dt = new Date().toDateString();
 
     const navigate = useNavigate();
@@ -26,6 +28,10 @@ function Review(){
      useEffect(() => {
       loadDataOnlyOnce();
      }, [])
+
+    const handleClose = () => {
+        setOpenSave(false);
+    };
 
     function loadDataOnlyOnce() { 
         setDiagnosis(sessionStorage.getItem("q1"));
@@ -89,7 +95,13 @@ function Review(){
                    <h5>Moca Final Result: {moca_score}/{moca_max} - {moca_status}</h5>  
                    <br/>
                   </CardContent>         
-             </Card>
+                </Card>
+            <Dialog open={openSave} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+            {"Are you sure you want to save the patient details?"}
+            </DialogTitle>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetDataB(abTime, dbTime, Ablist, Dblist, ahw, dhw); handleClose(); }}>Yes</Button>
+            <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
              <button className="next-button" onClick={()=> {saveTeam3(sessionStorage.getItem("PatientData"),sessionStorage.getItem("doctor"),dt,data); navigate("/");}}>Save and Exit</button>
             </div>
     );
