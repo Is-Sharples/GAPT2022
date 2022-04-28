@@ -185,6 +185,28 @@ export function saveTeam3(patientId,init,date,data){
     })
 }
 
-export function setSocialWorker(DataArray){
-        console.log(DataArray);
+export function setSocialWorker(patientId,date,Data){
+    const fullpath = 'patients/'+patientId+'/SectionD';
+    const dbref = doc(db,fullpath,date);
+    console.log(Data);
+    setDoc(dbref, {
+        HomeSupport: {
+            LivesAlone: Data.HomeSupport.LivesAlone,
+            Support: Data.HomeSupport.AnySupport,
+        },
+        StairstoHome: {
+            stairs: Data.HomeEnv.Stairs, //yes or no
+            amenitiesOnSameFloor: Data.HomeEnv.Amenities, //yes or no
+            amenitiesLocation: Data.HomeEnv.AmenityLoc,
+            OtherAmenities: Data.HomeEnv.OtherAmenLoc
+        },
+        PatientsPlans: Data.Expectations.Patient,
+        RelativePlans: Data.Expectations.Relative,
+        SocialServices: Data.SocialServices,
+        commLTCData: {
+            commLTCApplication: Data.CommunityApps.Apps,
+            timeSpan: Data.CommunityApps.TimeSpan,
+        },
+        
+    })
 }

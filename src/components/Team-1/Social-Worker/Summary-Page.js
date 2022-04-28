@@ -64,25 +64,28 @@ class SocialSummary extends React.Component{
 
     handleClick = () => {
         var Arr = [];
+        const dt = new Date().toString();
         Arr.push(this.state.HomeSupp);
         Arr.push(this.state.HomeEnv);
         Arr.push(this.state.Expect);
         Arr.push(this.state.SServices);
         Arr.push(this.state.CommApps);
-        // console.log(Arr);
-        setSocialWorker(Arr);
+        console.log(this.state.HomeSupp.LivesAlone)
+        setSocialWorker(sessionStorage.getItem("patientId"),dt,Arr);
     }
 
+    
     render(){
         // console.log(this.state.HomeSupp);
         // console.log(this.state.HomeEnv);
         // console.log(this.state.Expect);
         // console.log(this.state.SServices);
         // console.log(this.state.CommApps);
-        
+        //console.log(this.props);
 
         
         // console.log(Arr[0]);
+        //const dt = new Date().toString();
         var CommCare = sessionStorage.getItem("CommCare");
         var HomeHelp = sessionStorage.getItem("HomeHelp");
         var MealsWheels = sessionStorage.getItem("Meals On Wheels");
