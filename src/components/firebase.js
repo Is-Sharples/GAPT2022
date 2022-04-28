@@ -154,6 +154,37 @@ export function saveTeam2(patientId,date,data){
     })
 }
 
+export function saveTeam3(patientId,init,date,data){
+    const fullpath= 'patients/'+patientId+'/SectionA';
+    const dbref = doc(db,fullpath,init+" "+date);
+    setDoc(dbref,{
+        consultant: init,
+        date: date,
+        mobilityIndex: data.mobilityIndex,
+        moca : {
+            abstraction: data.abstraction,
+            attention: data.attention,
+            finalScore: data.finalScore,
+            language: data.language,
+            memory: "no points",
+            naming: data.naming,
+            orientation: data.orientation,
+            recall: data.recall,
+            visual: data.visual,
+        },
+        section1: {
+            alcohol: data.alcohol,
+            diagnosis: data.diagnosis,
+            charlsonIndex: data.charlson,
+            drugHistory: data.drugHistory,
+            education: data.education,
+            medicalHistory: data.medicalHistory,
+            presentCondition: data.presentCondition,
+            smoking: data.smoking,
+        }
+    })
+}
+
 export function setSocialWorker(DataArray){
         console.log(DataArray);
 }

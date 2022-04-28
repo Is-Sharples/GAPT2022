@@ -162,7 +162,7 @@ function Section1() {
                         <RadioGroup
                           aria-labelledby="demo-controlled-radio-buttons-group"
                           name="controlled-radio-buttons-group"
-                          onChange={(e) => setAnswerQuestion5("Smoking: " + e.target.value)}
+                          onChange={(e) => setAnswerQuestion5(e.target.value)}
                         >
                         <FormControlLabel sx={{fontSize: 20}} value="yes" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>yes</Typography>} /> 
                         <FormControlLabel sx={{fontSize: 20}} value="no" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>no</Typography>} /> 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./header";
 import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
+import {saveTeam3} from '../firebase';
 
 function Review(){
 
@@ -17,6 +18,7 @@ function Review(){
     const [smoking, setSmoking] = useState();
     const [alcohol, setAlcohol] = useState();
     const [education, setEducation] = useState("");
+    const dt = new Date().toDateString();
 
     const navigate = useNavigate();
        
@@ -41,6 +43,27 @@ function Review(){
 
     var typography = "Review Results";
 
+    const data = {
+        consultant: sessionStorage.getItem("doctor"),
+        date: dt,
+        mobilityIndex: sessionStorage.getItem("mobility-index"),
+        abstraction: sessionStorage.getItem("abstraction"),
+        attention: sessionStorage.getItem("attention"),
+        finalScore: sessionStorage.getItem("moca-score")+"/"+sessionStorage.getItem("moca-max")+" - "+sessionStorage.getItem("moca-status"),
+        language: sessionStorage.getItem("language"),
+        naming: sessionStorage.getItem("naming"),
+        orientation: sessionStorage.getItem("orientation"),
+        recall: sessionStorage.getItem("delayedrecall"),
+        visual: sessionStorage.getItem("visuo"),
+        alcohol: sessionStorage.getItem("q6"),
+        diagnosis: sessionStorage.getItem("q1"),
+        drugHistory: sessionStorage.getItem("q4"),
+        education: sessionStorage.getItem("q7"),
+        medicalHistory: sessionStorage.getItem("q3"),
+        presentCondition: sessionStorage.getItem("q2"),
+        smoking: sessionStorage.getItem("q5"),
+        charlson: cmi
+    }
     return(
         <div className="screen">
                 <Header typography = {typography} history = {"/results"} name = {"Results Obtained"} />  
@@ -67,7 +90,7 @@ function Review(){
                    <br/>
                   </CardContent>         
              </Card>
-             <button className="next-button" onClick={()=> {navigate("/");}}>Save and Exit</button>
+             <button className="next-button" onClick={()=> {saveTeam3(sessionStorage.getItem("PatientData"),sessionStorage.getItem("doctor"),dt,data); navigate("/");}}>Save and Exit</button>
             </div>
     );
 }

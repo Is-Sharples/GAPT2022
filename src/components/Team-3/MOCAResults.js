@@ -114,6 +114,7 @@ function MOCAResults(){
 
     var typography = "Moca test result";
     
+    
     return(
         <div className="screen">
                 <Header typography = {typography} history = {"/sec15"} name = {"MOCA(R) Score"} />  
