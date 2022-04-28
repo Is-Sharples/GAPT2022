@@ -4,7 +4,9 @@ import Header from "./header";
 import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
 import {saveTeam3} from '../firebase';
-
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 function Review(){
 
@@ -20,7 +22,7 @@ function Review(){
     const [alcohol, setAlcohol] = useState();
     const [education, setEducation] = useState("");
     const [openSave, setOpenSave] = useState(false);
-    const dt = new Date().toDateString();
+    const dt = new Date().toString();
 
     const navigate = useNavigate();
        
@@ -100,9 +102,12 @@ function Review(){
             <DialogTitle id="alert-dialog-title">
             {"Are you sure you want to save the patient details?"}
             </DialogTitle>
-            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetDataB(abTime, dbTime, Ablist, Dblist, ahw, dhw); handleClose(); }}>Yes</Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {saveTeam3(sessionStorage.getItem("PatientData"),sessionStorage.getItem("doctor"),dt,data); handleClose(); navigate("/");}}>Yes</Button>
             <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
-             <button className="next-button" onClick={()=> {saveTeam3(sessionStorage.getItem("PatientData"),sessionStorage.getItem("doctor"),dt,data); navigate("/");}}>Save and Exit</button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
+            </Dialog>
+
+            <button className="next-button" onClick={()=> {setOpenSave(true); }}>Save and Exit</button>
             </div>
     );
 }
