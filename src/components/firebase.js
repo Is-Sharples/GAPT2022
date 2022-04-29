@@ -191,10 +191,10 @@ export function setSocialWorker(patientId,date,Data){
     console.log(Data);
     setDoc(dbref, {
         HomeSupport: {
-            LivesAlone: Data.HomeSupport.LivesAlone,
-            Support: Data.HomeSupport.AnySupport,
+            LivesAlone: Data.LivesAlone,
+            Support: Data.AnySupport,
         },
-        StairstoHome: {
+        /*StairstoHome: {
             stairs: Data.HomeEnv.Stairs, //yes or no
             amenitiesOnSameFloor: Data.HomeEnv.Amenities, //yes or no
             amenitiesLocation: Data.HomeEnv.AmenityLoc,
@@ -206,7 +206,7 @@ export function setSocialWorker(patientId,date,Data){
         commLTCData: {
             commLTCApplication: Data.CommunityApps.Apps,
             timeSpan: Data.CommunityApps.TimeSpan,
-        },
+        },*/
         
     })
 }

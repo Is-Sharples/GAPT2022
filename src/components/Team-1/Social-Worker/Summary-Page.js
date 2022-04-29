@@ -71,7 +71,7 @@ class SocialSummary extends React.Component{
         Arr.push(this.state.SServices);
         Arr.push(this.state.CommApps);
         console.log(this.state.HomeSupp.LivesAlone)
-        setSocialWorker(sessionStorage.getItem("patientId"),dt,Arr);
+        setSocialWorker(sessionStorage.getItem("patientId"),dt,this.state.HomeSupp);
     }
 
     
