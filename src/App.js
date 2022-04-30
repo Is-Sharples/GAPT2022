@@ -25,6 +25,7 @@ import SocialServices from './components/Team-1/Social-Worker/Social-Services';
 import CommunityApps from './components/Team-1/Social-Worker/CommunityApps';
 import SocialSummary from './components/Team-1/Social-Worker/Summary-Page';
 import RelativePlans from './components/Team-1/Social-Worker/RelativePlans';
+import Menu from './components/menu';
 
 //Components
 import PatientID from './components/Team-3/PatientID';
@@ -110,6 +111,7 @@ export default function App() {
         <Route path="/results" element={<MOCAResults/>} ></Route>   
         <Route path="/review" element={<Review/>} ></Route> 
         {/* Team-3 Ended Here */}
+        <Route path="/menu" element={<Menu/>} ></Route> 
       </Routes>
     </Router>
 

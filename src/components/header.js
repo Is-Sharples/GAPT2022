@@ -45,23 +45,23 @@ const [anchorEl, setAnchorEl] = React.useState(null);
     
     <AppBar className="appbar" position="static" style={{  background: '#01497A'}}>
         <Grid container spacing={0}>
-            <Grid item xs={2} sm={1.1}>
+            <Grid item xs={2} sm={1}>
             <Box display="flex" justifyContent="center">
-            <Fab variant="contained" className="mui-icons" disabled={data} onClick={goBack} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
+            <Fab variant="contained" className="mui-icons" disabled={data} onClick={goBack} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1}, marginLeft:'10px'}}>
                 <ArrowBack fontSize="large" ></ArrowBack>
             </Fab>
             </Box>
             </Grid>
-            <Grid item xs={8} sm={9.8}>
+            <Grid item xs={8} sm={10}>
             <Box display="flex" justifyContent="center">
-                <Typography variant="h7" color="inherit" component="div" align="center" style={{marginTop: 20, marginBottom: 3.2}}>
+                <Typography variant="h7" color="inherit" component="div" align="center" style={{marginTop: 20, marginBottom: 3.2, fontSize: '1.5em'}}>
                 <label className="title" >{props.name}</label> 
                 </Typography>
             </Box>
             </Grid>
-            <Grid item xs={2} sm={1.1}>
+            <Grid item xs={2} sm={1}>
             <Box display="flex" justifyContent="center">
-            <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1} }}>
+            <Fab className="mui-icons" aria-describedby={id} variant="contained" onClick={handleClick} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1}, marginRight:'10px' }}>
             <HelpIcon fontSize="large"></HelpIcon>
             </Fab>
             </Box>
