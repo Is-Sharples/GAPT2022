@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore'
-import { collection, getDocs, setDoc, addDoc, doc } from "firebase/firestore";
+import { collection, getDocs, setDoc, addDoc, doc, getDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,14 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
-class Users {
-    constructor(name,pass,role,user){
-        this.name = name;
-        this.pass = pass;
-        this.role = role;
-        this.user = user;
-    }
-}
+
 
 
 export function getPatients(){
@@ -153,11 +146,11 @@ export function SetDataB(Adate, Ddate, data1, data2, data3, data4){
 }
 
 
-export function GetDocsE(patientId){
+export async function GetDocsE(patientId){
     const fullpath = 'patients/'+patientId+'/SectionE';
-    const dbref = collection(db, fullpath);
+    const dbref = await collection(db, fullpath);
     const arr= [];
-    getDocs(dbref)
+    await getDocs(dbref)
         .then((snapshot) => {
             snapshot.docs.forEach((doc)=>{
                 arr.push(
@@ -168,17 +161,22 @@ export function GetDocsE(patientId){
     return arr
 }
 
-let data = "";
-export function GetDataE(patientId, docId){
-   
+let data;
+// let test = [];
+export async function GetDataE(patientId, docId){
+    
     const fullpath = 'patients/'+patientId+'/SectionE';
-    const dbref = collection(db,fullpath);
-    getDocs(dbref)
+    const dbref = await collection(db,fullpath);
+    await getDoc(dbref)
     .then((snapshot) => {
         data = snapshot.docs.find((doc) => doc.id === docId).data();
         console.log("inside data:",data);
+        // test.push(data);
+        return data
     })
-    return data
+    // console.log(data);
+    //sessionStorage.setItem("",JSON.stringify(data));
+    return data;
 }
 
 

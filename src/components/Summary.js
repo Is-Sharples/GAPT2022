@@ -22,6 +22,7 @@ import moment from "moment";
 import Box from '@mui/material/Box';
 
 
+
 export default function Summary(props) {
     var typography = "If you wish to input the Barthel/Measurements press the respective buttons on the Screen";
     var data = props.patient;
@@ -35,7 +36,19 @@ export default function Summary(props) {
             localStorage.setItem("run",JSON.stringify(props.run));
         }
     }
-    console.log(GetDocsE(data.id));
+   
+    
+
+    const [Test,setTest] = useState([]);
+    // console.log(GetDocsE(data.id));
+    useEffect(()=>{
+        // var array = GetDocsE(data.id);
+        // console.log( GetDocsE(data.id));
+        GetDocsE(data.id).then((result)=> {
+        setTest(result);
+    })
+    },[])
+    console.log(Test);
     const ilbierah = "Ilbierah";
     const illum = "Illum";
     const dt = new Date().toDateString();
@@ -49,8 +62,8 @@ export default function Summary(props) {
         localStorage.setItem("dbtime",JSON.stringify(dt));
     }
     const dbTime = (localStorage.getItem("dbtime"))===undefined ? "" : localStorage.getItem("dbtime");
-    const [Documents, setDocs] = useState(GetDocsE(data.id));
-    const [option, setOption] = useState();
+    const [Documents, setDocs] = useState(Test);
+    const [option, setOption] = useState("");
     const [barthel, showBarthel] = useState("false");
     const [Barthelex, setBarthelex] = useState(0);
     const [height, showHeight] = useState("false");
@@ -64,29 +77,43 @@ export default function Summary(props) {
     const [openB, setOpenB] = useState(false);
     const [openHW, setOpenHW] = useState(false);
     const [openSave, setOpenSave] = useState(false);
+    const [DoccyData, setDoccy] = useState({});
+    const [value,setValue] = useState(0);
     console.log("option:",option);
     
     var editeda = [];
     var editedd = [];
 
-    console.log("Docss:",Documents.length);
+    console.log("Docss:",Test.length);
 
+    
+    
+    
     useEffect(()=> {
-        if(option!==undefined){
-            if(option==='Choose a visit or create a new one'){
-                console.log("no inny");
-            }
-            else{
-                console.log("Getdata:",GetDataE(data.id,option));
-                docdata = GetDataE(data.id,option);
-                console.log("doccy:",docdata);
-            }
-        }else{
-            console.log("lee");
-        }
-    });
+        
+        var test = [];
+        var testString = {};
+            
+                GetDataE(data.id,option).then( (result)=> {
+                    sessionStorage.setItem("Test",JSON.stringify(result));
+                    // console.log(result);
+                    setDoccy(result);
+                    
+                    
+                    
+                    
+                })
+                console.log("Docs:",DoccyData);
+                
+        
+        // console.log(test.length);
+        // console.log(sessionStorage.getItem("Test"));
+        
+        
+        console.log(testString);
+    },[option]);
     console.log("date:",docdata.AdmissionDate);
-
+    
     var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
         height: "",
         weight: "",
@@ -100,7 +127,7 @@ export default function Summary(props) {
         weightloss: "",
         exercise: "",
     };
-    
+    //#region
     /*if(props.arrnum!==undefined){
         if(Barthelex===1){
             editeda = Ablist;
@@ -139,13 +166,13 @@ export default function Summary(props) {
             localStorage.setItem("dhw",JSON.stringify(dhw));
         }
     }*/
-
+    //#endregion
     const handleClose = () => {
         setOpenB(false);
         setOpenHW(false);
         setOpenSave(false);
     };
-
+    //#region
     function updateAhw(h, w, wl, e){
        ahw.height = h;
        ahw.weight = w;
@@ -187,7 +214,10 @@ export default function Summary(props) {
             }
         }
     }, []);
-
+    const handleChange =  (event) => {
+        setOption(event.target.value);
+        
+    };
    
      
     useEffect(() => {
@@ -217,20 +247,7 @@ export default function Summary(props) {
         localStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
 
-    const handleChange =  (event) => {
-        setOption(event.target.value);
-        if(option!==undefined){
-            if(option==='Choose a visit or create a new one'){
-                console.log("no inny");
-            }
-            else{
-                console.log("Getdata:",GetDataE(data.id,option));
-                docdata = GetDataE(data.id,option);
-            }
-        }else{
-            console.log("lee");
-        }
-    };
+    
 
     function addUp(num1, num2){
         var ans = num1 + num2;
@@ -238,7 +255,7 @@ export default function Summary(props) {
     }
 
     console.log("barthel after", Barthelex+1);
-
+    
     if (Barthelex < 3){
         if(barthel === "true"){
             bar = Barthelex+1;
@@ -312,7 +329,7 @@ export default function Summary(props) {
     if(editW===true){
         return <WeightEdit patient = {data}/>
     }
-
+//#endregion
 
 
   return (
@@ -327,7 +344,7 @@ export default function Summary(props) {
             <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
             <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
             <MenuItem value={"Choose a visit or create a new one"}>{"Choose an old visit"}</MenuItem>
-            {Documents.map((doc) => (
+            {Test.map((doc) => (
                     <MenuItem key={doc} value={doc}>{doc}</MenuItem>
                 ))}
             </Select>

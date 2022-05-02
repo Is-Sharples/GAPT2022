@@ -26,7 +26,7 @@ export default function App() {
   
   var json = JSON.stringify(patients);
   var obj = JSON.parse(json);
-  console.log(obj.patient[1]);
+  // console.log(obj.patient[1]);
 
   return (
     <Router>
