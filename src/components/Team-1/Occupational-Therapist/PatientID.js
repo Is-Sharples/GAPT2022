@@ -4,6 +4,7 @@ import { Grid, TextField } from "@mui/material";
 import { List, Divider, ListItem,ListItemText, ListItemButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+
 //import patients from '../assets/patients.json';
 //import { getPatients } from "../firebase";
 //import '../firebase';
@@ -125,7 +126,7 @@ render(){
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >
                         <TextField  label={"Patient ID"} 
-                                    onClick ={() => navigation("/sec1")}
+                                    onClick ={() => navigation("/Section1OT")}
                                     // onChange ={this.DisplayPatients}
                         ></TextField>
                         <List >                 

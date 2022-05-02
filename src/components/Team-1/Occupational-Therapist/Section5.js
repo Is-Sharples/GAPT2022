@@ -15,6 +15,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { TextField } from "@mui/material";
+import '../../styles/Team1OT.css';
 
 function Section5(){
 
@@ -35,25 +36,36 @@ function Section5(){
       setOpen(true);
     } 
     else {
-      navigate('/summary');
+      if (answer === "yes"){
+        if(document.getElementById("area").value === ""){
+          setOpen(true);
+        }
+        else{
+        sessionStorage.setItem("a19", "Yes, "+(document.getElementById("area").value));
+        navigate('/Section6OT');
+        }
+      }
+      else{
+        sessionStorage.setItem("a19", answer);
+        navigate('/Section6OT');
+      }
     }
   }
 
-  sessionStorage.setItem("a19", answer);
-
   function handleChange (value) {
-    if(value == "yes"){
+    if(value === "yes"){
       document.getElementById("area").style.display = "block";
+      setAnswer(value);
     } else {
       document.getElementById("area").style.display = "none";
-    }
-  
       setAnswer(value);
+    }
+    
   }
 
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/sec4"} name = {"Occupational Therapy"} />  
+                <Header typography = {typography} history = {"/Section4OT"} name = {"Occupational Therapy"} />  
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
@@ -73,7 +85,7 @@ function Section5(){
                       <textarea type="hidden" multiline rows={4} id="area" placeholder="List all the changes"/> 
                   </CardContent>         
              </Card>
-             <button className="next-button" onClick={validation}>Next</button>
+             <button className="next-button" onClick={() => {validation();}}>Next</button>
              <Dialog
                 open={open}
                 onClose={handleClose}
@@ -85,7 +97,7 @@ function Section5(){
                 Please select an option
             </DialogTitle>
             </DialogContent>
-            <Button onClick={handleClose}>close</Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={handleClose}>close</Button>
             </Dialog>
             </div>
     );

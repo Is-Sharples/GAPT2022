@@ -16,6 +16,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import '../../styles/Team1OT.css';
 
 function Section6(){
 
@@ -115,7 +116,7 @@ function Section6(){
 
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/sec5"} name = {"Occupational Therapy"} />  
+                <Header typography = {typography} history = {"/Section5OT"} name = {"Occupational Therapy"} />  
                 <br/>
                 <Card sx={{minWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
                     <CardContent>
@@ -155,7 +156,7 @@ function Section6(){
                   </CardContent>         
              </Card>
                 <br/><br/>
-                <Card sx={{['@media (min-width:720px)']: {minWidth: "85%"}, ['@media (max-width:720px)']: {maxWidth: "85%"}, borderRadius: "20px", textAlign:"center"}}> 
+                <Card sx={{['@media (min-width:820px)']: {minWidth: "85%"}, ['@media (max-width:820px)']: {maxWidth: "85%"}, borderRadius: "20px", textAlign:"center"}}> 
                     <CardContent>
                       <h4>Instrumental ADLs</h4>
                       <br/>
@@ -191,13 +192,13 @@ function Section6(){
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-            <DialogContent>
+            
             <DialogTitle id="alert-dialog-title">
                 Are sure you want to save and exit?
             </DialogTitle>
-            </DialogContent>
-            <Button onClick={handleOpen}>Yes</Button>
-            <Button onClick={handleClose}>No</Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {handleOpen();}}>Yes</Button>
+            <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
             </Dialog>
             </div>
     );

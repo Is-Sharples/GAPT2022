@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import '../../styles/Team1OT.css';
 
 function Section4(){
 
@@ -51,13 +52,13 @@ function Section4(){
       setOpen(true);
     } 
     else {
-      navigate('/sec5');
+      navigate('/Section5OT');
     }
   }
     
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/sec3"} name = {"Occupational Therapy"} />  
+                <Header typography = {typography} history = {"/Section3OT"} name = {"Occupational Therapy"} />  
                 <br/><br/>
                 <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {maxWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}>  
                   <CardContent>
