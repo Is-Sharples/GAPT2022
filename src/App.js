@@ -32,6 +32,12 @@ import Section3OT from './components/Team-1/Occupational-Therapist/Section3';
 import Section4OT from './components/Team-1/Occupational-Therapist/Section4';
 import Section5OT from './components/Team-1/Occupational-Therapist/Section5';
 import Section6OT from './components/Team-1/Occupational-Therapist/Section6';
+import PatientIDOP from './components/Team-1/Other-Profession/PatientIDOP';
+import Section1OP from './components/Team-1/Other-Profession/Section1OP';
+import Section2OP from './components/Team-1/Other-Profession/Section2OP';
+import Section3OP from './components/Team-1/Other-Profession/Section3OP';
+import Section4OP from './components/Team-1/Other-Profession/Section4OP';
+import Section5OP from './components/Team-1/Other-Profession/Section5OP';
 import Menu from './components/menu';
 
 //Components
@@ -62,8 +68,6 @@ import './styles/header.css';
 
 
 export default function App() {
-
-  
 
   return (
     <Router>
@@ -118,6 +122,7 @@ export default function App() {
         <Route path="/results" element={<MOCAResults/>} ></Route>   
         <Route path="/review" element={<Review/>} ></Route> 
         {/* Team-3 Ended Here */}
+        {/* Occupational Therapist */}
         <Route path="/menu" element={<Menu/>} ></Route> 
         <Route path="/PatientIDOT" element={<PatientIDOT/>} ></Route>
         <Route path="/Section1OT" element={<Section1OT/>} ></Route>
@@ -126,6 +131,13 @@ export default function App() {
         <Route path="/Section4OT" element={<Section4OT/>} ></Route>
         <Route path="/Section5OT" element={<Section5OT/>} ></Route>
         <Route path="/Section6OT" element={<Section6OT/>} ></Route>
+        {/* Other Profession */}
+        <Route path="/PatientIDOP" element={<PatientIDOP/>} ></Route>
+        <Route path="/Section1OP" element={<Section1OP/>} ></Route>
+        <Route path="/Section2OP" element={<Section2OP/>} ></Route>
+        <Route path="/Section3OP" element={<Section3OP/>} ></Route>
+        <Route path="/Section4OP" element={<Section4OP/>} ></Route>
+        <Route path="/Section5OP" element={<Section5OP/>} ></Route>
       </Routes>
     </Router>
 

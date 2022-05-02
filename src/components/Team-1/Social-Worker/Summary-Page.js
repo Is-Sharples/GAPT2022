@@ -253,7 +253,6 @@ class SocialSummary extends React.Component{
     }
 }
 
-
 export default function(props){
     const navigate = useNavigate();
 
