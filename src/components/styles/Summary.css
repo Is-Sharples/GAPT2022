@@ -8,9 +8,7 @@
 .appbar{
     height: 90px;
 }
-.title {
-    /* font-size: 1.7em; */
-}
+
 
 .screen {
     background-color: #e5e5e5;
@@ -75,7 +73,8 @@
 }
 
 .lastModifiedBy{
-    font-size: 14px;
+    margin-top: 5px;
+    font-size: 20px;
     color: rgb(56, 56, 56);
 }
 
