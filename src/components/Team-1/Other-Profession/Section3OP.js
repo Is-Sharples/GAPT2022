@@ -40,17 +40,17 @@ function Section3OP(){
     
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/Section2OP"} name = {"Other Professional Referred"} />  
+                <Header typography = {typography} history = {"/Section2OP"} name = {"Other Profession"} />  
                 <br/><br/>
-                <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {maxWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
+                <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {minWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
                      <h3>Date Seen</h3>
                      <br/>
-                     <TextField  type="date" onClick ={(e) => setAnswer1(e.target.value)}></TextField>
+                     <TextField sx={{width: '300px'}} type="date" onChange ={(e) => setAnswer1(e.target.value)}></TextField>
                      <br/><br/>
                      <h3>Seen By</h3> 
                      <br/>
-                     <TextField  type="text" onClick ={(e) => setAnswer2(e.target.value)}></TextField>
+                     <TextField sx={{width: '300px'}} id="outlined-multiline-static"  type="text" multiline rows={1} onChange ={(e) => setAnswer2(e.target.value)}></TextField>
                      <br/><br/>                
                   </CardContent>         
              </Card>

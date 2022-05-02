@@ -133,11 +133,11 @@ export default function App() {
         <Route path="/Section6OT" element={<Section6OT/>} ></Route>
         {/* Other Profession */}
         <Route path="/PatientIDOP" element={<PatientIDOP/>} ></Route>
-        <Route path="/Section1OP" elemenP={<Section1OP/>} ></Route>
-        <Route path="/Section2OP" elemenP={<Section2OP/>} ></Route>
-        <Route path="/Section3OP" elemenP={<Section3OP/>} ></Route>
-        <Route path="/Section4OP" elemenP={<Section4OP/>} ></Route>
-        <Route path="/Section5OP" elemenP={<Section5OP/>} ></Route>
+        <Route path="/Section1OP" element={<Section1OP/>} ></Route>
+        <Route path="/Section2OP" element={<Section2OP/>} ></Route>
+        <Route path="/Section3OP" element={<Section3OP/>} ></Route>
+        <Route path="/Section4OP" element={<Section4OP/>} ></Route>
+        <Route path="/Section5OP" element={<Section5OP/>} ></Route>
       </Routes>
     </Router>
 

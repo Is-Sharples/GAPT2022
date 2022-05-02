@@ -52,23 +52,23 @@ function Section5(){
 
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/Section4OP"} name = {"Other Professional Referral"} />  
+                <Header typography = {typography} history = {"/Section4OP"} name = {"Other Profession"} />  
                 <br/>
-                <Card sx={{minWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
+                <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {minWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
                     <CardContent>
-                     <h3>Confirm Input</h3>
+                     <h4>Review Inputs</h4>
                      <br/>
-                     <h4>Profession: {a}</h4>
+                     <h5>Profession: {a}</h5>
                      <br/>
-                     <h4>Date Referral: {a1}</h4>
+                     <h5>Date Referral: {a1}</h5>
                      <br/>
-                     <h4>Reason for Referral: {a2}</h4>
+                     <h5>Reason for Referral: {a2}</h5>
                      <br/>
-                     <h4>Date Seen: {a3}</h4>
+                     <h5>Date Seen: {a3}</h5>
                      <br/>
-                     <h4>Seen By: {a4}</h4>
+                     <h5>Seen By: {a4}</h5>
                      <br/>
-                     <h4>Notes: {a5}</h4>
+                     <h5>Notes: {a5}</h5>
 
                   </CardContent>         
              </Card>

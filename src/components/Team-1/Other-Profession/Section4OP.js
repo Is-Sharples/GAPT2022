@@ -38,13 +38,13 @@ function Section4OP(){
     
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/Section3OP"} name = {"Other Professional Referred"} />  
+                <Header typography = {typography} history = {"/Section3OP"} name = {"Other Profession"} />  
                 <br/><br/>
-                <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {maxWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
+                <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {minWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
                      <h3>Notes</h3>
                      <br/>
-                     <TextField  type="text" id="outlined-multiline-static" label="Multiline"multiline rows={4} onClick ={(e) => setAnswer1(e.target.value)}></TextField>           
+                     <TextField sx={{width: '300px'}}  type="text" id="outlined-multiline-static" multiline rows={4} onChange ={(e) => setAnswer1(e.target.value)}></TextField>           
                   </CardContent>         
              </Card>
              <button className="next-button" onClick={validation}>Next</button>

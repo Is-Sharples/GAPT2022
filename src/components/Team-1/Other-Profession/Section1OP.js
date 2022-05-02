@@ -65,7 +65,7 @@ function Section1OP(){
 
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/PatientIDOP"} name = {"Other Professional Referred"} />  
+                <Header typography = {typography} history = {"/PatientIDOP"} name = {"Other Profession"} />  
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
@@ -77,7 +77,7 @@ function Section1OP(){
                           name="controlled-radio-buttons-group"
                           onClick={(e) => handleChange(e.target.value)}
                         >
-                        <FormControlLabel sx={{fontSize: 20}} value="Speech and Language Pathologist" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>Speech and Language Pathologist</Typography>} /> 
+                        <FormControlLabel sx={{fontSize: 20, textAlign: "left"}} value="Speech and Language Pathologist" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>Speech and Language Pathologist</Typography>} /> 
                         <FormControlLabel sx={{fontSize: 20}} value="Podiatry" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>Podiatry</Typography>} /> 
                         <FormControlLabel sx={{fontSize: 20}} value="Nutrition and Dietetics" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>Nutrition and Dietetics</Typography>} /> 
                         <FormControlLabel sx={{fontSize: 20}} value="Psychology" control={<Radio />} label={<Typography sx={{ fontSize: 20 }}>Psychology</Typography>} /> 
@@ -86,7 +86,7 @@ function Section1OP(){
                         </RadioGroup>
                       </FormControl>
                       <br/><br/>
-                      <textarea type="hidden" multiline rows={4} id="area" placeholder="What is your profession?"/> 
+                      <textarea cols="10" type="hidden" multiline rows={4} id="area" placeholder="What is your profession?"/> 
                   </CardContent>         
              </Card>
              <button className="next-button" onClick={() => {validation();}}>Next</button>
