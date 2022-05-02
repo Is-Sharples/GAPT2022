@@ -54,7 +54,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
             </Grid>
             <Grid item xs={8} sm={10}>
             <Box display="flex" justifyContent="center">
-                <Typography variant="h7" color="inherit" component="div" align="center" style={{marginTop: 20, marginBottom: 3.2, fontSize: '1.5em'}}>
+                <Typography variant="h7" color="inherit" component="div" align="center" style={{marginTop: 20, marginBottom: 3.2, fontSize: '1.75em'}}>
                 <label className="title" >{props.name}</label> 
                 </Typography>
             </Box>

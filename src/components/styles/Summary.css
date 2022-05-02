@@ -18,11 +18,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.7em;
+    /*font-size: 1.7em;*/
     color: Black;
     font-family: 'Calibri';
     
- }
+}
 
 .card {
     max-width: 600px;
@@ -209,16 +209,6 @@
     font-family: 'Calibri';
  }
 
-.screen {
-    background-color: #e5e5e5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* font-size: 1.75em; */
-    color: Black;
-    font-family: 'Calibri';
- }
 
  .card {
     padding: 13px;

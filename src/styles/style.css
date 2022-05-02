@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.75em;
+    /*font-size: 1.75em;*/
     color: Black;
     font-family: 'Open Sans';
     /* padding-top: 20px; */
@@ -118,9 +118,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 1.75em;
+      /*font-size: 1.75em;*/
       color: Black;
-      font-family: 'Open Sans';
+      font-family: 'Calibri';
       /* padding-top: 20px; */
     }
   
