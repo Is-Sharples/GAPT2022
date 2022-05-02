@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import Header from "./header";
+import Header from "../../header";
 import Card from '@mui/material/Card';
 import { CardContent } from '@mui/material';
 import Table from '@mui/material/Table';

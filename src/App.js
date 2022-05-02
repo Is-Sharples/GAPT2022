@@ -25,6 +25,13 @@ import SocialServices from './components/Team-1/Social-Worker/Social-Services';
 import CommunityApps from './components/Team-1/Social-Worker/CommunityApps';
 import SocialSummary from './components/Team-1/Social-Worker/Summary-Page';
 import RelativePlans from './components/Team-1/Social-Worker/RelativePlans';
+import PatientIDOT from './components/Team-1/Occuptational-Therapist/PatientID';
+import Section1OT from './components/Team-1/Occuptational-Therapist/Section1';
+import Section2OT from './components/Team-1/Occuptational-Therapist/Section2';
+import Section3OT from './components/Team-1/Occuptational-Therapist/Section3';
+import Section4OT from './components/Team-1/Occuptational-Therapist/Section4';
+import Section5OT from './components/Team-1/Occuptational-Therapist/Section5';
+import Section6OT from './components/Team-1/Occuptational-Therapist/Section6';
 import Menu from './components/menu';
 
 //Components
@@ -112,6 +119,13 @@ export default function App() {
         <Route path="/review" element={<Review/>} ></Route> 
         {/* Team-3 Ended Here */}
         <Route path="/menu" element={<Menu/>} ></Route> 
+        <Route path="/PatientIDOT" element={<PatientIDOT/>} ></Route>
+        <Route path="/Section1OT" element={<Section1OT/>} ></Route>
+        <Route path="/Section2OT" element={<Section2OT/>} ></Route>
+        <Route path="/Section3OT" element={<Section3OT/>} ></Route>
+        <Route path="/Section4OT" element={<Section4OT/>} ></Route>
+        <Route path="/Section5OT" element={<Section5OT/>} ></Route>
+        <Route path="/Section6OT" element={<Section6OT/>} ></Route>
       </Routes>
     </Router>
 
