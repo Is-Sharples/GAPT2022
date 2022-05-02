@@ -185,28 +185,60 @@ export function saveTeam3(patientId,init,date,data){
     })
 }
 
-export function setSocialWorker(patientId,date,Data){
+export function saveSocialWorker(patientId,date,Data1,Data2,Data3,Data4,Data5){
     const fullpath = 'patients/'+patientId+'/SectionD';
     const dbref = doc(db,fullpath,date);
-    console.log(Data);
     setDoc(dbref, {
         HomeSupport: {
-            LivesAlone: Data.LivesAlone,
-            Support: Data.AnySupport,
+            LivesAlone: Data1.LivesAlone,
+            Support: Data1.AnySupport,
         },
-        /*StairstoHome: {
-            stairs: Data.HomeEnv.Stairs, //yes or no
-            amenitiesOnSameFloor: Data.HomeEnv.Amenities, //yes or no
-            amenitiesLocation: Data.HomeEnv.AmenityLoc,
-            OtherAmenities: Data.HomeEnv.OtherAmenLoc
+        StairstoHome: {
+            Stairs: Data2.Stairs, //yes or no
+            AmenitiesOnSameFloor: Data2.Amenities, //yes or no
+            AmenitiesLocation: Data2.AmenityLoc,
+            OtherAmenities: Data2.OtherAmenLoc
         },
-        PatientsPlans: Data.Expectations.Patient,
-        RelativePlans: Data.Expectations.Relative,
-        SocialServices: Data.SocialServices,
-        commLTCData: {
-            commLTCApplication: Data.CommunityApps.Apps,
-            timeSpan: Data.CommunityApps.TimeSpan,
-        },*/
+        PatientsPlans: Data3.Patient,
+        RelativePlans: Data3.Relative,
+        SocialServices: Data4,
+        CommLTCData: {
+            CommLTCApplication: Data5.Apps,
+            TimeSpan: Data5.TimeSpan,
+        },
         
+    })
+}
+
+export function saveOccupational(patientId,date,data){
+    const fullpath = 'patients/'+patientId+'/SectionC';
+    const dbref = doc(db,fullpath,date);
+    setDoc(dbref, {
+        CurrentADLs: {
+            Feeding: data.feedingC,
+            Toilet: data.toiletC,
+            Bathing: data.bathC,
+            Grooming: data.groomC,
+            Dressing: data.dressC
+        },
+        CurrentInstrumentalADL: data.changesinADL,
+        Housebound: data.housebound,
+        PreviousADLs: {
+            Feeding: data.feedingP,
+            Toilet: data.toiletP,
+            Bathing: data.bathP,
+            Grooming: data.groomP,
+            Dressing: data.dressP
+        },
+        PreviousInstrumentalADLs: {
+            Telephone: data.telephone,
+            Shopping: data.shopping,
+            Food: data.food,
+            Housekeeping: data.housekeeping,
+            Laundry: data.laundry,
+            Transportation: data.transportation,
+            Medication: data.medication,
+            Finances: data.finances,
+        }
     })
 }

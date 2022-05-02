@@ -9,7 +9,8 @@ import { Paper } from "@mui/material";
 import { Button } from "@mui/material";
 import { Divider } from "@mui/material";
 import '../../firebase';
-import { setSocialWorker } from "../../firebase";
+import { saveSocialWorker } from "../../firebase";
+import { format } from "date-fns";
 
 class HomeSupport{
     constructor(LivesAlone,AnySupport){
@@ -64,14 +65,15 @@ class SocialSummary extends React.Component{
 
     handleClick = () => {
         var Arr = [];
-        const dt = new Date().toString();
+        const date = format(new Date(), "dd-MM-yyyy HH:mm:ss");
         Arr.push(this.state.HomeSupp);
         Arr.push(this.state.HomeEnv);
         Arr.push(this.state.Expect);
         Arr.push(this.state.SServices);
         Arr.push(this.state.CommApps);
         console.log(this.state.HomeSupp.LivesAlone)
-        setSocialWorker(sessionStorage.getItem("patientId"),dt,this.state.HomeSupp);
+        console.log(this.state.HomeEnv)
+        saveSocialWorker(sessionStorage.getItem("patientId"),date,this.state.HomeSupp,this.state.HomeEnv,this.state.Expect,sessionStorage.getItem("Array"),this.state.CommApps);
     }
 
     

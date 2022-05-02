@@ -17,6 +17,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import '../../styles/Team1OT.css';
+import { saveOccupational } from "../../firebase";
+import { format } from "date-fns";
 
 function Section6(){
 
@@ -27,6 +29,7 @@ function Section6(){
   };
 
   const handleOpen = () => {
+    saveOccupational(sessionStorage.getItem("PatientData"),date,alldata);
     navigate('/')
   }
 
@@ -114,6 +117,29 @@ function Section6(){
       createData2('Handling Finances', a18),  
     ];
 
+    const date = format(new Date(), "dd-MM-yyyy HH:mm:ss");
+    const alldata = {
+      housebound: a,
+      feedingP: a1,
+      toiletP: a2,
+      bathP: a3,
+      groomP: a4,
+      dressP: a5,
+      feedingC: a6,
+      toiletC: a7,
+      bathC: a8,
+      groomC: a9,
+      dressC: a10,
+      telephone: a11,
+      shopping: a12,
+      food: a13,
+      housekeeping: a14,
+      laundry: a15,
+      transportation: a16,
+      medication: a17,
+      finances: a18,
+      changesinADL: a19
+    }
     return(
         <div className="screen">
                 <Header typography = {typography} history = {"/Section5OT"} name = {"Occupational Therapy"} />  
@@ -122,7 +148,7 @@ function Section6(){
                     <CardContent>
                      <h3>Review Information</h3>
                       <br/>
-                      <h5>Is Patient Housebound? {a}</h5> 
+                      <h5>Is Patient Housebound?: {a}</h5> 
                   </CardContent>
                 </Card>
                 <br/><br/>
@@ -182,7 +208,7 @@ function Section6(){
                   </TableBody>
                   </Table>
                   <br/>
-                  <h5>Are there changes in Instrumental ADLs now? {a19}</h5> 
+                  <h5>Are there changes in Instrumental ADLs now?: {a19}</h5> 
                   </CardContent>         
              </Card>
              <button className="next-button" onClick={()=> {validation()}}>Save and Exit</button> 
@@ -192,7 +218,6 @@ function Section6(){
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-            
             <DialogTitle id="alert-dialog-title">
                 Are sure you want to save and exit?
             </DialogTitle>
