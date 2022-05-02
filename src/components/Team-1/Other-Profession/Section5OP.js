@@ -7,6 +7,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import '../../styles/Team1OT.css';
+import { saveOther } from '../../firebase';
+import { format } from "date-fns";
 
 function Section5(){
 
@@ -17,8 +19,11 @@ function Section5(){
   };
 
   const handleOpen = () => {
+    saveOther(sessionStorage.getItem("PatientData"),date,alldata);
     navigate('/PatientIDOP')
   }
+
+  const date = format(new Date(), "dd-MM-yyyy HH:mm:ss");
 
   function validation(){
     setOpen(true)
@@ -47,6 +52,14 @@ function Section5(){
         setA5(sessionStorage.getItem("a5"));
     }
 
+    const alldata = {
+      Profession: a,
+      ReferralDate: a1,
+      Reason: a2,
+      DateSeen: a3,
+      SeenBy: a4,
+      Notes: a5 
+    }
     var typography = "Review Results";
 
     return(

@@ -242,3 +242,16 @@ export function saveOccupational(patientId,date,data){
         }
     })
 }
+
+export function saveOther(patientId,date,data){
+    const fullpath = 'patients/'+patientId+'/SectionF';
+    const dbref = doc(db,fullpath,date);
+    setDoc(dbref, {
+        DataOfReferral: data.ReferralDate,
+        DataSeen: data.DateSeen,
+        Notes: data.Notes,
+        Profession: data.Profession,
+        ReasonForRefferal: data.Reason,
+        SeenBy: data.SeenBy
+    })
+}
