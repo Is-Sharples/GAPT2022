@@ -24,13 +24,12 @@ function Section5(){
     setOpen(true)
   }
 
-    const [a, setA] = useState("");
-    const [a1, setA1] = useState("");
-    const [a2, setA2] = useState("");
-    const [a3, setA3] = useState("");
-    const [a4, setA4] = useState("");
-    const [a5, setA5] = useState("");
-    const [a6, setA6] = useState("");
+    const [a, setA] = useState(""); //Profession
+    const [a1, setA1] = useState(""); //Referral Date
+    const [a2, setA2] = useState(""); //Reason for referral
+    const [a3, setA3] = useState(""); //date seen
+    const [a4, setA4] = useState(""); //Seen by
+    const [a5, setA5] = useState(""); //Notes
 
     const navigate = useNavigate();
        

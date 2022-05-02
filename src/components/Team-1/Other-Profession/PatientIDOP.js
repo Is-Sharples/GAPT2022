@@ -3,11 +3,8 @@ import Header from "../../header";
 import { Grid, TextField } from "@mui/material";
 import { List, Divider, ListItem,ListItemText, ListItemButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { getPatients } from "../../firebase";
 
-
-//import patients from '../assets/patients.json';
-//import { getPatients } from "../firebase";
-//import '../firebase';
 
 
 class currentPatient{
@@ -27,7 +24,7 @@ constructor(props){
     super(props);
     this.state = {
         exist: "false",
-        //patients : getPatients(),
+        patients : getPatients(),
         fragments:[],
         currentPatient: new currentPatient(0,"","",""),
         entered: "true",
@@ -111,7 +108,7 @@ render(){
     const { navigation } = this.props;
     if(this.state.currentPatient.id !== 0){
         
-        navigation("/sec1");
+        navigation("/Section1OP");
     }
     
 
@@ -126,8 +123,7 @@ render(){
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >
                         <TextField  label={"Patient ID"} 
-                                    onClick ={() => navigation("/Section1OP")}
-                                    // onChange ={this.DisplayPatients}
+                                    onChange ={this.DisplayPatients}
                         ></TextField>
                         <List >                 
                             <Divider />                           
