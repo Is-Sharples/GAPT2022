@@ -52,17 +52,25 @@ class Login extends React.Component{
                 if(User.pass === this.state.creds.pass){
                     console.log(User.roles);
                     if(User.roles === "nurse"){
-                        navigation("/Patient");
+                        sessionStorage.setItem("roles","nurse");
+                        navigation("/menu");
                     }else if(User.roles === "Physio"){
-                        navigation("/PatientID-Team-2");
+                        sessionStorage.setItem("roles","physio");
+                        navigation("/menu");
                     }else if (User.roles === "admin") {
                         navigation("/CreatePatient");
                     }else if (User.roles === "social worker"){
-                        navigation("/Patient-ID-Social-Worker");
+                        sessionStorage.setItem("roles","social worker");
+                        navigation("/menu");
                     }else if (User.roles === "geriatric consultant"){
-                        navigation("/Team-3-PatientID");
-                    }else{
-                        console.log("I'm tired man");
+                        sessionStorage.setItem("roles","geriatric consultant");
+                        navigation("/menu");
+                    }else if (User.roles === "occupational"){
+                        sessionStorage.setItem("roles","occupational");
+                        navigation("/menu");
+                    }else if (User.roles === "other profession"){
+                        sessionStorage.setItem("roles","other");
+                        navigation("/menu");
                     }
                     
                 }
