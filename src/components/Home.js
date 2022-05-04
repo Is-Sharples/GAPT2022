@@ -58,7 +58,7 @@ class Login extends React.Component{
                         sessionStorage.setItem("roles","physio");
                         navigation("/menu");
                     }else if (User.roles === "admin") {
-                        navigation("/CreatePatient");
+                        navigation("/AdminMenu");
                     }else if (User.roles === "social worker"){
                         sessionStorage.setItem("roles","social worker");
                         navigation("/menu");

@@ -255,3 +255,18 @@ export function saveOther(patientId,date,data){
         SeenBy: data.SeenBy
     })
 }
+
+
+export function setUser(users){
+
+    const dbref = doc(db, 'users',users.id);
+    setDoc(dbref,{
+        name:users.name,
+        id:users.id,
+        user:users.user,
+        pass:users.pass,
+        roles: users.roles,
+    });
+
+    console.log("Big Success!");
+}

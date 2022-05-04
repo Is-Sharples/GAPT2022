@@ -17,7 +17,7 @@ import GripStrength3 from './components/Team-2/GripStrength3';
 import GripStrength4 from './components/Team-2/GripStrength4';
 import SummaryTeam2 from './components/Team-2/SummaryTeam2';
 import PatientIDTeam2 from './components/Team-2/PatientID-Team2';
-import CreatePatient from './components/CreatePatient';
+import CreatePatient from './components/admin/CreatePatient';
 import SWHomeSupport from './components/Team-1/Social-Worker/Social-History-Home-Support';
 import HomeEnvironment from './components/Team-1/Social-Worker/Home-Environment';
 import PatientPlans from './components/Team-1/Social-Worker/PatientPlans';
@@ -63,6 +63,8 @@ import Review from './components/Team-3/Review';
 
 import './styles/style.css';
 import './styles/header.css';
+import CreateUsers from './components/admin/CreateUsers';
+import AdminMenu from './components/admin/menu';
 //Styling
 
 
@@ -74,7 +76,6 @@ export default function App() {
       <Routes>
         <Route path = "/" element={ <Home /> }/>
         {/* Login with: NVD001:pass */}
-        <Route path = "/CreatePatient" element={<CreatePatient />}/>
         {/* Team-4 Login with: AMD001:pass */}
         <Route path = "/Patient" element = {<Patient currentPatient = {new currentPatient(0,"","","")}/>} />
         {/* Team-2 Starts here with Login: test:pass */}
@@ -138,6 +139,13 @@ export default function App() {
         <Route path="/Section3OP" element={<Section3OP/>} ></Route>
         <Route path="/Section4OP" element={<Section4OP/>} ></Route>
         <Route path="/Section5OP" element={<Section5OP/>} ></Route>
+
+
+        {/* Admin */}
+        <Route path = "/AdminMenu" element={<AdminMenu />} ></Route>
+        <Route path = "/CreatePatient" element={<CreatePatient />}/>
+        <Route path = "/CreateUser"    element={<CreateUsers />}></Route>
+
       </Routes>
     </Router>
 

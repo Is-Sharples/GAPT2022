@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./header";
+import Header from "../header";
 import {Grid, TextField, List, ListItem, Button} from '@mui/material';
 import { useState } from "react";
 import { typography } from "@mui/system";
-import './styles/HomeContent.css';
-import './styles/Summary.css';
+import '../styles/HomeContent.css';
+import '../styles/Summary.css';
 import { useNavigate } from "react-router-dom";
-import { setPatient } from "./firebase";
+import { setPatient } from "../firebase";
 import { Snackbar } from "@mui/material";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -59,7 +59,7 @@ class CreatePatient extends React.Component{
 
     goBack = () => {
         const { navigation } = this.props;
-        navigation("/");
+        navigation("/AdminMenu");
     }
 
     getGender = (event) => {
@@ -103,7 +103,7 @@ class CreatePatient extends React.Component{
 
         <div className="screen">
             <Grid justifyContent={"center"} container rowGap={4} columns={{ xs: 2, sm: 2, md: 6 }} >
-                <Header history={"/"} typography={typography} name = {"Create Patient Page"}></Header>    
+                <Header history={"/AdminMenu"} typography={typography} name = {"Create Patient Page"}></Header>    
 
                 <div className="search-container">
                     <List>
