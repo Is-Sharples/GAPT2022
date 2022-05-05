@@ -83,14 +83,14 @@ const Summary = () => {
       ) {
         for (var k in ActualObjectHandResult.Risk) {
           thisHand = `
-            <p>
+            <p className="par">
               ${k} Verdict: <b>${ActualObjectHandResult.Risk[k]}</b>
             </p>
         `;
         }
       } else {
         thisHand = `
-          <p>Verdict: <b>${ActualObjectHandResult.Risk}</b>
+          <p className="par">Verdict: <b>${ActualObjectHandResult.Risk}</b>
           </p>
       `;
       }
@@ -109,45 +109,38 @@ const Summary = () => {
     if (ActualPreviousResult == null) {
       pageRender = `
   <div>
-    <label class="subtitle"><center>Physiotherapy </center></label> </br>
-    <label class="subtitle">Levels of Mobility</label> </br> </br> 
+    <h2><center>Physiotherapy </center></h2> </br>
+    <h3>Levels of Mobility</h3> </br> 
 
-    <ul>
-      <li>Previous Level: <b>${sessionStorage.getItem("TUGQuestion1")}</b></li>
-      <li>Current Level: <b>${sessionStorage.getItem("TUGQuestion2")}</b></li>
-    </ul> </br>
+    <p className="par">Previous Level: <b>${sessionStorage.getItem("TUGQuestion1")}</b></p>
+    <p className="par">Current Level: <b>${sessionStorage.getItem("TUGQuestion2")}</b></p>
+    
+    </br>
 
-    <label class="subtitle">TUG Test</label> </br> </br> 
+    <h3>TUG Test</h3> </br>
 
-    <ul>
-      <li>Time Taken: <b>${sessionStorage.getItem("TUGTimer")} seconds</b></li>
+    <p className="par">Time Taken: <b>${sessionStorage.getItem("TUGTimer")} seconds</b></p>
+    <p className="par">Status: <b>${sessionStorage.getItem("TUGStatus")}</b></li></p>
+    <p className="par">Carried Out?: <b>${sessionStorage.getItem("TUGTestCarriedOut")}</b></p>
         
+    </br>
 
-        <li>Status: <b>${sessionStorage.getItem("TUGStatus")}</b></li>
-        <li>Carried Out?: <b>${sessionStorage.getItem("TUGTestCarriedOut")}</b></li>
-        
-    </ul> </br>
+    <h3>Grip Strength test</h3> </br> 
 
-    <label class="subtitle">Grip Strength test</label> </br> </br> 
-    <ul>
-    <li>Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></li> 
-    </ul> </br>
+    <p className="par">Dominant Hand: <b>${sessionStorage.getItem("question1")}</b></p> 
+   
+    </br>
 
-      <li>Left Hand: <b>${ActualObjectLeftResult.TestResult}</b></li>
-      <div id="finalLeft"></div>
+    <p className="par">Left Hand: <b>${ActualObjectLeftResult.TestResult}</b></p>
+    <div id="finalLeft"></div>
 
-      <ul>
-        <li>Reason: <b>${sessionStorage.getItem("question4")}</b></li>
-      </ul> </br> </br> </br>
+    <p className="par">Reason: <b>${sessionStorage.getItem("question4")}</b></p>
+    </br>
 
-      <li>Right Hand: <b>${ActualObjectRightResult.TestResult}</b></li>
-      <div id="finalRight"></div>
+    <p className="par">Right Hand: <b>${ActualObjectRightResult.TestResult}</b></p>
+    <div id="finalRight"></div>
       
-      <ul>
-        <li>Reason: <b>${sessionStorage.getItem("question5")}</b></li>
-      </ul>
-
-    </ul>
+    <p className="par">Reason: <b>${sessionStorage.getItem("question5")}</b></li>
   </div>`;
 
     } else {
@@ -295,7 +288,7 @@ const dataArray = {
 
   return (
     <div className="screen">
-      <Header typography = {typography} history = {"/GripStrengthTest4"} name = {"Summary"} />
+      <Header typography = {typography} history = {"/GripStrength4"} name = {"Summary"} />
 
       <div className="pageRenderer">
         <div id="pageRender" justifyContent="center" alignItems ="center">

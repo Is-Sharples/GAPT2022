@@ -28,18 +28,12 @@ function GripStrength() {
       
 
       <div className="main-section">
-        <label className="subtitle">Equipment and Instructions</label>
-        <p>Equipment needed:</p>
-        <img
-          src={GripPhoto}
-          style={{
-            padding: 20,
-          }}
-        />
-        <ul>
-          <li>Dynamometer</li>
-        </ul>
-        <p>Instructions:</p>
+        <h2>Equipment and Instructions</h2><br/>
+        <p className="par">Equipment needed:</p><br/>
+        <img src={GripPhoto} />
+        <br/><p className="par">Dynamometer</p><br/>
+        
+        <p className="par">Instructions:</p><br/>
         <ul>
           <li>
             "In this exercise, I am going to use the dynamometer to test the

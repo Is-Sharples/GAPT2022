@@ -27,7 +27,7 @@ function Instructions() {
         
 
             <div className="main-section">
-                <label className="subtitle">Instructions for Clinician</label>
+                <h2>Instructions for Clinician</h2><br/>
                 <div>
                     <ol>
                         <li className="list-item">Equipment: arm chair, tape measure, tape, stopwatch.</li>
@@ -38,12 +38,6 @@ function Instructions() {
                         <li className="list-item">Normal healthy elderly usually complete the task in ten seconds or less. Very frail or weak elderly with poor mobility may take 2 minutes or more.</li>
                         <li className="list-item">The subject should be given a practise trial that is not times, before testing.</li>
                         <li className="list-item">Results correlate with gait speed, balance, functional level, the ability to go out, and can follow change over time.</li>
-                    </ol>
-                </div>
-                <label className="subtitle">Instruction for Patient</label>
-                <div>
-                    <ol>
-                        <li className="list-item">“On the word GO you will stand up, walk to the line on the floor, turn around and walk back to the chair and sit down. Walk at you regular pace.”</li>
                     </ol>
                 </div>
             </div>

@@ -196,18 +196,18 @@ const GripStrength3 = () => {
       <Header typography = {typography} history = {"/GripStrength2"} name = {"Grip Strength Test"} />
 
       <div className="main-section">
-        <h3>
+        <h4>
           Please fill the fields for both hands, or only fill for one of the
           hands
-        </h3>
-        <h3>
+        </h4>
+        <h4>
           In case patient can only provide 1 reading, leave 2nd reading blank or
           0
-        </h3>
+        </h4><br/>
         {error}
-        <label className="subtitle">Left Hand Results</label>
+        <h3>Left Hand Results</h3>
         <form>
-          <fieldset id="leftHandFieldset">
+          <fieldset id="leftHandFieldset" className="fieldset">
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>
@@ -300,9 +300,9 @@ const GripStrength3 = () => {
           </table>
           {errorLeft}
 
-          <h1 className="subtitle">Right Hand Results</h1>
+          <br/><br/><h3>Right Hand Results</h3>
 
-          <fieldset id="rightHandFieldset">
+          <fieldset id="rightHandFieldset" className="fieldset">
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>

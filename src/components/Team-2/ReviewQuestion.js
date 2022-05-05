@@ -29,11 +29,9 @@ function ReviewQuestion() {
             console.log("Status: ", status);
             if (status !== 'false') {
                 if (status === "Not Recorded") {
-                    // console.log("TIMER IS NULLL");
                     document.getElementById("radio-button-yes").disabled = true;
                 }
                 else {
-                    // console.log("TIMER IS NOT NULLL");
                     document.getElementById("radio-button-no").disabled = true;
                 }
             }
@@ -70,11 +68,11 @@ function ReviewQuestion() {
 
 
             <div className="main-section">
-                <label className="subtitle">TUG Test Carried out</label>
+                <h2>TUG Test Carried out</h2><br/>
                 <h3 className="alert" id="question1-alert"></h3>
                 <form id="question1Form">
                     <div>
-                        <input type="radio" id="radio-button-yes" name="group1" value="Yes" onChange={(e) => setAnswerQuestion1(e.target.value)}
+                        <input className="radio" type="radio" id="radio-button-yes" name="group1" value="Yes" onChange={(e) => setAnswerQuestion1(e.target.value)}
                             onClick={function () {
                                 document.getElementById("TUGTestCarriedOut").disabled = true;
                                 document.getElementById("radio-button-att").checked = false;
@@ -86,16 +84,16 @@ function ReviewQuestion() {
                         <label className="radio-button-label" htmlFor="radio-button-yes">Yes</label>
                     </div>
                     <div>
-                        <input type="radio" id="radio-button-no" name="group1" value="no" onChange={(e) => setAnswerQuestion1("")}
+                        <input className="radio" type="radio" id="radio-button-no" name="group1" value="no" onChange={(e) => setAnswerQuestion1("")}
                             onClick={function () {
                                 document.getElementById("TUGTestCarriedOut").disabled = false;
                             }} />
 
                         <label className="radio-button-label" htmlFor="radio-button-no">No</label>
                     </div>
-                    <fieldset id="TUGTestCarriedOut" className="indented-radio-buttons" disabled={true}>
+                    <fieldset id="TUGTestCarriedOut" className="indented-radio-buttons fieldset" disabled={true}>
                         <div>
-                            <input type="radio" id="radio-button-att" name="group1-1" value="No, Attempted but unable"
+                            <input className="radio" type="radio" id="radio-button-att" name="group1-1" value="No, Attempted but unable"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -103,7 +101,7 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-att">Attempted, but unable</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unsafe" name="group1-1" value="No, Unsafe"
+                            <input className="radio" type="radio" id="radio-button-unsafe" name="group1-1" value="No, Unsafe"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -111,7 +109,7 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-unsafe">Unsafe</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-unable" name="group1-1" value="No, Unable to understand command"
+                            <input className="radio" type="radio" id="radio-button-unable" name="group1-1" value="No, Unable to understand command"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -119,7 +117,7 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-unable">Unable to understand command</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-refused" name="group1-1" value="No, Refused"
+                            <input className="radio" type="radio" id="radio-button-refused" name="group1-1" value="No, Refused"
                                 onChange={(e) => {
                                     setAnswerQuestion1(e.target.value);
                                     document.getElementById("text-box").disabled = true;
@@ -127,18 +125,18 @@ function ReviewQuestion() {
                             <label className="radio-button-label" htmlFor="radio-button-refused">Refused</label>
                         </div>
                         <div>
-                            <input type="radio" id="radio-button-prev-other" name="group1-1" value="other" onClick={function () {
+                            <input className="radio" type="radio" id="radio-button-prev-other" name="group1-1" value="other" onClick={function () {
                                 document.getElementById("text-box").disabled = false;
                             }} onChange={(e) => setAnswerQuestion1(e.target.value)} />
                             <label className="radio-button-label" htmlFor="radio-button-prev-other">Other: </label>
-                            <input type="text" id="text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("No, Other: " + e.target.value)} />
+                            <input className="area" type="text" id="text-box" disabled={true} onBlur={(e) => setAnswerQuestion1("No, Other: " + e.target.value)} />
                             <h3 className="alert" id="question1-other-alert"></h3>
 
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <button className="next-button" onClick={validateForm}>Complete TUG Test</button>
+            <button className="next" onClick={validateForm}>Complete TUG Test</button>
         </div>
     );
 }

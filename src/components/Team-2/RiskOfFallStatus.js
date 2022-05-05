@@ -32,13 +32,13 @@ function RiskOfFallStatus() {
             <Header typography = {typography} history = {"/Timer"} name = {"Risk of Falling"} />
 
             <div className="main-section">
-                <label className="subtitle">Risk of Fall Status</label>
+                <h2>Risk of Fall Status</h2><br/>
                 <ul>
                     <li>Status: <b> {sessionStorage.getItem("TUGStatus")} </b></li>
                     <li>Time taken: <b> {sessionStorage.getItem("TUGTimer")} seconds </b></li>
                 </ul>
-                <label className='subtitle'></label>
                 <div>
+                    <br/>
                     <table className="style">
                         <tbody>
                             <tr>
