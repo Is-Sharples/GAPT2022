@@ -18,7 +18,7 @@ class currentPatient{
 }
 
 
-class PatientID extends React.Component{
+class PatientIDOP extends React.Component{
 
 constructor(props){
     super(props);
@@ -119,7 +119,7 @@ render(){
         <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }}>
             
             <Header typography = {typography} history = {"/"} item  name = {"Patient Page"}/>
-               
+                
                 <Grid justifyContent={"center"} container item >
                     <div className="search-container" >
                         <TextField  label={"Patient ID"} 
@@ -161,5 +161,5 @@ export default function (props){
     const navigate= useNavigate();
 
 
-    return <PatientID {...props} navigation={navigate} ></PatientID>
+    return <PatientIDOP {...props} navigation={navigate} ></PatientIDOP>
 }

@@ -14,7 +14,7 @@ class Menu extends React.Component{
   console.log(roles);
       if(roles === "nurse"){
             navigation("/Patient");
-      }else if(roles === "Physio"){
+      }else if(roles === "physio"){
         
         navigation("/PatientID-Team-2");
       }else if (roles === "admin") {
