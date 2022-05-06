@@ -7,7 +7,7 @@ import Card from '@mui/material/Card';
 function Section2(){
     
     const diseasesArray = [
-        { id: 1, condition: "Myocardial Infection", score: 1 }, 
+        { id: 1, condition: "Myocardial Infraction", score: 1 }, 
         { id: 2, condition: "Congestive Heart Failure", score: 1 },
         { id: 3, condition: "Peripheral Vascular Disease", score: 1 },
         { id: 4, condition: "Cerebrovascular Disease", score: 1 },
@@ -137,10 +137,10 @@ function Section2(){
                  <Header typography = {typography} history = {"/questions"} name = {"Charlson Co-Morbidity Index"} />
                 <br/>
                 <Card sx={{['@media (min-width:720px)']: {minWidth: "75%"}, ['@media (max-width:720px)']: {maxWidth: "75%"}, borderRadius: "20px", padding: "5px 20px"}} >
-                    <h3>Social Habits:</h3>
+                    <h3>Co-Morbidity Index :</h3>
                         <br/>
                           <input className="check" type="checkbox" onChange={() => handleOnChange(0)}/>
-                          <label className="check-label">MyoCardialInfection</label>
+                          <label className="check-label">MyoCardialInfraction</label>
                           <br/>
                           <input className="check" type="checkbox" onChange={() => handleOnChange(1)}/>
                           <label className="check-label">Congestive Heart Failure</label>
