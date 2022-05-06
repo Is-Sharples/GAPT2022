@@ -1,25 +1,17 @@
 import React, {useState} from 'react'; 
-import '../styles/Barthel.css';
+import './styles/Barthel.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
 import Summary from './Summary';
-import Box from '@mui/material/Box';
 
 export default function BarthelIndex(props) {
 	var data = props.patient;
-	var run = props.run;
 	const [summary, showSummary] = useState("false");
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showBarthelIndex, setShowBarthelIndex] = useState(false);
-	const [BarthelIndex, setBarthelIndex] = useState(0);
-	const [indexList, setList] = useState([]);
-
-	function addToList(val) {
-		console.log(val);
-		indexList.push(val);
-	}
-	console.log("prop run:",run);
+	const [currentQuestion, setCurrentQuestion] = useState(props.question);
+    const [editB,setEdit] = useState(0);
+    
+	
 
 	const questions = [
 		{
@@ -105,21 +97,13 @@ export default function BarthelIndex(props) {
 		},
 	];
 
-
 	const handleAnswerOptionClick = (index) => {
-			addToList(index);
-			setBarthelIndex(BarthelIndex + index);
-
-		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		} else {
-			showSummary("true");
-		}
+		setEdit(index);
+		showSummary("true");
 	};
 
 	if (summary === "true"){
-        return <Summary patient ={data} history = {"/"} indexList = {indexList}/>
+        return <Summary patient ={data} history = {"/"} editB={editB} arrnum={props.question}/>
     }
 
 	return (
@@ -127,16 +111,7 @@ export default function BarthelIndex(props) {
 		<Grid>
 			<Card className='body' sx={{ minWidth: 500, maxWidth: 500}}>
 				<CardContent>
-					{showBarthelIndex ? (
-						<div className='score-section'>
-							Barthel Index: {BarthelIndex}
-						</div>
-					) : (
-						<>	
-							<div className='phase-section'>
-								<h2>{(run)===0 ? "Admission" : "Discharge"}</h2>
-							</div>
-							
+						<>
 							<div className='question-section'>
 								<div className='question-text'>{questions[currentQuestion].questionText}</div> <br />
 							</div>
@@ -146,7 +121,6 @@ export default function BarthelIndex(props) {
 								))} 
 							</div> 
 						</>
-					)}
 				</CardContent>
 			</Card>
 		</Grid>

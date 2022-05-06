@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore'
-import { collection, getDocs, setDoc, addDoc, doc } from "firebase/firestore";
+import { collection, getDocs, setDoc, addDoc, doc, getDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,14 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
-class Users {
-    constructor(name,pass,role,user){
-        this.name = name;
-        this.pass = pass;
-        this.role = role;
-        this.user = user;
-    }
-}
+
 
 
 export function getPatients(){
@@ -98,7 +91,6 @@ export function ShowSectionE(){
             console.log(Joe);
             allData = Joe;
         })
-        
     return allData
 }
 
@@ -111,8 +103,37 @@ export function AddData(){
     })
 }
 
+export function AddNewVisit(id, time){
+    const fullpath = 'patients/'+id+'/SectionE';
+    const dbref = doc(db,fullpath,time);
+    setDoc(dbref,{
+        AdmissionBarthel: "",
+        AdmissionDate: "",
+        AdmissionHeightWeight: "",
+        DischargeBarthel: "",
+        DischargeDate: "",
+        DischargeHeightWeight: "",
+    })
+}
+
+export function AddDataB(){
+    addDoc(collection(db,'patients/1234/SectionB'),{
+        DataofSession: "",
+        GripStrengthResults:{MaxLeftHandResult: {Risk: "", TestResult: ""}, MaxRightHandResult: {Risk: "", TestResult: ""}, 
+        Question1: "", 
+        Question2: "", 
+        Question3: "",
+        Question4: "",
+        Question5: "",},
+        TUGTestResults:{LevelsOfMobility: {CurrentLevelofMobility: "", PreviousLevelofMobility: ""}, 
+        RiskOfFallStatus:{Status: "",TimeTakenInSeconds: ""},
+        TUGTestCarriedOut: ""}
+        
+    })
+}
+
 //data1: ablist, data2: dblist, data3: ahw, data4: dhw
-export function SetData(Adate, Ddate, data1, data2, data3, data4){
+export function SetDataB(Adate, Ddate, data1, data2, data3, data4){
     const dbref = doc(db,'patients/1234/SectionE','NNS66Bptd9kFWijqoFeW');
     setDoc(dbref,{
         ab: data1,
@@ -270,3 +291,38 @@ export function setUser(users){
 
     console.log("Big Success!");
 }
+
+export async function GetDocsE(patientId){
+    const fullpath = 'patients/'+patientId+'/SectionE';
+    const dbref = await collection(db, fullpath);
+    const arr= [];
+    await getDocs(dbref)
+        .then((snapshot) => {
+            snapshot.docs.forEach((doc)=>{
+                arr.push(
+                    doc.id
+                );
+            })
+        })
+    return arr
+}
+
+let data;
+// let test = [];
+export async function GetDataE(patientId, docId){
+    
+    const fullpath = 'patients/'+patientId+'/SectionE';
+    const dbref = await collection(db,fullpath);
+    await getDoc(dbref)
+    .then((snapshot) => {
+        data = snapshot.docs.find((doc) => doc.id === docId).data();
+        console.log("inside data:",data);
+        // test.push(data);
+        return data
+    })
+    // console.log(data);
+    //sessionStorage.setItem("",JSON.stringify(data));
+    return data;
+}
+
+
