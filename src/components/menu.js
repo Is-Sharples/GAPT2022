@@ -28,7 +28,7 @@ class Menu extends React.Component{
       }else if (roles === "occupational"){
         navigation("/PatientIDOT");
       }else if (roles === "other"){
-        navigation("PatientIDOP");
+        navigation("/PatientIDOP");
       }
   }
 
