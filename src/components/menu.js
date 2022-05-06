@@ -55,7 +55,7 @@ class Menu extends React.Component{
       case "occupational":
           occup = false;
       break;
-      case "consultant":
+      case "geriatric consultant":
           consultant = false;  
       break;
       case "other": 
