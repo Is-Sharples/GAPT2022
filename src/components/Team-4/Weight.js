@@ -5,7 +5,7 @@ import Question2Card from './Question2Card';
 import Summary from "./Summary";
 // import patients from '../assets/patients.json';
 import { Grid } from '@mui/material';
-import './styles/HWcss.css';
+import '../styles/HWcss.css';
 
 
 function Weight(props) {

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import WeightCard from './WeightCard';
-import QuestionCard from './QuestionCard';
-import Summary from "./Summary";
+import WeightCard from './Team-4/WeightCard';
+import QuestionCard from './Team-4/QuestionCard';
+import Summary from "./Team-4/Summary";
 import { Grid } from '@mui/material';
 
 

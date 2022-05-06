@@ -3,7 +3,7 @@ import './styles/Barthel.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
-import Summary from './Summary';
+import Summary from './Team-4/Summary';
 
 export default function BarthelIndex(props) {
 	var data = props.patient;

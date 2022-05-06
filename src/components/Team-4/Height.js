@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import HeightCard from './HeightCard';
 import Weight from "./Weight";
 import { Grid } from '@mui/material';
-import './styles/HWcss.css';
+import '../styles/HWcss.css';
 
 function Height(props) {
     var data = props.ahw;

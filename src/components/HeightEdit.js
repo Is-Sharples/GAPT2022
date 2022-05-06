@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import HeightCard from './HeightCard';
+import HeightCard from './Team-4/HeightCard';
 import { Grid } from '@mui/material';
-import Summary from './Summary';
+import Summary from './Team-4/Summary';
 
 function Height(props) {
     const [state, setState] = useState({
