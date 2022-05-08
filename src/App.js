@@ -39,7 +39,9 @@ import Section3OP from './components/Team-1/Other-Profession/Section3OP';
 import Section4OP from './components/Team-1/Other-Profession/Section4OP';
 import Section5OP from './components/Team-1/Other-Profession/Section5OP';
 import Menu from './components/menu';
-
+import PatientViewID from './components/PatientView/PatientView-ID';
+import PatientViewDetails from './components/PatientView/PatientView-Details';
+import PatientViewMenu from './components/PatientView/PatientView-Menu';
 //Components
 import PatientID from './components/Team-3/PatientID';
 import Section1 from './components/Team-3/Section1'
@@ -146,6 +148,11 @@ export default function App() {
         <Route path = "/CreatePatient" element={<CreatePatient />}/>
         <Route path = "/CreateUser"    element={<CreateUsers />}></Route>
 
+        {/* PatientView */}
+
+        <Route path = "/PatientView" element={<PatientViewID />} ></Route>
+        <Route path='/PatientView-Details' element={<PatientViewDetails />} ></Route>
+        <Route path = '/Patient-Menu' element={<PatientViewMenu />} ></Route>
       </Routes>
     </Router>
 

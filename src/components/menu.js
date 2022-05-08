@@ -32,6 +32,11 @@ class Menu extends React.Component{
       }
   }
 
+  goToPatients = () => {
+    const { navigation } = this.props;
+    navigation("/PatientView");
+  }
+
   render() {
     var typography = "Choose the profession to carry out the designated assessment";
     var roles = sessionStorage.getItem("roles");
@@ -80,7 +85,7 @@ class Menu extends React.Component{
             <ListItem> <  Button disabled={social}   fullWidth={true} onClick={() => this.handleclick()} variant='contained' >Social Worker</Button> </ListItem>
             <ListItem> <  Button disabled ={other}  fullWidth={true} onClick={() => this.handleclick()} variant='contained' >Other Profession</Button> </ListItem>
             <ListItem> <  Button disabled={consultant}  fullWidth={true} onClick={() => this.handleclick()} variant='contained' >Geriatric Consultant</Button> </ListItem>
-            
+            <ListItem> <  Button fullWidth={true} onClick={() => this.goToPatients()} variant='contained'> Patient View </Button></ListItem>
             
             
             

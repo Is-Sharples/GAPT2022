@@ -17,6 +17,16 @@ class Patient{
         this.id = id;
         this.gender = gender;
         this.age = age;
+        this.housename = "";
+        this.houseNum = 0;
+        this.streetname = "";
+        this.kinName = "";
+        this.KinNumber = "";
+        this.kinRelation = "";
+        this.locality = ""; 
+        this.AdmitConsultant = "";
+        this.AdmitWard = "";
+        this.zipcode = "";
     }
 }
 
@@ -34,6 +44,17 @@ class CreatePatient extends React.Component{
             open: false,
             gender: "",
             age: "",
+            housename: "",
+            streetname: "",
+            houseNum:0,
+            zipcode:"",
+            locality:"",
+            kinName:"",
+            kinRelation:"",
+            KinNumber:"",
+            AdmitConsultant:"",
+            AdmitWard:"",
+            AdmitLastYear:"",
         }
     }
 
@@ -53,6 +74,8 @@ class CreatePatient extends React.Component{
         this.state.patient.id = this.state.id;
         this.state.patient.gender = this.state.gender;
         this.state.patient.age = this.state.age;
+        // this.state.patient.AdmitConsultant = this.state.AdmitConsultant;
+        // this.state.patient.AdmitWard = this.state.AdmitWard;
         setPatient(this.state.patient);
         this.setState({open:true});
     }
@@ -72,14 +95,65 @@ class CreatePatient extends React.Component{
         this.state.age = value;
     }
 
+    getHouseName = (event) => {
+        let value = event.target.value;
+        this.state.housename = value;
 
+    }
+
+    getZipCode = (event) => {
+        let value = event.target.value;
+        this.state.patient.zipcode = value;
+    }
+    getHouseNum = (event) => {
+        let value = event.target.value;
+        this.state.patient.houseNum = value;
+    }
+
+    getStreetName = (event) => {
+        let value = event.target.value;
+        this.state.patient.streetname = value;
+    }
+    getKinNum = (event) => {
+        let value = event.target.value;
+        this.state.patient.KinNumber = value;
+    }
+
+    getKinRelation = (event) => {
+        let value = event.target.value;
+        this.state.patient.kinRelation  = value;
+    }
+    getKinName = (event) => {
+        let value = event.target.value;
+        this.state.patient.kinName = value;
+    }
+
+    getLocality = (event) => {
+        let value = event.target.value;
+        this.state.patient.locality = value;   
+    }
+
+    getAdmitConsultant = (event) => {
+        let value = event.target.value;
+        this.state.patient.AdmitConsultant = value;
+    }
+
+    getAdmitWard = (event) => {
+        let value = event.target.value;
+        this.state.patient.AdmitWard = value;
+    }
+
+    getAdmitLastYear = (event) => {
+        let value = event.target.value;
+        this.state.patient.AdmitLastYear = value;
+    }
 
     render(){
     var typography = "This page is to create a new patient";
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
-             return;
+            return;
         }
         this.setState({open:false});
     }
@@ -120,6 +194,40 @@ class CreatePatient extends React.Component{
                         <ListItem>
                             <TextField onChange={this.getAge} label = {"Age"}></TextField>
                         </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getHouseName} label = {"House Name"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getHouseNum} label = {"House No."}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getStreetName} label = {"Street Name"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getZipCode} label = {"ZipCode"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getKinName} label = {"Kin Name"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getKinNum} label = {"Kin Contact Number"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getKinRelation} label = {"Kin Relation"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getLocality} label = {"Locality"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getAdmitConsultant} label = {"Admitting Consultant"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getAdmitWard} label = {"Admitting Ward"}></TextField>
+                        </ListItem>
+                        <ListItem>
+                            <TextField onChange={this.getAdmitLastYear} label = {"Admissions Last Year"}></TextField>
+                        </ListItem>
+                        
                         <ListItem>
                             <Button onClick={this.submitData} fullWidth={true} variant = "contained" >Create Patient</Button>
                         </ListItem>

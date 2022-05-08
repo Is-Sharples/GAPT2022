@@ -153,6 +153,17 @@ export function setPatient(patient){
         id:patient.id,
         gender:patient.gender,
         age:patient.age,
+        AdmitWard:patient.AdmitWard,
+        AdmitConsultant:patient.AdmitConsultant,
+        AdmitLastYear:patient.AdmitLastYear,
+        locality:patient.locality,
+        zipcode:patient.zipcode,
+        streetname:patient.streetname,
+        KinNumber:patient.KinNumber,
+        kinName:patient.kinName,
+        kinRelation:patient.kinRelation,
+        houseName:patient.housename,
+        houseNum:patient.houseNum,
     });
 
     // console.log("Big Success!");
@@ -325,4 +336,28 @@ export async function GetDataE(patientId, docId){
     return data;
 }
 
+export async function getPatients2(){
+    
+    let NotGlobal = [];
+    const colRef = collection(db, 'patients');
+    await getDocs(colRef)
+        .then((snapshot)=> {
+            let patients = []
+            snapshot.docs.forEach((doc) => {
+                patients.push({
+                    ...doc.data(), 
+                    id: doc.id
+                })
 
+            }       
+        )
+        
+        // console.log(patients);
+        for(var i = 0; i < patients.length;i++){
+            NotGlobal[i] = patients[i];
+            
+        }
+        
+    })
+    return NotGlobal;
+}
