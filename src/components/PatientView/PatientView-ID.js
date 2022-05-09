@@ -110,7 +110,7 @@ render(){
 
     if(this.state.currentPatient.id !== 0){
         const { navigation } = this.props;
-        sessionStorage.setItem("id",this.state.currentPatient.id);
+        sessionStorage.setItem("id","1234");
         navigation("/PatientView-Details");
     }
     
