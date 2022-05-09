@@ -3,22 +3,35 @@ import React from "react";
 import Header from '../header'
 import { List, ListItem } from "@material-ui/core";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 class PatientMenu extends React.Component{
-    
+    constructor(props){
+        super(props);
+    }
+
+    GoToNurse = () => {
+        const { navigation } = this.props;
+        navigation("/PatientView-Nurse")
+    }
+
+    GoToOther = () => {
+        const { navigation } = this.props;
+        navigation("/PatientView-Other");
+    }
 
     render(){
-
+        
 
 
 
         return (
             <div>
                 
-                <Header  name = "View Forms"></Header>
+                <Header history = {"/PatientView"} name = "View Forms"></Header>
                 <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }} >
                     <List>
                         <ListItem>
-                            <Button fullWidth={true} variant="contained" >Nurse</Button>
+                            <Button onClick={this.GoToNurse} fullWidth={true} variant="contained" >Nurse</Button>
                         </ListItem>
                         <ListItem>
                             <Button fullWidth={true} variant="contained" >Occupational</Button>
@@ -30,7 +43,7 @@ class PatientMenu extends React.Component{
                             <Button fullWidth={true} variant="contained" >Social Worker</Button>
                         </ListItem>
                         <ListItem>
-                            <Button fullWidth={true} variant="contained" >Other Profession</Button>
+                            <Button onClick={this.GoToOther} fullWidth={true} variant="contained" >Other Profession</Button>
                         </ListItem>
                         <ListItem>
                             <Button fullWidth={true} variant="contained" >Geriatric Consultant</Button>
@@ -50,11 +63,11 @@ class PatientMenu extends React.Component{
 
 
 export default function(props){
-
+    const navigate = useNavigate();
 
     return(
+        
 
-
-        <PatientMenu></PatientMenu>
+        <PatientMenu {...props} navigation = {navigate} ></PatientMenu>
     )
 }

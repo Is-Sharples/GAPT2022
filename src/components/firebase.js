@@ -361,3 +361,45 @@ export async function getPatients2(){
     })
     return NotGlobal;
 }
+
+
+export async function getNurseSummary(id){
+    let global = [];
+    const fullpath = 'patients/'+id+'/SectionE';
+    const ref = collection(db, fullpath);
+    await getDocs(ref).then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+            documents.push({
+                ...doc.data(),
+                id:doc.id
+            })
+        })
+    
+    for (var i =0; i < documents.length;i++){
+        global[i] = documents[i];
+    }
+    })
+    return global;
+}
+
+export async function getOtherSummary(id){
+    let global = [];
+    const fullpath = 'patients/'+id+'/SectionF';
+    const ref = collection(db,fullpath);
+
+    await getDocs(ref).then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+            documents.push({
+                ...doc.data(),
+                id:doc.id
+            })
+        })
+
+        global = documents;
+        //console.log(global);
+    })
+
+    return global;
+}
