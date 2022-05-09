@@ -48,33 +48,33 @@ class PatientViewPhysio extends React.Component{
                         <br/>
                         <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {minWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>
-                                <h4>Physiotherapy</h4>
+                                <h2>Physiotherapy</h2>
                                 <br/>
-                                <h4>Levels Of Mobility </h4>
+                                <h2>Levels Of Mobility </h2>
                                 <br/>
-                                <h5>Previous Level: {doc.TUGTestResults.LevelsOfMobility.PreviousLevelofMobility}</h5>
+                                <h3>Previous Level: {doc.TUGTestResults.LevelsOfMobility.PreviousLevelofMobility}</h3>
                                 <br/>
-                                <h5>Current Level: {doc.TUGTestResults.LevelsOfMobility.CurrentLevelofMobility}</h5>
+                                <h3>Current Level: {doc.TUGTestResults.LevelsOfMobility.CurrentLevelofMobility}</h3>
                                 <br/>
-                                <h4>TUG Test </h4>
+                                <h2>TUG Test </h2>
                                 <br/>
-                                <h5>Time Taken:{doc.TUGTestResults.RiskOfFallStatus.TimeTakenInSeconds}</h5>
+                                <h3>Time Taken:{doc.TUGTestResults.RiskOfFallStatus.TimeTakenInSeconds}</h3>
                                 <br/>
-                                <h5>Status: {doc.TUGTestResults.RiskOfFallStatus.Status} </h5>
+                                <h3>Status: {doc.TUGTestResults.RiskOfFallStatus.Status} </h3>
                                 <br />
-                                <h5> Carried Out? {doc.TUGTestResults.TUGTestCarriedOut} </h5>
+                                <h3> Carried Out? {doc.TUGTestResults.TUGTestCarriedOut} </h3>
                                 <br />
-                                <h4> Grip Strength Test </h4>
+                                <h2> Grip Strength Test </h2>
                                 <br /> 
                                 
-                                <h5> Left Hand: {doc.GripStrengthResults.MaxLeftHandResult.TestResult}</h5><br /> 
-                                <h5> Verdict: {doc.GripStrengthResults.MaxLeftHandResult.Risk}</h5><br /> 
-                                <h5> Reason: {doc.GripStrengthResults.Question4}</h5>
+                                <h3> Left Hand: {doc.GripStrengthResults.MaxLeftHandResult.TestResult}</h3><br /> 
+                                <h3> Verdict: {doc.GripStrengthResults.MaxLeftHandResult.Risk}</h3><br /> 
+                                <h3> Reason: {doc.GripStrengthResults.Question4}</h3>
 
                                 <br /> 
-                                <h5> Right Hand: {doc.GripStrengthResults.MaxRightHandResult.TestResult}</h5><br /> 
-                                <h5> Verdict: {doc.GripStrengthResults.MaxRightHandResult.TestResult}</h5><br /> 
-                                <h5> Reason: {doc.GripStrengthResults.Question5}</h5>
+                                <h3> Right Hand: {doc.GripStrengthResults.MaxRightHandResult.TestResult}</h3><br /> 
+                                <h3> Verdict: {doc.GripStrengthResults.MaxRightHandResult.TestResult}</h3><br /> 
+                                <h3> Reason: {doc.GripStrengthResults.Question5}</h3>
 
                             </CardContent>         
                         </Card>

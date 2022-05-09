@@ -148,7 +148,7 @@ const GripStrength4 = () => {
                 </form>
                 <h2>Right Hand</h2> <br/>
                 <form id="question2Form">
-                    <p >Grip Strength test carried out on <b>right hand</b>?</p><br/>
+                    <p className="par">Grip Strength test carried out on <b>right hand</b>?</p><br/>
                     <h3 className="alert" id="question2-alert"></h3>
                     <div>
                         <input className="radio" type="radio" id="gst-question2-radio1" name="question2-yes-no" onClick={function () {

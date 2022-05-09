@@ -121,33 +121,33 @@ function MOCAResults(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>
-                   <h3>www.mocatest.org</h3>
+                   <h1>www.mocatest.org</h1>
                    <br/>
                    <p>(C) Z. Nasreddine MD</p>
                    <br/>
-                   <h5>Training and Certification are required to ensure accuracy</h5>
+                   <h2>Training and Certification are required to ensure accuracy</h2>
                    <br/>
-                   <h5> Results: </h5>
+                   <h2> Results: </h2>
                    <br/>
-                   <h5>Visuospatial/Executive: {viso}</h5>
+                   <h2>Visuospatial/Executive: {viso}</h2>
                    <br/>
-                   <h5>Naming: {name}</h5>
+                   <h2>Naming: {name}</h2>
                    <br/>
-                   <h5>Memory: No Points</h5>
+                   <h2>Memory: No Points</h2>
                    <br/>
-                   <h5>Attention: {attn}</h5>
+                   <h2>Attention: {attn}</h2>
                    <br/>
-                   <h5>Language: {lang}</h5>
+                   <h2>Language: {lang}</h2>
                    <br/>
-                   <h5>Abstraction: {abs}</h5>
+                   <h2>Abstraction: {abs}</h2>
                    <br/>
-                   <h5>Delayed Recall: {recall}</h5>
+                   <h2>Delayed Recall: {recall}</h2>
                    <br/>
-                   <h5>Orientation: {orien}</h5>
+                   <h2>Orientation: {orien}</h2>
                    <br/>
                    <h4>Total: {score}/{max}</h4>
                    <br/>
-                   <h5><u> {status}</u></h5>
+                   <h2><u> {status}</u></h2>
                   </CardContent>         
              </Card>
              <button className="next-button" onClick={()=>{ sessionStorage.setItem("moca-score",score); sessionStorage.setItem("moca-max",max); sessionStorage.setItem("moca-status",status); navigate("/review");}}>Next</button>

@@ -78,23 +78,23 @@ function Review(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                     <CardContent>
-                   <h5>Diagnosis: {diagnosis}</h5>  
+                   <h2>Diagnosis: {diagnosis}</h2>  
                    <br/>
-                   <h5>History of Present Condition: {condition}</h5>  
+                   <h2>History of Present Condition: {condition}</h2>  
                    <br/>
-                   <h5>Past Medical History: {medical}</h5>  
+                   <h2>Past Medical History: {medical}</h2>  
                    <br/>
-                   <h5>Drug History: {drug}</h5>  
+                   <h2>Drug History: {drug}</h2>  
                    <br/>
-                   <h5>Smoking: {smoking}</h5>  
+                   <h2>Smoking: {smoking}</h2>  
                    <br/>
-                   <h5>Drinking: {alcohol} </h5>  
+                   <h2>Drinking: {alcohol} </h2>  
                    <br/>
-                   <h5>Level of Education: {education}</h5>  
+                   <h2>Level of Education: {education}</h2>  
                    <br/>
-                   <h5>Charlson Co-Morbidity Index: {cmi}</h5>
+                   <h2>Charlson Co-Morbidity Index: {cmi}</h2>
                    <br/>
-                   <h5>Moca Final Result: {moca_score}/{moca_max} - {moca_status}</h5>  
+                   <h2>Moca Final Result: {moca_score}/{moca_max} - {moca_status}</h2>  
                    <br/>
                   </CardContent>         
                 </Card>

@@ -70,17 +70,17 @@ function Section5(){
                     <CardContent>
                      <h4>Review Inputs</h4>
                      <br/>
-                     <h5>Profession: {a}</h5>
+                     <h2>Profession: {a}</h2>
                      <br/>
-                     <h5>Date Referral: {a1}</h5>
+                     <h2>Date Referral: {a1}</h2>
                      <br/>
-                     <h5>Reason for Referral: {a2}</h5>
+                     <h2>Reason for Referral: {a2}</h2>
                      <br/>
-                     <h5>Date Seen: {a3}</h5>
+                     <h2>Date Seen: {a3}</h2>
                      <br/>
-                     <h5>Seen By: {a4}</h5>
+                     <h2>Seen By: {a4}</h2>
                      <br/>
-                     <h5>Notes: {a5}</h5>
+                     <h2>Notes: {a5}</h2>
 
                   </CardContent>         
              </Card>

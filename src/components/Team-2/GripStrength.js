@@ -35,11 +35,11 @@ function GripStrength() {
         
         <p className="par">Instructions:</p><br/>
         <ul>
-          <li>
+          <li className="list-item">
             "In this exercise, I am going to use the dynamometer to test the
             strength in your hands."
           </li>
-          <li>
+          <li className = "list-item">
             "I'll start by asking you a couple of questions first and then we
             can proceed to the test."
           </li>

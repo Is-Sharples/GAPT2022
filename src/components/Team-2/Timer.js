@@ -132,7 +132,7 @@ const Timer = () => {
             <Header typography = {typography} history = {"/Instructions"} name = "Timed Up and Go Test" />
 
             <div className="main-section">
-                <h2>Timer</h2>
+                <h1>Timer</h1>
                 <div className="TimerLayoutWords">
                     <div className="TimerDiv" style={{ textAlignHorizontal: "center", textAlign: "center" }}>
                         <button id="main-button" className='TimerLayoutBtnStart' onClick={toggle}>

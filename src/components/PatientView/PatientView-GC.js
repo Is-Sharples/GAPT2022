@@ -39,23 +39,23 @@ class PatientViewGC extends React.Component{
                         <br/>
                         <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>
-                            <h5>Diagnosis: {doc.section1.diagnosis}</h5>  
+                            <h2>Diagnosis: {doc.section1.diagnosis}</h2>  
                             <br/>
-                            <h5>History of Present Condition: {doc.section1.presentCondition}</h5>  
+                            <h2>History of Present Condition: {doc.section1.presentCondition}</h2>  
                             <br/>
-                            <h5>Past Medical History: {doc.section1.medicalHistory}</h5>  
+                            <h2>Past Medical History: {doc.section1.medicalHistory}</h2>  
                             <br/>
-                            <h5>Drug History: {doc.section1.drugHistory}</h5>  
+                            <h2>Drug History: {doc.section1.drugHistory}</h2>  
                             <br/>
-                            <h5>Smoking: {doc.section1.smoking} </h5>  
+                            <h2>Smoking: {doc.section1.smoking} </h2>  
                             <br/>
-                            <h5>Drinking:  {doc.section1.alcohol}</h5>  
+                            <h2>Drinking:  {doc.section1.alcohol}</h2>  
                             <br/>
-                            <h5>Level of Education: {doc.section1.education}</h5>  
+                            <h2>Level of Education: {doc.section1.education}</h2>  
                             <br/>
-                            <h5>Charlson Co-Morbidity Index: {doc.section1.charlsonIndex}</h5>
+                            <h2>Charlson Co-Morbidity Index: {doc.section1.charlsonIndex}</h2>
                             <br/>
-                            <h5>Moca Final Result: {doc.moca.finalScore}</h5>  
+                            <h2>Moca Final Result: {doc.moca.finalScore}</h2>  
                             <br/>
                             </CardContent>         
                         </Card>

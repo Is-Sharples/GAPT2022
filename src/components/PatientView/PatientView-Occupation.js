@@ -78,15 +78,15 @@ class PatientViewOccupation extends React.Component{
                         <br/>
                         <Card sx={{minWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>
-                                <h3>Review Information</h3>
+                                <h2>Review Information</h2>
                                 <br/>
-                                <h5>Is Patient Housebound?: </h5> 
+                                <h3>Is Patient Housebound?: </h3> 
                             </CardContent>
                         </Card>
                         <br/><br/>
                         <Card sx={{['@media (min-width:720px)']: {minWidth: "85%"}, ['@media (max-width:720px)']: {maxWidth: "85%"}, borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>
-                                <h4>Personal ADLs</h4>
+                                <h3>Personal ADLs</h3>
                                 <br/>
                                 <Table sx={{['@media (min-width:720px)']: {minWidth: "700"}, ['@media (max-width:720px)']: {maxWidth: "100"}}} aria-label="simple table">
                                 <TableHead>
@@ -116,7 +116,7 @@ class PatientViewOccupation extends React.Component{
                         <br/><br/>
                         <Card sx={{['@media (min-width:820px)']: {minWidth: "85%"}, ['@media (max-width:820px)']: {maxWidth: "85%"}, borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>
-                                <h4>Instrumental ADLs</h4>
+                                <h3>Instrumental ADLs</h3>
                                 <br/>
                                 <Table sx={{['@media (min-width:720px)']: {minWidth: "700"}, ['@media (max-width:720px)']: {maxWidth: "600"}}} aria-label="simple table">
                                 <TableHead>
@@ -140,7 +140,7 @@ class PatientViewOccupation extends React.Component{
                             </TableBody>
                             </Table>
                             <br/>
-                            <h5>Are there changes in Instrumental ADLs now?: {doc.currentInstrumentalALDsData.currentInstrumentalADLs}</h5> 
+                            <h3>Are there changes in Instrumental ADLs now?: {doc.currentInstrumentalALDsData.currentInstrumentalADLs}</h3> 
                             </CardContent>         
                         </Card>
                         <button onClick={this.goback} className="next-button" >Go Back Menu</button> 

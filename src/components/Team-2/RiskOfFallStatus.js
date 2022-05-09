@@ -34,8 +34,8 @@ function RiskOfFallStatus() {
             <div className="main-section">
                 <h2>Risk of Fall Status</h2><br/>
                 <ul>
-                    <li>Status: <b> {sessionStorage.getItem("TUGStatus")} </b></li>
-                    <li>Time taken: <b> {sessionStorage.getItem("TUGTimer")} seconds </b></li>
+                    <li className="list-item">Status: <b> {sessionStorage.getItem("TUGStatus")} </b></li>
+                    <li className="list-item">Time taken: <b> {sessionStorage.getItem("TUGTimer")} seconds </b></li>
                 </ul>
                 <div>
                     <br/>

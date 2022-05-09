@@ -48,17 +48,17 @@ class PatientViewOP extends React.Component{
                             <CardContent>
                                 
                                 <br/>
-                                <h5>Profession: {doc.profession.profession}</h5>
+                                <h2>Profession: {doc.profession.profession}</h2>
                                 <br/>
-                                <h5>Date Referral: {doc.id}</h5>
+                                <h2>Date Referral: {doc.id}</h2>
                                 <br/>
-                                <h5>Reason for Referral: {doc.reasonReferral}</h5>
+                                <h2>Reason for Referral: {doc.reasonReferral}</h2>
                                 <br/>
-                                <h5>Date Seen: </h5>
+                                <h2>Date Seen: </h2>
                                 <br/>
-                                <h5>Seen By: {doc.seenBy}</h5>
+                                <h2>Seen By: {doc.seenBy}</h2>
                                 <br/>
-                                <h5>Notes: {doc.notes}</h5>
+                                <h2>Notes: {doc.notes}</h2>
         
                             </CardContent>         
                         </Card>
