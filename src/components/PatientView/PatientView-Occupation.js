@@ -12,7 +12,7 @@ import { format } from "date-fns";
 import { getOtherSummary } from '../firebase';
 // import { useNavigate } from 'react-router-dom';
 
-class PatientViewOP extends React.Component{
+class PatientViewOccupation extends React.Component{
 
     constructor(props){
         super(props);
@@ -22,7 +22,7 @@ class PatientViewOP extends React.Component{
     }
     
     componentDidMount(){
-        getOtherSummary(sessionStorage.getItem("patientId")).then((result) => {
+        getOtherSummary("1234").then((result) => {
             this.setState({
                 documents:result
             })
@@ -80,7 +80,7 @@ export default function(props){
 
     const navigate = useNavigate();
     return(
-        <PatientViewOP {...props} navigation = {navigate} ></PatientViewOP>
+        <PatientViewOccupation {...props} navigation = {navigate} ></PatientViewOccupation>
     )
 
 }
