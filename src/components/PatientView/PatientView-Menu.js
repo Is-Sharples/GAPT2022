@@ -46,22 +46,22 @@ class PatientMenu extends React.Component{
                 <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }} >
                     <List>
                         <ListItem>
-                            <Button onClick={this.GoToNurse} fullWidth={true} variant="contained" >Nurse</Button>
+                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToNurse} fullWidth={true} variant="contained" >Nurse</Button>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={this.GoToOccupation} fullWidth={true} variant="contained" >Occupational</Button>
+                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToOccupation} fullWidth={true} variant="contained" >Occupational</Button>
                         </ListItem>
                         <ListItem>
-                            <Button fullWidth={true} variant="contained" >Physiotherapist</Button>
+                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} fullWidth={true} variant="contained" >Physiotherapist</Button>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={this.GoToSocialWorker} fullWidth={true} variant="contained" >Social Worker</Button>
+                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToSocialWorker} fullWidth={true} variant="contained" >Social Worker</Button>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={this.GoToOther} fullWidth={true} variant="contained" >Other Profession</Button>
+                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToOther} fullWidth={true} variant="contained" >Other Profession</Button>
                         </ListItem>
                         <ListItem>
-                            <Button onClick={this.GoToConsultant} fullWidth={true} variant="contained" >Geriatric Consultant</Button>
+                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToConsultant} fullWidth={true} variant="contained" >Geriatric Consultant</Button>
                         </ListItem>
                     </List>
 

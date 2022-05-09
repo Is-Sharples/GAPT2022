@@ -1,5 +1,7 @@
 .search-container{
     padding: 16px;
+    font-size: 20px;
+    margin: 100px 100px;
     border:solid 1px;
     border-color: rgb(199, 196, 196);
     border-radius: 16px;

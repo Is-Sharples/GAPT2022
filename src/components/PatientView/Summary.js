@@ -266,7 +266,9 @@ class PatientViewSummary extends React.Component{
                                     </tr>
                                 </tbody>
                             </table>
-                            <Button onClick={this.goBack}  variant="contained" >Go To Menu</Button>
+                            <div>
+                                <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "24px",}, ['@media (max-width:720px)']: {fontSize: "20px"}, borderRadius: "20px", margin: "15px 15px"}}onClick={this.goBack}  variant="contained" >Go To Menu</Button>
+                            </div>
                         </div>
             
                     </div>

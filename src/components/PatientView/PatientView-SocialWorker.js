@@ -46,9 +46,10 @@ class PatientViewSocial extends React.Component{
                 <div >
                 <Grid justifyContent={"center"} container rowGap={0} columns={{ xs: 2, sm: 2, md: 6}} >
                     <Header  name="Summary" history={"/Community-Apps"} ></Header>
+                    <div>
                     <p className="Table-Title">Review Information</p>
-                    
-                    <List>
+                    </div>
+                    <div>
                         
                             <table className="search-container" >
                                 <tr>
@@ -97,8 +98,8 @@ class PatientViewSocial extends React.Component{
                                 </tr>
                             </table>
                         
-                    </List>
-                    <Button variant="contained" onClick={this.goBack} >Back To Menu</Button>
+                    </div>
+                    <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "20px"}, borderRadius: "20px", margin: "15px 15px"}}variant="contained" onClick={this.goBack} >Back To Menu</Button>
                 </Grid>
                 </div>
             )
