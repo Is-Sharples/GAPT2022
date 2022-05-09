@@ -421,3 +421,20 @@ export async function getOccupational(id){
     })
     return global;
 }
+
+export async function getSocialWorker(id){
+    const fullpath = 'patients/'+id+'/SectionD';
+    const ref = collection(db, fullpath);
+    let global = [];
+    await getDocs(ref).then((snapshot)=> {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+            documents.push({
+                ...doc.data(),
+                id:doc.id
+            })
+        })
+        global = documents;
+    })
+    return global;
+}

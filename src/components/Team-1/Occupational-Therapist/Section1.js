@@ -43,7 +43,7 @@ function Section1(){
     
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"PatientIDOT"} name = {"Occupational Therapy"} />  
+                <Header typography = {typography} history = {"/PatientIDOT"} name = {"Occupational Therapy"} />  
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
