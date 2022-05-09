@@ -43,6 +43,7 @@ import PatientViewID from './components/PatientView/PatientView-ID';
 import PatientViewDetails from './components/PatientView/PatientView-Details';
 import PatientViewMenu from './components/PatientView/PatientView-Menu';
 import PatientViewSummary from './components/PatientView/Summary';
+import PatientViewOccupation from './components/PatientView/PatientView-Occupation';
 
 //Components
 import PatientID from './components/Team-3/PatientID';
@@ -158,7 +159,8 @@ export default function App() {
         <Route path = '/Patient-Menu' element={<PatientViewMenu />} ></Route>
         <Route path = '/PatientView-Nurse' element={<PatientViewSummary />} ></Route>
         <Route path = '/PatientView-Other' element={<PatientViewOP />} ></Route>
-      </Routes>
+        <Route path = '/PatientView-Occupational' element={<PatientViewOccupation />} ></Route>
+      </Routes> 
     </Router>
 
 

@@ -403,3 +403,21 @@ export async function getOtherSummary(id){
 
     return global;
 }
+
+export async function getOccupational(id){
+    let global = [];
+    const fullpath = 'patients/'+id+'/SectionC';
+    const ref = collection(db,fullpath);
+
+    await getDocs(ref).then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+            documents.push({
+                ...doc.data(),
+                id:doc.id
+            })
+        })
+        global = documents;
+    })
+    return global;
+}

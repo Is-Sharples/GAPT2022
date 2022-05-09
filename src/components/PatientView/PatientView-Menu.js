@@ -19,6 +19,11 @@ class PatientMenu extends React.Component{
         navigation("/PatientView-Other");
     }
 
+    GoToOccupation = () => {
+        const { navigation } = this.props;
+        navigation("/PatientView-Occupational");
+    }
+
     render(){
         
 
@@ -34,7 +39,7 @@ class PatientMenu extends React.Component{
                             <Button onClick={this.GoToNurse} fullWidth={true} variant="contained" >Nurse</Button>
                         </ListItem>
                         <ListItem>
-                            <Button fullWidth={true} variant="contained" >Occupational</Button>
+                            <Button onClick={this.GoToOccupation} fullWidth={true} variant="contained" >Occupational</Button>
                         </ListItem>
                         <ListItem>
                             <Button fullWidth={true} variant="contained" >Physiotherapist</Button>
