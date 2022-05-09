@@ -69,7 +69,7 @@ const [open, setOpen] = useState(false);
       <br/>
 
       <Card sx={{maxWidth: "80%", borderRadius: "20px", padding: "20px 20px" }} >
-        
+            <h3>Moca Test</h3><br/>
             <input className="check" type="checkbox" id="writeCheck" onClick={onChangeWriteCheck}/>
             <label className="check-label">Tick the checkbox if the patient is not able to write</label>
             <br/>

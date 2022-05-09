@@ -29,11 +29,6 @@ function ListOfEquipment() {
     sessionStorage.setItem("question3", "");
     sessionStorage.setItem("question4", "");
     sessionStorage.setItem("question5", "");
-    // console.log(question1);
-    // console.log(question2);
-    // console.log("AAA ", sessionStorage.getItem("Instructions"));
-
-    
 
     function navToNextPage() {
         sessionStorage.setItem("Instructions", true);
@@ -45,7 +40,7 @@ function ListOfEquipment() {
             <Header typography = {typography} history = {"/LevelsOfMobility"} name = "List of Equipment" />
 
             <div className="main-section">
-                <label className="subtitle">List of Equipment</label>
+                <h2>List of Equipment</h2><br/>
                 <div>
                     <ul>
                         <li className="list-item">Arm-chair</li>
@@ -53,10 +48,8 @@ function ListOfEquipment() {
                         <li className="list-item">Tape</li>
                     </ul>
                 </div>
-                <label className="subtitle">Setup of Test</label>
-                <img src={TUGPhoto} style={{
-                    padding: 20
-                }} />
+                <h2>Setup of Test</h2><br/>
+                <img src={TUGPhoto} />
             </div>
             <button className="next-button" onClick={navToNextPage}>Next</button>
         </div>
