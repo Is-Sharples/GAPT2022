@@ -34,6 +34,11 @@ class PatientMenu extends React.Component{
         navigation("/PatientView-GC");
     }
 
+    GoToPhysio = () => {
+        const { navigation } = this.props;
+        navigation("/PatientView-Physio");
+    }
+
     render(){
         
 
@@ -52,7 +57,7 @@ class PatientMenu extends React.Component{
                             <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToOccupation} fullWidth={true} variant="contained" >Occupational</Button>
                         </ListItem>
                         <ListItem>
-                            <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} fullWidth={true} variant="contained" >Physiotherapist</Button>
+                            <Button onClick={this.GoToPhysio} sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} fullWidth={true} variant="contained" >Physiotherapist</Button>
                         </ListItem>
                         <ListItem>
                             <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "24px"}, borderRadius: "20px", margin: "15px 15px"}} onClick={this.GoToSocialWorker} fullWidth={true} variant="contained" >Social Worker</Button>
