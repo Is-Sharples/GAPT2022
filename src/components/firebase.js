@@ -456,3 +456,22 @@ export async function GetConsultant(id){
     })
     return global;
 }
+
+export async function GetPhysio(id){
+    const fullpath = 'patients/'+id+'/SectionB';
+    const ref = collection(db,fullpath);
+    let global = [];
+
+    await getDocs(ref).then((snapshot) => {
+        let documents = [];
+        snapshot.docs.forEach((doc) => {
+            documents.push({
+                ...doc.data(),
+                id:doc.id
+            })
+        })
+        global = documents;
+        // console.log(global);
+    })
+    return global
+}
