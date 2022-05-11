@@ -101,7 +101,7 @@ class SocialServices extends React.Component{
     render(){
         
         
-        var typography = "I dont even know about this page bro";
+        var typography = "Input the social services ";
 
         return (
             <div  >

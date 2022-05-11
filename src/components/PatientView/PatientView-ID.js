@@ -60,7 +60,7 @@ SetCurrentPatient(patient){
     //console.log("hello");
     this.setState({currentPatient:patient,});
     this.setState({entered: "false"});
-    sessionStorage.setItem("patientId",patient.id);
+    sessionStorage.setItem("patientId","1234");
 }
 
 

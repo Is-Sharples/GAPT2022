@@ -186,7 +186,7 @@ class SocialSummary extends React.Component{
         }
         
         // console.log(count);
-        var typography = "It hurts to be alive";
+        var typography = "Summary of all the data";
         return(
             <div >
             <Grid justifyContent={"center"} container rowGap={0} columns={{ xs: 2, sm: 2, md: 6}} >

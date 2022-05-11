@@ -35,7 +35,7 @@ class PatientPlans extends React.Component{
 
     render(){
         const { navigation } = this.props;
-        var typography = "I dont even know about this page bro";
+        var typography = "Ask the the relative the following questions";
 
         return (
             <div  >

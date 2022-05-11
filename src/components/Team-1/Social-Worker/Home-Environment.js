@@ -101,7 +101,7 @@ class HomeEnv extends React.Component{
 
 
         const { navigation } = this.props;
-        var typography = "I dont even know about this page bro";
+        var typography = "Ask the patient the following questions";
 
         return(
             <div>
