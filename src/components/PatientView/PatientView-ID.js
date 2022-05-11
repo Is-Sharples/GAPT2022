@@ -105,8 +105,8 @@ DisplayPatients = (event) =>{
 
 
 render(){
-    var typography = "Input a Patient ID to be directed to his Barthel & Measurements Summary Page";
-    // console.log(getPatients());
+    var typography = "Help Data";
+        // console.log(getPatients());
 
     if(this.state.currentPatient.id !== 0){
         const { navigation } = this.props;

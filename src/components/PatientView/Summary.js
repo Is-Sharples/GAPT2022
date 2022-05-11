@@ -51,7 +51,7 @@ class PatientViewSummary extends React.Component{
         })
     }
     render() {
-
+        var typography = "Help Data";
         var Aseverity = "";
         var Dseverity = "";
         var AWeightLoss = "Yes";
@@ -109,7 +109,7 @@ class PatientViewSummary extends React.Component{
 
             return (
                 <div className="screen">
-                    <Header history = {"/"} name={"Summary"} /> 
+                    <Header typography={typography} history = {"/Patient-Menu"} name={"Summary"} /> 
             
                 
                     <div className="card">

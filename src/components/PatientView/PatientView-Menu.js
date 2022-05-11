@@ -42,12 +42,12 @@ class PatientMenu extends React.Component{
     render(){
         
 
-
+        var typography = "Help Data";
 
         return (
             <div>
                 
-                <Header history = {"/PatientView"} name = "View Forms"></Header>
+                <Header typography={typography} history = {"/PatientView"} name = "View Forms"></Header>
                 <Grid justifyContent={"center"} rowGap={4} container  columns={{ xs: 2, sm: 2, md: 6 }} >
                     <List>
                         <ListItem>

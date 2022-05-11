@@ -37,14 +37,14 @@ class PatientViewPhysio extends React.Component{
 
     render() {
         var doc = this.state.documents[0];
-
+        var typography = "Help Data";
         
         if (doc !== undefined){
 
             console.log(doc);
             return(
                 <div className="screen">
-                        <Header history = {"/Patient-Menu"} name = {"Other Profession"} />  
+                        <Header typography = {typography} history = {"/Patient-Menu"} name = {"Other Profession"} />  
                         <br/>
                         <Card sx={{['@media (min-width:720px)']: {minWidth: "60%"}, ['@media (max-width:720px)']: {minWidth: "80%"}, borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>

@@ -30,12 +30,13 @@ class PatientViewGC extends React.Component{
     }
 
     render(){
+        var typography = "Help Data";
         if(this.state.documents[12] !== undefined){
             console.log(this.state.documents[12]);
             var doc = this.state.documents[12];
             return(
                 <div className="screen">
-                        <Header  history = {"/Patient-Menu"} name = {"Results Obtained"} />  
+                        <Header typography={typography} history = {"/Patient-Menu"} name = {"Results Obtained"} />  
                         <br/>
                         <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>

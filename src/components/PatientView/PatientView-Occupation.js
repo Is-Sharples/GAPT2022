@@ -69,12 +69,12 @@ class PatientViewOccupation extends React.Component{
                 this.createData2("Handling Medication",doc.previousInstrumentalAdls[6]),
                 this.createData2("Handling Finances",doc.previousInstrumentalAdls[7]),
             ];
-
+            var typography = "Help Data";
 
 
             return(
                 <div className="screen">
-                        <Header history = {"/Section5OT"} name = {"Occupational Therapy"} />  
+                        <Header typography={typography} history = {"/Patient-Menu"} name = {"Occupational Therapy"} />  
                         <br/>
                         <Card sx={{minWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>

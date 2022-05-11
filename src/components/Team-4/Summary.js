@@ -343,7 +343,7 @@ export default function Summary(props) {
         <div className="card">
             <p className="name">{data.name} {data.surname}</p>
             <p className="id">{data.id}</p>
-            <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
+            {/* <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
             <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
             <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
             <MenuItem value={"Choose a visit or create a new one"}>{"Choose an old visit"}</MenuItem>
@@ -351,13 +351,13 @@ export default function Summary(props) {
                     <MenuItem key={doc} value={doc}>{doc}</MenuItem>
                 ))}
             </Select>
-            </FormControl>
-            <button onClick={() => AddNewVisit(data.id,dt)} className='newVisit'>
+            </FormControl> */}
+            {/* <button onClick={() => AddNewVisit(data.id,dt)} className='newVisit'>
                 <span><AddIcon/></span>
-            </button>
-            <div className="lastModifiedBy">
+            </button> */}
+            {/* <div className="lastModifiedBy">
                 <p>Last Modified by: Doctor</p>
-            </div>
+            </div> */}
         </div>
 
         <div className="card">
