@@ -10,12 +10,12 @@ import Height from "./Height";
 import "../styles/Summary.css";
 import Header from "../header";
 import  '../firebase';
-import { LocalCafeOutlined } from "@material-ui/icons";
+import {  LocalCafeOutlined } from "@material-ui/icons";
 import BarthelEdit from "../BarthelEdit";
 import WeightEdit from "../WeightEdit";
 import HeightEdit from "../HeightEdit";
 import "../styles/Summary.css";
-import { ShowSectionE, AddData, SetDataB, AddNewVisit, GetDocsE, GetDataE } from "../firebase";
+import { ShowSectionE, AddData, SetDataE, AddNewVisit, GetDocsE, GetDataE } from "../firebase";
 import { LocalCafeSharp, LocalDining, LocalSeeOutlined } from "@material-ui/icons";
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -23,6 +23,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import moment from "moment";
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -40,7 +41,7 @@ export default function Summary(props) {
         }
     }
    
-    
+    const navigate = useNavigate();
 
     const [Test,setTest] = useState([]);
     // console.log(GetDocsE(data.id));
@@ -52,8 +53,6 @@ export default function Summary(props) {
     })
     },[])
     console.log(Test);
-    const ilbierah = "Ilbierah";
-    const illum = "Illum";
     const dt = new Date().toDateString();
     const setAbtime = () => {
         let dt = new Date().toString();
@@ -101,9 +100,6 @@ export default function Summary(props) {
                     sessionStorage.setItem("Test",JSON.stringify(result));
                     // console.log(result);
                     setDoccy(result);
-                    
-                    
-                    
                     
                 })
                 console.log("Docs:",DoccyData);
@@ -217,6 +213,7 @@ export default function Summary(props) {
             }
         }
     }, []);
+
     const handleChange =  (event) => {
         setOption(event.target.value);
         
@@ -298,7 +295,6 @@ export default function Summary(props) {
             updateAhw(props.height, props.weight, props.weightloss, props.exercise);
             const setahw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
             sessionStorage.setItem("ahw",JSON.stringify(setahw));
-            console.log("thalt");
         }
         else{
         }
@@ -335,6 +331,9 @@ export default function Summary(props) {
     }
 //#endregion
 
+    function ClearAll(){
+        sessionStorage.clear();
+    }
 
   return (
     <div className="screen">
@@ -543,7 +542,7 @@ export default function Summary(props) {
             <DialogTitle id="alert-dialog-title">
             {"Are you sure you want to save the patient details?"}
             </DialogTitle>
-            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetDataB(abTime, dbTime, Ablist, Dblist, ahw, dhw); handleClose(); }}>Yes</Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {SetDataE(data.id, dt, abTime, dbTime, Ablist, Dblist, ahw, dhw); ClearAll(); handleClose(); navigate("/"); }}>Yes</Button>
             <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
             <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
             </Dialog>

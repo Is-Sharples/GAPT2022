@@ -43,7 +43,7 @@ function Height(props) {
             
             <Grid container direction="column" justifyContent="center" alignItems="center" rowSpacing={{lg: 2, sm: 2}}>
                 <div className='phase-section'>
-				    <h2>{(run)===1 ? "Admission" : "Discharge"}</h2>
+				    <h2>{(run)===0 ? "Admission" : "Discharge"}</h2>
 			    </div>
                 <Grid item>
                 <HeightCard handleChange={handleHeightChange} demispan={state.demispan} height={state.height} run={run}/>

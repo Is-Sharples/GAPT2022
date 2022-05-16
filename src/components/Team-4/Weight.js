@@ -47,7 +47,7 @@ function Weight(props) {
         <>
         <Grid container direction="column" justifyContent="center" alignItems="center" rowSpacing={{lg: 3, sm: 3}}>
             <div className='phase-section'>
-				<h2>{(run)===1 ? "Admission" : "Discharge"}</h2>
+				<h2>{(run)===0 ? "Admission" : "Discharge"}</h2>
 			</div>
             <Grid item >
             <WeightCard handleChange={handleWeightChange} weight={weight} />         
