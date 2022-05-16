@@ -53,11 +53,7 @@ class CommunityApps{
     }
 }
 
-class Open{
-    constructor(open){
-        this.open = open
-    }
-}
+
 
 class SocialSummary extends React.Component{
     constructor(props){
@@ -68,7 +64,7 @@ class SocialSummary extends React.Component{
             Expect: new Expectations(sessionStorage.getItem("PatientPlans"),sessionStorage.getItem("RelativePlans")),
             SServices: new SocialServices(sessionStorage.getItem("CommCare"),sessionStorage.getItem("Telecare"),sessionStorage.getItem("HomeHelp"),sessionStorage.getItem("Meals On Wheels"),sessionStorage.getItem("Other Profession:")),
             CommApps: new CommunityApps(sessionStorage.getItem("CommunityApps:"),sessionStorage.getItem("TimeSpan")),
-            open: new Open(false),
+            open: false
         }
     }
 
@@ -84,14 +80,24 @@ class SocialSummary extends React.Component{
         console.log(this.state.HomeSupp.LivesAlone)
         console.log(this.state.HomeEnv)
         saveSocialWorker(sessionStorage.getItem("patientId"),date,this.state.HomeSupp,this.state.HomeEnv,this.state.Expect,sessionStorage.getItem("Array"),this.state.CommApps);
+        this.setState({
+            open:false
+        });
     }
 
+
     refresh = () => {
-        this.state.open = true;
+        this.setState({
+            open:true
+        })
+        console.log(this.state.open);
     }
 
     close = () => {
-        this.state.open = false;
+        this.setState({
+            open:false
+        })
+        
     }
     render(){
         // console.log(this.state.HomeSupp);
@@ -273,12 +279,12 @@ class SocialSummary extends React.Component{
                 <DialogTitle id="alert-dialog-title">
                     Are sure you want to save and exit?
                 </DialogTitle>
-                <Button style={{m: 10, fontSize: "20px"}} onClick={this.handleClick}>Yes</Button>
+                <Button style={{m: 10, fontSize: "20px"}} onClick={() => this.handleClick()}>Yes</Button>
                 <Button style={{m: 10}} onClick={this.close}></Button>
-                <Button style={{m: 10, fontSize: "20px"}} onClick={this.close}>No</Button>
+                <Button style={{m: 10, fontSize: "20px"}} onClick={() => this.close()}>No</Button>
                 </Dialog>
 
-                <Button onClick={this.refresh}>Submit</Button>
+                <Button variant="contained" onClick={() => this.refresh()}>Submit</Button>
             </Grid>
             </div>
         )
