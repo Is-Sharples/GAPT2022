@@ -53,6 +53,12 @@ class CommunityApps{
     }
 }
 
+class Open{
+    constructor(open){
+        this.open = open
+    }
+}
+
 class SocialSummary extends React.Component{
     constructor(props){
         super(props);
@@ -62,21 +68,12 @@ class SocialSummary extends React.Component{
             Expect: new Expectations(sessionStorage.getItem("PatientPlans"),sessionStorage.getItem("RelativePlans")),
             SServices: new SocialServices(sessionStorage.getItem("CommCare"),sessionStorage.getItem("Telecare"),sessionStorage.getItem("HomeHelp"),sessionStorage.getItem("Meals On Wheels"),sessionStorage.getItem("Other Profession:")),
             CommApps: new CommunityApps(sessionStorage.getItem("CommunityApps:"),sessionStorage.getItem("TimeSpan")),
+            open: new Open(false),
         }
     }
 
-   
-
     
-    render(){
-        // console.log(this.state.HomeSupp);
-        // console.log(this.state.HomeEnv);
-        // console.log(this.state.Expect);
-        // console.log(this.state.SServices);
-        // console.log(this.state.CommApps);
-        //console.log(this.props);
-
-        const handleClick = () => {
+    handleClick = () => {
         var Arr = [];
         const date = format(new Date(), "dd-MM-yyyy HH:mm:ss");
         Arr.push(this.state.HomeSupp);
@@ -87,9 +84,24 @@ class SocialSummary extends React.Component{
         console.log(this.state.HomeSupp.LivesAlone)
         console.log(this.state.HomeEnv)
         saveSocialWorker(sessionStorage.getItem("patientId"),date,this.state.HomeSupp,this.state.HomeEnv,this.state.Expect,sessionStorage.getItem("Array"),this.state.CommApps);
-        open = false;
-        }
+    }
 
+    refresh = () => {
+        this.state.open = true;
+    }
+
+    close = () => {
+        this.state.open = false;
+    }
+    render(){
+        // console.log(this.state.HomeSupp);
+        // console.log(this.state.HomeEnv);
+        // console.log(this.state.Expect);
+        // console.log(this.state.SServices);
+        // console.log(this.state.CommApps);
+        //console.log(this.props);
+
+        
         // console.log(Arr[0]);
         //const dt = new Date().toString();
         var CommCare = sessionStorage.getItem("CommCare");
@@ -98,16 +110,7 @@ class SocialSummary extends React.Component{
         var OtherString = sessionStorage.getItem("Other Profession:");
         var Telecare = sessionStorage.getItem("Telecare");
         var TimeSpan = [];
-        var open = false;
-
-        function setOpen(){
-            open = true;
-        }
-
-        const handleClose = () => {
-            setOpen(false);
-        };
-
+        
         if(sessionStorage.getItem("TimeSpan") !== ""){
             TimeSpan.push(
                 <React.Fragment>
@@ -199,7 +202,7 @@ class SocialSummary extends React.Component{
             count += 1;
         }
         
-        // console.log(count);
+        console.log(this.state.open);
         var typography = "Summary of all the data";
         return(
             <div >
@@ -263,19 +266,19 @@ class SocialSummary extends React.Component{
                 </List>
                 
                 <Dialog
-                open={open}
-                onClose={handleClose}
+                open={this.state.open}
+                onClose={this.close}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description">
                 <DialogTitle id="alert-dialog-title">
                     Are sure you want to save and exit?
                 </DialogTitle>
-                <Button style={{m: 10, fontSize: "20px"}} onClick={() => {handleClick();}}>Yes</Button>
-                <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
-                <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
+                <Button style={{m: 10, fontSize: "20px"}} onClick={this.handleClick}>Yes</Button>
+                <Button style={{m: 10}} onClick={this.close}></Button>
+                <Button style={{m: 10, fontSize: "20px"}} onClick={this.close}>No</Button>
                 </Dialog>
 
-                <Button onClick={setOpen()} >Submit</Button>
+                <Button onClick={this.refresh}>Submit</Button>
             </Grid>
             </div>
         )
