@@ -254,7 +254,7 @@ class SocialSummary extends React.Component{
                             <tr>
                                 <td className="Table-Names" >Community Applications for LTC</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("CommunityApps:")}</td>
-                                <td className="Table-Buttons" ><Button>Click Me!</Button></td>
+                                
                             </tr>
                             {TimeSpan}
                         </table>
