@@ -100,7 +100,7 @@ class SocialSummary extends React.Component{
                     <tr>
                         <td className="Table-Names" >Applications TimeSpan</td>
                         <td className="Table-Content" >{sessionStorage.getItem("TimeSpan")}</td>
-                        <td><Button>Click Me!</Button></td>
+                        
                     </tr>
                 </React.Fragment>
 
@@ -113,7 +113,7 @@ class SocialSummary extends React.Component{
                     <tr>
                         <td className="Table-Names" >Location of Amenities</td>
                         <td className="Table-Content" >{sessionStorage.getItem("Location Of Amenities")}</td>
-                        <td><Button>Click Me!</Button></td>
+                        
                     </tr>
                 </React.Fragment>
                 
@@ -199,22 +199,22 @@ class SocialSummary extends React.Component{
                             <tr>
                                 <td className="Table-Names" >Home Support</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Lives Alone?")}</td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             <tr>
                                 <td className="Table-Names" >{sessionStorage.getItem("Lives Alone?")}</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Any Support?")}</td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             <tr>
                                 <td className="Table-Names" >Stairs to Access Home</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Stairs In Home:")}</td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             <tr>
                                 <td className="Table-Names" >Amenities on Same Floor</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Amenities")}</td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             
                             
@@ -225,17 +225,17 @@ class SocialSummary extends React.Component{
                             <tr>
                                 <td className="Table-Names" >Patient's Expectations and Plans</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("PatientPlans")}</td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             <tr>
                                 <td className="Table-Names" >Relative's Expectations and Plans</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("RelativePlans")}</td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             <tr>
                                 <td className="Table-Names" >Social Services</td>
                                 <td className="Table-Content" >{CommCare} {Telecare} {HomeHelp} {MealsWheels} {OtherString} </td>
-                                <td><Button>Click Me!</Button></td>
+                                
                             </tr>
                             <tr>
                                 <td className="Table-Names" >Community Applications for LTC</td>
