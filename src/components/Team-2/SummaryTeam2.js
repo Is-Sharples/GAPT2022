@@ -11,6 +11,9 @@ import Grid from "@mui/material/Grid";
 import { AppBar } from "@mui/material";
 import Header from '../header';
 import { saveTeam2 } from '../firebase';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 const Summary = () => {
   var typography = "This is a summary of the patient's level of mobility and the test results for the Timed Up and Go and Grip Strength tests.";
@@ -31,16 +34,20 @@ const Summary = () => {
   let PreviousResult = sessionStorage.getItem("PreviousResult");
   let ActualPreviousResult = JSON.parse(PreviousResult);
 
-  
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   function validateForm() {
     console.log("Results are to be submitted after the SUBMIT is pressed");
     console.log(sessionStorage.getItem("TUGStatus"));
     console.log(sessionStorage.getItem("question1"));
-    //navigate("/");
     var patientId = sessionStorage.getItem("PatientData");
     console.log("Array:",dataArray);
     saveTeam2(patientId,dateString,dataArray);
+    navigate("/");
   }
 
   let finalLeft = null;
@@ -294,10 +301,22 @@ const dataArray = {
         <div id="pageRender" justifyContent="center" alignItems ="center">
 
         </div>
+        
       </div>
-      <button className="next-button" onClick={validateForm}>
-        Submit
-      </button>
+      <button className="next-button" onClick={() => {setOpen(true)}}>Submit</button>
+      <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+                Are sure you want to save and exit?
+            </DialogTitle>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() => {validateForm()}}>Yes</Button>
+            <Button style={{m: 10}} onClick={() => {handleClose();}}></Button>
+            <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();}}>No</Button>
+            </Dialog>
+      
     </div>
   );
 };

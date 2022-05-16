@@ -37,7 +37,7 @@ function ListOfEquipment() {
 
     return (
         <div className="screen">
-            <Header typography = {typography} history = {"/LevelsOfMobility"} name = "List of Equipment" />
+            <Header typography = {typography} history = {"/LevelsOfMobility"} name = "Timed Up and Go Test" />
 
             <div className="main-section">
                 <h2>List of Equipment</h2><br/>
