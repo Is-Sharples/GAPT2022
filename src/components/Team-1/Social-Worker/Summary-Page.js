@@ -11,6 +11,8 @@ import { Divider } from "@mui/material";
 import '../../firebase';
 import { saveSocialWorker } from "../../firebase";
 import { format } from "date-fns";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
 
 class HomeSupport{
     constructor(LivesAlone,AnySupport){
@@ -63,18 +65,7 @@ class SocialSummary extends React.Component{
         }
     }
 
-    handleClick = () => {
-        var Arr = [];
-        const date = format(new Date(), "dd-MM-yyyy HH:mm:ss");
-        Arr.push(this.state.HomeSupp);
-        Arr.push(this.state.HomeEnv);
-        Arr.push(this.state.Expect);
-        Arr.push(this.state.SServices);
-        Arr.push(this.state.CommApps);
-        console.log(this.state.HomeSupp.LivesAlone)
-        console.log(this.state.HomeEnv)
-        saveSocialWorker(sessionStorage.getItem("patientId"),date,this.state.HomeSupp,this.state.HomeEnv,this.state.Expect,sessionStorage.getItem("Array"),this.state.CommApps);
-    }
+   
 
     
     render(){
@@ -85,7 +76,20 @@ class SocialSummary extends React.Component{
         // console.log(this.state.CommApps);
         //console.log(this.props);
 
-        
+        const handleClick = () => {
+        var Arr = [];
+        const date = format(new Date(), "dd-MM-yyyy HH:mm:ss");
+        Arr.push(this.state.HomeSupp);
+        Arr.push(this.state.HomeEnv);
+        Arr.push(this.state.Expect);
+        Arr.push(this.state.SServices);
+        Arr.push(this.state.CommApps);
+        console.log(this.state.HomeSupp.LivesAlone)
+        console.log(this.state.HomeEnv)
+        saveSocialWorker(sessionStorage.getItem("patientId"),date,this.state.HomeSupp,this.state.HomeEnv,this.state.Expect,sessionStorage.getItem("Array"),this.state.CommApps);
+        open = false;
+        }
+
         // console.log(Arr[0]);
         //const dt = new Date().toString();
         var CommCare = sessionStorage.getItem("CommCare");
@@ -94,6 +98,16 @@ class SocialSummary extends React.Component{
         var OtherString = sessionStorage.getItem("Other Profession:");
         var Telecare = sessionStorage.getItem("Telecare");
         var TimeSpan = [];
+        var open = false;
+
+        function setOpen(){
+            open = true;
+        }
+
+        const handleClose = () => {
+            setOpen(false);
+        };
+
         if(sessionStorage.getItem("TimeSpan") !== ""){
             TimeSpan.push(
                 <React.Fragment>
@@ -246,7 +260,20 @@ class SocialSummary extends React.Component{
                         </table>
                     
                 </List>
-                <Button onClick={this.handleClick} >Submit</Button>
+                <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description">
+                <DialogTitle id="alert-dialog-title">
+                    Are sure you want to save and exit?
+                </DialogTitle>
+                <Button style={{m: 10, fontSize: "20px"}} onClick={() => {handleClick();}}>Yes</Button>
+                <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
+                <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
+                </Dialog>
+
+                <Button onClick={setOpen()} >Submit</Button>
             </Grid>
             </div>
         )
