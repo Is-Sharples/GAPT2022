@@ -31,12 +31,12 @@ export default function Summary(props) {
     var data = props.patient;
     var docdata = "";
     
-    var run = (localStorage.getItem("run")===null) ? (props.run)=== undefined ? 0 : props.run : JSON.parse(localStorage.getItem("run"));
+    var run = (sessionStorage.getItem("run")===null) ? (props.run)=== undefined ? 0 : props.run : JSON.parse(sessionStorage.getItem("run"));
     if (props.run!==undefined){
-        if(localStorage.getItem("run")>1){
+        if(sessionStorage.getItem("run")>1){
         }
         else {
-            localStorage.setItem("run",JSON.stringify(props.run));
+            sessionStorage.setItem("run",JSON.stringify(props.run));
         }
     }
    
@@ -57,14 +57,14 @@ export default function Summary(props) {
     const dt = new Date().toDateString();
     const setAbtime = () => {
         let dt = new Date().toString();
-        localStorage.setItem("abtime",JSON.stringify(dt));
+        sessionStorage.setItem("abtime",JSON.stringify(dt));
     }
-    const abTime = (localStorage.getItem("abtime"))===undefined ? "" : localStorage.getItem("abtime");
+    const abTime = (sessionStorage.getItem("abtime"))===undefined ? "" : sessionStorage.getItem("abtime");
     const setDbtime = () => {
         let dt = new Date().toString();
-        localStorage.setItem("dbtime",JSON.stringify(dt));
+        sessionStorage.setItem("dbtime",JSON.stringify(dt));
     }
-    const dbTime = (localStorage.getItem("dbtime"))===undefined ? "" : localStorage.getItem("dbtime");
+    const dbTime = (sessionStorage.getItem("dbtime"))===undefined ? "" : sessionStorage.getItem("dbtime");
     const [Documents, setDocs] = useState(Test);
     const [option, setOption] = useState("");
     const [barthel, showBarthel] = useState("false");
@@ -117,14 +117,14 @@ export default function Summary(props) {
     },[option]);
     console.log("date:",docdata.AdmissionDate);
     
-    var ahw = ((run===0 && localStorage.getItem("ahw")!==null)|| (run === 1 && localStorage.getItem("ahw")!==null) || (run===2 && localStorage.getItem("ahw")!==null)) ? JSON.parse(localStorage.getItem("ahw")) : {
+    var ahw = ((run===0 && sessionStorage.getItem("ahw")!==null)|| (run === 1 && sessionStorage.getItem("ahw")!==null) || (run===2 && sessionStorage.getItem("ahw")!==null)) ? JSON.parse(sessionStorage.getItem("ahw")) : {
         height: "",
         weight: "",
         weightloss: "",
         exercise: "",
     } ;
 
-    var dhw = ((run===0 && localStorage.getItem("dhw")!==null) || (run === 1 && localStorage.getItem("dhw")!==null) || (run===2 && localStorage.getItem("dhw")!==null)) ? JSON.parse(localStorage.getItem("dhw")) :{
+    var dhw = ((run===0 && sessionStorage.getItem("dhw")!==null) || (run === 1 && sessionStorage.getItem("dhw")!==null) || (run===2 && sessionStorage.getItem("dhw")!==null)) ? JSON.parse(sessionStorage.getItem("dhw")) :{
         height: "",
         weight: "",
         weightloss: "",
@@ -145,28 +145,28 @@ export default function Summary(props) {
     }
     
     if(props.newheight!==undefined){
-        if(JSON.parse(localStorage.getItem("run"))===1){
+        if(JSON.parse(sessionStorage.getItem("run"))===1){
             ahw.height = props.newheight;
-            localStorage.setItem("ahw",JSON.stringify(ahw));
+            sessionStorage.setItem("ahw",JSON.stringify(ahw));
         }
         else{
             dhw.height = props.newheight;
-            localStorage.setItem("dhw",JSON.stringify(dhw));
+            sessionStorage.setItem("dhw",JSON.stringify(dhw));
         }
     }
 
     if(props.newweight!==undefined){
-        if(JSON.parse(localStorage.getItem("run"))===1){
+        if(JSON.parse(sessionStorage.getItem("run"))===1){
             ahw.weight = props.newweight;
             ahw.weightloss = props.newweightloss;
             ahw.exercise = props.newexercise;
-            localStorage.setItem("ahw",JSON.stringify(ahw));
+            sessionStorage.setItem("ahw",JSON.stringify(ahw));
         }
         else{
             dhw.weight = props.newweight;
             dhw.weightloss = props.newweightloss;
             dhw.exercise = props.newexercise;
-            localStorage.setItem("dhw",JSON.stringify(dhw));
+            sessionStorage.setItem("dhw",JSON.stringify(dhw));
         }
     }*/
     //#endregion
@@ -200,18 +200,18 @@ export default function Summary(props) {
         Dblist.forEach(element => dtotal = addUp(dtotal, element));
         return dtotal;
     }
-    var bar = localStorage.getItem("Brun");
+    var bar = sessionStorage.getItem("Brun");
 
     useEffect(() => {
-        if (localStorage.getItem("Brun")>2){
-            localStorage.setItem("Brun",JSON.stringify(0));
-            const Barthelex = JSON.parse(localStorage.getItem("Brun"));
+        if (sessionStorage.getItem("Brun")>2){
+            sessionStorage.setItem("Brun",JSON.stringify(0));
+            const Barthelex = JSON.parse(sessionStorage.getItem("Brun"));
             if (Barthelex) {
                 setBarthelex(Barthelex);
             }
         }
         else{
-            const Barthelex = JSON.parse(localStorage.getItem("Brun"));
+            const Barthelex = JSON.parse(sessionStorage.getItem("Brun"));
             if (Barthelex) {
                 setBarthelex(Barthelex);
             }
@@ -224,14 +224,14 @@ export default function Summary(props) {
    
      
     useEffect(() => {
-        //localStorage.setItem("ablist",JSON.stringify(0));
-        const Ablist = JSON.parse(localStorage.getItem("ablist"));
+        //sessionStorage.setItem("ablist",JSON.stringify(0));
+        const Ablist = JSON.parse(sessionStorage.getItem("ablist"));
         if (Ablist) {
             setAblist(Ablist);
         }
         
-        //localStorage.setItem("dblist",JSON.stringify(0));
-        const Dblist = JSON.parse(localStorage.getItem("dblist"));
+        //sessionStorage.setItem("dblist",JSON.stringify(0));
+        const Dblist = JSON.parse(sessionStorage.getItem("dblist"));
         if (Dblist) {
             setDblist(Dblist);
         }
@@ -239,15 +239,15 @@ export default function Summary(props) {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("Brun",JSON.stringify(Barthelex));
+        sessionStorage.setItem("Brun",JSON.stringify(Barthelex));
     }, [Barthelex]);
 
     useEffect(() => {
-        localStorage.setItem("ablist",JSON.stringify(Ablist));
+        sessionStorage.setItem("ablist",JSON.stringify(Ablist));
     }, [Ablist]);
 
     useEffect(() => {
-        localStorage.setItem("dblist",JSON.stringify(Dblist));
+        sessionStorage.setItem("dblist",JSON.stringify(Dblist));
     }, [Dblist]);
 
     
@@ -262,8 +262,9 @@ export default function Summary(props) {
     if (Barthelex < 3){
         if(barthel === "true"){
             bar = Barthelex+1;
-            localStorage.setItem("Brun",JSON.stringify(bar));
+            sessionStorage.setItem("Brun",JSON.stringify(bar));
             return <Barthel patient = {data} run={Barthelex}/>
+            
         }
     }
 
@@ -296,7 +297,7 @@ export default function Summary(props) {
         if (props.height !== undefined && props.run === 1){
             updateAhw(props.height, props.weight, props.weightloss, props.exercise);
             const setahw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
-            localStorage.setItem("ahw",JSON.stringify(setahw));
+            sessionStorage.setItem("ahw",JSON.stringify(setahw));
             console.log("thalt");
         }
         else{
@@ -305,7 +306,7 @@ export default function Summary(props) {
         if (props.height !== undefined && props.run === 2){
             updateDhw(props.height, props.weight, props.weightloss, props.exercise);
             const setdhw = {height: props.height, weight: props.weight, weightloss: props.weightloss, exercise: props.exercise};
-            localStorage.setItem("dhw",JSON.stringify(setdhw));
+            sessionStorage.setItem("dhw",JSON.stringify(setdhw));
         }
     
     
@@ -372,8 +373,8 @@ export default function Summary(props) {
             {"Which Session would you like to edit?"}
             </DialogTitle>
             <DialogContent>
-            <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(localStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Admission</Button>
-            <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(localStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Discharge</Button>
+            <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(sessionStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Admission</Button>
+            <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(sessionStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Discharge</Button>
             </DialogContent>
         </Dialog>
 
