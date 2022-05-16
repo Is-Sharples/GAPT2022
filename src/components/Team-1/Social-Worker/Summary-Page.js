@@ -207,7 +207,7 @@ class SocialSummary extends React.Component{
                 <Header typography={typography} name="Summary" history={"/Community-Apps"} ></Header>
                 <p className="Table-Title">Review Information</p>
                 
-                <List>
+                <List sx={{marginLeft: '150px', marginRight: '150px'}}>
                     
                         <table className="search-container" >
                             <tr>
@@ -258,8 +258,10 @@ class SocialSummary extends React.Component{
                             </tr>
                             {TimeSpan}
                         </table>
+                        
                     
                 </List>
+                
                 <Dialog
                 open={open}
                 onClose={handleClose}
