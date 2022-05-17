@@ -150,7 +150,6 @@ class SocialSummary extends React.Component{
                     <tr>
                         <td className="Table-Names" >Other Location:</td>
                         <td className="Table-Content" >{sessionStorage.getItem("Other Amenity Location")}</td>
-                        <td><Button>Click Me!</Button></td>
                     </tr>
                 </React.Fragment>
             );
