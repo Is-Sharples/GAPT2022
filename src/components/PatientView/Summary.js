@@ -20,6 +20,8 @@ import { render } from "@testing-library/react";
 import { useNavigate } from "react-router-dom";
 import { getNurseSummary } from "../firebase";
 import { getPatients2 } from "../firebase";
+import { Tabs } from "@mui/material";
+import { Tab } from "@mui/material";
 class PatientViewSummary extends React.Component{
 
     constructor(props){
@@ -30,6 +32,7 @@ class PatientViewSummary extends React.Component{
             sumDb:0,
             patients:[],
             current: {},
+            value:"Barthel",
         }
     }
 
@@ -50,6 +53,8 @@ class PatientViewSummary extends React.Component{
             })
         })
     }
+
+    
     render() {
         var typography = "Help Data";
         var Aseverity = "";
@@ -58,7 +63,7 @@ class PatientViewSummary extends React.Component{
         var DWeightLoss = "Yes";
 
         if(this.state.documents[3] !== undefined){
-            //console.log(this.state.patients);
+            console.log(this.state.documents);
 
             if (this.state.documents[3].ahw.weightloss === 0){
                 AWeightLoss = "No";
@@ -80,13 +85,18 @@ class PatientViewSummary extends React.Component{
                     //console.log(this.state.current);
                 }
             })
-            for(var i = 0;i < this.state.documents[3].ab.length;i++){
-                this.state.sumAb = this.state.sumAb + this.state.documents[3].ab[i];
-
+            if(this.state.sumAb === 0){
+                for(var i = 0;i < this.state.documents[3].ab.length;i++){
+                    this.state.sumAb = this.state.sumAb + this.state.documents[3].ab[i];
+    
+                }
             }
-            for(var i = 0;i < this.state.documents[3].db.length;i++){
-                this.state.sumDb = this.state.sumDb + this.state.documents[3].db[i];
+            if(this.state.sumDb === 0){
+                for(var i = 0;i < this.state.documents[3].db.length;i++){
+                    this.state.sumDb = this.state.sumDb + this.state.documents[3].db[i];
+                }
             }
+            
             if(this.state.sumAb >= 0 && this.state.sumAb <= 9){
                 Aseverity = "Severe";
             }else if (this.state.sumAb >= 10 && this.state.sumAb <= 14){
@@ -105,8 +115,20 @@ class PatientViewSummary extends React.Component{
             }else if (this.state.sumDb >= 20){
                 Dseverity = "Independent";
             }
-            console.log(this.state.documents[3]);
+            const tabChange = (event,newValue) =>{
+                console.log(newValue);
+                console.log(this.state.value);
+                this.setState({
+                    value:newValue
+                })
+                console.log(this.state.value);
+            }
 
+
+
+            console.log(this.state.documents[3]);
+            console.log(this.state.value);
+            const value = this.state.value;
             return (
                 <div className="screen">
                     <Header typography={typography} history = {"/Patient-Menu"} name={"Summary"} /> 
@@ -121,8 +143,12 @@ class PatientViewSummary extends React.Component{
                             <p>Last Modified by: Doctor</p>
                         </div>
                     </div>
-            
-                    <div className="card">
+
+                    <Tabs className="tabs" textColor="black" value={this.state.value} onChange={tabChange}>
+                        <Tab value = "Barthel" label="Barthel Index" ></Tab>
+                        <Tab value = {"HeightWeight"} label = "Height & Weight" ></Tab>
+                    </Tabs>
+                    {this.state.value === "Barthel" ? <div className="card">
                         <div className="grid-title">
                             <p className="name">Barthel Score</p>
                         </div>
@@ -220,9 +246,9 @@ class PatientViewSummary extends React.Component{
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-            
-                    <div className="card">
+                    </div>: <></>}
+                    
+                    {this.state.value === "HeightWeight" ?  <div className="card">
                         <div className="grid-title">
                             <p className="name">Height & Weight</p>
                         </div>
@@ -244,13 +270,13 @@ class PatientViewSummary extends React.Component{
                                         <td className="section">Height (cm)</td>
                                         <td className="grid-row">{this.state.documents[3].ahw.height}</td>
                                         <td className="grid-row">{this.state.documents[3].dhw.height}</td>
-                                        <td className="total-diff">{this.state.documents[3].dhw.height - this.state.documents[3].ahw.height}</td>
+                                        <td className="total-diff">{(this.state.documents[3].dhw.height - this.state.documents[3].ahw.height).toFixed(2)}</td>
                                     </tr>
                                     <tr className="grid-data">
                                         <td className="section">Weight (kg)</td>
                                         <td>{this.state.documents[3].ahw.weight}</td>
                                         <td>{this.state.documents[3].dhw.weight}</td>
-                                        <td className="total-diff">{this.state.documents[3].dhw.weight - this.state.documents[3].ahw.weight}</td>
+                                        <td className="total-diff">{(this.state.documents[3].dhw.weight - this.state.documents[3].ahw.weight).toFixed(2)}</td>
                                     </tr>
                                     <tr className="grid-data">
                                         <td className="section">Has patient<br></br>lost weight?</td>
@@ -266,11 +292,12 @@ class PatientViewSummary extends React.Component{
                                     </tr>
                                 </tbody>
                             </table>
-                            <div>
-                                <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "24px",}, ['@media (max-width:720px)']: {fontSize: "20px"}, borderRadius: "20px", margin: "15px 15px"}}onClick={this.goBack}  variant="contained" >Go To Menu</Button>
-                            </div>
+                            
                         </div>
             
+                    </div>: <></>}
+                    <div>
+                        <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "24px",}, ['@media (max-width:720px)']: {fontSize: "20px"}, borderRadius: "20px", margin: "15px 15px"}}onClick={this.goBack}  variant="contained" >Go To Menu</Button>
                     </div>
                     
                     

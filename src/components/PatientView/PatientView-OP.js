@@ -48,7 +48,7 @@ class PatientViewOP extends React.Component{
                             <CardContent>
                                 
                                 <br/>
-                                <h2>Profession: {doc.profession.profession}</h2>
+                                <h2>Profession: {doc.Profession}</h2>
                                 <br/>
                                 <h2>Date Referral: {doc.id}</h2>
                                 <br/>

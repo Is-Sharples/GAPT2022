@@ -11,6 +11,7 @@ import { Divider } from "@mui/material";
 import '../firebase';
 import { format } from "date-fns";
 import { getSocialWorker } from "../firebase";
+import '../styles/SocialWorkerSum.css';
 
 class PatientViewSocial extends React.Component{
     constructor(props){
@@ -52,47 +53,47 @@ class PatientViewSocial extends React.Component{
                     <div>
                         
                             <table className="search-container" >
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Home Support</td>
                                     <td className="Table-Content" >{doc.HomeSupport.LivesAlone}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >{doc.HomeSupport.LivesAlone}</td>
                                     <td className="Table-Content" >{doc.HomeSupport.Support}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Stairs to Access Home</td>
                                     <td className="Table-Content" >{doc.StairstoHome.Stairs}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Amenities on Same Floor</td>
                                     <td className="Table-Content" >{doc.StairstoHome.AmenitiesOnSameFloor}</td>
                                     
                                 </tr>                          
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Patient's Expectations and Plans</td>
                                     <td className="Table-Content" >{doc.PatientsPlans}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Relative's Expectations and Plans</td>
                                     <td className="Table-Content" >{doc.RelativePlans}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Social Services</td>
                                     <td className="Table-Content" >{doc.SocialServices}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >Community Applications for LTC</td>
                                     <td className="Table-Content" >{doc.CommLTCData.CommLTCApplication}</td>
                                     
                                 </tr>
-                                <tr>
+                                <tr className="grid-data" >
                                     <td className="Table-Names" >TimeSpan</td>
                                     <td className="Table-Content" >{doc.CommLTCData.TimeSpan}</td>
                                 </tr>

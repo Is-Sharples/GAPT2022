@@ -12,6 +12,7 @@ import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { GetPatientData } from "../firebase";
 import { getPatients2 } from "../firebase";
+import '../styles/SocialWorkerSum.css';
 class Patient{
 
     constructor(name,id, pass,roles, user){
@@ -76,59 +77,59 @@ class PatientViewDetails extends React.Component{
                     
                 <table className="search-container">
                     {/* <Button onClick={() => this.forceUpdate()}  > Hello</Button> */}
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Name:</td>
                         <td>{this.state.currentPatient.name}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>ID:</td>
                         <td>{this.state.currentPatient.id}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Age:</td>
                         <td>{this.state.currentPatient.age}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Gender:</td>
                         <td>{this.state.currentPatient.gender} </td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>House Name:</td>
                         <td>{this.state.currentPatient.houseName}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>House No:</td>
                         <td>{this.state.currentPatient.houseNum}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Street Name:</td>
                         <td>{this.state.currentPatient.streetname}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Zip Code:</td>
                         <td>{this.state.currentPatient.zipcode}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Kin Name:</td>
                         <td>{this.state.currentPatient.kinName}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Kin Relation:</td>
                         <td>{this.state.currentPatient.kinRelation}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Kin No:</td>
                         <td>{this.state.currentPatient.KinNumber}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Admitting Consultant</td>
                         <td>{this.state.currentPatient.AdmitConsultant}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Admitted Ward</td>
                         <td>{this.state.currentPatient.AdmitWard}</td>
                     </tr>
-                    <tr>
+                    <tr className="grid-data" >
                         <td>Admitted Last Year</td>
                         <td>{this.state.currentPatient.AdmitLastYear}</td>
                     </tr>
