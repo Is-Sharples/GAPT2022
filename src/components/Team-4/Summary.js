@@ -24,6 +24,12 @@ import Button from '@mui/material/Button';
 import moment from "moment";
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
+import { Tabs } from "@mui/material";
+import { Tab } from "@material-ui/core";
+// import { Card } from "@mui/material";
+import { Snackbar } from "@mui/material";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 
 
@@ -42,7 +48,7 @@ export default function Summary(props) {
     }
    
     const navigate = useNavigate();
-
+    const [tabValues,setTabValues] = useState("Barthel");
     const [Test,setTest] = useState([]);
     // console.log(GetDocsE(data.id));
     useEffect(()=>{
@@ -81,6 +87,7 @@ export default function Summary(props) {
     const [openSave, setOpenSave] = useState(false);
     const [DoccyData, setDoccy] = useState({});
     const [value,setValue] = useState(0);
+    const [openSnack, setOpenSnack] = useState(true);
     console.log("option:",option);
     
     var editeda = [];
@@ -88,7 +95,7 @@ export default function Summary(props) {
 
     console.log("Docss:",Test.length);
 
-    
+   
     
     
     useEffect(()=> {
@@ -334,12 +341,38 @@ export default function Summary(props) {
     function ClearAll(){
         sessionStorage.clear();
     }
+    const tabChange = (event,newValue) =>{
+        console.log(newValue);
+        setTabValues(newValue);
+    }
 
+    const handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpenSnack(false);
+    }
+
+    const action = (
+        <React.Fragment>
+            {/* <Button >Go Back to Login</Button> */}
+                <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleSnackClose}
+                >
+            <CloseIcon fontSize="small" />
+            </IconButton>
+            </React.Fragment>
+        );
+
+    
   return (
     <div className="screen">
         <Header typography = {typography} history = {"/"} name={"Summary"} /> 
-
-    
+            
+            
         <div className="card">
             <p className="name">{data.name} {data.surname}</p>
             <p className="id">{data.id}</p>
@@ -358,16 +391,22 @@ export default function Summary(props) {
             {/* <div className="lastModifiedBy">
                 <p>Last Modified by: Doctor</p>
             </div> */}
-        </div>
+        </div>  
+            <Tabs className="tabs" textColor="black" value={tabValues} onChange={tabChange}>
+                    <Tab className="tab" value = {"Barthel"} label="Barthel Index" ></Tab>
+                    <Tab value = {"HeightWeight"} label = "Height & Weight" ></Tab>
+            </Tabs>
+        
+        
 
-        <div className="card">
+            {tabValues === "Barthel"? <div className="card">
             <div className="grid-title">
                 <p className="name">Barthel Score</p>
                 <button className="input-details" onClick={() => {(Barthelex) === 0 ? setAbtime() : setDbtime();
                                                                 showBarthel("true");}}>Input Barthel Index</button>
             </div>
 
-        <Dialog open={openB} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+            <Dialog open={openB} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
             <DialogTitle id="alert-dialog-title">
             {"Which Session would you like to edit?"}
             </DialogTitle>
@@ -375,7 +414,7 @@ export default function Summary(props) {
             <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(sessionStorage.getItem("Brun"))!==1 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Admission</Button>
             <Button style={{m: 10, fontSize: "18px"}} disabled = {JSON.parse(sessionStorage.getItem("Brun"))!==2 ? true : ""} onClick={() => {setEditB(true); handleClose(); }}>Discharge</Button>
             </DialogContent>
-        </Dialog>
+            </Dialog>
 
             <div className="grid-page">
                 <table>
@@ -479,9 +518,15 @@ export default function Summary(props) {
                     </tbody>
                 </table>
             </div>
-        </div>
 
-        <div className="card">
+            
+        </div>:<></> }
+
+            
+        {/* Display for Barthel */}
+        {/* {tabValues ===  "Barthel"? <></> : <></>} */}
+        
+        {tabValues === "HeightWeight" ?<div className="card">
             <div className="grid-title">
                 <p className="name">Height & Weight</p>
                 <button className="input-details" onClick={() => {showHeight("true")}}>Input Height & Weight</button>
@@ -538,7 +583,10 @@ export default function Summary(props) {
                 </table>
             </div>
 
-            <Dialog open={openSave} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+            
+
+        </div>:<></>}
+        <Dialog open={openSave} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
             <DialogTitle id="alert-dialog-title">
             {"Are you sure you want to save the patient details?"}
             </DialogTitle>
@@ -546,10 +594,17 @@ export default function Summary(props) {
             <Button style={{m: 10}} onClick={()=> {handleClose();}}></Button>
             <Button style={{m: 10, fontSize: "20px"}} onClick={() =>  {handleClose();} }>No</Button>
             </Dialog>
-
-        </div>
         <button className="input-details-save" onClick={() => {setOpenSave(true);}}>Save Data</button>
+        <Snackbar 
+                    open = {openSnack}
+                    autoHideDuration={2000}
+                    onClose={handleSnackClose}
+                    message="Scroll down for more information"
+                    action={action}
+                />
     </div>
     
   );
 }
+
+

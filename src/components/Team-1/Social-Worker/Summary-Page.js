@@ -13,6 +13,9 @@ import { saveSocialWorker } from "../../firebase";
 import { format } from "date-fns";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
+import '../../styles/Summary.css'
+import '../../styles/SocialWorkerSum.css'
+// import { Divider } from "@mui/material";
 
 class HomeSupport{
     constructor(LivesAlone,AnySupport){
@@ -100,14 +103,7 @@ class SocialSummary extends React.Component{
         
     }
     render(){
-        // console.log(this.state.HomeSupp);
-        // console.log(this.state.HomeEnv);
-        // console.log(this.state.Expect);
-        // console.log(this.state.SServices);
-        // console.log(this.state.CommApps);
-        //console.log(this.props);
 
-        
         // console.log(Arr[0]);
         //const dt = new Date().toString();
         var CommCare = sessionStorage.getItem("CommCare");
@@ -120,7 +116,7 @@ class SocialSummary extends React.Component{
         if(sessionStorage.getItem("TimeSpan") !== ""){
             TimeSpan.push(
                 <React.Fragment>
-                    <tr>
+                    <tr className="grid-data" >
                         <td className="Table-Names" >Applications TimeSpan</td>
                         <td className="Table-Content" >{sessionStorage.getItem("TimeSpan")}</td>
                         
@@ -133,7 +129,7 @@ class SocialSummary extends React.Component{
         if(sessionStorage.getItem("Location Of Amenities") !== ""){
             Location.push(
                 <React.Fragment>
-                    <tr>
+                    <tr  className="grid-data">
                         <td className="Table-Names" >Location of Amenities</td>
                         <td className="Table-Content" >{sessionStorage.getItem("Location Of Amenities")}</td>
                         
@@ -147,7 +143,7 @@ class SocialSummary extends React.Component{
         if(sessionStorage.getItem("Other Amenity Location") !== ""){
             OtherLocation.push(
                 <React.Fragment>
-                    <tr>
+                    <tr className="grid-data" >
                         <td className="Table-Names" >Other Location:</td>
                         <td className="Table-Content" >{sessionStorage.getItem("Other Amenity Location")}</td>
                     </tr>
@@ -210,30 +206,31 @@ class SocialSummary extends React.Component{
         console.log(this.state.open);
         var typography = "Summary of all the data";
         return(
-            <div >
-            <Grid justifyContent={"center"} container rowGap={0} columns={{ xs: 2, sm: 2, md: 6}} >
+            // <div className="big">
+            <Grid justifyContent={"center"}  container  columns={{ xs: 2, sm: 2, md: 6 }}  >
                 <Header typography={typography} name="Summary" history={"/Community-Apps"} ></Header>
-                <p className="Table-Title">Review Information</p>
+                <div className="Table-Title">Review Information</div>
                 
-                <List sx={{marginLeft: '150px', marginRight: '150px'}}>
+                
                     
                         <table className="search-container" >
-                            <tr>
+                            <tr className="grid-data">
                                 <td className="Table-Names" >Home Support</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Lives Alone?")}</td>
                                 
                             </tr>
-                            <tr>
+                            
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >{sessionStorage.getItem("Lives Alone?")}</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Any Support?")}</td>
                                 
                             </tr>
-                            <tr>
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >Stairs to Access Home</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Stairs In Home:")}</td>
                                 
                             </tr>
-                            <tr>
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >Amenities on Same Floor</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Amenities")}</td>
                                 
@@ -244,31 +241,32 @@ class SocialSummary extends React.Component{
                             {Location}
 
                             {OtherLocation}
-                            <tr>
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >Patient's Expectations and Plans</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("PatientPlans")}</td>
                                 
                             </tr>
-                            <tr>
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >Relative's Expectations and Plans</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("RelativePlans")}</td>
                                 
                             </tr>
-                            <tr>
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >Social Services</td>
                                 <td className="Table-Content" >{CommCare} {Telecare} {HomeHelp} {MealsWheels} {OtherString} </td>
                                 
                             </tr>
-                            <tr>
+                            <tr className="grid-data" >
                                 <td className="Table-Names" >Community Applications for LTC</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("CommunityApps:")}</td>
                                 
                             </tr>
                             {TimeSpan}
+                            
                         </table>
                         
                     
-                </List>
+                
                 
                 <Dialog
                 open={this.state.open}
@@ -282,10 +280,10 @@ class SocialSummary extends React.Component{
                 <Button style={{m: 10}} onClick={this.close}></Button>
                 <Button style={{m: 10, fontSize: "20px"}} onClick={() => this.close()}>No</Button>
                 </Dialog>
-
-                <Button variant="contained" onClick={() => this.refresh()}>Submit</Button>
+                <button className="Submit-Button" onClick={() => this.refresh()}>Submit</button>
+                
             </Grid>
-            </div>
+            // </div>
         )
     }
 }
