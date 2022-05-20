@@ -86,6 +86,8 @@ class SocialSummary extends React.Component{
         this.setState({
             open:false
         });
+        const { navigation } = this.props;
+        navigation("/Patient-ID-Social-Worker");
     }
 
 

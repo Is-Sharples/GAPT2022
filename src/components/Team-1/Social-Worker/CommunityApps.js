@@ -80,7 +80,7 @@ class CommunityApps extends React.Component{
         return(
             <div >
                 <Grid justifyContent={"center"} container rowGap={4} columns={{ xs: 2, sm: 2, md: 6}} >
-                    <Header history = {"/Social-Services"} typography = {typography} name = {"Community Applications For LTC"} ></Header>
+                    <Header history = {"/Social-Services"} typography = {typography} name = {"Community Apps"} ></Header>
                     <List>
                         <ListItem>
                             <FormControl>
