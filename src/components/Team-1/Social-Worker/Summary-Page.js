@@ -215,7 +215,7 @@ class SocialSummary extends React.Component{
                 
                 
                     
-                        <table className="search-container" >
+                        <table className="searching-container" >
                             <tr className="grid-data">
                                 <td className="Table-Names" >Home Support</td>
                                 <td className="Table-Content" >{sessionStorage.getItem("Lives Alone?")}</td>
