@@ -210,7 +210,7 @@ class SocialSummary extends React.Component{
         return(
             // <div className="big">
             <Grid justifyContent={"center"}  container  columns={{ xs: 2, sm: 2, md: 6 }}  >
-                <Header typography={typography} name="Summary" history={"/Community-Apps"} ></Header>
+                <Header typography={typography} name="Social-Worker Summary" history={"/Community-Apps"} ></Header>
                 <div className="Table-Title">Review Information</div>
                 
                 

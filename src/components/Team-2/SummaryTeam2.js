@@ -295,7 +295,7 @@ const dataArray = {
 
   return (
     <div className="screen">
-      <Header typography = {typography} history = {"/GripStrength4"} name = {"Summary"} />
+      <Header typography = {typography} history = {"/GripStrength4"} name = {"Physiotherapist Summary"} />
 
       <div className="pageRenderer">
         <div id="pageRender" justifyContent="center" alignItems ="center">

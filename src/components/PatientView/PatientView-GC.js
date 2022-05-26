@@ -36,7 +36,7 @@ class PatientViewGC extends React.Component{
             var doc = this.state.documents[12];
             return(
                 <div className="screen">
-                        <Header typography={typography} history = {"/Patient-Menu"} name = {"Results Obtained"} />  
+                        <Header typography={typography} history = {"/Patient-Menu"} name = {"Geriatric Consultant: Summary"} />  
                         <br/>
                         <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>

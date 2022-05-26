@@ -46,7 +46,7 @@ class PatientViewSocial extends React.Component{
             return(
                 <div >
                 <Grid justifyContent={"center"} container rowGap={0} columns={{ xs: 2, sm: 2, md: 6}} >
-                    <Header typography={typography} name="Summary" history={"/Patient-Menu"} ></Header>
+                    <Header typography={typography} name="Social Worker Summary" history={"/Patient-Menu"} ></Header>
                     <div>
                     <p className="Table-Title">Review Information</p>
                     </div>

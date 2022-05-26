@@ -142,7 +142,7 @@ function Section6(){
     }
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/Section5OT"} name = {"Occupational Therapy"} />  
+                <Header typography = {typography} history = {"/Section5OT"} name = {"Occupational Therapy Summary"} />  
                 <br/>
                 <Card sx={{minWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
                     <CardContent>
