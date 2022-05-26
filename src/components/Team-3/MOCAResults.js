@@ -117,7 +117,7 @@ function MOCAResults(){
     
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/sec15"} name = {"MOCA(R) Score"} />  
+                <Header typography = {typography} history = {"/sec15"} name = {"Geriatric Consultant MOCA(R) Score"} />  
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>

@@ -134,7 +134,7 @@ export default function Summary(props) {
         exercise: "",
     };
     //#region
-    /*if(props.arrnum!==undefined){
+    if(props.arrnum!==undefined){
         if(Barthelex===1){
             editeda = Ablist;
             editeda[props.arrnum]=props.editB;
@@ -171,7 +171,7 @@ export default function Summary(props) {
             dhw.exercise = props.newexercise;
             sessionStorage.setItem("dhw",JSON.stringify(dhw));
         }
-    }*/
+    }
     //#endregion
     const handleClose = () => {
         setOpenB(false);
@@ -370,7 +370,7 @@ export default function Summary(props) {
     
   return (
     <div className="screen">
-        <Header typography = {typography} history = {"/"} name={"Summary"} /> 
+        <Header typography = {typography} history = {"/"} name={"Nurse Summary"} /> 
             
             
         <div className="card">

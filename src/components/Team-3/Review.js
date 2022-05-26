@@ -74,7 +74,7 @@ function Review(){
     }
     return(
         <div className="screen">
-                <Header typography = {typography} history = {"/results"} name = {"Results Obtained"} />  
+                <Header typography = {typography} history = {"/results"} name = {"Geriatric Consultant Results Obtained"} />  
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                     <CardContent>

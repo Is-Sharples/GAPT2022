@@ -130,7 +130,7 @@ function Section2(){
 
     const navigate = useNavigate();
     
-    var typography = "Input a Patient ID";
+    var typography = "Geriatric Consultant Input a Patient ID";
 
     return(
         <div className="screen">
