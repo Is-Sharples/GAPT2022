@@ -47,7 +47,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
         <Grid container spacing={0}>
             <Grid item xs={2} sm={1}>
             <Box display="flex" justifyContent="center">
-            <Fab variant="contained" className="mui-icons" disabled={data} onClick={goBack} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1}, marginLeft:'10px'}}>
+            <Fab variant="circular" className="mui-icons" disabled={data} onClick={goBack} aria-label="add" sx={{['@media (min-width:720px)']: {marginTop: 2}, ['@media (max-width:720px)']: {marginTop: 1}, marginLeft:'10px'}}>
                 <ArrowBack fontSize="large" ></ArrowBack>
             </Fab>
             </Box>

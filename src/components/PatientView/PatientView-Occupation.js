@@ -74,7 +74,7 @@ class PatientViewOccupation extends React.Component{
 
             return(
                 <div className="screen">
-                        <Header typography={typography} history = {"/Patient-Menu"} name = {"Occupational Therapy"} />  
+                        <Header typography={typography} history = {"/Patient-Menu"} name = {"Occupational Therapy:Summary"} />  
                         <br/>
                         <Card sx={{minWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
                             <CardContent>

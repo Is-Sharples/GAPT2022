@@ -38,7 +38,7 @@ class CommunityApps extends React.Component{
                             >
                             <h6> TimeSpan </h6>
                             <FormControlLabel value={"<6 Months"} control={<Radio />} label="<6 Months"/>
-                            <FormControlLabel value={"6 - 12 Months"} control={<Radio />} label="6 - 12 Monthspport" />
+                            <FormControlLabel value={"6 - 12 Months"} control={<Radio />} label="6 - 12 Months" />
                             <FormControlLabel value={"1-2 Years"} control={<Radio />} label="1-2 Years" />
                             <FormControlLabel value={"2-3 Years"} control={<Radio />} label="2-3 Years" />
                             <FormControlLabel value={">3 Years"} control={<Radio />} label=">3 Years" />
@@ -76,7 +76,7 @@ class CommunityApps extends React.Component{
     render(){
         
         const { navigation } = this.props;
-        var typography = "Ask the patient if he lives alone or with someone";
+        var typography = "Ask the patient the relevant question";
         return(
             <div >
                 <Grid justifyContent={"center"} container rowGap={4} columns={{ xs: 2, sm: 2, md: 6}} >

@@ -131,7 +131,7 @@ class PatientViewSummary extends React.Component{
             const value = this.state.value;
             return (
                 <div className="screen">
-                    <Header typography={typography} history = {"/Patient-Menu"} name={"Summary"} /> 
+                    <Header typography={typography} history = {"/Patient-Menu"} name={"Nurse Summary"} /> 
             
                 
                     <div className="card">

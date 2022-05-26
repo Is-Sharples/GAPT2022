@@ -70,7 +70,7 @@ class PatientViewDetails extends React.Component{
 
         <div className="screen">
             <Grid justifyContent={"center"} container rowGap={4} columns={{ xs: 2, sm: 2, md: 6 }} >
-                <Header history={"/AdminMenu"} typography={typography} name = {"Patient Details"}></Header>    
+                <Header history={"/Patient-Menu"} typography={typography} name = {"Patient Details"}></Header>    
                 <List>
                     <ListItem>
 
