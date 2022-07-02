@@ -17,7 +17,7 @@ function Section7(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>
-                    <h5>Read list of words, subject must repeat them. Do 2 trials, even if 1st trial is succesful. Do a recall after 5 minutes.</h5>
+                    <h3>Read list of words, subject must repeat them. Do 2 trials, even if 1st trial is succesful. Do a recall after 5 minutes.</h3>
                     <br/>
                     <h4>1st Trial</h4>
                     <br/>
@@ -26,7 +26,7 @@ function Section7(){
                     <input className="check" type="checkbox"/>
                     <label>Velvet</label>
                     <input className="check" type="checkbox"/>
-                    <label>Curch</label>
+                    <label>Church</label>
                     <input className="check" type="checkbox"/>
                     <label>Daisy</label>
                     <input className="check" type="checkbox"/>
@@ -39,7 +39,7 @@ function Section7(){
                     <input className="check" type="checkbox"/>
                     <label>Velvet</label>
                     <input className="check" type="checkbox"/>
-                    <label>Curch</label>
+                    <label>Church</label>
                     <input className="check" type="checkbox"/>
                     <label>Daisy</label>
                     <input className="check"type="checkbox"/>

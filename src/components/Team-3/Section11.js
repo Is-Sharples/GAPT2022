@@ -62,7 +62,7 @@ function Section11(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
-                    <h4>Repeat</h4>
+                    <h2>Repeat</h2>
                     <br/>
                     <input className="check" type="checkbox" id="rep1" onClick={onChangerep1Check}/>
                     <label>I only know that John is the one to help today</label>

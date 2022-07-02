@@ -40,11 +40,11 @@ function Section9(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
-                    <h5>Read list of letters</h5>
+                    <h3>Read list of letters</h3>
                     <br/>
-                    <h5>The subject must tap with his hand at each letter A. No points if less than 2 errors.</h5>
+                    <h3>The subject must tap with his hand at each letter A. No points if less than 2 errors.</h3>
                     <br/>
-                    <h5>F B A C M N A A J K L B A F A K D E A A A J A M O F A A B</h5>
+                    <h3>F B A C M N A A J K L B A F A K D E A A A J A M O F A A B</h3>
                     <br/>
                     <input className="check" type="checkbox" id="letters" onChange={onChangeSec9Check}/>
                     <label>Correct? </label> 

@@ -209,7 +209,7 @@ class SocialSummary extends React.Component{
         var typography = "Summary of all the data";
         return(
             // <div className="big">
-            <Grid justifyContent={"center"}  container  columns={{ xs: 2, sm: 2, md: 6 }}  >
+            <Grid justifyContent={"center"}  container rowGap={0} columns={{ xs: 2, sm: 2, md: 6 }}  >
                 <Header typography={typography} name="Social-Worker Summary" history={"/Community-Apps"} ></Header>
                 <div className="Table-Title">Review Information</div>
                 

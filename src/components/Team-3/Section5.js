@@ -92,7 +92,7 @@ function Section5(){
         <div className="screen">
           <Header typography = {typography} history = {"/sec4"} name = {"Visuospatial/Executive"} />     
           <br/>
-          <Card sx={{maxWidth: "80%", borderRadius: "20px", justifyContent:"center", textAlign: "center"}}>
+          <Card sx={{maxWidth: "70%", borderRadius: "20px", justifyContent:"center", textAlign: "center"}}>
             <CardContent>
               <div>
               <h4>Draw Clock (Ten Past Eleven)</h4>
@@ -128,7 +128,7 @@ function Section5(){
                   </CardContent>    
             </Card>
             <br/>
-            <Card sx={{display: "flex", minWidth: "80%", borderRadius: "20px", justifyContent:"center"}}> 
+            <Card sx={{display: "flex", minWidth: "70%", borderRadius: "20px", justifyContent:"center"}}> 
                 <CardContent>
                 <input className="check" type="checkbox" id="clock1" onChange={onChangeClock1Check}/>
                 <label>Contour </label> 

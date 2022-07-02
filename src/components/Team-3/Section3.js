@@ -75,13 +75,13 @@ function Section3(){
         <div className="screen">
            <Header typography = {typography} history = {"/moca"} name = {"Visuospatial/Executive"} />   
           <br/>
-            <Card sx={{minWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
+            <Card sx={{minWidth: "70%", borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>
                     <img src="pattern.png"></img>
                 </CardContent>
             </Card>
             <br/>
-            <Card sx={{['@media (min-width:720px)']: {maxWidth: "80%"}, ['@media (max-width:720px)']: {maxWidth: "340px"}, borderRadius: "20px"}}>  
+            <Card sx={{['@media (min-width:720px)']: {maxWidth: "70%"}, ['@media (max-width:720px)']: {Width: "500px"}, borderRadius: "20px"}}>  
             <br/>      
             <div>
                         {(dataUri)
@@ -113,7 +113,7 @@ function Section3(){
                     </Box>
             </Card>
             <br/>
-            <Card sx={{['@media (min-width:720px)']: {minWidth: "80%"}, ['@media (max-width:720px)']: {minWidth: "340px"}, borderRadius: "20px", textAlign:"center"}}> 
+            <Card sx={{['@media (min-width:720px)']: {minWidth: "70%"}, ['@media (max-width:720px)']: {minWidth: "280px"}, borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>
                 <input className="check"type="checkbox" id="pattern" onChange={onChangePatternCheck}/>
                 <label>Correct? </label> 

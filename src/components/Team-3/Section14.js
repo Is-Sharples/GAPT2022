@@ -72,11 +72,11 @@ function Section14(){
                 <br/>
                 <Card sx={{maxWidth: "82%", borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>
-                    <h4>Memory Index Score (MIS)</h4>
+                    <h2>Memory Index Score (MIS)</h2>
                     <br/>
-                    <h5>Has to recall words WITH NO CUE</h5>
+                    <h3>Has to recall words WITH NO CUE</h3>
                     <br/>
-                    <h5>No Cue</h5>
+                    <h3>No Cue</h3>
                     <br/>
                     <input className="check"type="checkbox" id="face" onClick={onChangefaceCheck}/>
                     <label className = "check-label">Face</label>
@@ -89,7 +89,7 @@ function Section14(){
                     <input className="check" type="checkbox" id="red" onClick={onChangeredCheck}/>
                     <label className = "check-label">Red</label>  
                     <br/><br/>
-                    <h5>Category Cue</h5> 
+                    <h3>Category Cue</h3> 
                     <br/>  
                     <input className="check" type="checkbox"/>
                     <label className = "check-label">Face</label>
@@ -102,7 +102,7 @@ function Section14(){
                     <input className="check" type="checkbox"/>
                     <label className = "check-label">Red</label>  
                     <br/><br/>
-                    <h5>Multiple Choice Cue</h5> 
+                    <h3>Multiple Choice Cue</h3> 
                     <br/>  
                     <input className="check" type="checkbox"/>
                     <label className = "check-label">Face</label>
@@ -115,7 +115,7 @@ function Section14(){
                     <input className="check" type="checkbox"/>
                     <label className = "check-label">Red</label>  
                     <br/><br/>
-                    <h5>Points for UNCUED recall only</h5>
+                    <h3>Points for UNCUED recall only</h3>
                     <br/>
                     <label>[{score} points]</label>
                   </CardContent>         

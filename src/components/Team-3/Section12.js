@@ -75,10 +75,10 @@ function Section12(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
-                    <h4> Timer: {(seconds>60) ? 0 : seconds}</h4>
+                    <h3> Timer: {(seconds>60) ? 0 : seconds}</h3>
                     <button className="next-button" id="start-button" onClick={() => {startTimer()}}>Start</button>
                     <br/>
-                    <h4>Fluency: Name maximum number of words in one minute that begin with letter F</h4>
+                    <h3>Fluency: Name maximum number of words in one minute that begin with letter F</h3>
                     <br/>
                     <TextField
                       placeholder="Number of words"

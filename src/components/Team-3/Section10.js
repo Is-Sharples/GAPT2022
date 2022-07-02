@@ -98,7 +98,7 @@ function Section10(){
                 <br/>
                 <Card sx={{['@media (min-width:720px)']: {minWidth: "80%"}, ['@media (max-width:720px)']: {maxWidth: "340px"}, borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
-                    <h5>Serial 7 subtraction starting at 100.</h5>
+                    <h3>Serial 7 subtraction starting at 100.</h3>
                     <br/>
                     <input className="check" type="checkbox" id="one" onClick={onChangeoneCheck}/>
                     <label>93</label>

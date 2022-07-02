@@ -126,8 +126,8 @@
 }
 
 .input-details{
-    background-color: white;
-    border: 3px #01497A solid;
+    background-color: #01497A;
+    border: 3px white solid;
     border-radius: 16px;
     padding: 40px;
     padding-top: 10px;
@@ -135,11 +135,12 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    color: white;
 }
 
 .input-details-save{
-    background-color: white;
-    border: 3px #01497A solid;
+    background-color: #01497A;
+    /*border: 3px white solid;*/
     border-radius: 16px;
     padding: 40px;
     padding-top: 10px;
@@ -148,6 +149,7 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    color: white;
 }
 
 .input-details:hover{

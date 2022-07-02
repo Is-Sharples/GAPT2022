@@ -45,7 +45,7 @@ function Section13(){
                 <br/>
                 <Card sx={{maxWidth: "85%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
-                    <h4>Similarity between e.g. orange - banana = fruit</h4>
+                    <h3>Similarity between e.g. orange - banana = fruit</h3>
                     <br/>
                     <input className="check" type="checkbox" id="trans" onClick={onChangetransCheck}/>
                     <label className = "check-label">Train - Bicycle</label>

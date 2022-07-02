@@ -75,14 +75,14 @@ function Section4(){
         <div className="screen">
           <Header typography = {typography} history = {"/sec3"} name = {"Visuospatial/Executive"} />    
           <br/>
-            <Card sx={{minWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
+            <Card sx={{minWidth: "70%", borderRadius: "20px", textAlign:"center"}}> 
                 <CardContent>
                 <br/>
                     <img src="cube.png"></img>
                 </CardContent>
             </Card>
             <br/>
-            <Card sx={{maxWidth: "80%", borderRadius: "20px"}}>  
+            <Card sx={{maxWidth: "70%", borderRadius: "20px"}}>  
             <br/>      
             <div>
                         {(dataUri)
@@ -114,7 +114,7 @@ function Section4(){
                     </Box>
             </Card>
             <br/>
-            <Card sx={{minWidth: "80%", borderRadius: "20px", textAlign: "center"}}> 
+            <Card sx={{minWidth: "70%", borderRadius: "20px", textAlign: "center"}}> 
                 <CardContent>
                 <input className="check" type="checkbox" id="cube" onChange={onChangePatternCheck}/>
                 <label>Correct? </label> 

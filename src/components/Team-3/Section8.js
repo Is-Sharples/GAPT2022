@@ -61,17 +61,17 @@ function Section8(){
                 <br/>
                 <Card sx={{maxWidth: "80%", borderRadius: "20px", textAlign:"center"}}> 
                   <CardContent>
-                    <h4>Read list of digits (1 digit/sec)</h4>
+                    <h3>Read list of digits (1 digit/sec)</h3>
                     <br/>
                     <input className="check" type="checkbox" id="front" onClick={onChangeFrontCheck}/>
                     <label>Subject has to repeat them in the forward order.</label>
                     <br/><br/>
-                    <h4>2 1 8 5 4</h4>
+                    <h3>2 1 8 5 4</h3>
                     <br/>
                     <input className="check" type="checkbox" id="back" onClick={onChangeBackCheck}/>
                     <label> Subject has to repeat them in the backward order.</label>
                     <br/><br/>
-                    <h4>7 4 2</h4>
+                    <h3>7 4 2</h3>
                     <br/>
                     <label>[{score} points]</label>
                   </CardContent>         

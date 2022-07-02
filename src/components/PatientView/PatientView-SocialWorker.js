@@ -44,15 +44,15 @@ class PatientViewSocial extends React.Component{
             var doc = this.state.documents[1];
             console.log(doc);
             return(
-                <div >
+                <div>
                 <Grid justifyContent={"center"} container rowGap={0} columns={{ xs: 2, sm: 2, md: 6}} >
-                    <Header typography={typography} name="Social Worker Summary" history={"/Patient-Menu"} ></Header>
+                    <Header typography={typography} name="Social-Worker Summary" history={"/Patient-Menu"} ></Header>
                     <div>
                     <p className="Table-Title">Review Information</p>
                     </div>
                     <div>
                         
-                            <table className="search-container" >
+                            <table className="searching-container" >
                                 <tr className="grid-data" >
                                     <td className="Table-Names" >Home Support</td>
                                     <td className="Table-Content" >{doc.HomeSupport.LivesAlone}</td>
@@ -100,7 +100,7 @@ class PatientViewSocial extends React.Component{
                             </table>
                         
                     </div>
-                    <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "30px",}, ['@media (max-width:720px)']: {fontSize: "20px"}, borderRadius: "20px", margin: "15px 15px"}}variant="contained" onClick={this.goBack} >Back To Menu</Button>
+                    <Button sx={{backgroundColor: "#01497A", height: "15%", ['@media (min-width:720px)']: {fontSize: "20px",}, ['@media (max-width:720px)']: {fontSize: "20px"}, borderRadius: "20px", margin: "15px 15px"}}variant="contained" onClick={this.goBack} >Back To Menu</Button>
                 </Grid>
                 </div>
             )
