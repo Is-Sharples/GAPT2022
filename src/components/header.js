@@ -1,14 +1,9 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import { Fab } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import HelpIcon from '@mui/icons-material/Help';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import sizing from '@mui/system';
 import { Grid } from '@material-ui/core';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import { Popover } from '@mui/material';
@@ -24,7 +19,6 @@ const [anchorEl, setAnchorEl] = React.useState(null);
     const goBack = () => {
 
         var path = props.history;
-        // console.log(path);
         navigate(path);
     }
 

@@ -73,6 +73,8 @@ import './styles/header.css';
 import CreateUsers from './components/admin/CreateUsers';
 import AdminMenu from './components/admin/menu';
 import PatientViewOP from './components/PatientView/PatientView-OP';
+
+import MainSummary from './components/Team-5/mainSummary'
 //Styling
 
 
@@ -165,6 +167,10 @@ export default function App() {
         <Route path = '/PatientView-Social' element={<PatientViewSocialWorker />} ></Route>
         <Route path = '/PatientView-GC' element={<PatientViewGC />}></Route>
         <Route path = '/PatientView-Physio' element={<PatientViewPhysio />} ></Route>
+
+
+        {/* Nurse Summary V2  */}
+        <Route path='/Nurse2' element={<MainSummary />} />
       </Routes> 
     </Router>
 

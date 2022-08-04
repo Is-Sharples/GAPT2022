@@ -376,21 +376,7 @@ export default function Summary(props) {
         <div className="card">
             <p className="name">{data.name} {data.surname}</p>
             <p className="id">{data.id}</p>
-            {/* <FormControl sx={{['@media (min-width:720px)']: {minWidth: 280}, ['@media (max-width:720px)']: {minWidth: 250} }}>
-            <InputLabel id="blabel" sx={{fontSize: 18}}>Date of Entry</InputLabel>
-            <Select labelId="blabel" id="select" value={option} label="Date Of Entry" onChange={handleChange} style={{color: "black"}}>
-            <MenuItem value={"Choose a visit or create a new one"}>{"Choose an old visit"}</MenuItem>
-            {Test.map((doc) => (
-                    <MenuItem key={doc} value={doc}>{doc}</MenuItem>
-                ))}
-            </Select>
-            </FormControl> */}
-            {/* <button onClick={() => AddNewVisit(data.id,dt)} className='newVisit'>
-                <span><AddIcon/></span>
-            </button> */}
-            {/* <div className="lastModifiedBy">
-                <p>Last Modified by: Doctor</p>
-            </div> */}
+            
         </div>  
             <Tabs className="tabs" textColor="black" value={tabValues} onChange={tabChange}>
                     <Tab className="tab" value = {"Barthel"} label="Barthel Index" ></Tab>
@@ -416,7 +402,7 @@ export default function Summary(props) {
             </DialogContent>
             </Dialog>
 
-            <div className="grid-page">
+            <div className="grid-page ">
                 <table>
                     <thead>
                         <tr>
@@ -440,7 +426,7 @@ export default function Summary(props) {
                             <td className="total-diff">{(Ablist[0])!= undefined && (Dblist[0])!=undefined? Dblist[0] - Ablist[0] : ""}</td>
                             <td className="section"><button className="edit-button" onClick={() => {setedit(0); setOpenB(true)}}>Edit</button></td>
                         </tr>
-                        <tr className="grid-data">
+                        <tr className="grid-data bg-red-600">
                             <td className="section">Grooming</td>
                             <td>{Ablist[1]}</td>
                             <td>{Dblist[1]}</td>
@@ -461,7 +447,7 @@ export default function Summary(props) {
                             <td>{(Ablist[3])!= undefined && (Dblist[3])!=undefined? Dblist[3] - Ablist[3] : ""}</td>
                             <td className="section"><button className="edit-button" onClick={() => {setedit(3); setOpenB(true); }}>Edit</button></td>
                         </tr>
-                        <tr className="grid-data">
+                        <tr className="grid-data ">
                             <td className="section">Stairs</td>
                             <td>{Ablist[4]}</td>
                             <td>{Dblist[4]}</td>
