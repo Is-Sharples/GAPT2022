@@ -11,11 +11,21 @@ class MainSummary extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            barthel:true,
-        }
+            tabValues:"Barthel",
+            rows: RowData,
+        };
     }
-
+    tabChange = (e, newEvent) => {
+        this.setState( {tabValues:newEvent});
+        
+    }
     render(){
+        let rows = []
+        if(this.state.tabValues === "Barthel"){
+            rows = RowData 
+        }else{
+            rows =BarthelRowData
+        }
         return (
             <div className="flex flex-col items-center bg-neutral-200 min-h-screen">
                 <Header className='w-full' name='Nurse' typography='' history='/' />
@@ -25,12 +35,12 @@ class MainSummary extends React.Component{
                     <p className="id">0218702L</p>
             
                 </div>  
-                <Tabs>
-                    <Tab></Tab>
-                    <Tab></Tab>
+                <Tabs className="tabs" value={this.state.tabValues} onChange={this.tabChange}>
+                    <Tab className="tab" value = {"Barthel"} label="Barthel Index" ></Tab>
+                    <Tab value = {"HeightWeight"} label = "Height & Weight" ></Tab>
                 </Tabs>
                 <div className='flex justify-center w-3/4'>
-                    <DataTable RowData={this.state.barthel ? RowData : BarthelRowData} ></DataTable>
+                    <DataTable RowData={rows} ></DataTable>
                 </div>
                 
 

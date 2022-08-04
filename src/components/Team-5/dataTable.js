@@ -49,7 +49,7 @@ export default function DataTable(props){
                     {objs.map((row) => (
                         <tr className="bg-gray-200 border-b-2" key={row.title}>
                             <td className="text-lg py-5 bg-white px-3" >{row.title}</td>
-                            <td className="" >{row.admission}</td>
+                            <td >{row.admission}</td>
                             <td >{row.discharge}</td>
                             <td >{row.total}</td>
                         </tr>
