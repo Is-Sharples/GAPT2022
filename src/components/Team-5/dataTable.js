@@ -1,10 +1,5 @@
 import React from "react";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
+import '../styles/Summary.css'
 
 export default function DataTable(props){
 
@@ -30,38 +25,38 @@ export default function DataTable(props){
         }
     }
     return(
-    <div >
-        <TableContainer className="bg-gray-400 mr-auto">
-            <Table >
-                <TableHead >
-                    <TableRow>
-                        <TableCell>
-
-                        </TableCell>
-                        <TableCell >
+    <div className="grid-page">
+        <div className="card bg-white mr-auto w-full h-auto max-w-2xl p-5 rounded-xl shadow-lg">
+            <p className="text-3xl">Barthel Score</p>
+            <button className="input-details"> Input Barthel Index</button>
+            <table  >
+                <thead >
+                    <tr>
+                        <th />
+                        <th className="p-4" >
                             ADMISSION
-                        </TableCell>
-                        <TableCell>
+                        </th>
+                        <th className="p-4">
                             DISCHARGE
-                        </TableCell>
-                        <TableCell>
+                        </th>
+                        <th className="p-4">
                             +/-
-                        </TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
                     
                     {objs.map((row) => (
-                        <TableRow key={row.title}>
-                            <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.admission}</TableCell>
-                            <TableCell>{row.discharge}</TableCell>
-                            <TableCell>{row.total}</TableCell>
-                        </TableRow>
+                        <tr className="bg-gray-200 border-b-2" key={row.title}>
+                            <td className="text-lg py-5 bg-white px-3" >{row.title}</td>
+                            <td className="" >{row.admission}</td>
+                            <td >{row.discharge}</td>
+                            <td >{row.total}</td>
+                        </tr>
                     ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                </tbody>
+            </table>
+        </div>
 
     </div>)
 }
