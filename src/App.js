@@ -75,6 +75,7 @@ import AdminMenu from './components/admin/menu';
 import PatientViewOP from './components/PatientView/PatientView-OP';
 
 import MainSummary from './components/Team-5/mainSummary'
+import KitchenSink from './components/kitchensink';
 //Styling
 
 
@@ -85,6 +86,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path = "/" element={ <Home /> }/>
+        <Route path= "/kitchen-sink" element={<KitchenSink />}/>
         {/* Login with: NVD001:pass */}
         {/* Team-4 Login with: AMD001:pass */}
         <Route path = "/Patient" element = {<Patient currentPatient = {new currentPatient(0,"","","")}/>} />
