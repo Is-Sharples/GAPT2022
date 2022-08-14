@@ -5,6 +5,7 @@ import { RowData, BarthelRowData } from "./constants";
 import { Tabs } from "@mui/material";
 import { Tab } from "@material-ui/core";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import "../styles/Summary.css";
 
@@ -12,8 +13,9 @@ export default function(props){
     
         
     const [tabValues, setTabValues] = useState("Barthel");
-        
+    let counter = useSelector(state => state.counter);
     
+
     const tabChange = (e, newEvent) => {
         setTabValues(newEvent);
         
