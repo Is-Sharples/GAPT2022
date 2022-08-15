@@ -1,9 +1,10 @@
-import { barthelCounter, barthelState} from "./reducers";
+import { barthelCounter, barthelState, patientHeightState} from "./reducers";
 import {combineReducers} from 'redux';
 
 export const allReducers = combineReducers({
     barthelCounter: barthelCounter,
-    barthelState: barthelState
+    barthelState: barthelState,
+    patientHeightState: patientHeightState
 })
 
 export default allReducers;

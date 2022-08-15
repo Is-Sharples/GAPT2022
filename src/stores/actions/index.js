@@ -1,9 +1,11 @@
-import { increment, decrement, activate,deactivate } from "./actions";
+import { increment, decrement, activate,deactivate, TestAction, setZero } from "./actions";
 
 export const actions = {
     increment: increment,
     decrement: decrement,
     activate: activate,
-    deactivate: deactivate
+    deactivate: deactivate,
+    test: TestAction,
+    setZero: setZero
 };
 

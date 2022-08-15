@@ -27,3 +27,10 @@ export function setZero () {
         type: 'setZero'
     }
 }
+
+export function TestAction (payload) {
+    return {
+        type: 'testPayload',
+        payload: payload
+    }
+}
