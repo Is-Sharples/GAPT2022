@@ -6,7 +6,7 @@ export const BarthelRowData = [
     'Height(cm)' , 'Weight (kg)' , 'Has patient lost weight?', 'Was weight lost due to exercise?'
 ]
 
-export const questions = [
+export const barthelQuestions = [
     {
         questionText: 'Mobility (on level surfaces)',
         answerOptions: [

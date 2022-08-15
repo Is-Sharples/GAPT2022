@@ -1,10 +1,10 @@
 import React from "react";
 import '../styles/Summary.css'
 import { useState, useEffect } from "react";
-import BarthelQuestions from "./barthelQuestions";
+import Questions from "./barthelQuestions";
 import { useDispatch, useSelector } from "react-redux";
-import { setZero } from "../../stores/actions/actions";
-import { questions } from "./constants";
+import { actions } from "../../stores/actions";
+import { barthelQuestions } from "./constants";
 
 export default function DataTable(props){
     //State Declarations
@@ -19,11 +19,9 @@ export default function DataTable(props){
     let RowData = props.RowData;
     //UseEffects 
     useEffect(()=> {
-        if(form === true && counter === 10 ){
-            dispatch(setZero());
-            // debugger;
+        if(form === true && counter === barthelQuestions.length ){
+            dispatch(actions.setZero());
             setForm(false);
-            // debugger;
         }
     },[counter])
     //conditional Rendering
@@ -65,11 +63,11 @@ export default function DataTable(props){
         <div className="card bg-white mr-auto w-full h-auto max-w-2xl p-5 rounded-xl shadow-lg">
             <p className="text-3xl my-3">{title}</p>
             {
-                form ? <></> : <button className="input-details" onClick={() => handleClick()}> Input Barthel Index</button>
+                form ? <></> : <button className="input-details" onClick={() => handleClick()}> Input {title}</button>
 
             }
             {
-                form ? <BarthelQuestions></BarthelQuestions> :
+                form ? <Questions title={props.title}></Questions> :
                 
                 <table >
                 <thead >
