@@ -28,9 +28,9 @@ export function setZero () {
     }
 }
 
-export function TestAction (payload) {
+export function TestAction (height) {
     return {
         type: 'testPayload',
-        payload: payload
+        height: height
     }
 }
