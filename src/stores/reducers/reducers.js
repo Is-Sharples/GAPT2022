@@ -18,13 +18,13 @@ export const barthelState = (state = false, action) => {
 
 export const patientHeightState = (state = {age:31,gender:'male',height:0}, action) => {
     switch (action.type) {
-        case 'testPayload': 
+        case 'addHeight': 
         
         return state = {
             ...state,
             height: action.height
         }
-        default: console.log('test'); return state;
+        default:; return state;
     }
 }
 

@@ -30,7 +30,7 @@ export function setZero () {
 
 export function TestAction (height) {
     return {
-        type: 'testPayload',
+        type: 'addHeight',
         height: height
     }
 }
