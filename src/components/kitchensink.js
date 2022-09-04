@@ -1,9 +1,9 @@
 import React from "react";
-import BarthelQuestions from "./Team-5/barthelQuestions";
+import Questions from "./Team-5/questions";
 
 export default function KitchenSink(props) {
     return (<div>
 
-        <BarthelQuestions />
+        <Questions />
     </div>)
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/Summary.css'
 import { useState, useEffect } from "react";
-import Questions from "./barthelQuestions";
+import Questions from "./questions";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../stores/actions";
 import { barthelQuestions } from "./constants";
