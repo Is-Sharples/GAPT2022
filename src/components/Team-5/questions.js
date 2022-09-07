@@ -30,7 +30,6 @@ export default function Questions(props) {
     }
 
     const handleWeightChange = (e) => {
-        console.log(e.target.value)
         setWeight(e.target.value)
     }
 
@@ -41,7 +40,8 @@ export default function Questions(props) {
             patientLostWeight: patientLost,
             dueToExercise: dueExercise
         }
-        dispatch(actions.submitHeightWeight(payload))
+        dispatch(actions.submitHeightWeight(payload));
+        dispatch(actions.deactivateForm())
     }
 
     const displayDecider = () => {
