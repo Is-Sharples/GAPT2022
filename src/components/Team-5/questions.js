@@ -14,17 +14,7 @@ export default function Questions(props) {
     const[patientLost, setPatientLost] = useState(false);
     const[dueExercise, setDueExercise] = useState(false);
     const age = useSelector(state => state.patientHeightState.age);
-    let decider = undefined;
     let questions = barthelQuestions;
-    console.log(props.title);
-    switch(props.title){
-        case "Barthel": decider = "Barthel"; break;
-        case "HeightWeight": decider = false; break;
-    }
-    //Error catching
-    if(decider === undefined){
-        console.log('Error: no title was passed')
-    }
     //Functions
     const handleClick = () => {
         if(questionNumber < questions.length-1){
@@ -51,7 +41,7 @@ export default function Questions(props) {
             patientLostWeight: patientLost,
             dueToExercise: dueExercise
         }
-        dispatch(actions.test(payload))
+        dispatch(actions.submitHeightWeight(payload))
     }
 
     const displayDecider = () => {
