@@ -15,16 +15,19 @@ export const barthelState = (state = false, action) => {
         default: return state;
     }
 }
-
+//add case to add weight and questions regarding weight
 export const patientHeightState = (state = {age:31,gender:'male',height:0}, action) => {
     switch (action.type) {
         case 'addHeight': 
         
         return state = {
             ...state,
-            height: action.height
+            height: action.height,
+            weight: action.weight,
+            lostWeight: action.lostWeight,
+            dueExercise: action.dueExercise
         }
-        default:; return state;
+        default: return state;
     }
 }
 

@@ -28,9 +28,12 @@ export function setZero () {
     }
 }
 
-export function TestAction (height) {
+export function TestAction (payload) {
     return {
         type: 'addHeight',
-        height: height
+        height: payload.height,
+        weight: payload.weight,
+        lostWeight: payload.patientLostWeight,
+        dueExercise: payload.dueToExercise
     }
 }
