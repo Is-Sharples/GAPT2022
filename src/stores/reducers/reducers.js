@@ -31,5 +31,13 @@ export const patientHeightState = (state = {age:31,gender:'male',height:0}, acti
     }
 }
 
+export const formState = (state = false, action) => {
+    switch(action.type) {
+        case 'activeateForm' : return state = true;
+        case 'deactivateForm' : return state = false;
+        default: return state;
+    }
+}
+
 
 

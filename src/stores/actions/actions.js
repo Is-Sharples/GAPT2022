@@ -37,3 +37,15 @@ export function TestAction (payload) {
         dueExercise: payload.dueToExercise
     }
 }
+
+export function activeateForm () {
+    return {
+        type: 'activateForm'
+    }
+}
+
+export function deactivateForm() {
+    return {
+        type: 'deactivateForm'
+    }
+}
