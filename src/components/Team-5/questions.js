@@ -61,7 +61,7 @@ export default function Questions(props) {
                 <p className='question-section'>{questions[questionNumber].questionText}</p>
                 {
                     questions[questionNumber].answerOptions.map((ans)=> (
-                        <button key={ans.index} onClick={() => handleClick()} className='button '>{ans.answerText}</button>
+                    <button key={ans.index} onClick={() => handleClick()} className='button '>{ans.answerText}</button>
                     ))
                 }
             </div>
@@ -72,33 +72,34 @@ export default function Questions(props) {
                 <div className="flex flex-col items-center space-y-8">
                     <div className="flex items-center">                
                         <div className="flex flex-col items-center">
-                    
-                            <p className="question-section"> Estimating height from demispan </p>
-                            <img src={require('../assets/heightpic.jpg')} />    
-                            <div className="mb-4 mt-2">
-                                <TextField onChange={handleHeightChange} label={"Enter Demispan"} required />
+                            <div className="flex space-x-4">
+                                <p className="question-section"> Estimating height from demispan </p>
+                                <p className="question-section row-span-1"> Input the weight for the patient</p>    
                             </div>
-
-                        <TextField label={"Calculated Height in CM"} disabled readOnly value={heightValue} />
-
-                        </div>
-                        <div className="flex flex-col items-center h-full">
-                            <p className="question-section"> Input the weight for the patient</p>
-                            <TextField onChange={handleWeightChange}  label="Enter Weight" />
-
-                            <div className="mt-2">
-                                <p>Has the patient lost any weight in the past year?</p>
-                                <div className="flex space-x-4 justify-center w-full">
-                                    <Button css={activeButton(patientLost)} func={() => setPatientLost(true)} text ='Yes'></Button>
-                                    <Button css={activeButton(!patientLost)} func={() => setPatientLost(false)} text='No'></Button>
+                            <div className="flex items-center">
+                                <div className="flex flex-col items-center">
+                                    <img src={require('../assets/heightpic.jpg')} />    
+                                    <div className="mb-4 mt-2 flex flex-col items-center space-y-4">
+                                        <TextField onChange={handleHeightChange} label={"Enter Demispan"} required />
+                                        <TextField label={"Calculated Height in CM"} disabled readOnly value={heightValue} />
+                                    </div>      
                                 </div>
-                                {weightLoss(patientLost)}
+                                <div className="flex flex-col items-center h-full w-1/2">       
+                                    <TextField onChange={handleWeightChange}  label="Enter Weight" />
+                                    <div className="mt-2">
+                                        <p>Has the patient lost any weight in the past year?</p>
+                                        <div className="flex space-x-4 justify-center w-full">
+                                            <Button css={activeButton(patientLost)} func={() => setPatientLost(true)} text ='Yes'/>
+                                            <Button css={activeButton(!patientLost)} func={() => setPatientLost(false)} text='No'/>
+                                        </div>
+                                    {weightLoss(patientLost)}
+                                </div>
                             </div>
-                    
                         </div>
                     </div>
-                <Button func={() => createPayload()} extraCss='px-10' text='Submit'></Button>
                 </div>
+                <Button func={() => createPayload()} extraCss='px-10' text='Submit'/>
+            </div>
             </React.Fragment>)
         }else {
             return (
