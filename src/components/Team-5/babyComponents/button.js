@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Button(props){
+export default function CustomButton(props){
     
     let classes = "";
     let extra = '';
@@ -19,7 +19,7 @@ export default function Button(props){
     }
 
     return (
-        <button type='button' className={`${classes} ${extra}`} onClick={props.func} disabled={props.disabled}>
+        <button className={`${classes} ${extra}`} onClick={props.func} disabled={props.disabled}>
             {props.text}
         </button>
     )

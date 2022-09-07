@@ -4,9 +4,10 @@ import '../styles/Barthel.css';
 import { useDispatch,useSelector } from "react-redux/es/exports";
 import { actions } from "../../stores/actions";
 import { TextField } from "@mui/material";
-import Button from "./babyComponents/button";
+import CustomButton from "./babyComponents/button";
 
 export default function Questions(props) {
+    //Variables 
     const dispatch = useDispatch();
     const[questionNumber, setQuestionNumber] = useState(0);
     const[heightValue, setHeight] = useState(0);
@@ -14,13 +15,17 @@ export default function Questions(props) {
     const[patientLost, setPatientLost] = useState(false);
     const[dueExercise, setDueExercise] = useState(false);
     const age = useSelector(state => state.patientHeightState.age);
+    let answer = [];
     let questions = barthelQuestions;
     //Functions
-    const handleClick = () => {
+    const handleClick = (index) => {
+        answer.push(index);
         if(questionNumber < questions.length-1){
             setQuestionNumber(questionNumber + 1)
+            dispatch(actions.storeBarthelArray(answer));
             dispatch(actions.increment())
         }else if (questionNumber < questions.length){
+            dispatch(actions.storeBarthelArray(answer));
             dispatch(actions.increment())
         }
     }
@@ -43,7 +48,7 @@ export default function Questions(props) {
         dispatch(actions.submitHeightWeight(payload));
         dispatch(actions.deactivateForm())
     }
-
+    //Display Functions
     const displayDecider = () => {
         if (props.title === "Barthel") {
             return(<React.Fragment>
@@ -51,7 +56,7 @@ export default function Questions(props) {
                 <p className='question-section'>{questions[questionNumber].questionText}</p>
                 {
                     questions[questionNumber].answerOptions.map((ans)=> (
-                    <button key={ans.index} onClick={() => handleClick()} className='button '>{ans.answerText}</button>
+                    <button key={ans.index} onClick={() => handleClick(ans.index)} className='button '>{ans.answerText}</button>
                     ))
                 }
             </div>
@@ -79,8 +84,8 @@ export default function Questions(props) {
                                     <div className="mt-2">
                                         <p>Has the patient lost any weight in the past year?</p>
                                         <div className="flex space-x-4 justify-center w-full">
-                                            <Button css={activeButton(patientLost)} func={() => setPatientLost(true)} text ='Yes'/>
-                                            <Button css={activeButton(!patientLost)} func={() => setPatientLost(false)} text='No'/>
+                                            <CustomButton css={activeButton(patientLost)} func={() => setPatientLost(true)} text ='Yes'/>
+                                            <CustomButton css={activeButton(!patientLost)} func={() => setPatientLost(false)} text='No'/>
                                         </div>
                                     {weightLoss(patientLost)}
                                 </div>
@@ -88,7 +93,7 @@ export default function Questions(props) {
                         </div>
                     </div>
                 </div>
-                <Button func={() => createPayload()} extraCss='px-10' text='Submit'/>
+                <CustomButton func={() => createPayload()} extraCss='px-10' text='Submit'/>
             </div>
             </React.Fragment>)
         }else {
@@ -106,8 +111,8 @@ export default function Questions(props) {
                 <React.Fragment>
                     <p>Was the weight lost due to exercise?</p>
                                 <div className="flex space-x-4 justify-center w-full">
-                                    <Button css={activeButton(dueExercise)} func={() => setDueExercise(true)} text='Yes'></Button>
-                                    <Button css={activeButton(!dueExercise)} func={() => setDueExercise(false)} text='No'></Button>
+                                    <CustomButton css={activeButton(dueExercise)} func={() => setDueExercise(true)} text='Yes'/>
+                                    <CustomButton css={activeButton(!dueExercise)} func={() => setDueExercise(false)} text='No'/>
                                 </div>
                 </React.Fragment>
             )
@@ -120,7 +125,7 @@ export default function Questions(props) {
         if(active){
             return 'bg-blue-950 rounded-md p-3 text-white'
         }else {
-            return 'bg-gray-alt-400 rounded-md p-3'
+            return 'bg-gray-200 rounded-md p-3 '
         }
     }
     

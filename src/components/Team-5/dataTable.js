@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/Summary.css'
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Questions from "./questions";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../stores/actions";
@@ -12,7 +12,7 @@ export default function DataTable(props){
     const dispatch = useDispatch();
     let formState = useSelector(state => state.formState)
     var title = '';
-    let admissionMock = []
+    let admissionMock = useSelector(state => state.barthelArray);  
     let count = 0;
     let dischargeMock = [];
     let objs = []
@@ -20,6 +20,11 @@ export default function DataTable(props){
     //UseEffects 
     useEffect(()=> {
         if(formState === true && counter === barthelQuestions.length ){
+            let totalAdmission = 0;
+            admissionMock.forEach(number => {
+                totalAdmission += number
+            });
+            dispatch(actions.storeBarthelArray([totalAdmission]))
             dispatch(actions.setZero());
             dispatch(actions.deactivateForm());
         }
@@ -30,18 +35,11 @@ export default function DataTable(props){
     }else {
         title='Height & Weight'
     }
-
-
-    
-    for(var i = 0; i < props.RowData.length; i++){
-        admissionMock[i] = i;
-    }
     
     for (var c = props.RowData.length; c >= 0; c--) {
         dischargeMock[count] = c;
         count++;
     }
-
     for(var x = 0; x < props.RowData.length; x++) {
         objs[x] = {
             title: RowData[x],
@@ -56,8 +54,6 @@ export default function DataTable(props){
             dispatch(actions.activeateForm())
         }
     }
-
-
     return(
     <div className="grid-page">
         <div className="card bg-white mr-auto w-full h-auto max-w-2xl p-5 rounded-xl shadow-lg">
