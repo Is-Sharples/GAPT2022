@@ -39,5 +39,12 @@ export const formState = (state = false, action) => {
     }
 }
 
+export const barthelArray = (state = [], action ) => {
+    switch(action.type) {
+        case 'storeArray': return state = state.concat(action.array);
+        default: return state;
+    }
+}
+
 
 

@@ -49,3 +49,10 @@ export function deactivateForm() {
         type: 'deactivateForm'
     }
 }
+
+export function storeBarthelArray(payload) {
+    return {
+        type:'storeArray',
+        array: payload
+    }
+}

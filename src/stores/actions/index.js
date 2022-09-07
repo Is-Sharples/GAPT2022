@@ -1,4 +1,4 @@
-import { increment, decrement, activate,deactivate, TestAction, setZero,activeateForm,deactivateForm } from "./actions";
+import { increment, decrement, activate,deactivate, TestAction, setZero,activeateForm,deactivateForm,storeBarthelArray } from "./actions";
 
 export const actions = {
     increment: increment,
@@ -8,6 +8,7 @@ export const actions = {
     submitHeightWeight: TestAction,
     setZero: setZero,
     activeateForm: activeateForm,
-    deactivateForm: deactivateForm
+    deactivateForm: deactivateForm,
+    storeBarthelArray: storeBarthelArray
 };
 
