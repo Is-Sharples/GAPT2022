@@ -40,7 +40,7 @@ export function TestAction (payload) {
 
 export function activeateForm () {
     return {
-        type: 'activateForm'
+        type: 'activeateForm'
     }
 }
 
